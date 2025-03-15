@@ -101,7 +101,7 @@
 
         <dispenser id="1" parent="contraption">
             <float name="damage" value="20"/>
-            <float name="range" value="800"/>
+            <float name="range" value="750"/>
             <vector3 name="shotVelocity" x="10" y="0" z="0"/>
             <vector3 name="shotOffset" x="25" y="30" z="0"/>
             <vector3 name="size" x="32" y="48" z="32"/>
@@ -585,7 +585,7 @@
 
         <!-- Halloween Enemies -->
         <enemy id="skeleton" name="骷髅" deathMessage="被射成刺猬了！" unlock="mvz2:level.halloween_1">
-            <float name="range" value="800"/>
+            <float name="range" value="850"/>
             <vector3 name="shotOffset" x="10" y="40" z="0"/>
             <vector3 name="shotVelocity" x="15" y="0" z="0"/>
             <id name="shell" value="mvz2:bone"/>

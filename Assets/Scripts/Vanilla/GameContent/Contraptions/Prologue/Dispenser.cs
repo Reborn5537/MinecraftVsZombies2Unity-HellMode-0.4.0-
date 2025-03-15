@@ -4,6 +4,7 @@ using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
+using MVZ2.GameContent.Buffs.Armors;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -18,7 +19,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             InitShootTimer(entity);
-            var evocationTimer = new FrameTimer(120);
+            var evocationTimer = new FrameTimer(115);
             SetEvocationTimer(entity, evocationTimer);
         }
         protected override void UpdateAI(Entity entity)
@@ -50,6 +51,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 var projectile = Shoot(entity);
                 projectile.Velocity *= 2;
+                projectile.AddBuff<EasyArmorBuff>();
             }
             if (evocationTimer.Expired)
             {
