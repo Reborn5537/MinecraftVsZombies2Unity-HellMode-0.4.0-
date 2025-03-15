@@ -2,4 +2,5 @@
     <difficulty id="easy" name="简单" value="-1"/>
     <difficulty id="normal" name="普通" value="0"/>
     <difficulty id="hard" name="困难" value="1"/>
+	<difficulty id="hell" name="地狱" value="2"/>
 </difficulties>

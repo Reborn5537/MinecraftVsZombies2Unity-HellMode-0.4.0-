@@ -37,6 +37,14 @@ namespace PVZEngine.Entities
 
         public static readonly PropertyMeta MODEL_ID = Get("modelId");
 
+        public static float GetHealth(this Entity entity)
+        {
+            return entity.GetProperty<float>(HEALTH);
+        }
+        public static void SetHealth(this Entity entity, float health)
+        {
+            entity.SetProperty(HEALTH, health);
+        }
         public static bool IsInvincible(this Entity entity)
         {
             return entity.GetProperty<bool>(INVINCIBLE);

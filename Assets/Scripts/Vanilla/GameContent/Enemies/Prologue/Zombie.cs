@@ -39,10 +39,6 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
-            if (entity.Health < 80)
-            {
-                entity.AddBuff<MinigameEnemySpeedBuff>();
-            }
             if (entity.HasBuff<BoatBuff>())
             {
                 entity.RemoveBuffs<BoatBuff>();

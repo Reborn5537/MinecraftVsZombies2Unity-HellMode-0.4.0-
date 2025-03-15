@@ -565,18 +565,22 @@
         <!-- Enemies -->
         <enemy id="zombie" name="僵尸" deathMessage="脑子是好的，但不是每个人都有">
             <int name="cost" value="50" />
+			<float name="speed" value="2"/>
             <int name="waterInteraction" value="2"/>
         </enemy>
         <enemy id="leather_capped_zombie" name="皮帽僵尸" deathMessage="脑子是好的，但不是每个人都有">
             <int name="cost" value="75" />
+			<float name="speed" value="2"/>
             <int name="waterInteraction" value="2"/>
         </enemy>
         <enemy id="iron_helmetted_zombie" name="铁盔僵尸" deathMessage="脑子是好的，但不是每个人都有">
             <int name="cost" value="125" />
+			<float name="speed" value="2"/>
             <int name="waterInteraction" value="2"/>
         </enemy>
         <enemy id="flag_zombie" name="旗帜铁桶僵尸" deathMessage="脑子是好的，但不是每个人都有">
             <int name="cost" value="300" />
+			<float name="speed" value="3"/>
             <int name="waterInteraction" value="2"/>
         </enemy>
 

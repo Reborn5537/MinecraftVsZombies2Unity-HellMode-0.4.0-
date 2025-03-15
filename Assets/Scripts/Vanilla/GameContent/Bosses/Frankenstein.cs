@@ -208,7 +208,7 @@ namespace MVZ2.GameContent.Bosses
 
         public static float GetFrankensteinActionSpeed(Entity boss)
         {
-            return boss.Level.Difficulty == VanillaDifficulties.hell ? 3 :
+            return boss.Level.Difficulty == VanillaDifficulties.hell ? 4 :
             boss.Level.Difficulty == VanillaDifficulties.hard ? 2 :
             1;
         }
