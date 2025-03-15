@@ -34,6 +34,15 @@ namespace MVZ2.GameContent.Implements
                 else
                     level.RemoveBuffs(hardDef);
             }
+            bool hell = difficulty == VanillaDifficulties.hell;
+            var hellDef = level.Content.GetBuffDefinition(VanillaBuffID.Level.levelHell);
+            if (hell != level.HasBuff(hellDef))
+            {
+                if (hell)
+                    level.AddBuff(hellDef);
+                else
+                    level.RemoveBuffs(hellDef);
+            }
         }
     }
 }

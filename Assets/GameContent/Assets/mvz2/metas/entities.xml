@@ -575,7 +575,7 @@
             <int name="cost" value="125" />
             <int name="waterInteraction" value="2"/>
         </enemy>
-        <enemy id="flag_zombie" name="旗帜僵尸" deathMessage="脑子是好的，但不是每个人都有">
+        <enemy id="flag_zombie" name="旗帜铁桶僵尸" deathMessage="脑子是好的，但不是每个人都有">
             <int name="cost" value="300" />
             <int name="waterInteraction" value="2"/>
         </enemy>

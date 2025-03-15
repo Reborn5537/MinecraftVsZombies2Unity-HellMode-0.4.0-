@@ -242,7 +242,7 @@ namespace MVZ2.Saves
                 if (index >= oldLevelIDList.Length || index > oldData.currentLevel)
                     continue;
                 var stageID = oldLevelIDList[index];
-                NamespaceID diff = VanillaDifficulties.hard;
+                NamespaceID diff = VanillaDifficulties.hell;
                 switch (difficulty)
                 {
                     case 0:
@@ -250,6 +250,9 @@ namespace MVZ2.Saves
                         break;
                     case 1:
                         diff = VanillaDifficulties.normal;
+                        break;
+                    case 2:
+                        diff = VanillaDifficulties.hard;
                         break;
                 }
                 saveData.AddLevelDifficultyRecord(stageID, diff);

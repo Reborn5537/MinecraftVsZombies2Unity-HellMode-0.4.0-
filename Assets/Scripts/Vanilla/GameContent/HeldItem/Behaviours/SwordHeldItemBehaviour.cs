@@ -87,6 +87,10 @@ namespace MVZ2.GameContent.HeldItems
             {
                 timeout = 90;
             }
+            else if (level.Difficulty == VanillaDifficulties.hell)
+            {
+                timeout = 120;
+            }
             buff.SetProperty(SwordParalyzedBuff.PROP_TIMEOUT, timeout);
             level.PlaySound(VanillaSoundID.shock);
         }

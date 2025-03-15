@@ -84,6 +84,10 @@ namespace MVZ2.GameContent.Pickups
                 {
                     money = 1000;
                 }
+                else if (level.Difficulty == VanillaDifficulties.hell)
+                {
+                    money = 3000;
+                }
                 GemEffect.SpawnGemEffects(level, money, pickup.Position, pickup, false);
             }
             else
@@ -91,6 +95,10 @@ namespace MVZ2.GameContent.Pickups
                 if (level.Difficulty == VanillaDifficulties.hard)
                 {
                     GemEffect.SpawnGemEffects(level, 250, pickup.Position, pickup, false);
+                }
+                if (level.Difficulty == VanillaDifficulties.hell)
+                {
+                    GemEffect.SpawnGemEffects(level, 500, pickup.Position, pickup, false);
                 }
             }
             foreach (var p in level.GetEntities(EntityTypes.PICKUP))

@@ -33,12 +33,16 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
+            entity.SetAnimationInt("HealthState", entity.GetHealthState(3));
             entity.SetAnimationBool("HasBoat", entity.HasBuff<BoatBuff>());
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
+            if (entity.Health < 80)
+            {
+                entity.AddBuff<MinigameEnemySpeedBuff>();
+            }
             if (entity.HasBuff<BoatBuff>())
             {
                 entity.RemoveBuffs<BoatBuff>();

@@ -81,6 +81,10 @@ namespace MVZ2.GameContent.Enemies
                 {
                     damageMutliplier = 2;
                 }
+                else if (difficulty == VanillaDifficulties.hell)
+                {
+                    damageMutliplier = 3;
+                }
                 var damage = entity.GetDamage() * damageMutliplier;
                 if (damage >= 0)
                 {

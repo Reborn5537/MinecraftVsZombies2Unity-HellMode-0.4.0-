@@ -251,7 +251,19 @@ namespace MVZ2.GameContent.Bosses
                 return;
 
             var rng = GetMindSwapRNG(entity);
-            NamespaceID[] pool = level.Difficulty == VanillaDifficulties.hard ? hardMindSwapPool : mindSwapPool;
+            NamespaceID[] pool;
+            if (level.Difficulty == VanillaDifficulties.hard)
+            {
+                pool = hardMindSwapPool;
+            }
+            else if (level.Difficulty == VanillaDifficulties.hell)
+            {
+                pool = hellMindSwapPool;
+            }
+            else
+            {
+                pool = mindSwapPool;
+            }
             for (int i = 0; i < level.GetConveyorSeedPackCount(); i++)
             {
                 var blueprint = level.GetConveyorSeedPackAt(i);
@@ -287,6 +299,10 @@ namespace MVZ2.GameContent.Bosses
                 count = 4;
             }
             else if (level.Difficulty == VanillaDifficulties.hard)
+            {
+                count = 2;
+            }
+            else if (level.Difficulty == VanillaDifficulties.hell)
             {
                 count = 2;
             }
@@ -434,7 +450,7 @@ namespace MVZ2.GameContent.Bosses
             var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.CanDeactive());
             foreach (var contraption in targets)
             {
-                contraption.ShortCircuit(300);
+                contraption.ShortCircuit(350);
             }
         }
         private static string GetFateOptionText(int option)
@@ -454,6 +470,10 @@ namespace MVZ2.GameContent.Bosses
             else if (level.Difficulty == VanillaDifficulties.hard)
             {
                 return 5;
+            }
+            else if (level.Difficulty == VanillaDifficulties.hell)
+            {
+                return 6;
             }
             return 4;
         }
@@ -502,23 +522,23 @@ namespace MVZ2.GameContent.Bosses
         public static readonly NamespaceID ID = VanillaBossID.slenderman;
 
         [TranslateMsg("梦魇对话框标题")]
-        public const string CHOOSE_FATE_TITLE = "选择你的命运";
+        public const string CHOOSE_FATE_TITLE = "选择你的<color=red>命运<color>";
         [TranslateMsg("梦魇对话框文本")]
-        public const string CHOOSE_FATE_DESCRIPTION = "选吧。";
+        public const string CHOOSE_FATE_DESCRIPTION = "选吧<color=red>=)</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_PANDORAS_BOX = "潘多拉的魔盒";
+        public const string FATE_TEXT_PANDORAS_BOX = "<color=purple>???</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_BIOHAZARD = "尸潮";
+        public const string FATE_TEXT_BIOHAZARD = "<color=red>???</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_DECREPIFY = "衰老";
+        public const string FATE_TEXT_DECREPIFY = "<color=purple>???</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_INSANITY = "疯狂";
+        public const string FATE_TEXT_INSANITY = "<color=red>???</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_COME_TRUE = "成真";
+        public const string FATE_TEXT_COME_TRUE = "<color=yellow>???</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_THE_LURKER = "深潜者";
+        public const string FATE_TEXT_THE_LURKER = "<color=bule>???</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_BLACK_SUN = "黑太阳";
+        public const string FATE_TEXT_BLACK_SUN = "<color=black>???</color>";
 
         public const int MAX_MOVE_TIMEOUT = 30;
 
@@ -582,6 +602,20 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie)
+        };
+        private static NamespaceID[] hellMindSwapPool = new NamespaceID[]
+        {
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.lilyPad),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.drivenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.gravityPad),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.vortexHopper),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.ghast),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.pistenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.totenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.necromancer)
         };
         private static int[] fateOptions = new int[]
         {

@@ -62,6 +62,10 @@ namespace MVZ2.GameContent.Buffs.Enemies
             {
                 count = 4;
             }
+            else if (level.Difficulty == VanillaDifficulties.hell)
+            {
+                count = 5;
+            }
             for (int i = 0; i < count; i++)
             {
                 var parasite = level.Spawn(VanillaEnemyID.parasiteTerror, host.GetCenter(), host);
