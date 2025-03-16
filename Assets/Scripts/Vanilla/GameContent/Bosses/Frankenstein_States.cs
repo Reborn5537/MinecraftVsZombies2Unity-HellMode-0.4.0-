@@ -325,7 +325,7 @@ namespace MVZ2.GameContent.Bosses
                     projectileID = VanillaProjectileID.bullet,
                     position = gunPosition,
                     velocity = gunDirection * boss.GetShotVelocity().magnitude,
-                    damage = boss.GetDamage() * 0.1f,
+                    damage = boss.GetDamage() * 0.2f,
                     faction = boss.GetFaction(),
                     soundID = VanillaSoundID.gunShot,
                 });
@@ -414,7 +414,7 @@ namespace MVZ2.GameContent.Bosses
                     projectileID = VanillaProjectileID.missile,
                     position = missilePosition,
                     velocity = missileDirection * missileSpeed,
-                    damage = boss.GetDamage() * 2,
+                    damage = boss.GetDamage() * 3,
                     faction = boss.GetFaction(),
                     soundID = VanillaSoundID.missile
                 });
@@ -427,7 +427,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
-                substateTimer.ResetTime(24);
+                substateTimer.ResetTime(22);//快速跑路
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
