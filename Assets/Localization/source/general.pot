@@ -13,7 +13,7 @@ msgstr ""
 
 #. 初始界面的作者标识
 #: /MainGame/MainScene/Landing/Canvas/Creator
-msgid "Cuerzor制作"
+msgid "Cuerzor制作<br><color=red>地狱版</color>来自Reborn_offical修改"
 msgstr ""
 
 #. 主界面文字

@@ -24,6 +24,7 @@ namespace MVZ2.GameContent.Stages
         public override void OnPostWave(LevelEngine level, int wave)
         {
             base.OnPostWave(level, wave);
+            //level.StartRain();
             if (wave <= 10 || wave >= level.GetTotalWaveCount())
                 return;
             if (!level.EntityExists(VanillaEffectID.nightmareWatchingEye))
