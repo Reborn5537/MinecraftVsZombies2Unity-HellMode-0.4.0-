@@ -208,8 +208,8 @@
         </contraption>
         <contraption id="tnt" name="TNT" tooltip="触发后炸飞周围敌人" unlock="mvz2:level.halloween_6">
             <bool name="canDeactive" value="false"/>
-            <float name="damage" value="1000"/>
-            <float name="range" value="150"/>
+            <float name="damage" value="1500"/>
+            <float name="range" value="125"/>
             <vector3 name="size" x="48" y="48" z="48"/>
             <id name="fragmentId" value="mvz2:mine_tnt"/>
             <id name="placeSound" value="mvz2:grass"/>
@@ -218,7 +218,7 @@
             <bool name="triggerActive" value="true" />
             <bool name="instantTrigger" value="true" />
 
-            <int name="cost" value="150" />
+            <int name="cost" value="175" />
             <id name="rechargeId" value="mvz2:very_long" />
         </contraption>
         <contraption id="soul_furnace" name="灵魂熔炉" tooltip="发射火球，但需要献祭前方的器械作为燃料" unlock="mvz2:level.halloween_7">

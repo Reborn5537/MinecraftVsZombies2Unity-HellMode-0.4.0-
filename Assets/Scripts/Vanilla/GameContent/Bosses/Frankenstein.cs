@@ -315,7 +315,7 @@ namespace MVZ2.GameContent.Bosses
         public static readonly NamespaceID ID = VanillaBossID.frankenstein;
         private const int detectIntervalFrames = 3;
         private const int shootingPeriodFrames = 60;
-        private const float jumpFlyingTime = 15;
+        private const float jumpFlyingTime = 20;
         //private const float bulletSpeed = 10;
         //private const float missileSpeed = 8;
         private const float upperArmLength = 60;

@@ -325,7 +325,7 @@ namespace MVZ2.GameContent.Bosses
                     projectileID = VanillaProjectileID.bullet,
                     position = gunPosition,
                     velocity = gunDirection * boss.GetShotVelocity().magnitude,
-                    damage = boss.GetDamage() * 0.2f,
+                    damage = boss.GetDamage() * 0.3f,
                     faction = boss.GetFaction(),
                     soundID = VanillaSoundID.gunShot,
                 });
