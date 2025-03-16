@@ -248,7 +248,6 @@
             <spawn id="mvz2:ghost"/>
             <spawn id="mvz2:mummy"/>
             <spawn id="mvz2:necromancer"/>
-            <spawn id="mvz2:imp"/>
         </spawns>
         <properties>
             <bool name="noEnergy" value="true"/>
