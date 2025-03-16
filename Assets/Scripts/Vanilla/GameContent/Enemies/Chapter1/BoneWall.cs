@@ -6,6 +6,7 @@ using MVZ2.Vanilla.Entities;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using MVZ2.GameContent.Buffs.Enemies;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -18,6 +19,9 @@ namespace MVZ2.GameContent.Enemies
         public override void Init(Entity entity)
         {
             base.Init(entity);
+            entity.AddBuff<GhostBuff>();
+            var buff = entity.AddBuff<FlyBuff>();
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 0);
             entity.Timeout = entity.GetMaxTimeout();
             entity.PlaySound(VanillaSoundID.boneWallBuild);
         }

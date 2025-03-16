@@ -76,7 +76,7 @@ namespace MVZ2.GameContent.Contraptions
             int knivesPerLayer = knivesPerEnemy / layers;
 
             float interval = (float)EVOCATION_DURATION / knivesPerLayer;
-            var anglePerSpawn = 180f / knivesPerLayer;
+            var anglePerSpawn = 360f / knivesPerLayer;
             var anglePerFrame = anglePerSpawn / interval;
 
             var evocationTimer = GetEvocationTimer(entity);
@@ -94,7 +94,7 @@ namespace MVZ2.GameContent.Contraptions
 
                             if (dir == 1)
                             {
-                                deg += 180;
+                                deg += 360;
                             }
 
                             var direction = Quaternion.Euler(0, deg, 0) * Vector3.right;
@@ -118,8 +118,8 @@ namespace MVZ2.GameContent.Contraptions
             }
         }
         public const int EVOCATION_MAX_TARGET_COUNT = 10;
-        public const int MAX_EVOCATION_KNIFE_COUNT = 45;
-        public const int EVOCATION_DURATION = 30;
+        public const int MAX_EVOCATION_KNIFE_COUNT = 40;
+        public const int EVOCATION_DURATION = 25;
         public const int EVOCATION_KNIVES_PER_LAYER = 30;
         public const float EVOCATION_RADIUS = 100;
         public const float EVOCATION_DAMAGE_MULTIPLIER = 2;

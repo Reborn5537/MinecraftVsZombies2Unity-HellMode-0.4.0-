@@ -42,7 +42,7 @@ namespace MVZ2.GameContent.Contraptions
             {
                 if (target.Type == EntityTypes.ENEMY && target.IsHostile(entity) && target.CanDeactive())
                 {
-                    target.Stun(150);
+                    target.Stun(125);
                     stunned = true;
                 }
                 else if (target.Type == EntityTypes.PLANT && target.IsCharmed())

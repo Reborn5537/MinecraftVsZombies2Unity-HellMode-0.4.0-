@@ -30,7 +30,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
 
-            var riseTimer = new FrameTimer(450);
+            var riseTimer = new FrameTimer(400);
             SetRiseTimer(entity, riseTimer);
             entity.SetAnimationBool("Ready", riseTimer.Frame < 30);
 

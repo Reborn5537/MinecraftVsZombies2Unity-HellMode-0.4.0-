@@ -147,8 +147,8 @@
 
             <bool name="canDeactive" value="false"/>
             <bool name="loyal" value="true"/>
-            <float name="damage" value="1800"/>
-            <float name="range" value="40"/>
+            <float name="damage" value="1300"/>
+            <float name="range" value="60"/>
             <id name="placeSound" value="mvz2:grass"/>
             <id name="shell" value="mvz2:grass"/>
             <id name="placement" value="mvz2:buried"/>
@@ -164,14 +164,14 @@
         <dispenser id="small_dispenser" name="小型发射器" tooltip="发射短距离雪球" unlock="mvz2:level.halloween_1">
             <bool name="nocturnal" value="true"/>
 
-            <float name="range" value="255"/>
+            <float name="range" value="260"/>
             <id name="projectileId" value="mvz2:snowball"/>
             <id name="shootSound" value="mvz2:bow"/>
             <id name="fragmentId" value="mvz2:furnace"/>
             <vector3 name="shotOffset" x="25" y="15" z="0"/>
             <vector3 name="size" x="32" y="32" z="32"/>
 
-            <int name="cost" value="0" />
+            <int name="cost" value="1" />
             <id name="rechargeId" value="mvz2:short" />
         </dispenser>
         <contraption id="moonlight_sensor" name="月光传感器" tooltip="自动提供能量，一段时间后提升生产量" unlock="mvz2:level.halloween_2">
@@ -198,18 +198,18 @@
             <id name="rechargeId" value="mvz2:long" />
         </contraption>
         <contraption id="punchton" name="冲击活塞" tooltip="冲击前方敌人，需要时间再次准备" unlock="mvz2:level.halloween_4">
-            <float name="damage" value="100"/>
-            <float name="range" value="120"/>
+            <float name="damage" value="125"/>
+            <float name="range" value="100"/>
             <vector3 name="size" x="32" y="48" z="32"/>
             <id name="fragmentId" value="mvz2:dispenser"/>
 
-            <int name="cost" value="75" />
+            <int name="cost" value="100" />
             <id name="rechargeId" value="mvz2:short" />
         </contraption>
         <contraption id="tnt" name="TNT" tooltip="触发后炸飞周围敌人" unlock="mvz2:level.halloween_6">
             <bool name="canDeactive" value="false"/>
-            <float name="damage" value="1800"/>
-            <float name="range" value="120"/>
+            <float name="damage" value="1000"/>
+            <float name="range" value="150"/>
             <vector3 name="size" x="48" y="48" z="48"/>
             <id name="fragmentId" value="mvz2:mine_tnt"/>
             <id name="placeSound" value="mvz2:grass"/>
@@ -225,7 +225,7 @@
             <bool name="nocturnal" value="true"/>
 
             <float name="damage" value="60"/>
-            <float name="range" value="800"/>
+            <float name="range" value="600"/>
             <id name="shell" value="mvz2:nether"/>
             <id name="hitSound" value="mvz2:wood"/>
             <id name="placeSound" value="mvz2:wood"/>
@@ -241,11 +241,11 @@
             <id name="rechargeId" value="mvz2:short" />
         </contraption>
         <dispenser id="silvenser" name="银质发射器" tooltip="射出穿透肉体的飞刀"  unlock="mvz2:level.halloween_8">
-            <float name="damage" value="15"/>
+            <float name="damage" value="25"/>
             <id name="projectileId" value="mvz2:knife"/>
             <id name="shell" value="mvz2:metal"/>
 
-            <int name="cost" value="175" />
+            <int name="cost" value="200" />
             <id name="rechargeId" value="mvz2:short" />
         </dispenser>
         <contraption id="magichest" name="魔术箱" tooltip="将一个怪物变为星之碎片"  unlock="mvz2:level.halloween_9">
@@ -256,7 +256,7 @@
             <id name="deathSound" value="mvz2:wood"/>
             <vector3 name="size" x="32" y="48" z="32"/>
 
-            <int name="cost" value="200" />
+            <int name="cost" value="225" />
             <id name="rechargeId" value="mvz2:very_long" />
         </contraption>
 

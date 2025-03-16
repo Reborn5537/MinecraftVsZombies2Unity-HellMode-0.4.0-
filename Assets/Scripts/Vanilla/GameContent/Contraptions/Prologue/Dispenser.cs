@@ -47,11 +47,10 @@ namespace MVZ2.GameContent.Contraptions
         {
             var evocationTimer = GetEvocationTimer(entity);
             evocationTimer.Run();
-            if (evocationTimer.PassedInterval(2))
+            if (evocationTimer.PassedInterval(2))//等第四章出了再改
             {
                 var projectile = Shoot(entity);
                 projectile.Velocity *= 2;
-                projectile.AddBuff<EasyArmorBuff>();
             }
             if (evocationTimer.Expired)
             {
