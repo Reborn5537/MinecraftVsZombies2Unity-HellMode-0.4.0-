@@ -7,6 +7,11 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Models;
+using MVZ2.Vanilla;
+using MVZ2.Vanilla.Level;
+using MVZ2Logic;
+using UnityEngine;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -28,6 +33,10 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
+            if (!entity.HasBuff<GhostBuff>())
+            {
+                entity.AddBuff<GhostBuff>();
+            }
             if (entity.Timeout >= 0)
             {
                 entity.Timeout--;

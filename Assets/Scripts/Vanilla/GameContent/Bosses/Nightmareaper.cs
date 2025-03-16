@@ -200,7 +200,7 @@ namespace MVZ2.GameContent.Bosses
         private const float SPIN_DAMAGE_HELL = 7 * SPIN_DAMAGE_INTERVAL;
         private const float SPIN_DAMAGE = 5 * SPIN_DAMAGE_INTERVAL;
         private const int SPIN_DAMAGE_INTERVAL = 3;
-        private const float SPIN_RADIUS = 120;
+        private const float SPIN_RADIUS = 180;
         private const float SPIN_HEIGHT = 50;
         private const int MAX_REVIVE_COUNT = 10;
 

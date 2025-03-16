@@ -81,7 +81,7 @@ namespace MVZ2.GameContent.Contraptions
                     fireBreath.SetParent(entity);
                     SetFireBreath(entity, fireBreath);
                 }
-                fireBreath.SetDamage(entity.GetDamage() * 2 / 3);
+                fireBreath.SetDamage(entity.GetDamage() * 2 / 3);//next release
                 fireBreath.Position = position;
                 fireBreath.SetFactionAndDirection(entity.GetFaction());
             }

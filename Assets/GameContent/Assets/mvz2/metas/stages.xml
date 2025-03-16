@@ -276,6 +276,7 @@
         <spawns flags="1">
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:skeleton"/>
         </spawns>
     </stage>
     <stage id="dream_2" name="梦境世界" dayNumber="2" unlock="mvz2:level.dream_1">
@@ -288,6 +289,7 @@
         <spawns flags="2">
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:spider"/>
         </spawns>
     </stage>
@@ -331,6 +333,7 @@
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:necromancer"/>
             <spawn id="mvz2:spider"/>
             <spawn id="mvz2:cave_spider"/>
         </spawns>
@@ -343,7 +346,7 @@
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:pistenser"/>
         <camera position="lawn" transition="instant"/>
-        <spawns flags="2" firstWaveTime="30">
+        <spawns flags="3" firstWaveTime="30">
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
@@ -361,10 +364,12 @@
             <talk type="map" value="mvz2:dream_7_map"/>
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:totenser"/>
-        <spawns flags="2" >
+        <spawns flags="3" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:skeleton"/>
+            <spawn id="mvz2:ghost"/>
             <spawn id="mvz2:spider"/>
             <spawn id="mvz2:cave_spider"/>
             <spawn id="mvz2:ghast"/>
@@ -393,10 +398,11 @@
             <talk type="map" value="mvz2:dream_9_map"/>
         </talks>
         <clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:dream_silk"/>
-        <spawns flags="2" >
+        <spawns flags="3" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:skeleton"/>
             <spawn id="mvz2:spider"/>
             <spawn id="mvz2:cave_spider"/>
             <spawn id="mvz2:ghast"/>
@@ -418,6 +424,7 @@
             <spawn id="mvz2:cave_spider"/>
             <spawn id="mvz2:ghast"/>
             <spawn id="mvz2:mother_terror"/>
+            <spawn id="mvz2:necromancer"/>
         </spawns>
     </stage>
     <stage id="dream_11" name="梦境世界" dayNumber="11" type="boss" needBlueprints="false" unlock="mvz2:level.dream_10" music="mvz2:nightmare_final" >
@@ -445,6 +452,7 @@
             <spawn id="mvz2:cave_spider"/>
             <spawn id="mvz2:ghast"/>
             <spawn id="mvz2:mother_terror"/>
+            <spawn id="mvz2:necromancer"/>
         </spawns>
         <properties>
             <bool name="noEnergy" value="true"/>
@@ -452,7 +460,7 @@
     </stage>
     <stage id="dream_endless" name="梦境世界无尽" type="endless" unlock="mvz2:level.dream_11" >
         <clear pickupModel="mvz2:entity.money_chest"/>
-        <spawns flags="2" >
+        <spawns flags="3" >
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
         </spawns>

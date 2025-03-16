@@ -7,6 +7,14 @@ using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
+using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Models;
+using MVZ2.Vanilla;
+using MVZ2.Vanilla.Level;
+using MVZ2Logic;
+using PVZEngine.Damages;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -20,6 +28,16 @@ namespace MVZ2.GameContent.Enemies
                 ignoreHighEnemy = true,
                 ignoreLowEnemy = true
             };
+        }
+        public override void Init(Entity entity)
+        {
+            base.Init(entity);
+            var level = entity.Level;
+            if (level.IsWaterLane(entity.GetLane()))
+            {
+                entity.AddBuff<BoatBuff>();
+                entity.SetAnimationBool("HasBoat", true);
+            }
         }
         protected override void UpdateAI(Entity enemy)
         {
@@ -41,6 +59,7 @@ namespace MVZ2.GameContent.Enemies
         {
             base.UpdateLogic(entity);
             entity.SetAnimationFloat("BowBlend", 1 - Mathf.Pow(1 - GetBowPower(entity) / (float)BOW_POWER_MAX, 2));
+            entity.SetAnimationBool("HasBoat", entity.HasBuff<BoatBuff>());
             entity.SetAnimationBool("ArrowVisible", !GetBowFired(entity));
 
             entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
@@ -105,6 +124,19 @@ namespace MVZ2.GameContent.Enemies
             }
             SetBowPower(entity, bowPower);
         }
+        public override void PostDeath(Entity entity, DeathInfo info)
+        {
+            base.PostDeath(entity, info);
+            if (entity.HasBuff<BoatBuff>())
+            {
+                entity.RemoveBuffs<BoatBuff>();
+                // 掉落碎船掉落物
+                var effect = entity.Level.Spawn(VanillaEffectID.brokenArmor, entity.GetCenter(), entity);
+                effect.Velocity = new Vector3(effect.RNG.NextFloat() * 20 - 10, 5, 0);
+                effect.ChangeModel(VanillaModelID.boatItem);
+                effect.SetDisplayScale(entity.GetDisplayScale());
+            }
+         }
         private Detector detector;
         private static readonly NamespaceID ID = VanillaEnemyID.skeleton;
         public static readonly VanillaEntityPropertyMeta PROP_BOW_FIRED = new VanillaEntityPropertyMeta("bowFired");

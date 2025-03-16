@@ -23,7 +23,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             InitShootTimer(entity);
-            SetRepeatTimer(entity, new FrameTimer(15));
+            SetRepeatTimer(entity, new FrameTimer(20));
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -124,7 +124,7 @@ namespace MVZ2.GameContent.Contraptions
             target.Level.Spawn(VanillaEffectID.gearParticles, target.Position, target);
 
         }
-        public const int MAX_UPGRADE_LEVEL = 4;
+        public const int MAX_UPGRADE_LEVEL = 5;
         private static readonly NamespaceID ID = VanillaContraptionID.drivenser;
         public static readonly VanillaEntityPropertyMeta PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta("RepeatTimer");
         public static readonly VanillaEntityPropertyMeta PROP_REPEAT_COUNT = new VanillaEntityPropertyMeta("RepeatCount");

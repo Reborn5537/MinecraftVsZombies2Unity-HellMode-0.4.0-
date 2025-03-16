@@ -142,7 +142,7 @@ namespace MVZ2.GameContent.Enemies
                 return false;
             if (!Detection.CanDetect(target))
                 return false;
-            if (target.Type != EntityTypes.PLANT)
+            if (target.Type != EntityTypes.PLANT)//让我们试试爬正邪()
                 return false;
             if (target.IsFloor() || !target.IsDefensive())
                 return false;

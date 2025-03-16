@@ -121,14 +121,18 @@ namespace MVZ2.GameContent.Enemies
             {
                 damageMultiplier = 3;
             }
+            if (self.Level.Difficulty == VanillaDifficulties.hell)
+            {
+                damageMultiplier = 3.5f;
+            }
             param.damage = self.GetDamage() * damageMultiplier;
             var bullet = self.ShootProjectile(param);
             self.PlaySound(VanillaSoundID.fireCharge);
         }
         private Detector detector;
         public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
-        public const int SHOOT_COOLDOWN = 135;
-        public const int SHOOT_DURATION = 15;
+        public const int SHOOT_COOLDOWN = 125;
+        public const int SHOOT_DURATION = 12;
         public static readonly NamespaceID ID = VanillaEnemyID.ghast;
     }
 }

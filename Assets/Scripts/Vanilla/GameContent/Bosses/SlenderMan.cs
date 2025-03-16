@@ -522,7 +522,7 @@ namespace MVZ2.GameContent.Bosses
         public static readonly NamespaceID ID = VanillaBossID.slenderman;
 
         [TranslateMsg("梦魇对话框标题")]
-        public const string CHOOSE_FATE_TITLE = "选择你的<color=red>命运<color>";
+        public const string CHOOSE_FATE_TITLE = "选择你的<color=red>命运</color>";
         [TranslateMsg("梦魇对话框文本")]
         public const string CHOOSE_FATE_DESCRIPTION = "选吧<color=red>=)</color>";
         [TranslateMsg("梦魇选项")]
@@ -536,7 +536,7 @@ namespace MVZ2.GameContent.Bosses
         [TranslateMsg("梦魇选项")]
         public const string FATE_TEXT_COME_TRUE = "<color=yellow>???</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_THE_LURKER = "<color=bule>???</color>";
+        public const string FATE_TEXT_THE_LURKER = "<color=blue>???</color>";
         [TranslateMsg("梦魇选项")]
         public const string FATE_TEXT_BLACK_SUN = "<color=black>???</color>";
 
@@ -572,13 +572,17 @@ namespace MVZ2.GameContent.Bosses
             VanillaEnemyID.zombie,
             VanillaEnemyID.leatherCappedZombie,
             VanillaEnemyID.ironHelmettedZombie,
+            VanillaEnemyID.necromancer,
+            VanillaEnemyID.boneWall,
         };
 
         private static int[] portalPoolWeights = new int[]
         {
             10,
             5,
-            2
+            2,
+            3,
+            8
         };
         private static NamespaceID[] mindSwapPool = new NamespaceID[]
         {
