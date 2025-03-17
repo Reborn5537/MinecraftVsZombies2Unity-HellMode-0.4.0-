@@ -25,6 +25,7 @@
     <!-- Halloween -->
     <entry id="skeleton" entity="mvz2:skeleton" >
         <spawn level="2" />
+		<terrain water="true"/>
         <weight base="3500" />
     </entry>
     <entry id="ghost" entity="mvz2:ghost" >
@@ -38,6 +39,7 @@
     </entry>
     <entry id="necromancer" entity="mvz2:necromancer" >
         <spawn level="3" />
+		<terrain water="true"/>
         <weight base="1500" />
     </entry>
 

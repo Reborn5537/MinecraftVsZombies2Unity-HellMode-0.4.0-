@@ -738,6 +738,7 @@
         <!-- Castle Enemies -->
         <enemy id="mesmerizer" name="催眠者" deathMessage="服从凋灵吧" unlock="mvz2:level.castle_1">
             <float name="range" value="800"/>
+			<float name="speed" value="1"/>
             <vector3 name="shotOffset" x="30" y="96" z="0"/>
             <vector3 name="shotVelocity" x="0" y="0" z="0"/>
             <id name="shell" value="mvz2:nether"/>
@@ -842,9 +843,9 @@
             <bool name="notActiveEnemy" value="true"/>
             <bool name="noReward" value="true"/>
             <bool name="canDeactive" value="false"/>
-            <int name="maxTimeout" value="240"/>
+            <int name="maxTimeout" value="250"/>
             <float name="friction" value="1"/>
-            <float name="speed" value="0"/>
+            <float name="speed" value="0.05"/>
             <float name="maxHealth" value="350"/>
             <vector3 name="size" x="80" y="80" z="60"/>
             <id name="shell" value="mvz2:bone"/>
@@ -956,7 +957,7 @@
         <!-- Bosses -->
         <boss id="frankenstein" name="科学怪人的怪物">
             <int name="waterInteraction" value="1"/>
-            <float name="maxHealth" value="25000"/>
+            <float name="maxHealth" value="30000"/>
             <vector3 name="size" x="60" y="200" z="60"/>
             <vector3 name="shotVelocity" x="30" y="0" z="0"/>
             <color name="bloodColor" value="#7F0000FF"/>
@@ -964,7 +965,7 @@
         </boss>
         <boss id="slenderman" name="瘦长鬼影">
             <int name="waterInteraction" value="0"/>
-            <float name="maxHealth" value="2500"/>
+            <float name="maxHealth" value="3000"/>
             <vector3 name="size" x="50" y="120" z="50"/>
             <color name="bloodColor" value="#7F0000FF"/>
             <color name="bloodColorCensored" value="#00007FFF"/>
@@ -1023,16 +1024,16 @@
             <vector3 name="shadowScale" x="0.5" y="0.5" z="0.5"/>
         </gem>
         <gem id="ruby" name="红宝石">
-            <int name="moneyValue" value="50"/>
+            <int name="moneyValue" value="100"/>
             <vector3 name="size" x="32" y="32" z="32" />
         </gem>
         <gem id="sapphire" name="蓝宝石">
-            <int name="moneyValue" value="200"/>
+            <int name="moneyValue" value="400"/>
             <vector3 name="size" x="32" y="32" z="32" />
         </gem>
         <gem id="diamond" name="钻石">
             <int name="maxTimeout" value="-1"/>
-            <int name="moneyValue" value="1000"/>
+            <int name="moneyValue" value="2000"/>
             <id name="collectSound" value="mvz2:diamond"/>
             <id name="dropSound" null="true"/>
             <vector3 name="size" x="64" y="64" z="64" />

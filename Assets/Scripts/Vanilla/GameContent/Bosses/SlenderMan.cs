@@ -200,7 +200,7 @@ namespace MVZ2.GameContent.Bosses
 
             int maxColumnCount = level.GetMaxColumnCount();
             int maxRowCount = level.GetMaxLaneCount();
-            for (int c = maxColumnCount - 2; c < maxColumnCount; c++)
+            for (int c = maxColumnCount - 4; c < maxColumnCount; c++)
             {
                 for (int r = 0; r < maxRowCount; r++)
                 {
@@ -208,7 +208,7 @@ namespace MVZ2.GameContent.Bosses
                 }
             }
             var portalRNG = GetPortalRNG(entity);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
                 var index = portalRNG.Next(0, placePool.Count);
                 Vector2Int place = placePool[index];
@@ -313,7 +313,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 var option = selected[i];
                 DoFate(entity, option);
-                level.ResumeGame(100);
+                level.ResumeGame(120);
             });
         }
         private void DoFate(Entity boss, int option)

@@ -325,7 +325,7 @@ namespace MVZ2.GameContent.Bosses
                     projectileID = VanillaProjectileID.bullet,
                     position = gunPosition,
                     velocity = gunDirection * boss.GetShotVelocity().magnitude,
-                    damage = boss.GetDamage() * 0.3f,
+                    damage = boss.GetDamage() * 0.2f,
                     faction = boss.GetFaction(),
                     soundID = VanillaSoundID.gunShot,
                 });
@@ -414,7 +414,7 @@ namespace MVZ2.GameContent.Bosses
                     projectileID = VanillaProjectileID.missile,
                     position = missilePosition,
                     velocity = missileDirection * missileSpeed,
-                    damage = boss.GetDamage() * 3,
+                    damage = boss.GetDamage() * 2,
                     faction = boss.GetFaction(),
                     soundID = VanillaSoundID.missile
                 });
@@ -427,7 +427,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
-                substateTimer.ResetTime(22);//快速跑路
+                substateTimer.ResetTime(20);//快速跑路
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
@@ -517,7 +517,7 @@ namespace MVZ2.GameContent.Bosses
                 {
                     if (boss.IsFacingLeft())
                     {
-                        column = boss.RNG.Next(maxColumn - 3, maxColumn);
+                        column = boss.RNG.Next(maxColumn - 5, maxColumn);
                     }
                     else
                     {
@@ -532,7 +532,7 @@ namespace MVZ2.GameContent.Bosses
                 if (boss.IsFacingLeft())
                 {
                     var target = targetLaneGroup.OrderByDescending(e => e.GetColumn()).FirstOrDefault();
-                    column = Mathf.Clamp(target.GetColumn() + 1, maxColumn - 3, maxColumn - 1);
+                    column = Mathf.Clamp(target.GetColumn() + 1, maxColumn - 5, maxColumn - 1);
                     lane = target.GetLane();
                 }
                 else
