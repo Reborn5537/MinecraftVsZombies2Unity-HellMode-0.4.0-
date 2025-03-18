@@ -325,7 +325,7 @@ namespace MVZ2.GameContent.Bosses
                     projectileID = VanillaProjectileID.bullet,
                     position = gunPosition,
                     velocity = gunDirection * boss.GetShotVelocity().magnitude,
-                    damage = boss.GetDamage() * 0.2f,
+                    damage = boss.GetDamage() * 0.3f,
                     faction = boss.GetFaction(),
                     soundID = VanillaSoundID.gunShot,
                 });
@@ -406,7 +406,7 @@ namespace MVZ2.GameContent.Bosses
 
                 Vector3 armRootPosition = boss.Position + outerArmRootOffset;
                 var missileDirection = GetMissileDirection(boss);
-                Vector3 missilePosition = armRootPosition + missileDirection * 80f;
+                Vector3 missilePosition = armRootPosition + missileDirection * 100f;
                 float missileSpeed = boss.GetShotVelocity().magnitude * 0.8f;
 
                 var missile = boss.ShootProjectile(new ShootParams()
@@ -414,7 +414,7 @@ namespace MVZ2.GameContent.Bosses
                     projectileID = VanillaProjectileID.missile,
                     position = missilePosition,
                     velocity = missileDirection * missileSpeed,
-                    damage = boss.GetDamage() * 2,
+                    damage = boss.GetDamage() * 3,
                     faction = boss.GetFaction(),
                     soundID = VanillaSoundID.missile
                 });
@@ -605,7 +605,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
-                substateTimer.ResetTime(30);
+                substateTimer.ResetTime(25);
                 entity.PlaySound(VanillaSoundID.teslaPower);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
@@ -625,7 +625,7 @@ namespace MVZ2.GameContent.Bosses
                         {
                             Shock(entity);
                         }
-                        substateTimer.ResetTime(15);
+                        substateTimer.ResetTime(12);
                         break;
 
                     case SUBSTATE_SHOCK_FINISHED:
@@ -657,7 +657,7 @@ namespace MVZ2.GameContent.Bosses
                     }
                     else if (contraption.IsEntityOf(contrapId))
                     {
-                        contraption.ShortCircuit(150);
+                        contraption.ShortCircuit(180);
                         if (!soundPlayed)
                         {
                             contraption.PlaySound(VanillaSoundID.powerOff);
