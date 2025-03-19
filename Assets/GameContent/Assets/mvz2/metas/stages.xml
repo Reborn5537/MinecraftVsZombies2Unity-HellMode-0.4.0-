@@ -453,6 +453,8 @@
             <spawn id="mvz2:cave_spider"/>
             <spawn id="mvz2:ghast"/>
             <spawn id="mvz2:mother_terror"/>
+			<spawn id="mvz2:skeleton"/>
+			<spawn id="mvz2:ghost"/>
             <spawn id="mvz2:necromancer"/>
         </spawns>
         <properties>
