@@ -78,6 +78,11 @@
                         <condition required="mvz2:starshard_slot.1"/>
                     </conditions>
                 </stage>
+			 <!-- <stage text="6 槽" price="0" unlocks="mvz2:starshard_slot.3">
+                    <conditions>
+                        <condition required="mvz2:starshard_slot.2"/>
+                    </conditions>
+                </stage> -->
             </stages>
         </product>
         <product id="artifact_slot" sprite="mvz2:products/artifact_slot">
@@ -92,6 +97,11 @@
                         <condition required="mvz2:artifact_slot.1"/>
                     </conditions>
                 </stage>
+			<!--  <stage text="4 槽" price="0" unlocks="mvz2:artifact_slot.3">
+                    <conditions>
+                        <condition required="mvz2:starshard_slot.2"/>
+                    </conditions>
+				</stage> -->
             </stages>
         </product>
         <product />

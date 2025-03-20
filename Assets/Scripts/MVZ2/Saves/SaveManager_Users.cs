@@ -286,6 +286,8 @@ namespace MVZ2.Saves
                 saveData.Unlock(VanillaUnlockNames.starshardSlot1);
             if (oldData.starshardSlots >= 5)
                 saveData.Unlock(VanillaUnlockNames.starshardSlot2);
+            if (oldData.starshardSlots >= 6)
+                saveData.Unlock(VanillaUnlockNames.starshardSlot3);
             // 升级
             if ((oldData.upgrades & 1) != 0)
             {

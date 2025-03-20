@@ -139,7 +139,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: "\u5730\u72F1\u72480.5\u516C\u5F00\u6D4B\u8BD5Alpha2"
+  bundleVersion: "\u5730\u72F1\u72480.5\u516C\u5F00\u6D4B\u8BD5Alpha5"
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -161,7 +161,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.cuerzor.minecraftVSZombies2
+    Android: com.cuerzor.minecraftVSZombies2Hell05A5
     Standalone: com.cuerzor.minecraftVSZombies2
   buildNumber:
     Standalone: 0

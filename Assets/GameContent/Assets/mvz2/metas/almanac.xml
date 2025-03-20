@@ -569,7 +569,7 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>速度：<![CDATA[<color=red>1.5</color>]]></p>
             </properties>
             <flavor>
                 <p>在上一次尸界大战失败后，僵尸在墙角里做了三天三夜的反省。后来他开始锻炼自己，想让自己变得更强以吃到更多的脑子。现在的他看起来……好吧还是没变。</p>
@@ -601,7 +601,7 @@
         </entry>
         <entry id="mvz2:flag_zombie">
             <header>
-                <p>旗帜僵尸的出现标志着一大波怪物的到来。</p>
+                <p>铁桶旗帜僵尸的出现标志着一大波怪物的到来。</p>
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
@@ -668,7 +668,7 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>骨墙生命：<![CDATA[<color=red>350</color>]]></p>
+                <p>骨墙生命：<![CDATA[<color=red>400</color>]]></p>
             </properties>
             <flavor>
                 <p>死灵法师想不通，为什么就因为复活了死者，他们就莫名其妙的被人们称为“邪恶巫师”，然后就被多收了税。他们其实只是想砌堵墙罢了。</p>
@@ -750,7 +750,7 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200+100</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>速度：<![CDATA[<color=red>0.5</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>荧石周围的器械无法被控制</color>]]></p>
             </properties>
             <flavor>
@@ -764,7 +764,7 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200+100</color>]]></p>
-                <p>速度：<![CDATA[<color=red>2</color>]]></p>
+                <p>速度：<![CDATA[<color=red>2.5</color>]]></p>
                 <p>爆炸伤害：<![CDATA[<color=red>300</color>]]></p>
             </properties>
             <flavor>
@@ -792,7 +792,7 @@
                 <p>地狱战车会碾压行进路上的所有器械，并在被摧毁后放出棺材中的灵魂沙王。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>1350，低于200时每秒失去60生命</color>]]></p>
+                <p>生命：<![CDATA[<color=red>1500，低于200时每秒失去60生命</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>]]></p>
                 <p>碾压伤害：<![CDATA[<color=red>10000000</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>尖刺方块</color>]]></p>
@@ -817,6 +817,48 @@
                 <p>不过他自己不知道，也没有多少人知道——知道的也没人敢告诉他就是了。</p>
             </flavor>
         </entry>
+		<entry id="mvz2:mutant_zombie">
+			<header>
+				<p>突变僵尸拥有巨大的体格和惊人的力量。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>3000</color>]]></p>
+				<p>速度：<![CDATA[<color=red>1</color>]]></p>
+				<p>特点：<![CDATA[<color=red>扛打能力强,当血量到达一定时会丢出小鬼僵尸</color>]]></p>
+			</properties>
+			<flavor>
+				<p>在上一次尸界大战中突变僵尸对器械造成了巨大的损失</p>
+				<p>而现在还会那样吗。</p>
+			</flavor>
+		</entry>
+		<entry id="mvz2:mega_mutant_zombie">
+			<header>
+				<p>超级突变僵尸拥有比突变僵尸更巨大的体格和惊人的力量。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>6000</color>]]></p>
+				<p>速度：<![CDATA[<color=red>1</color>]]></p>
+				<p>特点：<![CDATA[<color=red>扛打能力强,当血量到达一定时会丢出小鬼僵尸</color>]]></p>
+			</properties>
+			<flavor>
+				<p>在上一次尸界大战中突变僵尸对器械造成了巨大的损失</p>
+				<p>而现在还会那样吗。</p>
+			</flavor>
+		</entry>
+		<entry id="mvz2:imp">
+			<header>
+				<p>小鬼僵尸速度很快，没了。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>200</color>]]></p>
+				<p>速度：<![CDATA[<color=red>1</color>]]></p>
+				<p>特点：<![CDATA[<color=red>肉盾</color>]]></p>
+			</properties>
+			<flavor>
+				<p>在上一次尸界大战中小僵尸对器械的后方造成了巨大的损失。</p>
+				<p>而现在还会那样吗。</p>
+			</flavor>
+		</entry>
     </enemies>
     <artifacts>
         <entry id="mvz2:almanac">
@@ -1003,7 +1045,7 @@
                     <p>尸块组成的怪物，科幻小说中的杀人魔。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>25000</color>]]></p>
+                    <p>生命：<![CDATA[<color=red>30000</color>]]></p>
                     <p>特殊：<![CDATA[<color=red>放电攻击总是瞄准TNT；钢铁身躯反弹特定子弹</color>]]></p>
                 </properties>
                 <flavor>
@@ -1016,7 +1058,7 @@
                     <p>梦魇是具有蒙骗感官和腐蚀能力的恐怖魔物，具有无数的化身。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>2500+4000</color>]]></p>
+                    <p>生命：<![CDATA[<color=red>3000+5000</color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>召唤传送门，扭曲蓝图，并在受伤一定程度后强制要求你选择负面效果</color>]]></p>
                     <p>阶段2：<![CDATA[<color=red>限时击杀，并且需要阻止碾压墙</color>]]></p>
                 </properties>
@@ -1033,7 +1075,7 @@
                     <p>凋灵代表着死亡和枯萎，它会抹除一切生命的迹象。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>12000，每秒恢复30</color>]]></p>
+                    <p>生命：<![CDATA[<color=red>15000+800*4，每秒恢复30</color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>飞行，发射凋灵头颅，冲刺，啃咬</color>]]></p>
                     <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，召唤“床战士”</color>]]></p>
                 </properties>

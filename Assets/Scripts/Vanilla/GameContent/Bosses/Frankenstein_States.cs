@@ -650,7 +650,20 @@ namespace MVZ2.GameContent.Bosses
                 {
                     if (contraption.IsEntityOf(VanillaContraptionID.tnt))
                     {
+                        contraption.ShortCircuit(250); 
                         contraption.AddBuff<TNTChargedBuff>();
+                        var arc = level.Spawn(VanillaEffectID.electricArc, boss.Position + outerArmRootOffset + Vector3.left * 100, boss);
+                        ElectricArc.Connect(arc, contraption.Position);
+                        ElectricArc.UpdateArc(arc);
+                    }
+                    if (contraption.IsEntityOf(VanillaContraptionID.soulFurnace))
+                    {
+                        contraption.ShortCircuit(200);
+                        if (!soundPlayed)
+                        {
+                            contraption.PlaySound(VanillaSoundID.powerOff);
+                            soundPlayed = true;
+                        }
                         var arc = level.Spawn(VanillaEffectID.electricArc, boss.Position + outerArmRootOffset + Vector3.left * 100, boss);
                         ElectricArc.Connect(arc, contraption.Position);
                         ElectricArc.UpdateArc(arc);
