@@ -117,13 +117,9 @@ namespace MVZ2.GameContent.Enemies
             var direciton = (target.GetCenter() - shootPoint).normalized;
             param.velocity = speed * direciton;
             var damageMultiplier = 1.5f;
-            if (self.Level.Difficulty == VanillaDifficulties.hard)
+            if (self.Level.Difficulty == VanillaDifficulties.hard || self.Level.Difficulty == VanillaDifficulties.hell)
             {
                 damageMultiplier = 3;
-            }
-            if (self.Level.Difficulty == VanillaDifficulties.hell)
-            {
-                damageMultiplier = 3.5f;
             }
             param.damage = self.GetDamage() * damageMultiplier;
             var bullet = self.ShootProjectile(param);
@@ -131,7 +127,7 @@ namespace MVZ2.GameContent.Enemies
         }
         private Detector detector;
         public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
-        public const int SHOOT_COOLDOWN = 125;
+        public const int SHOOT_COOLDOWN = 130;
         public const int SHOOT_DURATION = 12;
         public static readonly NamespaceID ID = VanillaEnemyID.ghast;
     }

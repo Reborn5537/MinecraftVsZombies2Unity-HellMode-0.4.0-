@@ -605,7 +605,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
-                substateTimer.ResetTime(25);
+                substateTimer.ResetTime(32);
                 entity.PlaySound(VanillaSoundID.teslaPower);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
@@ -650,15 +650,16 @@ namespace MVZ2.GameContent.Bosses
                 {
                     if (contraption.IsEntityOf(VanillaContraptionID.tnt))
                     {
-                        contraption.ShortCircuit(250); 
+                        contraption.ShortCircuit(5); 
                         contraption.AddBuff<TNTChargedBuff>();
                         var arc = level.Spawn(VanillaEffectID.electricArc, boss.Position + outerArmRootOffset + Vector3.left * 100, boss);
                         ElectricArc.Connect(arc, contraption.Position);
                         ElectricArc.UpdateArc(arc);
                     }
+                    /*
                     if (contraption.IsEntityOf(VanillaContraptionID.soulFurnace))
                     {
-                        contraption.ShortCircuit(200);
+                        contraption.ShortCircuit(50);
                         if (!soundPlayed)
                         {
                             contraption.PlaySound(VanillaSoundID.powerOff);
@@ -668,6 +669,7 @@ namespace MVZ2.GameContent.Bosses
                         ElectricArc.Connect(arc, contraption.Position);
                         ElectricArc.UpdateArc(arc);
                     }
+                    */
                     else if (contraption.IsEntityOf(contrapId))
                     {
                         contraption.ShortCircuit(180);

@@ -200,7 +200,7 @@ namespace MVZ2.GameContent.Bosses
 
             int maxColumnCount = level.GetMaxColumnCount();
             int maxRowCount = level.GetMaxLaneCount();
-            for (int c = maxColumnCount - 4; c < maxColumnCount; c++)
+            for (int c = maxColumnCount - 3; c < maxColumnCount; c++)
             {
                 for (int r = 0; r < maxRowCount; r++)
                 {
@@ -208,7 +208,7 @@ namespace MVZ2.GameContent.Bosses
                 }
             }
             var portalRNG = GetPortalRNG(entity);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 var index = portalRNG.Next(0, placePool.Count);
                 Vector2Int place = placePool[index];
@@ -520,6 +520,7 @@ namespace MVZ2.GameContent.Bosses
 
         #region 常量
         public static readonly NamespaceID ID = VanillaBossID.slenderman;
+        //private static readonly string[] colors = { "<color=purple>???</color>", "<color=red>???</color>", "<color=yellow>???</color>", "<color=blue>???</color>", "<color=black>???</color>", "<color=yellow>???</color>"};
 
         [TranslateMsg("梦魇对话框标题")]
         public const string CHOOSE_FATE_TITLE = "选择你的<color=red>命运</color>";
@@ -580,9 +581,9 @@ namespace MVZ2.GameContent.Bosses
         {
             10,
             5,
-            2,
             3,
-            8
+            2,
+            6
         };
         private static NamespaceID[] mindSwapPool = new NamespaceID[]
         {

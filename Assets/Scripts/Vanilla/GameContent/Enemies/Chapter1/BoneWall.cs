@@ -29,10 +29,17 @@ namespace MVZ2.GameContent.Enemies
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 0);
             entity.Timeout = entity.GetMaxTimeout();
             entity.PlaySound(VanillaSoundID.boneWallBuild);
+            var level = entity.Level;
+            if (level.IsWaterLane(entity.GetLane()))
+            {
+                entity.AddBuff<BoatBuff>();
+                entity.SetAnimationBool("HasBoat", true);
+            }
         }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
+            entity.SetAnimationBool("HasBoat", entity.HasBuff<BoatBuff>());
             if (!entity.HasBuff<GhostBuff>())
             {
                 entity.AddBuff<GhostBuff>();
@@ -48,6 +55,15 @@ namespace MVZ2.GameContent.Enemies
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {
+            if (entity.HasBuff<BoatBuff>())
+            {
+                entity.RemoveBuffs<BoatBuff>();
+                // 掉落碎船掉落物
+                var effect = entity.Level.Spawn(VanillaEffectID.brokenArmor, entity.GetCenter(), entity);
+                effect.Velocity = new Vector3(effect.RNG.NextFloat() * 20 - 10, 5, 0);
+                effect.ChangeModel(VanillaModelID.boatItem);
+                effect.SetDisplayScale(entity.GetDisplayScale());
+            }
             base.PostDeath(entity, info);
             if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;

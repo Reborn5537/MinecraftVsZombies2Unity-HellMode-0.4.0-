@@ -334,7 +334,7 @@
         <contraption id="dream_crystal" name="梦境结晶" tooltip="能够自我修复的障碍墙"  unlock="mvz2:level.dream_8">
             <bool name="canDeactive" value="false"/>
             <bool name="defensive" value="true"/>
-            <float name="maxHealth" value="2000"/>
+            <float name="maxHealth" value="2250"/>
             <id name="placeSound" value="mvz2:crystal_place"/>
             <id name="deathSound" value="mvz2:crystal_break"/>
             <id name="hitSound" value="mvz2:crystal"/>
@@ -839,8 +839,6 @@
 
         <!-- Token Enemies-->
         <enemy id="bone_wall" name="骨墙" deathMessage="你是怎么做到的？" unlock="mvz2:level.halloween_8">
-            <bool name="harmless" value="true"/>
-            <bool name="notActiveEnemy" value="true"/>
             <bool name="noReward" value="true"/>
             <bool name="canDeactive" value="false"/>
             <int name="maxTimeout" value="250"/>
@@ -965,14 +963,14 @@
         </boss>
         <boss id="slenderman" name="瘦长鬼影">
             <int name="waterInteraction" value="0"/>
-            <float name="maxHealth" value="3000"/>
+            <float name="maxHealth" value="2800"/>
             <vector3 name="size" x="50" y="120" z="50"/>
             <color name="bloodColor" value="#7F0000FF"/>
             <color name="bloodColorCensored" value="#00007FFF"/>
         </boss>
         <boss id="nightmareaper" name="梦魇收割者">
             <int name="waterInteraction" value="0"/>
-            <float name="maxHealth" value="5000"/>
+            <float name="maxHealth" value="4000"/>
             <id name="shell" value="mvz2:bone"/>
             <vector3 name="size" x="48" y="52" z="48"/>
             <color name="bloodColor" value="#000000FF"/>
