@@ -24,7 +24,7 @@ namespace MVZ2.GameContent.Stages
     {
         public SeijaStageBehaviour(StageDefinition stageDef) : base(stageDef)
         {
-            stageDef.AddTrigger(VanillaLevelCallbacks.POST_CONTRAPTION_EVOKE, PostGravityPadEvokeCallback, filter: VanillaContraptionID.gravityPad);
+            //stageDef.AddTrigger(VanillaLevelCallbacks.POST_CONTRAPTION_EVOKE, PostGravityPadEvokeCallback, filter: VanillaContraptionID.gravityPad);
         }
         protected override void StartAfterFinalWave(LevelEngine level)
         {
@@ -101,7 +101,7 @@ namespace MVZ2.GameContent.Stages
             entity.AddBuff<SeijaMesmerizerBuff>();
             return entity;
         }
-        private void PostGravityPadEvokeCallback(Entity contraption)
+        /*private void PostGravityPadEvokeCallback(Entity contraption)
         {
             var level = contraption.Level;
             if (!level.HasBehaviour<SeijaStageBehaviour>())
@@ -112,7 +112,7 @@ namespace MVZ2.GameContent.Stages
             var z = contraption.Position.z;
             var y = 800;
             SpawnMesmerizer(level, new Vector3(x, y, z));
-        }
+        }*/
         public const string PROP_REGION = "seija_stage_behaviour";
         [PropertyRegistry(PROP_REGION)]
         public static readonly VanillaLevelPropertyMeta FIELD_MESMERIZER_SPAWNED = new VanillaLevelPropertyMeta("MesmerizerSpawned");

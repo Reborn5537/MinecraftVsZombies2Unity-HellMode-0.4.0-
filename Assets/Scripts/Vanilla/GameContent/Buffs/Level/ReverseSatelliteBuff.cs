@@ -55,7 +55,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public static readonly VanillaBuffPropertyMeta PROP_CAMERA_ROTATION = new VanillaBuffPropertyMeta("CameraRotation");
         public static readonly VanillaBuffPropertyMeta PROP_TIME = new VanillaBuffPropertyMeta("Time");
         public static readonly VanillaBuffPropertyMeta PROP_TIMEOUT = new VanillaBuffPropertyMeta("Timeout");
-        public const int MAX_TIMEOUT = 140;
+        public const int MAX_TIMEOUT = 150;
         public const int MAX_ROTATION = 540;
     }
 }

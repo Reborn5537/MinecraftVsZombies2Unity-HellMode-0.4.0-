@@ -39,19 +39,25 @@ namespace MVZ2.GameContent.Stages
         private void ClassicStart(LevelEngine level) 
         {
             level.SetEnergy(9990);
-            level.SetSeedSlotCount(10);
+            level.SetSeedSlotCount(15);
             level.ReplaceSeedPacks(new NamespaceID[]
             {
                 VanillaContraptionID.thunderDrum,
-                VanillaContraptionID.goldenDropper,
+                VanillaBossID.frankenstein,
                 VanillaContraptionID.gravityPad,
-                VanillaContraptionID.stoneShield,
+                VanillaBossID.nightmareaper,
                 VanillaContraptionID.forcePad,
                 VanillaContraptionID.glowstone,
                 VanillaContraptionID.soulFurnace,
                 VanillaContraptionID.dreamSilk,
+                VanillaContraptionID.teslaCoil,
+                VanillaContraptionID.randomChina,
+                VanillaContraptionID.drivenser,
                 VanillaBossID.seija,
+                VanillaBossID.slenderman,
                 VanillaEnemyID.mutantZombie,
+                VanillaEnemyID.spider,
+                VanillaBossID.wither
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

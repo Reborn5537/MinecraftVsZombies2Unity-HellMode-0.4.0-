@@ -216,13 +216,13 @@ namespace MVZ2.GameContent.Bosses
         private static readonly VanillaEntityPropertyMeta PROP_RECENT_TAKEN_DAMAGE = new VanillaEntityPropertyMeta("RecentTakenDamage");
         private static readonly VanillaEntityPropertyMeta PROP_BULLET_ANGLE = new VanillaEntityPropertyMeta("BulletAngle");
 
-        private const int MAX_FABRIC_COUNT = 3;
+        private const int MAX_FABRIC_COUNT = 5;
         private const float FABRIC_DAMAGE_THRESOLD = 300;
         private const float TAKEN_DAMAGE_FADE = FABRIC_DAMAGE_THRESOLD / 75f;
 
-        private const int CAMERA_ENEMY_COUNT = 3;
-        private const int GAP_BOMB_ENEMY_COUNT = 5;
-        private const int BACKFLIP_ENEMY_COUNT = 3;
+        private const int CAMERA_ENEMY_COUNT = 4;
+        private const int GAP_BOMB_ENEMY_COUNT = 6;
+        private const int BACKFLIP_ENEMY_COUNT = 4;
         private const float ADJUST_Z_THRESOLD = 5;
 
         private const int STATE_IDLE = VanillaEntityStates.SEIJA_IDLE;

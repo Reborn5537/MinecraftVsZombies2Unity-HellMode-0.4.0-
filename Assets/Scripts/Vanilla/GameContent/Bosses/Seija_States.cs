@@ -10,6 +10,10 @@ using MVZ2Logic.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using UnityEngine;
+using System.Linq;
+using PVZEngine.Buffs;
+using PVZEngine.Level;
+using Tools;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -182,7 +186,7 @@ namespace MVZ2.GameContent.Bosses
                         var param = entity.GetShootParams();
                         param.projectileID = VanillaProjectileID.seijaBullet;
                         param.position = entity.GetCenter();
-                        param.damage = entity.GetDamage() * 0.5f;
+                        param.damage = entity.GetDamage() * 0.6f;
                         param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * SeijaBullet.LIGHT_SPEED;
                         var bullet = entity.ShootProjectile(param);
                         bullet.SetTint(color);
@@ -356,7 +360,7 @@ namespace MVZ2.GameContent.Bosses
                         {
                             var level = entity.Level;
                             stateMachine.SetSubState(entity, SUBSTATE_RETURN);
-                            substateTimer.ResetTime(23);
+                            substateTimer.ResetTime(21);
                             var pos = entity.Position;
                             pos.x = level.GetEntityColumnX(entity.IsFacingLeft() ? level.GetMaxColumnCount() - 1 : 0);
                             var lane = entity.RNG.Next(level.GetMaxLaneCount());
@@ -371,7 +375,7 @@ namespace MVZ2.GameContent.Bosses
                         if (entity.IsOnGround)
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_LANDED);
-                            substateTimer.ResetTime(17);
+                            substateTimer.ResetTime(15);
                         }
                         break;
 

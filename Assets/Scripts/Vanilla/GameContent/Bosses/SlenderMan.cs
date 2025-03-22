@@ -523,23 +523,23 @@ namespace MVZ2.GameContent.Bosses
         //private static readonly string[] colors = { "<color=purple>???</color>", "<color=red>???</color>", "<color=yellow>???</color>", "<color=blue>???</color>", "<color=black>???</color>", "<color=yellow>???</color>"};
 
         [TranslateMsg("梦魇对话框标题")]
-        public const string CHOOSE_FATE_TITLE = "选择你的<color=red>命运</color>";
+        public const string CHOOSE_FATE_TITLE = "在无尽轮回中选择你的<color=red>命运</color>";
         [TranslateMsg("梦魇对话框文本")]
-        public const string CHOOSE_FATE_DESCRIPTION = "选吧<color=red>=)</color>";
+        public const string CHOOSE_FATE_DESCRIPTION = "命运的低语在你耳边回响，选吧<color=red>=)</color>你的每一步都将改变命运的轨迹";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_PANDORAS_BOX = "<color=purple>???</color>";
+        public const string FATE_TEXT_PANDORAS_BOX = "<color=purple>打开那扇尘封的门</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_BIOHAZARD = "<color=red>???</color>";
+        public const string FATE_TEXT_BIOHAZARD = "<color=red>唤醒沉睡的亡者</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_DECREPIFY = "<color=purple>???</color>";
+        public const string FATE_TEXT_DECREPIFY = "<color=purple>接受时间的重量</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_INSANITY = "<color=red>???</color>";
+        public const string FATE_TEXT_INSANITY = "<color=red>窥视理智的彼端</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_COME_TRUE = "<color=yellow>???</color>";
+        public const string FATE_TEXT_COME_TRUE = "<color=yellow>让噩梦照进现实</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_THE_LURKER = "<color=blue>???</color>";
+        public const string FATE_TEXT_THE_LURKER = "<color=blue>潜入无光的深渊</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_BLACK_SUN = "<color=black>???</color>";
+        public const string FATE_TEXT_BLACK_SUN = "<color=black>凝视那永不落下的黑暗</color>";
 
         public const int MAX_MOVE_TIMEOUT = 30;
 
@@ -575,6 +575,7 @@ namespace MVZ2.GameContent.Bosses
             VanillaEnemyID.ironHelmettedZombie,
             VanillaEnemyID.necromancer,
             VanillaEnemyID.boneWall,
+            VanillaEnemyID.ghast,
         };
 
         private static int[] portalPoolWeights = new int[]
@@ -583,7 +584,8 @@ namespace MVZ2.GameContent.Bosses
             5,
             3,
             2,
-            6
+            6,
+            2
         };
         private static NamespaceID[] mindSwapPool = new NamespaceID[]
         {
@@ -619,7 +621,9 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaContraptionID.totenser),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.anvil),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.boneWall),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.necromancer)
         };
         private static int[] fateOptions = new int[]

@@ -152,9 +152,9 @@ namespace MVZ2.GameContent.Enemies
             if (!Detection.IsInSameRow(enemy, target))
                 return false;
             //if (!Detection.CanDetect(target))
-                //return false;
+            //return false;
             //if (target.Type != EntityTypes.PLANT)//让我们试试爬正邪()
-                //return false;
+            //return true;
             if (target.IsFloor() || !target.IsDefensive())
                 return false;
             if (target.IsEntityOf(VanillaContraptionID.goldenApple))
