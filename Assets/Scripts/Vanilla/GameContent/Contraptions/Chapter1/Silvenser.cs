@@ -117,9 +117,9 @@ namespace MVZ2.GameContent.Contraptions
                 entity.SetEvoked(false);
             }
         }
-        public const int EVOCATION_MAX_TARGET_COUNT = 15;
+        public const int EVOCATION_MAX_TARGET_COUNT = 10;
         public const int MAX_EVOCATION_KNIFE_COUNT = 40;
-        public const int EVOCATION_DURATION = 40;
+        public const int EVOCATION_DURATION = 30;
         public const int EVOCATION_KNIVES_PER_LAYER = 30;
         public const float EVOCATION_RADIUS = 100;
         public const float EVOCATION_DAMAGE_MULTIPLIER = 2;

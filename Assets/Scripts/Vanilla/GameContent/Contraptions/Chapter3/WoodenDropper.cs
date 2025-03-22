@@ -34,7 +34,7 @@ namespace MVZ2.GameContent.Contraptions
             for (int i = 0; i < 30; i++)
             {
                 var xspeed = entity.GetFacingX() * rng.Next(10f, 18f);
-                var yspeed = rng.Next(30f);
+                var yspeed = rng.Next(25f);
                 var zspeed = rng.Next(-1.5f, 1.5f);
                 var param = entity.GetShootParams();
                 param.velocity = new Vector3(xspeed, yspeed, zspeed);

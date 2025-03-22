@@ -125,7 +125,7 @@ namespace MVZ2.GameContent.Contraptions
         private static readonly VanillaEntityPropertyMeta FIELD_POINTS_RADIAL = new VanillaEntityPropertyMeta("PointsRadial");
         private static readonly VanillaEntityPropertyMeta PROP_PRODUCE_COLOR = new VanillaEntityPropertyMeta("ProduceColor");
 
-        public const int MAX_STARSHARD_COUNT = 5;
+        public const int MAX_STARSHARD_COUNT = 6;
         public const int PRODUCT_TIME = 1800;
         public const float ANGLE_SPEED = 3f;
         public const float RADIAL_SPEED = 0.05f;

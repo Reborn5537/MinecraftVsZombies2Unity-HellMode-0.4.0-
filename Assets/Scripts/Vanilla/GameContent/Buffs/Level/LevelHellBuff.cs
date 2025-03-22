@@ -13,7 +13,7 @@ namespace MVZ2.GameContent.Buffs.Level
     {
         public LevelHellBuff(string nsp, string name) : base(nsp, name)
         {
-            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiplie, 0.1f));
+            AddModifier(new FloatModifier(VanillaLevelProps.SPAWN_POINTS_POWER, NumberOperator.AddMultiplie, 0.3f));
             AddAura(new EnemyAura());
         }
 
