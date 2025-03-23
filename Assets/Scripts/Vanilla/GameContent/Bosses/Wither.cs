@@ -150,7 +150,7 @@ namespace MVZ2.GameContent.Bosses
                 var source = result.BodyResult.Source;
                 var effects = result.BodyResult.Effects;
                 var sourceEnt = source.GetEntity(entity.Level);
-                if (sourceEnt != null && sourceEnt.IsEntityOf(VanillaEnemyID.bedserker) && effects.HasEffect(VanillaDamageEffects.EXPLOSION))
+                if (sourceEnt != null && sourceEnt.IsEntityOf(VanillaEnemyID.bedserker) && sourceEnt.IsEntityOf(VanillaEnemyID.necromancermax) && sourceEnt.IsEntityOf(VanillaEnemyID.mesmerizermax) && sourceEnt.IsEntityOf(VanillaEnemyID.berserkermax) && effects.HasEffect(VanillaDamageEffects.EXPLOSION))
                 {
                     Stun(entity);
                     return;

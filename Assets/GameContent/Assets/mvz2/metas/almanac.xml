@@ -859,6 +859,58 @@
 				<p>而现在还会那样吗。</p>
 			</flavor>
 		</entry>
+	<entry id="mvz2:bedserker">
+			<header>
+				<p>凋零之眠，梦境腐朽</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>800</color>]]></p>
+				<p>速度：<![CDATA[<color=red>2</color>]]></p>
+				<p>特点：<![CDATA[<color=red>四骑士之首(不死)</color>]]></p>
+			</properties>
+			<flavor>
+				<p>为凋零大人献上永恒的忠诚！</p>
+			</flavor>
+		</entry>
+				<entry id="mvz2:necromancermax">
+			<header>
+				<p>凋零之息，亡魂归附。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>800</color>]]></p>
+				<p>速度：<![CDATA[<color=red>2</color>]]></p>
+				<p>特点：<![CDATA[<color=red>四骑士之一</color>]]></p>
+			</properties>
+			<flavor>
+				<p>为凋零大人献上永恒的忠诚！</p>
+			</flavor>
+		</entry>
+			<entry id="mvz2:mesmerizermax">
+			<header>
+				<p>凋零之瞳，意志溃散。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>800</color>]]></p>
+				<p>速度：<![CDATA[<color=red>2</color>]]></p>
+				<p>特点：<![CDATA[<color=red>四骑士之一</color>]]></p>
+			</properties>
+			<flavor>
+				<p>为凋零大人献上永恒的忠诚！</p>
+			</flavor>
+		</entry>
+			<entry id="mvz2:berserkermax">
+			<header>
+				<p>凋零之怒，万物崩毁。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>200</color>]]></p>
+				<p>速度：<![CDATA[<color=red>1</color>]]></p>
+				<p>特点：<![CDATA[<color=red>四骑士之一</color>]]></p>
+			</properties>
+			<flavor>
+				<p>为凋零大人献上永恒的忠诚！</p>
+			</flavor>
+		</entry>
     </enemies>
     <artifacts>
         <entry id="mvz2:almanac">
@@ -930,7 +982,7 @@
                 <p>槐树上的树枝。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>开始战斗时获得2个星之碎片，但敌人出现数量+200%</color>]]></p>
+                <p>效果：<![CDATA[<color=red>开始战斗时获得4个星之碎片，但敌人出现数量+400%</color>]]></p>
             </properties>
             <flavor>
                 <p>据说能让你一生荣华富贵，最终却也会因战火流离失所。</p>
@@ -1075,9 +1127,9 @@
                     <p>凋灵代表着死亡和枯萎，它会抹除一切生命的迹象。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>15000+800*4，每秒恢复30</color>]]></p>
+                    <p>生命：<![CDATA[<color=red>15000+800*4(骑士每200秒复活一次)，每秒恢复30</color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>飞行，发射凋灵头颅，冲刺，啃咬</color>]]></p>
-                    <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，召唤“床战士”</color>]]></p>
+                    <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，召唤“凋零四骑士”</color>]]></p>
                 </properties>
                 <flavor>
                     <p>单枪匹马对付众多的怪物并不是个好主意，骑士打算去招募一些帮手。</p>

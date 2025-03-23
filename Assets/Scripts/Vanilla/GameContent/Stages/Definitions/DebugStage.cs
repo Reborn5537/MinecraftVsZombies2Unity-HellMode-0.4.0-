@@ -43,20 +43,19 @@ namespace MVZ2.GameContent.Stages
             level.ReplaceSeedPacks(new NamespaceID[]
             {
                 VanillaContraptionID.thunderDrum,
-                VanillaBossID.frankenstein,
-                VanillaContraptionID.gravityPad,
+                VanillaEnemyID.berserkermax,
                 VanillaBossID.nightmareaper,
-                VanillaContraptionID.forcePad,
+                VanillaEnemyID.bedserker,
                 VanillaContraptionID.glowstone,
                 VanillaContraptionID.soulFurnace,
-                VanillaContraptionID.dreamSilk,
+                VanillaEnemyID.mesmerizermax,
                 VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.randomChina,
                 VanillaContraptionID.drivenser,
                 VanillaBossID.seija,
                 VanillaBossID.slenderman,
                 VanillaEnemyID.mutantZombie,
-                VanillaEnemyID.spider,
+                VanillaEnemyID.necromancermax,
                 VanillaBossID.wither
             });
             level.SetArtifactSlotCount(3);

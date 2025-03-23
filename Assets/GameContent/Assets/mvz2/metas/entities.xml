@@ -944,6 +944,42 @@
             <int name="cost" value="1000" />
             <int name="waterInteraction" value="2"/>
         </enemy>
+		<enemy id="necromancermax" name="亡灵战士" deathMessage="为凋零大人献上永恒的忠诚！" unlock="mvz2:level.castle_11">
+			<float name="range" value="80"/>
+			<float name="speed" value="2"/>
+			<float name="maxHealth" value="800"/>
+			<id name="shell" value="mvz2:nether"/>
+			<id name="crySound" value="mvz2:wither_skeleton_cry"/>
+			<id name="hitSound" value="mvz2:bone_hit"/>
+			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
+
+			<int name="cost" value="1000" />
+			<int name="waterInteraction" value="2"/>
+		</enemy>
+		<enemy id="mesmerizermax" name="催眠战士" deathMessage="为凋零大人献上永恒的忠诚！" unlock="mvz2:level.castle_11">
+			<float name="range" value="80"/>
+			<float name="speed" value="2"/>
+			<float name="maxHealth" value="800"/>
+			<id name="shell" value="mvz2:nether"/>
+			<id name="crySound" value="mvz2:wither_skeleton_cry"/>
+			<id name="hitSound" value="mvz2:bone_hit"/>
+			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
+
+			<int name="cost" value="1000" />
+			<int name="waterInteraction" value="2"/>
+		</enemy>
+		<enemy id="berserkermax" name="狂战士" deathMessage="为凋零大人献上永恒的忠诚！" unlock="mvz2:level.castle_11">
+			<float name="range" value="80"/>
+			<float name="speed" value="2"/>
+			<float name="maxHealth" value="800"/>
+			<id name="shell" value="mvz2:nether"/>
+			<id name="crySound" value="mvz2:wither_skeleton_cry"/>
+			<id name="hitSound" value="mvz2:bone_hit"/>
+			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
+
+			<int name="cost" value="1000" />
+			<int name="waterInteraction" value="2"/>
+		</enemy>
 
         <!-- Obstacles -->
         <obstacle id="gargoyle_statue" name="石像鬼雕像">

@@ -12,7 +12,7 @@ namespace MVZ2.Level.Components
     {
         public ArtifactComponent(LevelEngine level, LevelController controller) : base(level, componentID, controller)
         {
-            artifacts = new ArtifactList(level, 3);
+            artifacts = new ArtifactList(level, 4);
             artifacts.OnArtifactHighlighted += OnArtifactHighlighted;
         }
         public override void OnStart()

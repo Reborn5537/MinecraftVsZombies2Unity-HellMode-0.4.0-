@@ -663,13 +663,22 @@ namespace MVZ2.GameContent.Bosses
                             {
                                 entity.SetAnimationBool("Shaking", false);
                                 stateMachine.SetSubState(entity, SUBSTATE_SUMMONED);
-                                substateTimer.ResetTime(30);
+                                substateTimer.ResetTime(200);
 
                                 entity.PlaySound(VanillaSoundID.witherSpawn);
                                 var param = entity.GetSpawnParams();
                                 var bedserker = entity.Spawn(VanillaEnemyID.bedserker, entity.Position + entity.GetFacingDirection() * 80, param);
+                                var necromancer = entity.Spawn(VanillaEnemyID.necromancermax, entity.Position + entity.GetFacingDirection() * 80, param);
+                                var mesmerizer = entity.Spawn(VanillaEnemyID.mesmerizermax, entity.Position + entity.GetFacingDirection() * 80, param);
+                                var berserker = entity.Spawn(VanillaEnemyID.berserkermax, entity.Position + entity.GetFacingDirection() * 80, param);
 
                                 var exp = entity.Spawn(VanillaEffectID.explosion, bedserker.GetCenter());
+                                exp.SetSize(Vector3.one * 120);
+                                var exp2 = entity.Spawn(VanillaEffectID.explosion, necromancer.GetCenter());
+                                exp.SetSize(Vector3.one * 120);
+                                var exp3 = entity.Spawn(VanillaEffectID.explosion, mesmerizer.GetCenter());
+                                exp.SetSize(Vector3.one * 120);
+                                var exp4 = entity.Spawn(VanillaEffectID.explosion, berserker.GetCenter());
                                 exp.SetSize(Vector3.one * 120);
                                 entity.PlaySound(VanillaSoundID.explosion);
                             }
