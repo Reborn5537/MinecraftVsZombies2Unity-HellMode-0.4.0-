@@ -125,9 +125,37 @@ namespace MVZ2.GameContent.Bosses
         public override void PreTakeDamage(DamageInput damageInfo)
         {
             base.PreTakeDamage(damageInfo);
+
             if (damageInfo.Amount > 600)
             {
                 damageInfo.SetAmount(600);
+            }
+
+            //凋零:寻找我的四骑士啊
+            var level = damageInfo.Entity.Level;
+            var bedserkers = level.FindEntities(VanillaEnemyID.bedserker);
+            var necromancers = level.FindEntities(VanillaEnemyID.necromancermax);
+            var mesmerizers = level.FindEntities(VanillaEnemyID.mesmerizermax);
+            var berserkers = level.FindEntities(VanillaEnemyID.berserkermax);
+
+            //凋零:我的四骑士还有哪些活着啊
+            var validEntities = bedserkers.Concat(necromancers)
+                                  .Concat(mesmerizers)
+                                  .Concat(berserkers)
+                                  .Where(e => e.ExistsAndAlive())
+                                  .ToList();
+
+            if (validEntities.Count > 0)
+            {
+                float witherDamage = damageInfo.Amount * 0.2f;
+                damageInfo.SetAmount(witherDamage);
+
+                float damagePerEntity = (damageInfo.Amount * 0.8f) / validEntities.Count;
+
+                foreach (var entity in validEntities)
+                {
+                    entity.TakeDamage(damagePerEntity, damageInfo.Effects, damageInfo.Source);
+                }
             }
         }
         public override void PostTakeDamage(DamageOutput result)
@@ -341,6 +369,62 @@ namespace MVZ2.GameContent.Bosses
             entity.PlaySound(VanillaSoundID.witherSpawn);
             entity.PlaySound(VanillaSoundID.witherDeath);
         }
+        /*protected override void PreTakeDamage(DamageInput damageInfo)
+        {
+            base.PreTakeDamage(damageInfo);
+
+            if (damageInfo.Amount > 600)
+            {
+                damageInfo.SetAmount(600);
+            }
+
+            //凋零:寻找我的四骑士啊
+            var level = damageInfo.Entity.Level;
+            var entities = level.FindEntities(VanillaEnemyID.bedserker, VanillaEnemyID.necromancermax, VanillaEnemyID.mesmerizermax, VanillaEnemyID.berserkermax);
+
+            //凋零:我的四骑士还有哪些活着啊
+            var validEntities = entities.Where(e => e.ExistsAndAlive()).ToList();
+
+            if (validEntities.Count > 0)
+            {
+                float witherDamage = damageInfo.Amount * 0.2f;
+                damageInfo.SetAmount(witherDamage);
+
+                float damagePerEntity = (damageInfo.Amount * 0.8f) / validEntities.Count;
+
+                foreach (var entity in validEntities)
+                {
+                    entity.TakeDamage(damagePerEntity, damageInfo.Effects, damageInfo.Source);
+                }
+            }
+        }*/
+        /*protected override void PreTakeDamage315(DamageInput damageInfo)
+        {
+            base.PreTakeDamage(damageInfo);
+
+            if (damageInfo.Amount > 600)
+            {
+                damageInfo.SetAmount(600);
+            }
+
+            var level = damageInfo.Entity.Level;
+            var entities = level.FindEntities(VanillaEnemyID.bedserker, VanillaEnemyID.necromancermax, VanillaEnemyID.mesmerizermax, VanillaEnemyID.berserkermax);
+            var validEntities = entities.Where(e => e.ExistsAndAlive()).ToList();
+
+            if (validEntities.Count > 0)
+            {
+                float healthRatio = damageInfo.Entity.Health / damageInfo.Entity.GetMaxHealth();
+                float witherDamageRatio = Mathf.Lerp(0.1f, 0.5f, healthRatio);
+                float witherDamage = damageInfo.Amount * witherDamageRatio;
+                damageInfo.SetAmount(witherDamage);
+
+                float damagePerEntity = (damageInfo.Amount * (1 - witherDamageRatio)) / validEntities.Count;
+                foreach (var entity in validEntities)
+                {
+                    entity.TakeDamage(damagePerEntity, damageInfo.Effects, damageInfo.Source);
+                }
+            }
+        }*/
 
         #region 常量
         private static readonly VanillaEntityPropertyMeta PROP_CRY_TIMER = new VanillaEntityPropertyMeta("CryTimer");

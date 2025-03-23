@@ -165,9 +165,9 @@ namespace MVZ2.GameContent.Enemies
             }
         }
         #region 常量
-        private const int CAST_COOLDOWN = 250;
+        private const int CAST_COOLDOWN = 200;
         private const int CAST_TIME = 30;
-        private const int BUILD_DETECT_TIME = 30;
+        private const int BUILD_DETECT_TIME = 25;
         private const int MAX_BONE_WALL_COUNT = 15;
         public static readonly NamespaceID ID = VanillaEnemyID.necromancermax;
         public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");

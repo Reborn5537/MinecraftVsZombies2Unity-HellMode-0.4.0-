@@ -67,7 +67,7 @@ namespace MVZ2.GameContent.Enemies
                     else
                     {
                         var param = entity.GetShootParams();
-                        param.damage = -10;
+                        param.damage = -25;
                         var orb = entity.ShootProjectile(param);
                         orb.Target = target;
                         orb.SetParent(entity);
@@ -120,8 +120,8 @@ namespace MVZ2.GameContent.Enemies
         public static FrameTimer GetStateTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_STATE_TIMER);
 
         #region 常量
-        private const int CAST_COOLDOWN = 250;
-        private const int CONTROL_DETECT_TIME = 30;
+        private const int CAST_COOLDOWN = 275;
+        private const int CONTROL_DETECT_TIME = 25;
 
         public const int STATE_WALK = VanillaEntityStates.WALK;
         public const int STATE_ATTACK = VanillaEntityStates.ATTACK;

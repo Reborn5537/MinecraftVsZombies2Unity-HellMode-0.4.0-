@@ -864,7 +864,7 @@
 				<p>凋零之眠，梦境腐朽</p>
 			</header>
 			<properties>
-				<p>生命：<![CDATA[<color=red>800</color>]]></p>
+				<p>生命：<![CDATA[<color=red>10000</color>]]></p>
 				<p>速度：<![CDATA[<color=red>2</color>]]></p>
 				<p>特点：<![CDATA[<color=red>四骑士之首(不死)</color>]]></p>
 			</properties>
@@ -903,8 +903,8 @@
 				<p>凋零之怒，万物崩毁。</p>
 			</header>
 			<properties>
-				<p>生命：<![CDATA[<color=red>200</color>]]></p>
-				<p>速度：<![CDATA[<color=red>1</color>]]></p>
+				<p>生命：<![CDATA[<color=red>800</color>]]></p>
+				<p>速度：<![CDATA[<color=red>2</color>]]></p>
 				<p>特点：<![CDATA[<color=red>四骑士之一</color>]]></p>
 			</properties>
 			<flavor>
