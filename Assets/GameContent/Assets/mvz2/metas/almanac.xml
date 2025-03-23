@@ -604,7 +604,7 @@
                 <p>铁桶旗帜僵尸的出现标志着一大波怪物的到来。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>生命：<![CDATA[<color=red>200+1100</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
             </properties>
             <flavor>
@@ -877,7 +877,7 @@
 				<p>凋零之息，亡魂归附。</p>
 			</header>
 			<properties>
-				<p>生命：<![CDATA[<color=red>800</color>]]></p>
+				<p>生命：<![CDATA[<color=red>1200</color>]]></p>
 				<p>速度：<![CDATA[<color=red>2</color>]]></p>
 				<p>特点：<![CDATA[<color=red>四骑士之一</color>]]></p>
 			</properties>
@@ -890,7 +890,7 @@
 				<p>凋零之瞳，意志溃散。</p>
 			</header>
 			<properties>
-				<p>生命：<![CDATA[<color=red>800</color>]]></p>
+				<p>生命：<![CDATA[<color=red>1200</color>]]></p>
 				<p>速度：<![CDATA[<color=red>2</color>]]></p>
 				<p>特点：<![CDATA[<color=red>四骑士之一</color>]]></p>
 			</properties>
@@ -903,7 +903,7 @@
 				<p>凋零之怒，万物崩毁。</p>
 			</header>
 			<properties>
-				<p>生命：<![CDATA[<color=red>800</color>]]></p>
+				<p>生命：<![CDATA[<color=red>1200</color>]]></p>
 				<p>速度：<![CDATA[<color=red>2</color>]]></p>
 				<p>特点：<![CDATA[<color=red>四骑士之一</color>]]></p>
 			</properties>
@@ -1127,9 +1127,9 @@
                     <p>凋灵代表着死亡和枯萎，它会抹除一切生命的迹象。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>15000+800*4(骑士每200秒复活一次)，每秒恢复30</color>]]></p>
+                    <p>生命：<![CDATA[<color=red>15000+1200*4(骑士每200秒复活一次)，每秒恢复30</color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>飞行，发射凋灵头颅，冲刺，啃咬</color>]]></p>
-                    <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，召唤“凋零四骑士”</color>]]></p>
+                    <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，转换伤害， 召唤“凋零四骑士”</color>]]></p>
                 </properties>
                 <flavor>
                     <p>单枪匹马对付众多的怪物并不是个好主意，骑士打算去招募一些帮手。</p>
