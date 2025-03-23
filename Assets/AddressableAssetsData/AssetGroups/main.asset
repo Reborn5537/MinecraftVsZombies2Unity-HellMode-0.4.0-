@@ -330,7 +330,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f370d6fac963cb408318f98eaf10f5a
-    m_Address: Assets/GameContent/Assets/mvz2/sprites/entity/enemies/mesmerizermax_head.png
+    m_Address: mvz2:entity/enemies/mesmerizermax_head
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -1038,7 +1038,7 @@ MonoBehaviour:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2c3111a8581b6d44f9b77919fea10540
-    m_Address: Assets/GameContent/Assets/mvz2/sprites/mobile_blueprint/necromancermax.png
+    m_Address: mvz2:mobile_blueprint/necromancermax
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -2615,7 +2615,7 @@ MonoBehaviour:
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 63dc47329b8366748a84925b11b60cec
-    m_Address: Assets/GameContent/Assets/mvz2/models/enemy/castle/berserkermax.prefab
+    m_Address: mvz2:enemy/castle/berserkermax
     m_ReadOnly: 0
     m_SerializedLabels:
     - Model
@@ -2663,7 +2663,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 65c948fd90a862949bb19fa3f575aa1b
-    m_Address: Assets/GameContent/Assets/mvz2/spritesheets/entity/enemy/necromancermax.png
+    m_Address: mvz2:entity/enemy/necromancermax
     m_ReadOnly: 0
     m_SerializedLabels:
     - Spritesheet
@@ -2835,11 +2835,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Meta
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6f69f0c30f426cb47882e5f233029dbd
-    m_Address: Assets/Animation/Entities/Enemies/berserkermax
-    m_ReadOnly: 0
-    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6fd8c4c1aa016fb4ca753e7d793584a7
     m_Address: mvz2:horse_gallop4
@@ -3524,11 +3519,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8b2c8514c07f20649ac76dc5f4e584d0
-    m_Address: Assets/Animation/Entities/Enemies/necromancermax
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8b54263a7ca06cd478193e70b407f293
     m_Address: mvz2:entity/projectiles/fire_trail
     m_ReadOnly: 0
@@ -3932,7 +3922,7 @@ MonoBehaviour:
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 981522153e47e0f4a8d369e330887664
-    m_Address: Assets/GameContent/Assets/mvz2/sprites/mobile_blueprint/mesmerizermax.png
+    m_Address: mvz2:mobile_blueprint/mesmerizermax
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -4070,7 +4060,7 @@ MonoBehaviour:
     - Meta
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d006c01f6cbc564493299596b4ef2a6
-    m_Address: /mobile_blueprint/berserkermax.pngites/mobile_blueprint/berserkermax.png
+    m_Address: mvz2:mobile_blueprint/berserkermax
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -4814,7 +4804,7 @@ MonoBehaviour:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b68649c8a88407847b858d6c9db515e4
-    m_Address: Assets/GameContent/Assets/mvz2/sprites/entity/enemies/mesmerizermax_rod.png
+    m_Address: mvz2:entity/enemies/mesmerizermax_rod
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
@@ -4928,7 +4918,7 @@ MonoBehaviour:
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: badaece8cc8a7cd4db208a4d52a128da
-    m_Address: Assets/GameContent/Assets/mvz2/models/enemy/halloween/necromancermax.prefab
+    m_Address: mvz2:enemy/halloween/necromancermax
     m_ReadOnly: 0
     m_SerializedLabels:
     - Model
@@ -5018,7 +5008,7 @@ MonoBehaviour:
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: be6249953ff24044a89b78b82fb0ba7b
-    m_Address: Assets/GameContent/Assets/mvz2/models/enemy/castle/mesmerizermax.prefab
+    m_Address: mvz2:enemy/castle/mesmerizermax
     m_ReadOnly: 0
     m_SerializedLabels:
     - Model
