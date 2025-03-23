@@ -332,7 +332,8 @@ MonoBehaviour:
   - m_GUID: 0f370d6fac963cb408318f98eaf10f5a
     m_Address: Assets/GameContent/Assets/mvz2/sprites/entity/enemies/mesmerizermax_head.png
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f85791f4565cdd48b780ea2b27b64f5
     m_Address: mvz2:random/crystal/crystal_place1
@@ -1039,7 +1040,8 @@ MonoBehaviour:
   - m_GUID: 2c3111a8581b6d44f9b77919fea10540
     m_Address: Assets/GameContent/Assets/mvz2/sprites/mobile_blueprint/necromancermax.png
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2c42c8de90a7c30499eae9212c363c7d
     m_Address: mvz2:mainmenu/back_to_mainmenu
@@ -2615,7 +2617,8 @@ MonoBehaviour:
   - m_GUID: 63dc47329b8366748a84925b11b60cec
     m_Address: Assets/GameContent/Assets/mvz2/models/enemy/castle/berserkermax.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 640498c4a0c1e9e478d0ce0218f62222
     m_Address: mvz2:enemy/shrine/mutant_zombie
@@ -2662,7 +2665,8 @@ MonoBehaviour:
   - m_GUID: 65c948fd90a862949bb19fa3f575aa1b
     m_Address: Assets/GameContent/Assets/mvz2/spritesheets/entity/enemy/necromancermax.png
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 65f5a79b8f9519a4280b272150a69514
     m_Address: mvz2:fizz
@@ -3930,7 +3934,8 @@ MonoBehaviour:
   - m_GUID: 981522153e47e0f4a8d369e330887664
     m_Address: Assets/GameContent/Assets/mvz2/sprites/mobile_blueprint/mesmerizermax.png
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9821f965cb5dfe34686c58dae6b8a6d9
     m_Address: mvz2:effect/seija_camera_frame
@@ -4065,9 +4070,10 @@ MonoBehaviour:
     - Meta
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d006c01f6cbc564493299596b4ef2a6
-    m_Address: Assets/GameContent/Assets/mvz2/sprites/mobile_blueprint/berserkermax.png
+    m_Address: /mobile_blueprint/berserkermax.pngites/mobile_blueprint/berserkermax.png
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d154f9c691d05c42917f982f9de86ca
     m_Address: mvz2:entity/mutant_zombie/mutant_cry2
@@ -4810,7 +4816,8 @@ MonoBehaviour:
   - m_GUID: b68649c8a88407847b858d6c9db515e4
     m_Address: Assets/GameContent/Assets/mvz2/sprites/entity/enemies/mesmerizermax_rod.png
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b71a3502ba3935b49a514559f8734478
     m_Address: mvz2:starshard_rings/halloween
@@ -4923,7 +4930,8 @@ MonoBehaviour:
   - m_GUID: badaece8cc8a7cd4db208a4d52a128da
     m_Address: Assets/GameContent/Assets/mvz2/models/enemy/halloween/necromancermax.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bafd8d60319920d40a5881b8a2776d56
     m_Address: mvz2:entity/contraption/force_pad_evoking
@@ -5012,7 +5020,8 @@ MonoBehaviour:
   - m_GUID: be6249953ff24044a89b78b82fb0ba7b
     m_Address: Assets/GameContent/Assets/mvz2/models/enemy/castle/mesmerizermax.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: beb139d5d07db39408272c27eaea0034
     m_Address: mvz2:products/obsidian_first_aid
