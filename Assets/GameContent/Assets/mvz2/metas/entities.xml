@@ -934,6 +934,7 @@
         </enemy>
         <enemy id="bedserker" name="起床骑士" deathMessage="晚安" unlock="mvz2:level.castle_11">
             <float name="range" value="100"/>
+			<bool name="loyal" value="true"/>
             <float name="speed" value="2"/>
             <float name="maxHealth" value="10000"/>
             <id name="shell" value="mvz2:nether"/>
@@ -946,6 +947,7 @@
         </enemy>
 		<enemy id="necromancermax" name="亡灵骑士" deathMessage="为凋零大人献上永恒的忠诚！" unlock="mvz2:level.castle_11">
 			<float name="range" value="100"/>
+			<bool name="loyal" value="true"/>
 			<float name="speed" value="2"/>
 			<float name="maxHealth" value="800"/>
 			<id name="shell" value="mvz2:nether"/>
@@ -958,6 +960,7 @@
 		</enemy>
 		<enemy id="mesmerizermax" name="催眠骑士" deathMessage="为凋零大人献上永恒的忠诚！" unlock="mvz2:level.castle_11">
 			<float name="range" value="850"/>
+			<bool name="loyal" value="true"/>
 			<float name="speed" value="2"/>
 			<float name="maxHealth" value="800"/>
 			<vector3 name="shotOffset" x="30" y="96" z="0"/>
@@ -973,6 +976,7 @@
 		</enemy>
 		<enemy id="berserkermax" name="疯狂骑士" deathMessage="为凋零大人献上永恒的忠诚！" unlock="mvz2:level.castle_11">
 			<float name="range" value="100"/>
+			<bool name="loyal" value="true"/>
 			<float name="speed" value="2"/>
 			<float name="maxHealth" value="800"/>
 			<id name="shell" value="mvz2:nether"/>

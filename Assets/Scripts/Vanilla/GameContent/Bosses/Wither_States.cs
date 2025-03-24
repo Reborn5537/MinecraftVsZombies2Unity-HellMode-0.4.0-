@@ -672,7 +672,7 @@ namespace MVZ2.GameContent.Bosses
 
                                 int middleLane = level.GetMaxLaneCount() / 2;
                                 float necromancerZ = level.GetEntityLaneZ(middleLane);
-                                Vector3 necromancerPos = new Vector3(entity.Position.x, entity.Position.y, necromancerZ) + entity.GetFacingDirection() * 80;
+                                Vector3 necromancerPos = new Vector3(entity.Position.x - entity.GetFacingX() * 60, entity.Position.y,necromancerZ);
                                 var necromancer = entity.Spawn(VanillaEnemyID.necromancermax, necromancerPos, param);
 
                                 int topLane = 0;

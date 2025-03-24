@@ -159,11 +159,11 @@
         </product>
         <product id="pagoda_branch" sprite="mvz2:artifacts/pagoda_branch">
             <talks>
-                <talk character="mvz2:crazy_villager">产自梦境世界的槐树的树枝！你在开始战斗时额外获得2个星之碎片，但是会出现额外2倍多的敌人！</talk>
-                <talk character="mvz2:tokiko">来自槐树上的树枝，战斗开始时它能额外给你2个神奇的碎片，但是也会额外出现2倍多的怪物！</talk>
+                <talk character="mvz2:crazy_villager">产自梦境世界的槐树的树枝！你在开始战斗时额外获得4个星之碎片，但是会出现额外4倍多的敌人！</talk>
+                <talk character="mvz2:tokiko">来自槐树上的树枝，战斗开始时它能额外给你4个神奇的碎片，但是也会额外出现4倍多的怪物！</talk>
             </talks>
             <stages>
-                <stage price="3330" unlocks="mvz2:artifact.pagoda_branch"/>
+                <stage price="9990" unlocks="mvz2:artifact.pagoda_branch"/>
             </stages>
         </product>
         <product id="dark_matter" sprite="mvz2:artifacts/dark_matter" required="mvz2:level.dream_11">

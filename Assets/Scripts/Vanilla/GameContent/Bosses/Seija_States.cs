@@ -14,6 +14,13 @@ using System.Linq;
 using PVZEngine.Buffs;
 using PVZEngine.Level;
 using Tools;
+using MVZ2.GameContent.Armors;
+using MVZ2.GameContent.Detections;
+using MVZ2.Vanilla.Contraptions;
+using MVZ2.Vanilla.Detections;
+using MVZ2.Vanilla.Enemies;
+using MVZ2.Vanilla.Properties;
+using PVZEngine;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -454,17 +461,62 @@ namespace MVZ2.GameContent.Bosses
         private class BackflipState : EntityStateMachineState
         {
             public BackflipState() : base(STATE_BACKFLIP) { }
+
+            private static readonly int ORB_COUNT = 3;
+            private static readonly float ORB_SPREAD_ANGLE = 30f;
+
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
                 entity.Velocity = new Vector3(-10 * entity.GetFacingX(), 10, GetChangeAdjacentLaneZSpeed(entity));
+
+                FireControlOrbs(entity);
             }
+
+            private void FireControlOrbs(Entity entity)
+            {
+                var level = entity.Level;
+                var centerPos = entity.GetCenter();
+
+                var candidates = level.FindEntities(e =>
+                    e.Type == EntityTypes.PLANT &&
+                    !e.IsFloor() &&
+                    CompellingOrb.CanControl(e));
+
+                if (candidates.Length == 0) return;
+
+                var sortedTargets = candidates
+                    .OrderBy(e => Vector3.Distance(centerPos, e.Position))
+                    .Take(ORB_COUNT)
+                    .ToArray();
+
+                for (int i = 0; i < Mathf.Min(ORB_COUNT, sortedTargets.Length); i++)
+                {
+                    var target = sortedTargets[i];
+                    var param = entity.GetShootParams();
+                    param.damage = 0;
+                    param.projectileID = VanillaProjectileID.compellingOrb;
+
+                    float angle = (i - 1) * ORB_SPREAD_ANGLE;
+                    Vector3 direction = (target.Position - centerPos).normalized;
+                    direction = Quaternion.Euler(0, angle, 0) * direction;
+
+                    param.position = centerPos;
+                    param.velocity = direction * 5f;
+
+                    var orb = entity.ShootProjectile(param);
+                    orb.Target = target;
+                    orb.SetParent(entity);
+                }
+            }
+
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateAI(stateMachine, entity);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
                 substateTimer.Run(stateMachine.GetSpeed(entity));
                 var substate = stateMachine.GetSubState(entity);
+
                 switch (substate)
                 {
                     case SUBSTATE_JUMP:
@@ -483,9 +535,9 @@ namespace MVZ2.GameContent.Bosses
                         break;
                 }
             }
+
             public const int SUBSTATE_JUMP = 0;
             public const int SUBSTATE_LANDED = 1;
-
         }
         private class FrontflipState : EntityStateMachineState
         {
