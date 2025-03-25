@@ -22,6 +22,7 @@
         public const int BOSS_SPECIAL = 310;
         public const int BOSS_SPECIAL_2 = 311;
         public const int BOSS_SPECIAL_3 = 312;
+        public const int BOSS_SPECIAL_4 = 314;
         public const int BOSS_FAINT = 350;
 
         public const int CART_TRIGGERED = 500;
@@ -95,6 +96,7 @@
         public const int SEIJA_BACKFLIP = BOSS_SPECIAL;
         public const int SEIJA_FRONTFLIP = BOSS_SPECIAL_2;
         public const int SEIJA_FABRIC = BOSS_SPECIAL_3;
+        public const int SEIJA_REVERSE_DANCE = BOSS_SPECIAL_4;
         public const int SEIJA_FAINT = DEAD;
 
         public const int WITHER_APPEAR = BOSS_APPEAR;

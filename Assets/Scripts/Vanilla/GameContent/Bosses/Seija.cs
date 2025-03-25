@@ -13,6 +13,13 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Bosses
 {
+    public static class SeijaExtensions
+    {
+        public static float GetHealthPercent(this Entity entity)
+        {
+            return Mathf.Clamp01(entity.Health / entity.GetMaxHealth());
+        }
+    }
     [EntityBehaviourDefinition(VanillaBossNames.seija)]
     public partial class Seija : BossBehaviour
     {
@@ -208,6 +215,14 @@ namespace MVZ2.GameContent.Bosses
         {
             return hammerCheckDetector.DetectEntityWithTheLeast(boss, e => Mathf.Abs(e.Position.x - boss.Position.x));
         }
+        public static bool ShouldReverseDance(Entity boss)
+        {
+            if (stateMachine.GetPreviousState(boss) == STATE_REVERSE_DANCE)
+                return false;
+
+            float healthFactor = 1 - boss.GetHealthPercent();
+            return boss.RNG.Next(100) < 40 + (30 * healthFactor);
+        }
 
         #region 常量
         private static readonly VanillaEntityPropertyMeta PROP_FABRIC_COUNT = new VanillaEntityPropertyMeta("FabricCount");
@@ -235,6 +250,7 @@ namespace MVZ2.GameContent.Bosses
         private const int STATE_CAMERA = VanillaEntityStates.SEIJA_CAMERA;
         private const int STATE_FABRIC = VanillaEntityStates.SEIJA_FABRIC;
         private const int STATE_FAINT = VanillaEntityStates.SEIJA_FAINT;
+        public const int STATE_REVERSE_DANCE = VanillaEntityStates.SEIJA_REVERSE_DANCE;
         #endregion 常量
 
         private static Detector hammerCheckDetector = new SeijaDetector(SeijaDetector.MODE_DETECT);

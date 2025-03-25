@@ -41,6 +41,7 @@ namespace MVZ2.GameContent.Bosses
                 AddState(new CameraState());
                 AddState(new FabricState());
                 AddState(new FaintState());
+                AddState(new ReverseDanceState());
             }
         }
         #endregion
@@ -149,6 +150,11 @@ namespace MVZ2.GameContent.Bosses
                     {
                         return lastState;
                     }
+                }
+                if ((lastState == STATE_FRONTFLIP || lastState == STATE_BACKFLIP) &&
+        ShouldReverseDance(entity))
+                {
+                    return STATE_REVERSE_DANCE;
                 }
 
                 return STATE_DANMAKU;
@@ -640,6 +646,99 @@ namespace MVZ2.GameContent.Bosses
             public override void OnUpdateLogic(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateLogic(stateMachine, entity);
+            }
+        }
+        private class ReverseDanceState : EntityStateMachineState
+        {
+            private int jumpsRemaining;
+            private FrameTimer jumpTimer;
+            private List<Entity> allPlants = new List<Entity>();
+            private List<Vector3> originalPositions = new List<Vector3>();
+            private int swapCount = 0;
+            private const int TOTAL_SWAPS = 5;
+
+            public ReverseDanceState() : base(STATE_REVERSE_DANCE)
+            {
+                jumpTimer = new FrameTimer(30);
+            }
+
+            public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnEnter(stateMachine, entity);
+                jumpsRemaining = 5;
+                swapCount = 0;
+                jumpTimer.Reset();
+                allPlants.Clear();
+                originalPositions.Clear();
+
+                allPlants = entity.Level.FindEntities(e =>
+                    e.Type == EntityTypes.PLANT && !e.IsFloor())
+                    .ToList();
+
+                originalPositions = allPlants.Select(p => p.Position).ToList();
+                entity.PlaySound(VanillaSoundID.gapWarp);
+            }
+
+            public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnUpdateAI(stateMachine, entity);
+
+                jumpTimer.Run();
+                if (jumpTimer.Expired && jumpsRemaining > 0)
+                {
+                    PerformDanceJump(entity);
+                    jumpTimer.Reset();
+                    jumpsRemaining--;
+                }
+
+                if (jumpsRemaining <= 0 && entity.IsOnGround)
+                {
+                    stateMachine.StartState(entity, STATE_IDLE);
+                }
+            }
+
+            private void PerformDanceJump(Entity entity)
+            {
+                float xDir = jumpsRemaining % 2 == 0 ? 1 : -1;
+                int currentLane = entity.GetLane();
+                int maxLane = entity.Level.GetMaxLaneCount() - 1;
+                int laneChange = entity.RNG.Next(-1, 2);
+                int targetLane = Mathf.Clamp(currentLane + laneChange, 0, maxLane);
+
+                float jumpHeight = entity.RNG.Next(8, 13);
+                float xSpeed = entity.RNG.Next(8, 13) * xDir * entity.GetFacingX();
+
+                entity.Velocity = new Vector3(
+                    xSpeed,
+                    jumpHeight,
+                    GetChangeLaneZSpeed(entity, targetLane)
+                );
+
+                if (swapCount < TOTAL_SWAPS)
+                {
+                    SwapAllTowers(entity);
+                    swapCount++;
+                }
+            }
+
+            private void SwapAllTowers(Entity entity)
+            {
+                if (allPlants.Count <= 1) return;
+
+                for (int i = 0; i < allPlants.Count; i++)
+                {
+                    int swapIndex = (i + 1) % allPlants.Count;
+                    allPlants[i].Position = originalPositions[swapIndex];
+
+                    if (i % 3 == 0) 
+                    {
+                        entity.Spawn(VanillaEffectID.magicBombExplosion, originalPositions[swapIndex]);
+                    }
+                }
+
+                originalPositions = allPlants.Select(p => p.Position).ToList();
+
+                entity.PlaySound(VanillaSoundID.fling, volume: 0.8f);
             }
         }
         #endregion
