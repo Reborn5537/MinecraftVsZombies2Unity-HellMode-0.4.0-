@@ -141,7 +141,7 @@ namespace MVZ2.GameContent.Enemies
         private static readonly NamespaceID ID = VanillaEnemyID.skeleton;
         public static readonly VanillaEntityPropertyMeta PROP_BOW_FIRED = new VanillaEntityPropertyMeta("bowFired");
         public static readonly VanillaEntityPropertyMeta PROP_BOW_POWER = new VanillaEntityPropertyMeta("bowPower");
-        public const int BOW_POWER_PULL_SPEED = 125;//代号狙击手猎鹰
+        public const int BOW_POWER_PULL_SPEED = 130;//代号狙击手猎鹰
         public const int BOW_POWER_RESTORE_SPEED = 1000;
         public const int BOW_POWER_MAX = 10000;
     }

@@ -19,66 +19,25 @@ using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Difficulties;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
-using System.Collections.Generic;
 
 namespace MVZ2.GameContent.Enemies
 {
     [EntityBehaviourDefinition(VanillaEnemyNames.spider)]
     public class Spider : MeleeEnemy
     {
-        // 状态字段
-        private float climbStartTime;
-        private bool shouldJump;
-        private Entity climbTarget;
-
         public Spider(string nsp, string name) : base(nsp, name)
         {
         }
-
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
 
-            if (climbTarget != null && climbTarget.Exists() && climbTarget.Type == EntityTypes.ENEMY)
+            if (entity.State == VanillaEntityStates.SPIDER_CLIMB)
             {
-                if (climbStartTime <= 0) climbStartTime = Time.time;
-
-                var currentVelocity = entity.Velocity;
-                currentVelocity.x = 0;
-                entity.Velocity = currentVelocity;
-
-                if (Time.time - climbStartTime > 3.0f && !shouldJump)
-                {
-                    shouldJump = true;
-                }
-
-                if (shouldJump)
-                {
-                    float direction = entity.IsFacingLeft() ? -1 : 1;
-                    float jumpForce = 5.0f;
-
-                    Vector3 jumpVelocity = new Vector3(
-                        -direction * jumpForce, // 水平方向
-                        jumpForce,              // 垂直方向
-                        0                      // Z轴不变
-                    );
-
-                    entity.Velocity = jumpVelocity;
-
-                    entity.State = VanillaEntityStates.ENEMY_CAST;
-
-                    // 重置状态
-                    climbTarget = null;
-                    RemoveSpiderClimbBuff(entity);
-                    climbStartTime = 0;
-                    shouldJump = false;
-                }
-            }
-            else if (entity.State == VanillaEntityStates.SPIDER_CLIMB)
-            {
-                // 原有的垂直攀爬逻辑
+                var climbTarget = GetClimbTarget(entity);
                 if (climbTarget != null && climbTarget.Exists())
                 {
+                    // 正在垂直攀爬，修改位置。
                     var peak = GetClimbTargetPeak(climbTarget);
                     if (entity.Position.y < peak)
                     {
@@ -88,32 +47,12 @@ namespace MVZ2.GameContent.Enemies
                     }
                 }
             }
-
-            // 如果目标死亡，掉落下来
-            if (climbTarget != null && climbTarget.IsDead)
-            {
-                climbTarget = null;
-                RemoveSpiderClimbBuff(entity);
-                climbStartTime = 0;
-                shouldJump = false;
-            }
         }
-
-        private void RemoveSpiderClimbBuff(Entity entity)
-        {
-            var buffs = entity.GetBuffs<SpiderClimbBuff>();
-            foreach (var buff in buffs)
-            {
-                entity.RemoveBuff(buff);
-                break;
-            }
-        }
-
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
 
-            // 原有的攀爬目标验证逻辑保持不变
+            // 攀爬目标不合适，那就取消。
             var climbTarget = GetClimbTarget(entity);
             if (!ValidateClimbTarget(entity, climbTarget))
             {
@@ -183,12 +122,6 @@ namespace MVZ2.GameContent.Enemies
         protected override int GetActionState(Entity enemy)
         {
             var state = base.GetActionState(enemy);
-
-            if (shouldJump)
-            {
-                return VanillaEntityStates.ENEMY_CAST;
-            }
-
             if (state == VanillaEntityStates.WALK || state == VanillaEntityStates.ATTACK)
             {
                 if (IsClimbingVertically(enemy))
@@ -214,18 +147,12 @@ namespace MVZ2.GameContent.Enemies
         {
             if (target == null || !target.Exists() || target.IsDead)
                 return false;
-
-            // 允许攀爬同类型的敌人(ENEMY)
-            if (target.Type == EntityTypes.ENEMY && enemy.Type == EntityTypes.ENEMY)
-            {
-                return true;
-            }
             //if (!enemy.IsHostile(target))
-            //return false;
+                //return false;
             if (!Detection.IsInSameRow(enemy, target))
                 return false;
-            if (!Detection.CanDetect(target))
-            return false;
+            //if (!Detection.CanDetect(target))
+            //return false;
             //if (target.Type != EntityTypes.PLANT)//让我们试试爬正邪()
             //return true;
             if (target.IsFloor() || !target.IsDefensive())

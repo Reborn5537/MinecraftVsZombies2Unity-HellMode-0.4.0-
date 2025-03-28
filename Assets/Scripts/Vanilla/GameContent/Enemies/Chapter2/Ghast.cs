@@ -127,7 +127,7 @@ namespace MVZ2.GameContent.Enemies
         }
         private Detector detector;
         public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
-        public const int SHOOT_COOLDOWN = 130;
+        public const int SHOOT_COOLDOWN = 135;
         public const int SHOOT_DURATION = 12;
         public static readonly NamespaceID ID = VanillaEnemyID.ghast;
     }
