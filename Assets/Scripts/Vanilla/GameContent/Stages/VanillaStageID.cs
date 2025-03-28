@@ -36,6 +36,10 @@ namespace MVZ2.GameContent.Stages
         public const string dream9 = "dream_9";
         public const string dream10 = "dream_10";
         public const string dream11 = "dream_11";
+        public const string dream12 = "dream_12";
+        public const string dream13 = "dream_13";
+        public const string dream14 = "dream_14";
+        public const string dream15 = "dream_15";
         public const string dreamEndless = "dream_endless";
 
         public const string castle1 = "castle_1";

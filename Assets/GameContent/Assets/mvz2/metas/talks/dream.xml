@@ -646,6 +646,52 @@
       </sentences>
     </section>
   </group>
+	<group id="dream_12" tags="mvz2:dream;mvz2:intro">
+		<archive name="梦境世界第12天入场" background="mvz2:misc/nightmare" unlock="mvz2:level.dream_12" />
+		<section>
+			<characters>
+				<character id="mvz2:crazy_villager" side="left" />
+			</characters>
+			<sentences>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">梦魇虽然已死,但他仅存的追随者们仍旧试图将其复活。</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">他一旦复活,我们可就麻烦了。</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">追随者们在梦魇死亡时获得了一些力量,虽然只是一部分但也不能小觑</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk" onClick="end">祝你好运。</sentence>
+			</sentences>
+		</section>
+	</group>
+	<group id="dream_12_over" tags="mvz2:dream;mvz2:over">
+		<archive name="梦境世界第12天结束" background="mvz2:misc/nightmare" unlock="mvz2:level.dream_12" />
+		<section>
+			<characters>
+				<character id="mvz2:crazy_villager" side="left" />
+				<character id="mvz2:steve" side="self" />
+			</characters>
+			<sentences>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">又是一个防御性器械呢！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">这个是铁砧！把它放在地上，就能够阻挡敌人的攻击了！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这个器械在掉落时会产生巨大的伤害,非常有用！</sentence>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk" onClick="end">这真的有用吗(恼)</sentence>
+			</sentences>
+		</section>
+	</group>
+	<group id="dream_12_map" tags="mvz2:dream;mvz2:map">
+		<archive name="梦境世界第12天地图" music="mvz2:nightmare_map" background="mvz2:misc/nightmare" unlock="mvz2:level.dream_12" />
+		<section>
+			<characters>
+				<character id="mvz2:crazy_villager" side="left" />
+				<character id="mvz2:steve" side="self" />
+			</characters>
+			<sentences>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk">你在捣鼓什么东西啊(恼)</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">老夫我啊,已经算到了每一步</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">我还是那句话，你要学会合理应用他。</sentence>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk">(不管了,他爱咋地咋地吧)</sentence>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk">(现在还是解决追随者要紧)</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk" onClick="end">……我们会祝你好运的。</sentence>
+			</sentences>
+		</section>
+	</group>
   <group id="entered_gensokyo" tags="mvz2:gensokyo">
     <archive name="进入幻想乡" music="mvz2:gensokyo_map" background="mvz2:map/gensokyo/map" unlock="mvz2:entered_gensokyo" />
     <section onSkip="unlock mvz2:entered_gensokyo;end">
