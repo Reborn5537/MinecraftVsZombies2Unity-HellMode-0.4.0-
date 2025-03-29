@@ -5283,6 +5283,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8a3d0785f8452f4c9f61605cf6d231e
+    m_Address: mvz2:mobile_blueprint/anvil
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8b2b4261dd98254d919be8f10acd519
     m_Address: mvz2:contraption/castle/wooden_dropper
     m_ReadOnly: 0

@@ -807,6 +807,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8e5761afd86512d468f5326f1b03e7dd, type: 3}
   - name: ui/level/progress_bar/wither_foreground
     sprite: {fileID: 21300000, guid: 529c022f5f623db4db8f49685b84b1a8, type: 3}
+  - name: mobile_blueprint/anvil
+    sprite: {fileID: 21300000, guid: c8a3d0785f8452f4c9f61605cf6d231e, type: 3}
   spritesheetEntries:
   - name: map_button
     spritesheet:

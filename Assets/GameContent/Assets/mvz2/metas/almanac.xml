@@ -287,6 +287,18 @@
                 <p>美梦丝是个睡货，它每天睁开眼睛做的第一件事就是睡觉。瞧瞧它睡的，把自己的冷却时间也给睡长了。</p>
             </flavor>
         </entry>
+		<entry id="mvz2:anvil">
+			<header>
+				<p>终于有人发现我留下的介绍了。</p>
+			</header>
+			<properties>
+				<p>特点：<![CDATA[<color=red>能攻击能守</color>]]></p>
+				<p>技能：<![CDATA[<color=red>随机砸向一个敌方目标</color>]]></p>
+			</properties>
+			<flavor>
+				<p>掉落时造成巨大伤害</p>
+			</flavor>
+		</entry>
 
         <!-- Chapter 3 -->
         <entry id="mvz2:wooden_dropper">
