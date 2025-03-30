@@ -31,7 +31,7 @@
                 <p>黑曜石的强力装甲能够抵御敌人的攻击。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>4000</color>]]></p>
+                <p>耐久：<![CDATA[<color=red>4050</color>]]></p>
                 <p>技能：<![CDATA[<color=red>获得下界合金装甲，耐久提高至10000</color>]]></p>
             </properties>
             <flavor>
@@ -289,14 +289,14 @@
         </entry>
 		<entry id="mvz2:anvil">
 			<header>
-				<p>终于有人发现我留下的介绍了。</p>
+				<p>铁砧从高空坠落时能对敌人造成巨大伤害。</p>
 			</header>
 			<properties>
-				<p>特点：<![CDATA[<color=red>能攻击能守</color>]]></p>
+				<p>特点：<![CDATA[<color=red>既能攻击敌人也能阻挡敌人前进</color>]]></p>
 				<p>技能：<![CDATA[<color=red>给予全体器械无敌和恢复5秒</color>]]></p>
 			</properties>
 			<flavor>
-				<p>掉落时造成巨大伤害</p>
+				<p>"为什么天上会掉铁砧？"——某个被砸扁的僵尸临终前问道。"因为牛顿的棺材板压不住了。"重力板在旁边幽幽地回答。</p>
 			</flavor>
 		</entry>
 

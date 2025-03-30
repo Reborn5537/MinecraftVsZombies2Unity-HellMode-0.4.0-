@@ -62,6 +62,11 @@
         <spawn level="3"/>
         <weight base="2000" />
     </entry>
+	<entry id="necromancermax" entity="mvz2:necromancermax" >
+		<spawn level="5" />
+		<terrain water="true"/>
+		<weight base="1500" />
+	</entry>
 
     <!-- Castle -->
     <entry id="mesmerizer" entity="mvz2:mesmerizer" >

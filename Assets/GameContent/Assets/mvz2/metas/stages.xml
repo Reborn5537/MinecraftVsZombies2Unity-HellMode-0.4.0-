@@ -254,6 +254,26 @@
             <integer name="statueCount" value="10" />
         </properties>
     </stage>
+	<stage id="halloween_12" name="万圣夜" dayNumber="12" unlock="mvz2:level.castle_11" >
+        <talks>
+            <talk type="start" value="mvz2:halloween_12"/>
+            <talk type="end" value="mvz2:halloween_12_over"/>
+            <talk type="map" value="mvz2:halloween_12_map"/>
+        </talks>
+        <clear pickupModel="mvz2:entity.map_pickup" note="mvz2:halloween"/>
+        <spawns flags="3" >
+            <spawn id="mvz2:zombie"/>
+            <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:skeleton"/>
+            <spawn id="mvz2:ghost"/>
+            <spawn id="mvz2:mummy"/>
+            <spawn id="mvz2:necromancer"/>
+        </spawns>
+        <properties>
+            <integer name="statueCount" value="10" />
+        </properties>
+    </stage>
     <stage id="halloween_endless" name="万圣夜无尽" type="endless" unlock="mvz2:level.halloween_11" >
         <clear pickupModel="mvz2:entity.money_chest"/>
         <spawns flags="3" >
@@ -276,6 +296,7 @@
         <spawns flags="1">
             <spawn id="mvz2:zombie"/>
             <spawn id="mvz2:leather_capped_zombie"/>
+			<spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:skeleton"/>
         </spawns>
     </stage>
@@ -478,6 +499,27 @@
 			<spawn id="mvz2:ghast"/>
 			<spawn id="mvz2:mother_terror"/>
 			<spawn id="mvz2:necromancer"/>
+		</spawns>
+	</stage>
+	<stage id="dream_13" name="梦境世界" dayNumber="13" unlock="mvz2:level.dream_12" >
+		<talks>
+			<talk type="start" value="mvz2:dream_13"/>
+			<talk type="end" value="mvz2:dream_13_over"/>
+			<talk type="map" value="mvz2:dream_13_map"/>
+		</talks>
+		<clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:anvil"/>
+		<camera position="choose" transition="instant"/>
+		<spawns flags="3" >
+			<spawn id="mvz2:zombie"/>
+			<spawn id="mvz2:leather_capped_zombie"/>
+			<spawn id="mvz2:iron_helmetted_zombie"/>
+			<spawn id="mvz2:berserker"/>
+			<spawn id="mvz2:spider"/>
+			<spawn id="mvz2:cave_spider"/>
+			<spawn id="mvz2:skeleton"/>
+			<spawn id="mvz2:ghast"/>
+			<spawn id="mvz2:mother_terror"/>
+			<spawn id="mvz2:necromancermax"/>
 		</spawns>
 	</stage>
     <stage id="dream_endless" name="梦境世界无尽" type="endless" unlock="mvz2:level.dream_11" >
@@ -690,6 +732,23 @@
         <properties>
             <bool name="noEnergy" value="true"/>
         </properties>
+    </stage>
+	<stage id="castle_12" name="辉针城" dayNumber="12" unlock="mvz2:level.castle_11">
+        <talks>
+            <talk type="start" value="mvz2:castle_10"/>
+            <talk type="end" value="mvz2:castle_10_over"/>
+            <talk type="map" value="mvz2:castle_10_map"/>
+        </talks>
+        <clear pickupModel="mvz2:entity.wither_scroll" note="mvz2:castle"/>
+        <spawns flags="3">
+            <spawn id="mvz2:zombie"/>
+            <spawn id="mvz2:leather_capped_zombie"/>
+            <spawn id="mvz2:iron_helmetted_zombie"/>
+            <spawn id="mvz2:mesmerizer"/>
+            <spawn id="mvz2:berserker"/>
+            <spawn id="mvz2:dullahan"/>
+            <spawn id="mvz2:hell_chariot"/>
+        </spawns>
     </stage>
     <stage id="castle_endless" name="辉针城无尽" type="endless" unlock="mvz2:level.castle_11" >
         <clear pickupModel="mvz2:entity.money_chest"/>

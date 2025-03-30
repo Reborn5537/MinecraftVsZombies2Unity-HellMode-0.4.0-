@@ -102,13 +102,13 @@ namespace MVZ2.GameContent.Contraptions
             // 给所有植物同时添加两个Buff
             foreach (var plant in plants)
             {
-                // 添加DreamCrystalEvocationBuff
+                /*// 添加DreamCrystalEvocationBuff
                 var crystalBuff = plant.AddBuff<DreamCrystalEvocationBuff>();
                 if (crystalBuff != null)
                 {
                     crystalBuff.SetProperty(DreamCrystalEvocationBuff.PROP_TIMEOUT,
                                           DreamCrystalEvocationBuff.MAX_TIMEOUT);
-                }
+                }*/
 
                 // 添加DreamButterflyShieldBuff
                 var shieldBuff = plant.AddBuff<DreamButterflyShieldBuff>();

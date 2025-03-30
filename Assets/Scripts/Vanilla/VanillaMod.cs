@@ -148,6 +148,7 @@ namespace MVZ2.Vanilla
             }
             AddDefinition(new WhackAGhostStage(spaceName, VanillaStageNames.halloween6));
             AddDefinition(new BreakoutStage(spaceName, VanillaStageNames.dream6));
+            AddDefinition(new Dream13Stage(spaceName, VanillaStageNames.dream13));
             AddDefinition(new LittleZombieStage(spaceName, VanillaStageNames.castle6));
             AddDefinition(new SeijaStage(spaceName, VanillaStageNames.castle7));
         }
