@@ -63,7 +63,7 @@
         <weight base="2000" />
     </entry>
 	<entry id="necromancermax" entity="mvz2:necromancermax" >
-		<spawn level="5" />
+		<spawn level="8" />
 		<terrain water="true"/>
 		<weight base="1500" />
 	</entry>

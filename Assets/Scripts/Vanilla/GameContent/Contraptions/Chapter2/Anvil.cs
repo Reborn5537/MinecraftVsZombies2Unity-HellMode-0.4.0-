@@ -96,13 +96,12 @@ namespace MVZ2.GameContent.Contraptions
 
             // 获取场上所有存活的植物
             var plants = contraption.Level.GetEntities()
-                .Where(e => e.Type == EntityTypes.PLANT && !e.IsDead)  // 去掉括号，直接访问属性
+                .Where(e => e.Type == EntityTypes.PLANT && !e.IsDead)
                 .ToList();
 
-            // 给所有植物同时添加两个Buff
             foreach (var plant in plants)
             {
-                /*// 添加DreamCrystalEvocationBuff
+                /*
                 var crystalBuff = plant.AddBuff<DreamCrystalEvocationBuff>();
                 if (crystalBuff != null)
                 {
@@ -110,7 +109,7 @@ namespace MVZ2.GameContent.Contraptions
                                           DreamCrystalEvocationBuff.MAX_TIMEOUT);
                 }*/
 
-                // 添加DreamButterflyShieldBuff
+                // DreamButterflyShieldBuff
                 var shieldBuff = plant.AddBuff<DreamButterflyShieldBuff>();
                 if (shieldBuff != null)
                 {

@@ -501,14 +501,14 @@
 			<spawn id="mvz2:necromancer"/>
 		</spawns>
 	</stage>
-	<stage id="dream_13" name="梦境世界" dayNumber="13" unlock="mvz2:level.dream_12" >
+	<stage id="dream_13" name="梦境世界" dayNumber="13" type="special" unlock="mvz2:level.dream_12" >
 		<talks>
 			<talk type="start" value="mvz2:dream_13"/>
 			<talk type="end" value="mvz2:dream_13_over"/>
 			<talk type="map" value="mvz2:dream_13_map"/>
 		</talks>
 		<clear pickupModel="mvz2:entity.blueprint_pickup" blueprint="mvz2:anvil"/>
-		<camera position="choose" transition="instant"/>
+		<camera position="lawn" transition="instant"/>
 		<spawns flags="3" >
 			<spawn id="mvz2:zombie"/>
 			<spawn id="mvz2:leather_capped_zombie"/>
@@ -706,7 +706,6 @@
         </talks>
         <conveyor>
             <entry id="mvz2:glowstone" count="6" minCount="0"/>
-			<entry id="mvz2:tnt" count="2"/>
             <entry id="mvz2:wooden_dropper" count="5"/>
             <entry id="mvz2:spike_block" count="5"/>
             <entry id="mvz2:stone_dropper" count="8"/>

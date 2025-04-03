@@ -621,7 +621,6 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaContraptionID.totenser),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.anvil),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.boneWall),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.necromancer)

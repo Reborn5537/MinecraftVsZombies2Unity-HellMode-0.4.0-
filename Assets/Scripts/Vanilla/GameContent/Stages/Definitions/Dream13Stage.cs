@@ -19,6 +19,7 @@ using MVZ2.Vanilla;
 
 namespace MVZ2.GameContent.Stages
 {
+    [StageDefinition(VanillaStageNames.dream13)]
     public partial class Dream13Stage : StageDefinition
     {
         public Dream13Stage(string nsp, string name) : base(nsp, name)
@@ -31,16 +32,31 @@ namespace MVZ2.GameContent.Stages
         public override void OnStart(LevelEngine level)
         {
             base.OnStart(level);
+            ClassicStart(level);
+            //ConveyorStart(level);
+        }
+        private void ClassicStart(LevelEngine level)
+        {
+            level.SetStarshardSlotCount(3);
+            level.SetStarshardCount(1);
+            level.SetSeedSlotCount(8);
             level.ReplaceSeedPacks(new NamespaceID[]
             {
                 VanillaContraptionID.furnace,
                 VanillaContraptionID.lilyPad,
-                VanillaContraptionID.drivenser,
+                VanillaContraptionID.dispenser,
                 VanillaContraptionID.gravityPad,
-                VanillaContraptionID.pistenser,
+                VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.totenser,
                 VanillaContraptionID.dreamCrystal,
-                VanillaContraptionID.dreamSilk,
+                VanillaContraptionID.dreamSilk
+            });
+            level.SetArtifactSlotCount(3);
+            level.ReplaceArtifacts(new NamespaceID[]
+            {
+                VanillaArtifactID.netherStar,
+                VanillaArtifactID.dreamKey,
+                VanillaArtifactID.theCreaturesHeart,
             });
         }
     }
