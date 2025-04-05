@@ -43,6 +43,7 @@ namespace MVZ2.GameContent.Enemies
         public const string necromancermax = "necromancermax";
         public const string mesmerizermax = "mesmerizermax";
         public const string berserkermax = "berserkermax";
+        public const string nightmarefollower = "nightmarefollower";
     }
     public static class VanillaEnemyID
     {
@@ -62,6 +63,7 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID ghast = Get(VanillaEnemyNames.ghast);
         public static readonly NamespaceID motherTerror = Get(VanillaEnemyNames.motherTerror);
         public static readonly NamespaceID parasiteTerror = Get(VanillaEnemyNames.parasiteTerror);
+        public static readonly NamespaceID nightmarefollower = Get(VanillaEnemyNames.nightmarefollower);
 
         public static readonly NamespaceID mesmerizer = Get(VanillaEnemyNames.mesmerizer);
         public static readonly NamespaceID berserker = Get(VanillaEnemyNames.berserker);

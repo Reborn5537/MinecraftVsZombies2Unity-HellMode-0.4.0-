@@ -44,6 +44,7 @@ namespace MVZ2.GameContent.Contraptions
 
         public const string anvil = "anvil";
         public const string randomChina = "random_china";
+        public const string snipedispenser = "snipe_dispenser";
     }
     public static class VanillaContraptionID
     {
@@ -86,6 +87,7 @@ namespace MVZ2.GameContent.Contraptions
 
         public static readonly NamespaceID anvil = Get(VanillaContraptionNames.anvil);
         public static readonly NamespaceID randomChina = Get(VanillaContraptionNames.randomChina);
+        public static readonly NamespaceID snipedispenser = Get(VanillaContraptionNames.snipedispenser);
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

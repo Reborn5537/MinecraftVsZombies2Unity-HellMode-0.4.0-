@@ -67,6 +67,11 @@
 		<terrain water="true"/>
 		<weight base="1500" />
 	</entry>
+	<entry id="nightmarefollower" entity="mvz2:nightmarefollower" >
+		<spawn level="8" />
+		<terrain water="true"/>
+		<weight base="1500" />
+	</entry>
 
     <!-- Castle -->
     <entry id="mesmerizer" entity="mvz2:mesmerizer" >

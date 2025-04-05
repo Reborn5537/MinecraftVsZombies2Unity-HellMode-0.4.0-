@@ -299,6 +299,20 @@
 				<p>"为什么天上会掉铁砧？"——某个被砸扁的僵尸临终前问道。"因为牛顿的棺材板压不住了。"重力板在旁边幽幽地回答。</p>
 			</flavor>
 		</entry>
+		<entry id="mvz2:snipe_dispenser">
+			<header>
+				<p>学徒的叹息</p>
+			</header>
+			<properties>
+				<p>特点：<![CDATA[<color=blue>双箭协同追踪（±10°误差修正）</color>]]></p>
+				<p>技能：<![CDATA[<color=red>[残缺]莫洛托夫半圆射击阵</color>]]></p>
+			</properties>
+			<flavor>
+				<p>狙击发射器不成器的学徒，永远达不到师父"千米之外取敌首级"的境界。其箭矢只能形成残缺的莫洛托夫半圆射击阵，被戏称为"半吊子发射器"。</p>
+				<p>虽然继承了死亡印记的追踪能力，但必须采用双箭互补射击模式：先导箭负责索敌，追踪箭进行末端修正。这种低效的战斗方式常让它的师父摇头叹息。</p>
+				<p>最著名战绩是在靶场练习时误伤了3个友方熔炉——这反而证明了它确实学到了师父"百发百中"的技术特点，只是还没学会分辨敌我。</p>
+			</flavor>
+		</entry>
 
         <!-- Chapter 3 -->
         <entry id="mvz2:wooden_dropper">
@@ -829,34 +843,6 @@
                 <p>不过他自己不知道，也没有多少人知道——知道的也没人敢告诉他就是了。</p>
             </flavor>
         </entry>
-		<entry id="mvz2:mutant_zombie">
-			<header>
-				<p>突变僵尸拥有巨大的体格和惊人的力量。</p>
-			</header>
-			<properties>
-				<p>生命：<![CDATA[<color=red>3000</color>]]></p>
-				<p>速度：<![CDATA[<color=red>1</color>]]></p>
-				<p>特点：<![CDATA[<color=red>扛打能力强,当血量到达一定时会丢出小鬼僵尸</color>]]></p>
-			</properties>
-			<flavor>
-				<p>在上一次尸界大战中突变僵尸对器械造成了巨大的损失</p>
-				<p>而现在还会那样吗。</p>
-			</flavor>
-		</entry>
-		<entry id="mvz2:mega_mutant_zombie">
-			<header>
-				<p>超级突变僵尸拥有比突变僵尸更巨大的体格和惊人的力量。</p>
-			</header>
-			<properties>
-				<p>生命：<![CDATA[<color=red>6000</color>]]></p>
-				<p>速度：<![CDATA[<color=red>1</color>]]></p>
-				<p>特点：<![CDATA[<color=red>扛打能力强,当血量到达一定时会丢出小鬼僵尸</color>]]></p>
-			</properties>
-			<flavor>
-				<p>在上一次尸界大战中突变僵尸对器械造成了巨大的损失</p>
-				<p>而现在还会那样吗。</p>
-			</flavor>
-		</entry>
 		<entry id="mvz2:imp">
 			<header>
 				<p>小鬼僵尸速度很快，没了。</p>
@@ -923,7 +909,51 @@
 				<p>为凋灵大人献上永恒的忠诚！</p>
 			</flavor>
 		</entry>
-    </enemies>
+	<entry id="mvz2:nightmarefollower">
+		<header>
+			<p>梦魇残留的扭曲造物，仍在执行主人未完成的腐蚀指令</p>
+		</header>
+		<properties>
+			<p>生命：<![CDATA[<color=red>1000</color>]]></p>
+			<p>速度：<![CDATA[<color=red>0.5</color>]]></p>
+			<p>特点：<![CDATA[<color=red>梦魇死亡后仅存的追随者</color>]]></p>
+		</properties>
+		<flavor>
+			<p>当骑士终于找到那匹梦魇化作的黑马时，他发现马背上竟骑着个披着破旧黑袍的人形。</p>
+			<p>"你不是马...你是骑手？"骑士举起长枪质问。</p>
+			<p>黑袍下传出空洞的笑声："我们都是...也都不是..."</p>
+			<p>随着黑袍滑落，骑士看到无数苍白的手臂从那人体内伸出，像缰绳般缠绕着梦魇的脖颈。</p>
+		</flavor>
+	</entry>
+		<entry id="mvz2:mutant_zombie">
+			<header>
+				<p>突变僵尸拥有巨大的体格和惊人的力量。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>3000</color>]]></p>
+				<p>速度：<![CDATA[<color=red>1</color>]]></p>
+				<p>特点：<![CDATA[<color=red>扛打能力强,当血量到达一定时会丢出小鬼僵尸</color>]]></p>
+			</properties>
+			<flavor>
+				<p>在上一次尸界大战中突变僵尸对器械造成了巨大的损失</p>
+				<p>而现在还会那样吗。</p>
+			</flavor>
+		</entry>
+		<entry id="mvz2:mega_mutant_zombie">
+			<header>
+				<p>超级突变僵尸拥有比突变僵尸更巨大的体格和惊人的力量。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>6000</color>]]></p>
+				<p>速度：<![CDATA[<color=red>1</color>]]></p>
+				<p>特点：<![CDATA[<color=red>扛打能力强,当血量到达一定时会丢出小鬼僵尸</color>]]></p>
+			</properties>
+			<flavor>
+				<p>在上一次尸界大战中突变僵尸对器械造成了巨大的损失</p>
+				<p>而现在还会那样吗。</p>
+			</flavor>
+		</entry>
+	</enemies>
     <artifacts>
         <entry id="mvz2:almanac">
             <header>

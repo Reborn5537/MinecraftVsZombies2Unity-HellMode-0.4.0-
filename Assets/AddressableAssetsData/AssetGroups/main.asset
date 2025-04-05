@@ -701,6 +701,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1ec349c80790765468b3a07a2e7e32a4
+    m_Address: mvz2:entity/contraption/snipe_dispenser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1efdaaca14fbc6c4cb357c9d4b62b6d0
     m_Address: mvz2:held/starshards/halloween
     m_ReadOnly: 0
@@ -1485,6 +1491,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c56107dab0f2b94586e24be9d87abdb
+    m_Address: mvz2:enemy/dream/nightmarefollower
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3c7cacc742c9f154e80d19b1b5b133c2
     m_Address: mvz2:mobile_blueprint/silvenser
@@ -3009,6 +3021,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 780cac5345bbda74d98cfd963db70ef1
+    m_Address: mvz2:mobile_blueprint/nightmarefollower
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7865af6122289884aa1160a9bb226b43
     m_Address: mvz2:pickup/ruby
     m_ReadOnly: 0
@@ -4197,6 +4215,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a180eae2eba19a044b102a6d990690a3
+    m_Address: mvz2:mobile_blueprint/snipe_dispenser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a2044f7fe14b6814d8a3c3cde1ff9c74
     m_Address: mvz2:effect/soulfire_blast
     m_ReadOnly: 0
@@ -4959,6 +4983,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb97982c39e06594c8744048caf5ba5b
+    m_Address: mvz2:entity/enemy/nightmarefollower
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bb9cb8c96cd65034d97163c167129eb9
     m_Address: mvz2:entity/enemy/anubisand
     m_ReadOnly: 0
@@ -5432,6 +5462,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd9f454842eeb504fa5d0360087888b2
+    m_Address: mvz2:contraption/dream/snipe_dispenser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cd9fb24b2c51dc9499b06218585ad8b9
     m_Address: mvz2:boon
@@ -5918,6 +5954,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df4593ef1ed5aa94bbf22db8abe15372
+    m_Address: mvz2:entity/contraption/snipe_dispenser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: df4b37f82bb5bec438a70507f3913e97
     m_Address: mvz2:projectile/spike

@@ -665,13 +665,12 @@
 		<section>
 			<characters>
 				<character id="mvz2:crazy_villager" side="left" />
-				<character id="mvz2:steve" side="self" />
 			</characters>
 			<sentences>
 				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">又是一个防御性器械呢！</sentence>
 				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">这个是铁砧！把它放在地上，就能够阻挡敌人的攻击了！</sentence>
 				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">这个器械在掉落时会产生巨大的伤害,非常有用！</sentence>
-				<sentence speaker="mvz2:steve" sounds="mvz2:talk" onClick="end">这真的有用吗(恼)</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk" onClick="end">有了这个我们或许能够对付追随者了!</sentence>
 			</sentences>
 		</section>
 	</group>
@@ -683,12 +682,47 @@
 				<character id="mvz2:steve" side="self" />
 			</characters>
 			<sentences>
-				<sentence speaker="mvz2:steve" sounds="mvz2:talk">你在捣鼓什么东西啊(恼)</sentence>
-				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">老夫我啊,已经算到了每一步</sentence>
-				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">我还是那句话，你要学会合理应用他。</sentence>
-				<sentence speaker="mvz2:steve" sounds="mvz2:talk">(不管了,他爱咋地咋地吧)</sentence>
-				<sentence speaker="mvz2:steve" sounds="mvz2:talk">(现在还是解决追随者要紧)</sentence>
-				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk" onClick="end">……我们会祝你好运的。</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">明天那个梦魇追随者就应该快来了。</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">你还是做好准备吧。</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">在你战斗的时候,我们遭受了袭击,丢失了一些器械。</sentence>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk">啊?</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">我相信你可以的,我们都经历那么久了,什么挫折没有经历过。</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">试试那个铁砧吧。</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk" onClick="end">……我会祝你好运的。</sentence>
+			</sentences>
+		</section>
+	</group>
+	<group id="dream_13_over" tags="mvz2:dream;mvz2:over">
+		<archive name="梦境世界第13天结束" background="mvz2:misc/nightmare" unlock="mvz2:level.dream_13" />
+		<section>
+			<characters>
+				<character id="mvz2:crazy_villager" side="left" />
+			    <character id="mvz2:steve" side="right" />
+			</characters>
+			<sentences>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_scream1">一个新发射器呢！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long2">这个是追踪发射器！把它放在地上，他就能发射追踪敌人的箭矢！</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:villager_long3">他的师傅是狙击发射器,可惜在第一次尸界大战中阵亡了,他拥有和他师傅一样的绝技,可惜略微有残缺!</sentence>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk">"◊∑⌇⍜⍀⌖⍀⍙⊬⍀⏁⊑⌇⍜⍀☊⟒⍀⊬⏃⋔⏃⋏⏁⊑⏃⍀!"</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk" onClick="end">等等....那是?</sentence>
+			</sentences>
+		</section>
+	</group>
+	<group id="dream_13_map" tags="mvz2:dream;mvz2:map">
+		<archive name="梦境世界第13天地图" music="mvz2:nightmare_map" background="mvz2:misc/nightmare" unlock="mvz2:level.dream_13" />
+		<section>
+			<characters>
+				<character id="mvz2:crazy_villager" side="left" />
+				<character id="mvz2:steve" side="self" />
+			</characters>
+			<sentences>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">该死,居然这个时候放松了警惕。</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">现在的前院已经被水淹没了。</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">不过好在,我重新制作了丢失的器械。</sentence>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk">真是多灾多难啊</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">我会提前在前院放置一些睡莲的。</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">磁暴线圈或许是不错的选择呢。</sentence>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk" onClick="end">太邪门了........这种日子什么时候是个头啊。</sentence>
 			</sentences>
 		</section>
 	</group>

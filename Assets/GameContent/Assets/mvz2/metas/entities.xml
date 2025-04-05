@@ -375,6 +375,18 @@
             <int name="cost" value="125" />
             <id name="rechargeId" value="mvz2:long" />
         </contraption>
+		<dispenser id="snipe_dispenser" name="追踪发射器" tooltip="发射2个带有追踪的箭" unlock="mvz2:level.dream_13">
+			<float name="damage" value="40"/>
+			<float name="range" value="750"/>
+			<vector3 name="shotVelocity" x="10" y="0" z="0"/>
+			<vector3 name="shotOffset" x="25" y="30" z="0"/>
+			<vector3 name="size" x="32" y="48" z="32"/>
+			<id name="shootSound" value="mvz2:shot"/>
+			<id name="projectileId" value="mvz2:arrow"/>
+
+			<int name="cost" value="250" />
+			<id name="rechargeId" value="mvz2:long" />
+		</dispenser>
 
         <!-- Castle Contraptions -->
         <dispenser id="wooden_dropper" name="木制投掷器" tooltip="投出木制小球" unlock="mvz2:level.castle_1">
@@ -734,6 +746,17 @@
             <int name="cost" value="125" />
             <int name="waterInteraction" value="2"/>
         </enemy>
+		<enemy id="nightmarefollower" name="梦魇追随者" deathMessage="献祭已完成!" unlock="mvz2:level.dream_12">
+			<float name="maxHealth" value="1000"/>
+			<float name="speed" value="0.5"/>
+			<id name="shell" value="mvz2:bone"/>
+			<bool name="undead" value="false"/>
+			<id name="crySound" value="mvz2:skeleton_cry"/>
+			<id name="deathSound" value="mvz2:skeleton_death"/>
+
+			<int name="cost" value="175" />
+			<int name="waterInteraction" value="2"/>
+		</enemy>
 
         <!-- Castle Enemies -->
         <enemy id="mesmerizer" name="催眠者" deathMessage="服从凋灵吧" unlock="mvz2:level.castle_1">

@@ -48,7 +48,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaEnemyID.bedserker,
                 VanillaContraptionID.glowstone,
                 VanillaContraptionID.soulFurnace,
-                VanillaEnemyID.mesmerizermax,
+                VanillaEnemyID.nightmarefollower,
                 VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.randomChina,
                 VanillaContraptionID.drivenser,

@@ -33,7 +33,6 @@ namespace MVZ2.GameContent.Stages
         {
             base.OnStart(level);
             ClassicStart(level);
-            //ConveyorStart(level);
         }
         private void ClassicStart(LevelEngine level)
         {
@@ -49,7 +48,7 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.totenser,
                 VanillaContraptionID.dreamCrystal,
-                VanillaContraptionID.dreamSilk
+                VanillaContraptionID.punchton
             });
             level.SetArtifactSlotCount(3);
             level.ReplaceArtifacts(new NamespaceID[]

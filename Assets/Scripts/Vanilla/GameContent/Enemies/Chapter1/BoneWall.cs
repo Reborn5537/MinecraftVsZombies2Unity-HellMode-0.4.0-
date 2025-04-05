@@ -18,9 +18,12 @@ namespace MVZ2.GameContent.Enemies
     [EntityBehaviourDefinition(VanillaEnemyNames.boneWall)]
     public class BoneWall : StateEnemy
     {
+        private bool _hasBoat;
+
         public BoneWall(string nsp, string name) : base(nsp, name)
         {
         }
+
         public override void Init(Entity entity)
         {
             base.Init(entity);
@@ -29,21 +32,34 @@ namespace MVZ2.GameContent.Enemies
             buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 0);
             entity.Timeout = entity.GetMaxTimeout();
             entity.PlaySound(VanillaSoundID.boneWallBuild);
+
             var level = entity.Level;
-            if (level.IsWaterLane(entity.GetLane()))
+            _hasBoat = level.IsWaterLane(entity.GetLane());
+            if (_hasBoat)
             {
                 entity.AddBuff<BoatBuff>();
-                entity.SetAnimationBool("HasBoat", true);
             }
+            entity.SetAnimationBool("HasBoat", _hasBoat);
+            entity.SetAnimationBool("InWater", false);
         }
+
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationBool("HasBoat", entity.HasBuff<BoatBuff>());
+
+            entity.SetAnimationBool("InWater", false);
+            bool currentBoatState = entity.HasBuff<BoatBuff>();
+            if (currentBoatState != _hasBoat)
+            {
+                _hasBoat = currentBoatState;
+                entity.SetAnimationBool("HasBoat", _hasBoat);
+            }
+
             if (!entity.HasBuff<GhostBuff>())
             {
                 entity.AddBuff<GhostBuff>();
             }
+
             if (entity.Timeout >= 0)
             {
                 entity.Timeout--;
@@ -53,6 +69,7 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
         }
+
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             if (entity.HasBuff<BoatBuff>())
