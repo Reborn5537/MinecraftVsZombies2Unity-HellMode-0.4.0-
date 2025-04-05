@@ -4,22 +4,18 @@ using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
-using MVZ2.GameContent.Buffs.Armors;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+using MVZ2.GameContent.Buffs.Projectiles;
+using MVZ2.Vanilla.Audios;
+using System.Linq;
 
-namespace MVZ2.GameContent.Contraptions.Chapter2
+namespace MVZ2.GameContent.Contraptions
 {
     [EntityBehaviourDefinition(VanillaContraptionNames.snipedispenser)]
     public class SnipeDispenser : DispenserFamily
     {
-        private class ArrowTracker
-        {
-            public Entity Target;
-            public float AngleOffset;
-        }
-
-        private static Dictionary<Entity, ArrowTracker> _trackingArrows = new Dictionary<Entity, ArrowTracker>();
+        private List<Entity> _activeArrows = new List<Entity>();
 
         public SnipeDispenser(string nsp, string name) : base(nsp, name)
         {
@@ -28,114 +24,106 @@ namespace MVZ2.GameContent.Contraptions.Chapter2
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            var evocationTimer = new FrameTimer(115);
-            SetEvocationTimer(entity, evocationTimer);
+            InitShootTimer(entity);
+            SetEvocationTimer(entity, new FrameTimer(150));
         }
 
         protected override void UpdateAI(Entity entity)
         {
             base.UpdateAI(entity);
-            var arrowsToRemove = new List<Entity>();
-            foreach (var pair in _trackingArrows)
+            if (!entity.IsEvoked())
             {
-                var arrow = pair.Key;
-                var tracker = pair.Value;
-
-                if (!arrow.ExistsAndAlive() || !tracker.Target.ExistsAndAlive())
+                ShootTick(entity);
+                return;
+            }
+            EvokedUpdate(entity);
+            UpdateArrowTracking(entity); // 新增：更新所有活跃箭矢的追踪逻辑
+        }
+        private void UpdateArrowTracking(Entity dispenser)
+        {
+            for (int i = _activeArrows.Count - 1; i >= 0; i--)
+            {
+                Entity arrow = _activeArrows[i];
+                if (arrow.IsDead || !arrow.Exists())
                 {
-                    arrowsToRemove.Add(arrow);
+                    _activeArrows.RemoveAt(i);
                     continue;
                 }
-
-                UpdateArrowTracking(arrow, tracker);
-            }
-
-            foreach (var arrow in arrowsToRemove)
-            {
-                _trackingArrows.Remove(arrow);
-            }
-
-            if (entity.IsEvoked())
-            {
-                var timer = GetEvocationTimer(entity);
-                timer.Run();
-                if (timer.Expired)
+                Entity target = FindClosestTarget(arrow, dispenser);
+                if (target != null)
                 {
-                    entity.SetEvoked(false);
-                    GetShootTimer(entity).Reset();
+                    Vector3 direction = (target.GetCenter() - arrow.Position).normalized;
+                    direction = ApplyTrackingError(direction, 10f); // 应用误差
+                    arrow.Velocity = direction * arrow.Velocity.magnitude;
                 }
             }
         }
 
-        public override Entity Shoot(Entity entity)
+        private Entity FindClosestTarget(Entity arrow, Entity dispenser)
         {
-            entity.TriggerAnimation("Shoot");
-            var target = GetNearestEnemy(entity);
-            return target != null ? FireTwinTrackingArrows(entity, target) : base.Shoot(entity);
+            var level = arrow.Level;
+            Vector3 centerPos = arrow.Position;
+
+            var candidates = level.FindEntities(e =>
+                (e.Type == EntityTypes.ENEMY ||
+                 e.Type == EntityTypes.BOSS ||
+                 e.Type == EntityTypes.OBSTACLE) &&
+                e.IsHostile(dispenser.GetFaction())
+            );
+
+            if (candidates.Length == 0)
+                return null;
+
+            return candidates
+                .OrderBy(e => Vector3.Distance(centerPos, e.Position))
+                .FirstOrDefault();
         }
 
-        private Entity FireTwinTrackingArrows(Entity entity, Entity target)
+        private Vector3 ApplyTrackingError(Vector3 direction, float maxAngle)
         {
-            var arrow1 = entity.ShootProjectile();
-            InitializeTrackingArrow(arrow1, target, -10f);
-
-            var arrow2 = entity.ShootProjectile();
-            InitializeTrackingArrow(arrow2, target, 10f);
-
-            return arrow1;
+            float error = UnityEngine.Random.Range(-maxAngle, maxAngle);
+            return Quaternion.Euler(0, error, 0) * direction;
         }
 
-        private void InitializeTrackingArrow(Entity arrow, Entity target, float angleOffset)
+        protected override void OnEvoke(Entity entity)
         {
-            Vector3 direction = (target.GetCenter() - arrow.GetCenter()).normalized;
-            direction = Quaternion.Euler(0, angleOffset, 0) * direction;
-            arrow.Velocity = direction * arrow.Velocity.magnitude;
+            base.OnEvoke(entity);
+            var evocationTimer = GetEvocationTimer(entity);
+            evocationTimer.Reset();
+            entity.SetEvoked(true);
+        }
 
-            _trackingArrows[arrow] = new ArrowTracker
+        private void EvokedUpdate(Entity entity)
+        {
+            var evocationTimer = GetEvocationTimer(entity);
+            evocationTimer.Run();
+            if (evocationTimer.PassedInterval(2))
             {
-                Target = target,
-                AngleOffset = angleOffset
-            };
-        }
-
-        private void UpdateArrowTracking(Entity arrow, ArrowTracker tracker)
-        {
-            const float maxAngle = 5f;
-            Vector3 currentDir = arrow.Velocity.normalized;
-            Vector3 targetDir = (tracker.Target.GetCenter() - arrow.GetCenter()).normalized;
-
-            targetDir = Quaternion.Euler(0, tracker.AngleOffset, 0) * targetDir;
-
-            float angle = Vector3.Angle(currentDir, targetDir);
-            if (angle > maxAngle)
-            {
-                targetDir = Vector3.RotateTowards(currentDir, targetDir, maxAngle * Mathf.Deg2Rad, 0);
+                for (int i = 0; i < 2; i++)
+                {
+                    var projectile = Shoot(entity);
+                    projectile.Velocity *= 2;
+                    _activeArrows.Add(projectile);
+                }
             }
-
-            arrow.Velocity = targetDir * arrow.Velocity.magnitude;
-        }
-
-        private Entity GetNearestEnemy(Entity entity)
-        {
-            var detected = detector.Detect(entity);
-
-            if (detected?.Entity != null &&
-               (detected.Entity.Type == EntityTypes.ENEMY ||
-                detected.Entity.Type == EntityTypes.BOSS))
+            if (evocationTimer.Expired)
             {
-                return detected.Entity;
+                entity.SetEvoked(false);
+                var shootTimer = GetShootTimer(entity);
+                shootTimer.Reset();
             }
-            return null;
         }
 
+        /*public override Entity Shoot(Entity entity)
+        {
+            Entity projectile = base.Shoot(entity);
+            projectile.SetProperty("IsTracking", true);
+            return projectile;
+        }*/
+
+        public static FrameTimer GetEvocationTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_EVOCATION_TIMER);
+        public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIMER, timer);
         private static readonly NamespaceID ID = VanillaContraptionID.snipedispenser;
-        public static readonly VanillaEntityPropertyMeta PROP_EVOCATION_TIMER =
-            new VanillaEntityPropertyMeta("EvocationTimer");
-
-        public static FrameTimer GetEvocationTimer(Entity entity) =>
-            entity.GetBehaviourField<FrameTimer>(ID, PROP_EVOCATION_TIMER);
-
-        public static void SetEvocationTimer(Entity entity, FrameTimer timer) =>
-            entity.SetBehaviourField(ID, PROP_EVOCATION_TIMER, timer);
+        public static readonly VanillaEntityPropertyMeta PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta("EvocationTimer");
     }
 }

@@ -377,7 +377,7 @@
         </contraption>
 		<dispenser id="snipe_dispenser" name="追踪发射器" tooltip="发射2个带有追踪的箭" unlock="mvz2:level.dream_13">
 			<float name="damage" value="40"/>
-			<float name="range" value="750"/>
+			<float name="range" value="850"/>
 			<vector3 name="shotVelocity" x="10" y="0" z="0"/>
 			<vector3 name="shotOffset" x="25" y="30" z="0"/>
 			<vector3 name="size" x="32" y="48" z="32"/>
@@ -819,7 +819,7 @@
             <int name="cost" value="100" />
         </enemy>
 
-        <enemy id="mutant_zombie" name="突变僵尸" deathMessage="你怎么进门的？" unlock="mvz2:level.shrine_8">
+        <enemy id="mutant_zombie" name="突变僵尸" deathMessage="你怎么进门的？" unlock="mvz2:level.dream_12">
             <float name="maxHealth" value="3000"/>
             <float name="maxAttackHeight" value="100"/>
             <float name="speed" value="1"/>
@@ -836,7 +836,7 @@
             <int name="cost" value="300" />
             <int name="waterInteraction" value="3"/>
         </enemy>
-        <enemy id="mega_mutant_zombie" name="超级突变僵尸" deathMessage="你怎么进门的？" unlock="mvz2:level.shrine_8">
+        <enemy id="mega_mutant_zombie" name="超级突变僵尸" deathMessage="你怎么进门的？" unlock="mvz2:level.dream_12">
             <float name="maxHealth" value="6000"/>
             <float name="maxAttackHeight" value="100"/>
             <float name="speed" value="1"/>
@@ -853,7 +853,7 @@
             <int name="cost" value="500" />
             <int name="waterInteraction" value="3"/>
         </enemy>
-        <enemy id="imp" name="小鬼僵尸" deathMessage="被偷家了">
+        <enemy id="imp" name="小鬼僵尸" deathMessage="被偷家了" unlock="mvz2:level.dream_12">
             <float name="fallResistance" value="18"/>
             <float name="cryPitch" value="2"/>
             <int name="cost" value="50" />
@@ -982,7 +982,7 @@
 			<int name="waterInteraction" value="2"/>
 		</enemy>
 		<enemy id="mesmerizermax" name="催眠骑士" deathMessage="为凋零大人献上永恒的忠诚！" unlock="mvz2:level.castle_11">
-			<float name="range" value="850"/>
+			<float name="range" value="900"/>
 			<bool name="loyal" value="true"/>
 			<float name="speed" value="2"/>
 			<float name="maxHealth" value="800"/>
@@ -998,7 +998,7 @@
 			<int name="waterInteraction" value="2"/>
 		</enemy>
 		<enemy id="berserkermax" name="疯狂骑士" deathMessage="为凋零大人献上永恒的忠诚！" unlock="mvz2:level.castle_11">
-			<float name="range" value="100"/>
+			<float name="range" value="120"/>
 			<bool name="loyal" value="true"/>
 			<float name="speed" value="2"/>
 			<float name="maxHealth" value="800"/>

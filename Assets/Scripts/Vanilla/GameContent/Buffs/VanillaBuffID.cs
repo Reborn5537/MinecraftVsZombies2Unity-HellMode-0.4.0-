@@ -45,6 +45,7 @@ namespace MVZ2.GameContent.Buffs
         public const string miracleMalletReplicaDamage = "miracle_mallet_replica_damage";
         public const string witherSkeletonSkullReduceHealth = "wither_skeleton_skull_reduce_health";
         public const string brokenLantern = "broken_lantern";
+        public const string basictracking = "basic_tracking";
         // Enemy
         public const string gemCarrier = "gem_carrier";
         public const string punchtonAchievement = "punchton_achievement";

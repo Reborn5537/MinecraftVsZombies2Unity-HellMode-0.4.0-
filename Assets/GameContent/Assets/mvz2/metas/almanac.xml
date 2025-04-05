@@ -240,7 +240,7 @@
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>伤害：<![CDATA[<color=red>20</color>]]></p>
                 <p>特点：<![CDATA[<color=red>能够攻击高处的敌人</color>]]></p>
-                <p>技能：<![CDATA[<color=red>向至多10个敌人发射穿甲的巨型尖刺</color>]]></p>
+                <p>技能：<![CDATA[<color=red>向至多12个敌人发射穿甲的巨型尖刺</color>]]></p>
             </properties>
             <flavor>
                 <p>活塞发射器其实可以伸的非常长，甚至能达到直升机飞行的高度。</p>
@@ -293,7 +293,7 @@
 			</header>
 			<properties>
 				<p>特点：<![CDATA[<color=red>既能攻击敌人也能阻挡敌人前进</color>]]></p>
-				<p>技能：<![CDATA[<color=red>给予全体器械无敌和恢复5秒</color>]]></p>
+				<p>技能：<![CDATA[<color=red>给予全体器械无敌5秒</color>]]></p>
 			</properties>
 			<flavor>
 				<p>"为什么天上会掉铁砧？"——某个被砸扁的僵尸临终前问道。"因为牛顿的棺材板压不住了。"重力板在旁边幽幽地回答。</p>
@@ -301,7 +301,7 @@
 		</entry>
 		<entry id="mvz2:snipe_dispenser">
 			<header>
-				<p>学徒的叹息</p>
+				<p>发射两次追踪箭矢攻击敌人</p>
 			</header>
 			<properties>
 				<p>特点：<![CDATA[<color=blue>双箭协同追踪（±10°误差修正）</color>]]></p>
@@ -843,20 +843,6 @@
                 <p>不过他自己不知道，也没有多少人知道——知道的也没人敢告诉他就是了。</p>
             </flavor>
         </entry>
-		<entry id="mvz2:imp">
-			<header>
-				<p>小鬼僵尸速度很快，没了。</p>
-			</header>
-			<properties>
-				<p>生命：<![CDATA[<color=red>200</color>]]></p>
-				<p>速度：<![CDATA[<color=red>1</color>]]></p>
-				<p>特点：<![CDATA[<color=red>肉盾</color>]]></p>
-			</properties>
-			<flavor>
-				<p>在上一次尸界大战中小僵尸对器械的后方造成了巨大的损失。</p>
-				<p>而现在还会那样吗。</p>
-			</flavor>
-		</entry>
 	<entry id="mvz2:bedserker">
 			<header>
 				<p>凋灵之眠，梦境腐朽</p>
@@ -950,6 +936,20 @@
 			</properties>
 			<flavor>
 				<p>在上一次尸界大战中突变僵尸对器械造成了巨大的损失</p>
+				<p>而现在还会那样吗。</p>
+			</flavor>
+		</entry>
+	<entry id="mvz2:imp">
+			<header>
+				<p>小鬼僵尸速度很快，没了。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>200</color>]]></p>
+				<p>速度：<![CDATA[<color=red>1</color>]]></p>
+				<p>特点：<![CDATA[<color=red>肉盾</color>]]></p>
+			</properties>
+			<flavor>
+				<p>在上一次尸界大战中小僵尸对器械的后方造成了巨大的损失。</p>
 				<p>而现在还会那样吗。</p>
 			</flavor>
 		</entry>
