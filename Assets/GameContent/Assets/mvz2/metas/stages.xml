@@ -525,7 +525,7 @@
 			<spawn id="mvz2:nightmarefollower"/>
 		</spawns>
 	</stage>
-	<stage id="dream_14" name="梦境世界" dayNumber="14" type="special" unlock="mvz2:level.dream_13" >
+	<stage id="dream_14" name="梦境世界" dayNumber="14" unlock="mvz2:level.dream_13" >
 		<talks>
 			<talk type="start" value="mvz2:dream_14"/>
 			<talk type="map" value="mvz2:dream_14_map"/>
@@ -549,9 +549,9 @@
 	</stage>
 	<stage id="dream_15" name="梦境世界" dayNumber="15" type="boss" needBlueprints="false" unlock="mvz2:level.dream_15" music="mvz2:nightmare_final" >
 		<talks noStartMusic="true">
-			<talk type="start" value="mvz2:dream_14"/>
-			<talk type="end" value="mvz2:dream_14_over"/>
-			<talk type="map" value="mvz2:dream_14_map"/>
+			<talk type="start" value="mvz2:dream_15"/>
+			<talk type="end" value="mvz2:dream_15_over"/>
+			<talk type="map" value="mvz2:dream_15_map"/>
 		</talks>
 		<conveyor>
 			<entry id="mvz2:lily_pad" count="16"/>

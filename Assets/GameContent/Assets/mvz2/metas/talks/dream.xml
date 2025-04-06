@@ -731,6 +731,7 @@
 		<section>
 			<characters>
 				<character id="mvz2:crazy_villager" side="left" />
+				<character id="mvz2:steve" side="self" />
 			</characters>
 			<sentences>
 				<sentence speaker="mvz2:steve" sounds="mvz2:talk">这水未免有点太多了吧。</sentence>
