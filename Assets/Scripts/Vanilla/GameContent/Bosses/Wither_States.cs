@@ -562,7 +562,8 @@ namespace MVZ2.GameContent.Bosses
                             var z = entity.Level.GetEntityLaneZ(i);
                             var y = entity.Level.GetGroundY(x, z);
                             var param = entity.GetSpawnParams();
-                            entity.Spawn(VanillaEnemyID.dullahan, new Vector3(x, y, z), param);
+                            entity.Spawn(VanillaEnemyID.hellChariot, new Vector3(x, y, z), param);
+                            entity.Spawn(VanillaEnemyID.reverseSatellite, new Vector3(x, y, z), param);
                         }
                     }
                 }
@@ -663,7 +664,7 @@ namespace MVZ2.GameContent.Bosses
                             {
                                 entity.SetAnimationBool("Shaking", false);
                                 stateMachine.SetSubState(entity, SUBSTATE_SUMMONED);
-                                substateTimer.ResetTime(200);
+                                substateTimer.ResetTime(150);
 
                                 entity.PlaySound(VanillaSoundID.witherSpawn);
                                 var param = entity.GetSpawnParams();

@@ -19,6 +19,11 @@ namespace MVZ2.GameContent.Contraptions
 
         public SnipeDispenser(string nsp, string name) : base(nsp, name)
         {
+            detector.ignoreHighEnemy = false;
+            detector.ignoreLowEnemy = false;
+            detector.colliderFilter = (self, collider) =>
+                collider.Entity.Type == EntityTypes.ENEMY ||
+                collider.Entity.Type == EntityTypes.OBSTACLE;
         }
 
         public override void Init(Entity entity)
@@ -34,11 +39,14 @@ namespace MVZ2.GameContent.Contraptions
             if (!entity.IsEvoked())
             {
                 ShootTick(entity);
-                return;
             }
-            EvokedUpdate(entity);
-            UpdateArrowTracking(entity); // 新增：更新所有活跃箭矢的追踪逻辑
+            else
+            {
+                EvokedUpdate(entity);
+            }
+            UpdateArrowTracking(entity);
         }
+
         private void UpdateArrowTracking(Entity dispenser)
         {
             for (int i = _activeArrows.Count - 1; i >= 0; i--)
@@ -49,11 +57,12 @@ namespace MVZ2.GameContent.Contraptions
                     _activeArrows.RemoveAt(i);
                     continue;
                 }
+
                 Entity target = FindClosestTarget(arrow, dispenser);
                 if (target != null)
                 {
                     Vector3 direction = (target.GetCenter() - arrow.Position).normalized;
-                    direction = ApplyTrackingError(direction, 10f); // 应用误差
+                    direction = ApplyTrackingError(direction, 10f);
                     arrow.Velocity = direction * arrow.Velocity.magnitude;
                 }
             }
@@ -62,34 +71,32 @@ namespace MVZ2.GameContent.Contraptions
         private Entity FindClosestTarget(Entity arrow, Entity dispenser)
         {
             var level = arrow.Level;
-            Vector3 centerPos = arrow.Position;
-
-            var candidates = level.FindEntities(e =>
+            return level.FindEntities(e =>
                 (e.Type == EntityTypes.ENEMY ||
                  e.Type == EntityTypes.BOSS ||
                  e.Type == EntityTypes.OBSTACLE) &&
+                !e.IsDead &&
                 e.IsHostile(dispenser.GetFaction())
-            );
-
-            if (candidates.Length == 0)
-                return null;
-
-            return candidates
-                .OrderBy(e => Vector3.Distance(centerPos, e.Position))
-                .FirstOrDefault();
+            ).OrderBy(e => Vector3.Distance(arrow.Position, e.Position))
+             .FirstOrDefault();
+            if (!dispenser.IsFriendlyEntity())
+                return level.FindEntities(e =>
+                (e.Type == EntityTypes.PLANT &&
+                !e.IsDead )
+            ).OrderBy(e => Vector3.Distance(arrow.Position, e.Position))
+             .FirstOrDefault();
         }
 
         private Vector3 ApplyTrackingError(Vector3 direction, float maxAngle)
         {
-            float error = UnityEngine.Random.Range(-maxAngle, maxAngle);
+            float error = Random.Range(-maxAngle, maxAngle);
             return Quaternion.Euler(0, error, 0) * direction;
         }
 
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
-            var evocationTimer = GetEvocationTimer(entity);
-            evocationTimer.Reset();
+            GetEvocationTimer(entity).Reset();
             entity.SetEvoked(true);
         }
 
@@ -97,33 +104,72 @@ namespace MVZ2.GameContent.Contraptions
         {
             var evocationTimer = GetEvocationTimer(entity);
             evocationTimer.Run();
+
             if (evocationTimer.PassedInterval(2))
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    var projectile = Shoot(entity);
-                    projectile.Velocity *= 2;
-                    _activeArrows.Add(projectile);
-                }
+                Entity projectile = base.Shoot(entity);
+                projectile.Velocity *= 2;
+                projectile.SetProperty(PROP_TRACKING_MARKER, true);
+                _activeArrows.Add(projectile);
             }
+
             if (evocationTimer.Expired)
             {
                 entity.SetEvoked(false);
-                var shootTimer = GetShootTimer(entity);
-                shootTimer.Reset();
+                GetShootTimer(entity).Reset();
             }
         }
 
-        /*public override Entity Shoot(Entity entity)
+        public override Entity Shoot(Entity entity)
         {
             Entity projectile = base.Shoot(entity);
-            projectile.SetProperty("IsTracking", true);
+            if (!_activeArrows.Contains(projectile))
+            {
+                _activeArrows.Add(projectile);
+            }
             return projectile;
-        }*/
+        }
 
-        public static FrameTimer GetEvocationTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(ID, PROP_EVOCATION_TIMER);
-        public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(ID, PROP_EVOCATION_TIMER, timer);
+        public new void ShootTick(Entity entity)
+        {
+            var shootTimer = GetShootTimer(entity);
+            shootTimer.Run(entity.GetAttackSpeed());
+            if (shootTimer.Expired)
+            {
+                var level = entity.Level;
+                bool hasValidTarget = level.FindEntities(e =>
+            (e.Type == EntityTypes.ENEMY ||
+             e.Type == EntityTypes.OBSTACLE) &&
+            !e.IsDead // 确保实体未死亡
+        ).Any(); // 检查是否存在至少一个有效目标
+
+                if (hasValidTarget)
+                {
+                    OnShootTick(entity);
+                }
+                shootTimer.ResetTime(GetTimerTime(entity));
+            }
+        }
+
+        public override void OnShootTick(Entity entity)
+        {
+            base.OnShootTick(entity);
+        }
+
+        private bool IsValidTargetType(Entity target) =>
+            target.Type == EntityTypes.ENEMY || target.Type == EntityTypes.OBSTACLE;
+
+        private static readonly VanillaEntityPropertyMeta PROP_TRACKING_MARKER =
+            new VanillaEntityPropertyMeta("IsTrackingArrow");
+
+        public static FrameTimer GetEvocationTimer(Entity entity) =>
+            entity.GetBehaviourField<FrameTimer>(ID, PROP_EVOCATION_TIMER);
+
+        public static void SetEvocationTimer(Entity entity, FrameTimer timer) =>
+            entity.SetBehaviourField(ID, PROP_EVOCATION_TIMER, timer);
+
         private static readonly NamespaceID ID = VanillaContraptionID.snipedispenser;
-        public static readonly VanillaEntityPropertyMeta PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta("EvocationTimer");
+        public static readonly VanillaEntityPropertyMeta PROP_EVOCATION_TIMER =
+            new VanillaEntityPropertyMeta("EvocationTimer");
     }
 }

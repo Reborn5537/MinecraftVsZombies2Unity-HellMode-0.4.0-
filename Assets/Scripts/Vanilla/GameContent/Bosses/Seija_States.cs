@@ -468,7 +468,7 @@ namespace MVZ2.GameContent.Bosses
         {
             public BackflipState() : base(STATE_BACKFLIP) { }
 
-            private static readonly int ORB_COUNT = 3;
+            private static readonly int ORB_COUNT = 5;
             private static readonly float ORB_SPREAD_ANGLE = 30f;
 
             public override void OnEnter(EntityStateMachine machine, Entity entity)
@@ -529,7 +529,7 @@ namespace MVZ2.GameContent.Bosses
                         if (entity.IsOnGround)
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_LANDED);
-                            substateTimer.ResetTime(17);
+                            substateTimer.ResetTime(15);
                         }
                         break;
 
@@ -565,7 +565,7 @@ namespace MVZ2.GameContent.Bosses
                         if (entity.IsOnGround)
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_LANDED);
-                            substateTimer.ResetTime(17);
+                            substateTimer.ResetTime(15);
                         }
                         break;
 

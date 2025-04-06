@@ -5955,12 +5955,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: df4593ef1ed5aa94bbf22db8abe15372
-    m_Address: mvz2:entity/contraption/snipe_dispenser
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Spritesheet
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: df4b37f82bb5bec438a70507f3913e97
     m_Address: mvz2:projectile/spike
     m_ReadOnly: 0

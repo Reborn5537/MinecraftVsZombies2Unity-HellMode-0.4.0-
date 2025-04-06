@@ -722,7 +722,35 @@
 				<sentence speaker="mvz2:steve" sounds="mvz2:talk">真是多灾多难啊</sentence>
 				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">我会提前在前院放置一些睡莲的。</sentence>
 				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">磁暴线圈或许是不错的选择呢。</sentence>
-				<sentence speaker="mvz2:steve" sounds="mvz2:talk" onClick="end">太邪门了........这种日子什么时候是个头啊。</sentence>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk" onClick="end">太邪门了........</sentence>
+			</sentences>
+		</section>
+	</group>
+	<group id="dream_14" tags="mvz2:dream;mvz2:intro">
+		<archive name="梦境世界第14天入场" background="mvz2:misc/nightmare" unlock="mvz2:level.dream_14" />
+		<section>
+			<characters>
+				<character id="mvz2:crazy_villager" side="left" />
+			</characters>
+			<sentences>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk">这水未免有点太多了吧。</sentence>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk">才一部分力量就能做到这种程度,如果是全力.....</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk" onClick="end">别想了,他们来了。</sentence>
+			</sentences>
+		</section>
+	</group>
+	<group id="dream_note14" tags="mvz2:dream;mvz2:note">
+		<archive name="？？？" background="mvz2:archive/dream_note" unlock="mvz2:level.dream_14" />
+		<section>
+			<characters>
+				<character id="mvz2:crazy_villager" side="left" />
+				<character id="mvz2:steve" side="self" />
+			</characters>
+			<sentences>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk">这是什么？</sentence>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk">☟☜☹☹⚐📪 💣☼. 💧❄☜✞☜📪 ✌☠👎 ❄☟☜ 👎☜💣⚐☠ ☠☜✠❄ ❄⚐ ✡⚐🕆📪 ✋ ☟✌✞☜ ☝✋✞☜☠ ✡⚐🕆 💣✌☠✡ ⚐🏱🏱⚐☼❄🕆☠✋❄✋☜💧. ✋ 👎⚐☠🕯❄ 🕈✌☠❄ ❄⚐ ☝⚐ ❄⚐ 🕈✌☼ 🕈✋❄☟ ✡⚐🕆📪 👌🕆❄ ✡⚐🕆 ✌☼☜ 💧⚐ 💧❄🕆👌👌⚐☼☠ ❄☟✌❄ ✡⚐🕆 ☟✌✞☜ 👎☜☞☜✌❄☜👎 💣☜ ✌☠👎 👎⚐☠🕯❄ 👌☜☹✋☜✞☜ ✌☠✡ ⚐☞ 💣✡ 🕈⚐☼👎💧. ✋☠ ❄☟✋💧 👍✌💧☜📪 ❄☟☜☼☜ ✋💧 ☠⚐ ☠☜☜👎 ☞⚐☼ 💣☜ ❄⚐ ☼☜☹☜✌💧☜ 🕈✌❄☜☼. ✋ 🕈✋☹☹ 🕆💧☜ 💣✡ 👌☜💧❄ ❄⚐ 👎☜☞☜✌❄ ✡⚐🕆 🕈✋❄☟ 💣✡ ☞⚐☹☹⚐🕈☜☼💧 ✌☠👎 ☼☜✌👍☟ 💣✡ ☝⚐✌☹. ☠⚐🕈📪 ✡⚐🕆 ☟✌✞☜ ☠⚐ 👍☟⚐✋👍☜</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">我也看不懂,或许是某种符号吧。</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk" onClick="end">他应该已经复活了,准备好战斗吧。</sentence>
 			</sentences>
 		</section>
 	</group>

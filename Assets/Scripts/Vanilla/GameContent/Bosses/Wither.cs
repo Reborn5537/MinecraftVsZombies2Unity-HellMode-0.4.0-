@@ -541,7 +541,7 @@ namespace MVZ2.GameContent.Bosses
         public const float HEAD_ROTATE_SPEED = 10;
         public const float FLY_HEIGHT = 80;
         public const float REGENERATION_SPEED = 1;
-        public const float EAT_HEALING = 300;
+        public const float EAT_HEALING = 800;
         public const float GOLDEN_APPLE_DAMAGE = 600;
         #endregion 常量
 

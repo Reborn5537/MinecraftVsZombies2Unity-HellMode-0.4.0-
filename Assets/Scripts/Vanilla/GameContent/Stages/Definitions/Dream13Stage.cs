@@ -48,15 +48,15 @@ namespace MVZ2.GameContent.Stages
                 VanillaContraptionID.teslaCoil,
                 VanillaContraptionID.totenser,
                 VanillaContraptionID.dreamCrystal,
-                VanillaContraptionID.punchton
+                VanillaContraptionID.anvil
             });
-            level.SetArtifactSlotCount(3);
-            level.ReplaceArtifacts(new NamespaceID[]
+            //level.SetArtifactSlotCount(3);
+            /*level.ReplaceArtifacts(new NamespaceID[]
             {
                 VanillaArtifactID.netherStar,
                 VanillaArtifactID.dreamKey,
                 VanillaArtifactID.theCreaturesHeart,
-            });
+            });*/
         }
     }
 }
