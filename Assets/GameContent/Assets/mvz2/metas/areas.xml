@@ -112,7 +112,7 @@
     </area>
     <area id="dream" model="mvz2:dream" music="mvz2:dream_level" cart="mvz2:nyan_cat" starshard="mvz2:starshards/dream" tags="mvz2:day;mvz2:water">
         <positions enemySpawnX="1080" doorZ="240" />
-        <grids width="80" height="80" leftX="260" bottomZ="40" lanes="6" columns="9">
+		<grids width="80" height="80" leftX="260" bottomZ="40" lanes="6" columns="9">
             <!-- Lane 1 -->
             <grid id="mvz2:grass" />
             <grid id="mvz2:grass" />
@@ -174,8 +174,8 @@
             <grid id="mvz2:grass" />
             <grid id="mvz2:grass" />
         </grids>
-    </area>
-	<area id="dream14" model="mvz2:dream" music="mvz2:dream_level" cart="mvz2:nyan_cat" starshard="mvz2:starshards/dream" tags="mvz2:day;mvz2:water">
+	</area>
+	<area id="dreamwater" model="mvz2:dreamwater" music="mvz2:dream_level" cart="mvz2:nyan_cat" starshard="mvz2:starshards/dream" tags="mvz2:night;mvz2:water">
 		<positions enemySpawnX="1080" doorZ="240" />
 		<grids width="80" height="80" leftX="260" bottomZ="40" lanes="6" columns="9">
 			<!-- Lane 1 -->
@@ -239,7 +239,7 @@
 			<grid id="mvz2:water" />
 			<grid id="mvz2:water" />
 		</grids>
-	</area>
+    </area>
     <area id="castle" model="mvz2:castle" music="mvz2:castle_level" cart="mvz2:bowl_chariot" starshard="mvz2:starshards/castle" tags="mvz2:night;mvz2:no_water">
         <positions enemySpawnX="1080" doorZ="240" />
         <lighting night="0.5" />

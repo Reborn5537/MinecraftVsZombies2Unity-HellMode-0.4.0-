@@ -30,6 +30,7 @@ namespace MVZ2.Vanilla
         public const string enteredGensokyo = "entered_gensokyo";
 
         public const string dreamIsNightmare = "dream_is_nightmare";
+        public const string dreamIsWater = "dream_is_water";
 
         public const string ghostBuster = "achievement.ghost_buster";
         public const string doubleTrouble = "achievement.double_trouble";
@@ -58,6 +59,7 @@ namespace MVZ2.Vanilla
         public static readonly NamespaceID enteredDream = Get(VanillaUnlockNames.enteredDream);
         public static readonly NamespaceID enteredGensokyo = Get(VanillaUnlockNames.enteredGensokyo); 
         public static readonly NamespaceID dreamIsNightmare = Get(VanillaUnlockNames.dreamIsNightmare);
+        public static readonly NamespaceID dreamIsWater = Get(VanillaUnlockNames.dreamIsWater);
         public static readonly NamespaceID blueprintSlot1 = Get(VanillaUnlockNames.blueprintSlot1);
 
         public static readonly NamespaceID ghostBuster = Get(VanillaUnlockNames.ghostBuster);

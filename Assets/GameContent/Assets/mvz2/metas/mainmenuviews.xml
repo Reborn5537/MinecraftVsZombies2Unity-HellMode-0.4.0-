@@ -15,6 +15,11 @@
             <condition required="mvz2:entered_dream;mvz2:dream_is_nightmare" />
         </conditions>
     </view>
+	<view id="dreamwater" priority="200" spritesheet="mvz2:mainmenu/view/nightmare">
+		<conditions>
+			<condition required="mvz2:entered_dream;mvz2:dream_is_water" />
+		</conditions>
+	</view>
     <view id="castle" priority="300" spritesheet="mvz2:mainmenu/view/castle">
         <conditions>
             <condition required="mvz2:entered_castle" />

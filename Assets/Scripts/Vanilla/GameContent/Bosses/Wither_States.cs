@@ -562,7 +562,7 @@ namespace MVZ2.GameContent.Bosses
                             var z = entity.Level.GetEntityLaneZ(i);
                             var y = entity.Level.GetGroundY(x, z);
                             var param = entity.GetSpawnParams();
-                            entity.Spawn(VanillaEnemyID.hellChariot, new Vector3(x, y, z), param);
+                            entity.Spawn(VanillaEnemyID.dullahan, new Vector3(x, y, z), param);
                             entity.Spawn(VanillaEnemyID.reverseSatellite, new Vector3(x, y, z), param);
                         }
                     }

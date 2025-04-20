@@ -94,6 +94,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:skeleton"/>
             <spawn id="mvz2:ghost"/>
+		    <spawn id="mvz2:imp"/>
         </spawns>
         <properties>
             <integer name="statueCount" value="5" />
@@ -112,6 +113,7 @@
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:skeleton"/>
             <spawn id="mvz2:ghost"/>
+		    <spawn id="mvz2:skeleton_horse"/>
         </spawns>
         <properties>
             <integer name="statueCount" value="6" />
@@ -152,6 +154,7 @@
             <spawn id="mvz2:skeleton"/>
             <spawn id="mvz2:ghost"/>
             <spawn id="mvz2:mummy"/>
+		    <spawn id="mvz2:skeleton_horse"/>
         </spawns>
         <properties>
             <integer name="statueCount" value="7" />
@@ -218,6 +221,7 @@
             <spawn id="mvz2:ghost"/>
             <spawn id="mvz2:mummy"/>
             <spawn id="mvz2:necromancer"/>
+		    <spawn id="mvz2:skeleton_horse"/>
         </spawns>
         <properties>
             <integer name="statueCount" value="10" />
@@ -248,6 +252,7 @@
             <spawn id="mvz2:ghost"/>
             <spawn id="mvz2:mummy"/>
             <spawn id="mvz2:necromancer"/>
+		    <spawn id="mvz2:skeleton_horse"/>
         </spawns>
         <properties>
             <bool name="noEnergy" value="true"/>
@@ -298,6 +303,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
 			<spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:skeleton"/>
+		    <spawn id="mvz2:dullahan_head"/>
         </spawns>
     </stage>
     <stage id="dream_2" name="梦境世界" dayNumber="2" unlock="mvz2:level.dream_1">
@@ -312,6 +318,7 @@
             <spawn id="mvz2:leather_capped_zombie"/>
             <spawn id="mvz2:iron_helmetted_zombie"/>
             <spawn id="mvz2:spider"/>
+		    <spawn id="mvz2:dullahan_head"/>
         </spawns>
     </stage>
     <stage id="dream_3" name="梦境世界" dayNumber="3" unlock="mvz2:level.dream_2">

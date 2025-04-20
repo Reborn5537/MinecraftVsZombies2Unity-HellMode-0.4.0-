@@ -5139,6 +5139,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2f0da3a3f05c5548851835a945129dd
+    m_Address: Assets/GameContent/Assets/mvz2/areamodels/dreamwater.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AreaModel
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c2fee4be52329b84cad8cea5bb42445a
     m_Address: mvz2:enemy/prologue/leather_capped_zombie
     m_ReadOnly: 0
@@ -6356,6 +6362,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef97f3417bbdc5d438f3698647bcdbaf
+    m_Address: Assets/GameContent/Assets/mvz2/mapmodels/dreamwater.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapModel
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: efa2647b249636d48bf202bfc200258a
     m_Address: mvz2:glass_break_big

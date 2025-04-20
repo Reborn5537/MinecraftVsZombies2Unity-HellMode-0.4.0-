@@ -40,7 +40,7 @@ namespace MVZ2.GameContent.Enemies
             }
             else if (entity.Level.Difficulty == VanillaDifficulties.hell)
             {
-                jumpTimes = 0;
+                jumpTimes = 4;
             }
             SetGallopTime(entity, jumpTimes);
         }

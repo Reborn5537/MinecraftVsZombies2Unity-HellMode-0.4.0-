@@ -52,6 +52,32 @@
 			<stage id="mvz2:dream_15"/>
         </stages>
     </map>
+	<map id="dreamwater" area="mvz2:dreamwater" >
+		<presets>
+			<preset id="mvz2:dreamwater" model="mvz2:dreamwater" backgroundColor="#24000E" music="mvz2:nightmare_map">
+				<conditions>
+					<condition required="mvz2:dream_is_water"/>
+				</conditions>
+			</preset>
+		</presets>
+		<stages endless="mvz2:dream_endless">
+			<stage id="mvz2:dream_1"/>
+			<stage id="mvz2:dream_2"/>
+			<stage id="mvz2:dream_3"/>
+			<stage id="mvz2:dream_4"/>
+			<stage id="mvz2:dream_5"/>
+			<stage id="mvz2:dream_6"/>
+			<stage id="mvz2:dream_7"/>
+			<stage id="mvz2:dream_8"/>
+			<stage id="mvz2:dream_9"/>
+			<stage id="mvz2:dream_10"/>
+			<stage id="mvz2:dream_11"/>
+			<stage id="mvz2:dream_12"/>
+			<stage id="mvz2:dream_13"/>
+			<stage id="mvz2:dream_14"/>
+			<stage id="mvz2:dream_15"/>
+		</stages>
+	</map>
     <map id="gensokyo" width="1020" height="600">
         <presets>
             <preset id="mvz2:gensokyo" model="mvz2:gensokyo" backgroundColor="#7F7F7F" music="mvz2:gensokyo_map"/>

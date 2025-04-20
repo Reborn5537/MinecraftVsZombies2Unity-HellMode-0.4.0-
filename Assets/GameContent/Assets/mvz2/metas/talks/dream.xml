@@ -749,9 +749,8 @@
 			</characters>
 			<sentences>
 				<sentence speaker="mvz2:steve" sounds="mvz2:talk">这是什么？</sentence>
-				<sentence speaker="mvz2:steve" sounds="mvz2:talk">☟☜☹☹⚐📪 💣☼. 💧❄☜✞☜📪 ✌☠👎 ❄☟☜ 👎☜💣⚐☠ ☠☜✠❄ ❄⚐ ✡⚐🕆📪 ✋ ☟✌✞☜ ☝✋✞☜☠ ✡⚐🕆 💣✌☠✡ ⚐🏱🏱⚐☼❄🕆☠✋❄✋☜💧. ✋ 👎⚐☠🕯❄ 🕈✌☠❄ ❄⚐ ☝⚐ ❄⚐ 🕈✌☼ 🕈✋❄☟ ✡⚐🕆📪 👌🕆❄ ✡⚐🕆 ✌☼☜ 💧⚐ 💧❄🕆👌👌⚐☼☠ ❄☟✌❄ ✡⚐🕆 ☟✌✞☜ 👎☜☞☜✌❄☜👎 💣☜ ✌☠👎 👎⚐☠🕯❄ 👌☜☹✋☜✞☜ ✌☠✡ ⚐☞ 💣✡ 🕈⚐☼👎💧. ✋☠ ❄☟✋💧 👍✌💧☜📪 ❄☟☜☼☜ ✋💧 ☠⚐ ☠☜☜👎 ☞⚐☼ 💣☜ ❄⚐ ☼☜☹☜✌💧☜ 🕈✌❄☜☼. ✋ 🕈✋☹☹ 🕆💧☜ 💣✡ 👌☜💧❄ ❄⚐ 👎☜☞☜✌❄ ✡⚐🕆 🕈✋❄☟ 💣✡ ☞⚐☹☹⚐🕈☜☼💧 ✌☠👎 ☼☜✌👍☟ 💣✡ ☝⚐✌☹. ☠⚐🕈📪 ✡⚐🕆 ☟✌✞☜ ☠⚐ 👍☟⚐✋👍☜</sentence>
-				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk">我也看不懂,或许是某种符号吧。</sentence>
-				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk" onClick="end">他应该已经复活了,准备好战斗吧。</sentence>
+				<sentence speaker="mvz2:steve" sounds="mvz2:talk">(一些奇怪的符号)</sentence>
+				<sentence speaker="mvz2:crazy_villager" sounds="mvz2:talk" onClick="end">我也看不懂,或许是某种符号吧,我会在图鉴中标注的。</sentence>
 			</sentences>
 		</section>
 	</group>

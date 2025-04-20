@@ -140,6 +140,11 @@ namespace MVZ2.Vanilla.Saves
             // 玩家设置。
             return save.IsUnlocked(VanillaUnlockID.dreamIsNightmare);
         }
+        public static bool DreamIsWater(this IGameSaveData save)
+        {
+            // 玩家设置。
+            return save.IsUnlocked(VanillaUnlockID.dreamIsWater);
+        }
         public static NamespaceID GetLevelClearUnlockID(NamespaceID stageID)
         {
             return new NamespaceID(stageID.SpaceName, GetLevelClearUnlockID(stageID.Path));
