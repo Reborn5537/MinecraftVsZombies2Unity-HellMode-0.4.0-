@@ -554,7 +554,7 @@
 			<spawn id="mvz2:mega_mutant_zombie"/>
 		</spawns>
 	</stage>
-	<stage id="dream_15" name="梦境世界" dayNumber="15" type="boss" needBlueprints="false" unlock="mvz2:level.dream_15" music="mvz2:nightmare_final" >
+	<stage id="dream_15" name="梦境世界" dayNumber="15" type="boss" needBlueprints="false" unlock="mvz2:level.dream_15" music="mvz2:rebornmare_final" >
 		<talks noStartMusic="true">
 			<talk type="start" value="mvz2:dream_15"/>
 			<talk type="end" value="mvz2:dream_15_over"/>
@@ -565,10 +565,13 @@
 			<entry id="mvz2:drivenser" count="30"/>
 			<entry id="mvz2:gravity_pad" count="3"/>
 			<entry id="mvz2:vortex_hopper" count="3"/>
-			<entry id="mvz2:pistenser" count="12"/>
+			<entry id="mvz2:tesla_coil" count="8"/>
 			<entry id="mvz2:totenser" count="12"/>
 			<entry id="mvz2:dream_crystal" count="6"/>
 			<entry id="mvz2:dream_silk" count="2"/>
+			<entry id="mvz2:glowstone" count="4"/>
+			<entry id="mvz2:snipe_dispenser" count="2"/>
+			<entry id="mvz2:giant_bowl" count="1"/>
 		</conveyor>
 		<clear pickupModel="mvz2:entity.money_chest"/>
 		<spawns flags="3" firstWaveTime="30" >
@@ -582,6 +585,11 @@
 			<spawn id="mvz2:skeleton"/>
 			<spawn id="mvz2:mummy"/>
 			<spawn id="mvz2:necromancer"/>
+			<spawn id="mvz2:nightmarefollower"/>
+			<spawn id="mvz2:mutant_zombie"/>
+			<spawn id="mvz2:mega_mutant_zombie"/>
+			<spawn id="mvz2:skeleton_horse"/>
+			<spawn id="mvz2:dullahan_head"/>
 		</spawns>
 		<properties>
 			<bool name="noEnergy" value="true"/>

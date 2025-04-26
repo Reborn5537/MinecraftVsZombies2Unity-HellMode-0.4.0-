@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Cuerzor
-  productName: MinecraftVSZombies2
+  productName: MinecraftVSZombies2-HellMode
   defaultCursor: {fileID: 2800000, guid: 862155e92706adf418647c95fba63038, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -139,7 +139,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: "\u5730\u72F1\u72480.6\u516C\u5F00\u6D4B\u8BD5Alpha3"
+  bundleVersion: "\u5730\u72F1\u72480.6\u516C\u5F00\u6D4B\u8BD5Alpha4"
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -161,7 +161,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.cuerzor.minecraftVSZombies2Hell06A3
+    Android: com.cuerzor.minecraftVSZombies2HellMode
     Standalone: com.cuerzor.minecraftVSZombies2
   buildNumber:
     Standalone: 0

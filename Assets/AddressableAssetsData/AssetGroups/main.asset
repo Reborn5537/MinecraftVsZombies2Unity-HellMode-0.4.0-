@@ -2842,6 +2842,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e9290926198114458859c09e0fa49f7
+    m_Address: mvz2:achievements/dream_end
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6f22bfed212241144ada2b8c00f2bea2
     m_Address: mvz2:blueprints
     m_ReadOnly: 0
@@ -3506,6 +3512,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a12a08e7cdda1840a1544e7407d10fd
+    m_Address: mvz2:rebornmare_final
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Music
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8a2e7dea253a9e84c910acffe8c3e79e
     m_Address: mvz2:mainmenu/view/nightmare_censored
@@ -6727,6 +6739,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb8f4c7fd9b8c624f9a40be6022fe0a2
+    m_Address: mvz2:rebornmare_boss
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Music
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fbd4f223bde2b0548986faf783bc0f17
     m_Address: mvz2:effect/magnetic_line
