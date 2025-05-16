@@ -2266,6 +2266,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 584cf97bc29adfe4b8e935a6e7ebfb36
+    m_Address: mvz2:rebornmare_boss2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58b00e65f2d3cf54e95b866108f55a09
     m_Address: mvz2:artifacts/nether_star
     m_ReadOnly: 0

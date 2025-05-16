@@ -17,6 +17,7 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID witherBoss = Get("wither_boss");
         public readonly static NamespaceID rebornmarefinal = Get("rebornmare_final");
         public readonly static NamespaceID rebornmareBoss = Get("rebornmare_boss");
+        public readonly static NamespaceID rebornmareBoss2 = Get("rebornmare_boss2");
         private static NamespaceID Get(string name)
         {
             return new NamespaceID(VanillaMod.spaceName, name);

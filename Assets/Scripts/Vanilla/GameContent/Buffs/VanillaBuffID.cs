@@ -130,7 +130,10 @@ namespace MVZ2.GameContent.Buffs
             public const string nightmareaperDarkness = "nightmareaper_darkness";
             public const string slendermanTransition = "slenderman_transition";
             public const string nightmareaperTransition = "nightmareaper_transition";
+            public const string rebornslendermanTransition = "rebornslenderman_transition";
+            public const string rebornmareaperTransition = "rebornmareaper_transition";
             public const string nightmareCleared = "nightmare_cleared";
+            public const string rebornnightmareCleared = "rebornnightmare_cleared";
             public const string reverseSatellite = "reverse_satellite";
             public const string littleZombieLevel = "little_zombie_level";
             public const string seijaAutoCollect = "seija_auto_collect";

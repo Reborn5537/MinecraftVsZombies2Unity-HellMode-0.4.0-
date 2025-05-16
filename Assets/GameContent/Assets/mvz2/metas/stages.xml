@@ -554,7 +554,7 @@
 			<spawn id="mvz2:mega_mutant_zombie"/>
 		</spawns>
 	</stage>
-	<stage id="dream_15" name="梦境世界" dayNumber="15" type="boss" needBlueprints="false" unlock="mvz2:level.dream_15" music="mvz2:rebornmare_final" >
+	<stage id="dream_15" name="梦境世界" dayNumber="15" type="boss" needBlueprints="false" unlock="mvz2:level.dream_14" music="mvz2:rebornmare_final" >
 		<talks noStartMusic="true">
 			<talk type="start" value="mvz2:dream_15"/>
 			<talk type="end" value="mvz2:dream_15_over"/>
