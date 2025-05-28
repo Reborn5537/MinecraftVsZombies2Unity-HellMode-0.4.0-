@@ -41,7 +41,7 @@ namespace MVZ2.Store
             var loreTalks = Main.ResourceManager.GetCurrentStoreLoreTalks();
             if (loreTalks == null)
                 return;
-            // ¶Ô»°
+            // ï¿½Ô»ï¿½
             var queue = new Queue<NamespaceID>();
             foreach (var lore in loreTalks)
             {
@@ -71,7 +71,7 @@ namespace MVZ2.Store
                 Main.MusicManager.Play(preset.Music);
         }
 
-        #region ÉúÃüÖÜÆÚ
+        #region ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         private void Awake()
         {
             ui.OnReturnClick += OnReturnClickCallback;
@@ -103,7 +103,7 @@ namespace MVZ2.Store
         }
         #endregion
 
-        #region UI ÊÂ¼þ»Øµ÷
+        #region UI ï¿½Â¼ï¿½ï¿½Øµï¿½
         private void OnReturnClickCallback()
         {
             Hide();
@@ -229,15 +229,15 @@ namespace MVZ2.Store
         }
         public event Action OnReturnClick;
 
-        [TranslateMsg("ÉÌµê¶Ô»°¿ò±êÌâ")]
-        public const string PURCHASE = "¹ºÂòÎïÆ·";
-        [TranslateMsg("ÉÌµê¶Ô»°¿òÄÚÈÝ£¬{0}Îª¼Û¸ñ", selfPlural: true)]
-        public const string PURCHASE_DESCRIPTION = "È·¶¨ÒÔ{0:N0}µÄ¼Û¸ñÂòÏÂÕâ¸öÎïÆ·£¿";
-        [TranslateMsg("ÉÌµê¶Ô»°¿ò±êÌâ")]
-        public const string INSUFFICIENT_MONEY = "½ðÇ®²»×ã";
-        [TranslateMsg("ÉÌµê¶Ô»°¿òÄÚÈÝ")]
-        public const string INSUFFICIENT_MONEY_DESCRIPTION = "ÄãÃ»ÓÐ×ã¹»µÄ½ðÇ®£¡";
-        [TranslateMsg("ÉÌµêµÄÒ³Ãæ¼ÆÊý£¬{0}Îªµ±Ç°Ò³Ãæ£¬{1}Îª×ÜÒ³Ãæ")]
+        [TranslateMsg("å•†åº—å¯¹è¯æ¡†æ ‡é¢˜")]
+        public const string PURCHASE = "è´­ä¹°ç‰©å“";
+        [TranslateMsg("å•†åº—å¯¹è¯æ¡†å†…å®¹ï¼Œ{0}ä¸ºä»·æ ¼", selfPlural: true)]
+        public const string PURCHASE_DESCRIPTION = "ç¡®å®šä»¥{0:N0}çš„ä»·æ ¼ä¹°ä¸‹è¿™ä¸ªç‰©å“ï¼Ÿ";
+        [TranslateMsg("å•†åº—å¯¹è¯æ¡†æ ‡é¢˜")]
+        public const string INSUFFICIENT_MONEY = "é‡‘é’±ä¸è¶³";
+        [TranslateMsg("å•†åº—å¯¹è¯æ¡†å†…å®¹")]
+        public const string INSUFFICIENT_MONEY_DESCRIPTION = "ä½ æ²¡æœ‰è¶³å¤Ÿçš„é‡‘é’±ï¼";
+        [TranslateMsg("å•†åº—çš„é¡µé¢è®¡æ•°ï¼Œ{0}ä¸ºå½“å‰é¡µé¢ï¼Œ{1}ä¸ºæ€»é¡µé¢")]
         public const string PAGE_TEMPLATE = "{0}/{1}";
         private MainManager Main => MainManager.Instance;
         private List<NamespaceID> products = new List<NamespaceID>();

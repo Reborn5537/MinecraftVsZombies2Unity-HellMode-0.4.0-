@@ -13,9 +13,11 @@ namespace MVZ2.Vanilla
 
         public const string starshardSlot1 = "starshard_slot.1";
         public const string starshardSlot2 = "starshard_slot.2";
+        public const string starshardSlot3 = "starshard_slot.3";
 
         public const string artifactSlot1 = "artifact_slot.1";
         public const string artifactSlot2 = "artifact_slot.2";
+        public const string artifactSlot3 = "artifact_slot.3";
 
         public const string infectenser = "contraption.infectenser";
         public const string forcePad = "contraption.force_pad";

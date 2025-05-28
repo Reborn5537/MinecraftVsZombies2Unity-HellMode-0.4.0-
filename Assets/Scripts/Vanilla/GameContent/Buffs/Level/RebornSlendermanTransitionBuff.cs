@@ -80,8 +80,8 @@ namespace MVZ2.GameContent.Buffs.Level
             addition = Mathf.Clamp01(addition + nightSpeed);
             buff.SetProperty(PROP_NIGHT_ADDITION, addition);
         }
-        public static readonly VanillaBuffPropertyMeta PROP_TIMEOUT = new VanillaBuffPropertyMeta("Timeout");
-        public static readonly VanillaBuffPropertyMeta PROP_NIGHT_ADDITION = new VanillaBuffPropertyMeta("NightAddition");
+        public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
+        public static readonly VanillaBuffPropertyMeta<Color> PROP_LIGHT_MULTIPLIER = new VanillaBuffPropertyMeta<Color>("LightMultiplier");
         public const float NIGHT_SPEED = 0.07f;
         public const int MAX_TIMEOUT = CREATE_DARKNESS_TIMEOUT + 90;
         public const int CREATE_DARKNESS_TIMEOUT = FADEOUT_TIMEOUT + 165;

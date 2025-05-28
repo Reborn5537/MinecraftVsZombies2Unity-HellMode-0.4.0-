@@ -15,7 +15,6 @@ using UnityEngine;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Level;
-using PVZEngine.Triggers;
 
 namespace MVZ2.GameContent.Bosses
 {

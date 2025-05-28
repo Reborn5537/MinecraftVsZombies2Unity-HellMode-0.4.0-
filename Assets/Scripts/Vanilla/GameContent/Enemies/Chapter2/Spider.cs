@@ -11,7 +11,6 @@ using UnityEngine;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Audios;
-using PVZEngine.Triggers;
 using Tools;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Damages;

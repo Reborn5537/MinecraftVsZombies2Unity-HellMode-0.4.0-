@@ -31,7 +31,6 @@ using MVZ2.Vanilla.SeedPacks;
 using MVZ2Logic.Level;
 using MVZ2Logic.SeedPacks;
 using PVZEngine.Buffs;
-using PVZEngine.Triggers;
 using Tools.Mathematics;
 
 namespace MVZ2.GameContent.Enemies
@@ -339,11 +338,11 @@ namespace MVZ2.GameContent.Enemies
 
 
         public static readonly NamespaceID ID = VanillaEnemyID.nightmarefollower;
-        public static readonly VanillaEntityPropertyMeta PROP_STATE_TIMER = new VanillaEntityPropertyMeta("StateTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_CASTING = new VanillaEntityPropertyMeta("Casting");
-        public static readonly VanillaEntityPropertyMeta PROP_PORTAL_TIMER = new VanillaEntityPropertyMeta("PortalTimer");
-        public static readonly VanillaEntityPropertyMeta PROP_PORTAL_RNG = new VanillaEntityPropertyMeta("PortalRNG");
-        public static readonly VanillaEntityPropertyMeta PROP_PORTAL_ENEMY_ID = new VanillaEntityPropertyMeta("PortalEnemyID");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_CASTING = new VanillaEntityPropertyMeta<bool>("Casting");
+        public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_PORTAL_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("PortalTimer");
+        public static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_PORTAL_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("PortalRNG");
+        public static readonly VanillaEntityPropertyMeta<bool> PROP_PORTAL_ENEMY_ID = new VanillaEntityPropertyMeta("PortalEnemyID");
         #endregion 常量
     }
 }

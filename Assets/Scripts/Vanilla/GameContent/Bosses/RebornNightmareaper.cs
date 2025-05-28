@@ -72,7 +72,7 @@ namespace MVZ2.GameContent.Bosses
 
             CheckTimerAndWallsDestruction(entity);
         }
-        public override void PreTakeDamage(DamageInput input)
+        public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
             base.PreTakeDamage(input);
             if (input.Amount > 600)
@@ -169,8 +169,8 @@ namespace MVZ2.GameContent.Bosses
         }
 
         #region 属性
-        private static void SetBehaviourProperty(Entity entity, PropertyKey name, object value) => entity.SetBehaviourField(ID, name, value);
-        private static T GetBehaviourProperty<T>(Entity entity, PropertyKey name) => entity.GetBehaviourField<T>(ID, name);
+        private static void SetBehaviourProperty<T>(Entity entity, PropertyKey<T> name, T value) => entity.SetBehaviourField<T>(name, value);
+        private static T GetBehaviourProperty<T>(Entity entity, PropertyKey<T> name) => entity.GetBehaviourField<T>(name);
 
         public static Vector3 GetMoveDirection(Entity entity) => GetBehaviourProperty<Vector3>(entity, PROP_MOVE_DIRECTION);
         public static void SetMoveDirection(Entity entity, Vector3 value) => SetBehaviourProperty(entity, PROP_MOVE_DIRECTION, value);
@@ -191,27 +191,23 @@ namespace MVZ2.GameContent.Bosses
         public static void SetSpinDamageTimer(Entity entity, FrameTimer value) => SetBehaviourProperty(entity, PROP_SPIN_DAMAGE_TIMER, value);
         #endregion
 
-        private static readonly VanillaEntityPropertyMeta PROP_MOVE_DIRECTION = new VanillaEntityPropertyMeta("MoveDirection");
-        private static readonly VanillaEntityPropertyMeta PROP_MOVE_RNG = new VanillaEntityPropertyMeta("MoveRNG");
-        private static readonly VanillaEntityPropertyMeta PROP_STATE_RNG = new VanillaEntityPropertyMeta("StateRNG");
-        private static readonly VanillaEntityPropertyMeta PROP_SPARK_RNG = new VanillaEntityPropertyMeta("SparkRNG");
-        private static readonly VanillaEntityPropertyMeta PROP_CORPSE_POSITIONS = new VanillaEntityPropertyMeta("CorpsePositions");
-        private static readonly VanillaEntityPropertyMeta PROP_SPIN_DAMAGE_TIMER = new VanillaEntityPropertyMeta("SpinDamageTimer");
+        private static readonly VanillaEntityPropertyMeta<Vector3> PROP_MOVE_DIRECTION = new VanillaEntityPropertyMeta<Vector3>("MoveDirection");
+        private static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_MOVE_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("MoveRNG");
+        private static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_STATE_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("StateRNG");
+        private static readonly VanillaEntityPropertyMeta<RandomGenerator> PROP_SPARK_RNG = new VanillaEntityPropertyMeta<RandomGenerator>("SparkRNG");
+        private static readonly VanillaEntityPropertyMeta<List<Vector3>> PROP_CORPSE_POSITIONS = new VanillaEntityPropertyMeta<List<Vector3>>("CorpsePositions");
 
         private const float FLY_HEIGHT = 20;
 
         private static readonly Vector3 CENTER_POSITION = new Vector3(620, 0, 300);
         private static readonly Vector3 APPEAR_POSITION = new Vector3(620, 300, 0);
         private const float JAB_DAMAGE = 10000;
-        private const float SPIN_DAMAGE_HARD = 5 * SPIN_DAMAGE_INTERVAL;
         private const float SPIN_DAMAGE_HELL = 7 * SPIN_DAMAGE_INTERVAL;
-        private const float SPIN_DAMAGE = 5 * SPIN_DAMAGE_INTERVAL;
         private const int SPIN_DAMAGE_INTERVAL = 3;
         private const float SPIN_RADIUS = 180;
         private const float SPIN_HEIGHT = 50;
         private const int MAX_REVIVE_COUNT = 10;
 
-        private static readonly NamespaceID ID = VanillaBossID.nightmareaper;
         private static EntityStateMachine stateMachine = new NightmareaperStateMachine();
     }
 }

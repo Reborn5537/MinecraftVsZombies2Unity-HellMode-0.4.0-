@@ -23,7 +23,6 @@ using PVZEngine.Damages;
 using PVZEngine.Grids;
 using PVZEngine.Models;
 using PVZEngine.Modifiers;
-using PVZEngine.Triggers;
 using Tools;
 using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.Vanilla.Audios;

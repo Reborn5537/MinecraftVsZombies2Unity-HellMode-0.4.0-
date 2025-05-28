@@ -292,10 +292,6 @@ namespace MVZ2.GameContent.Bosses
             var desc = Global.Game.GetText(CHOOSE_FATE_DESCRIPTION);
 
             int count = level.GetSlendermanFateChoiceCount();
-            else if (level.Difficulty == VanillaDifficulties.hell)
-            {
-                count = 2;
-            }
             var rng = GetFateOptionRNG(entity);
             var selected = fateOptions.RandomTake(count, rng).ToArray();
             var options = selected.Select(i => GetFateOptionText(i)).ToArray();
@@ -452,10 +448,6 @@ namespace MVZ2.GameContent.Bosses
 
         private int GetMaxFateTimes(LevelEngine level)
         {
-            else if (level.Difficulty == VanillaDifficulties.hell)
-            {
-                return 6;
-            }
             return level.GetSlendermanMaxFateTimes();
         }
 

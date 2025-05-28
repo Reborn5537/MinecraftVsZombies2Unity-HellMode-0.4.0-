@@ -158,4 +158,3 @@ namespace MVZ2.GameContent.Contraptions
         private Detector smashDetector;
     }
 }
-}

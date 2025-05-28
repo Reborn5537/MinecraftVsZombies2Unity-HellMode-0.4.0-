@@ -54,10 +54,6 @@ namespace MVZ2.GameContent.Buffs.Enemies
             var level = host.Level;
             host.TakeDamage(DAMAGE, new DamageEffectList(VanillaDamageEffects.IGNORE_ARMOR, VanillaDamageEffects.SELF_DAMAGE, VanillaDamageEffects.MUTE), host);
             int count = level.GetParasitizedTerrorCount();
-            else if (level.Difficulty == VanillaDifficulties.hell)
-            {
-                count = 5;
-            }
             for (int i = 0; i < count; i++)
             {
                 var parasite = host.SpawnWithParams(VanillaEnemyID.parasiteTerror, host.GetCenter());

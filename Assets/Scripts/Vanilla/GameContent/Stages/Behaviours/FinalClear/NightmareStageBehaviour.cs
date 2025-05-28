@@ -21,7 +21,6 @@ using PVZEngine.Damages;
 using PVZEngine.Grids;
 using PVZEngine.Models;
 using PVZEngine.Modifiers;
-using PVZEngine.Triggers;
 using Tools;
 
 namespace MVZ2.GameContent.Stages

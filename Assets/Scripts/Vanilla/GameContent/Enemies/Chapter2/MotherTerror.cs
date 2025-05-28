@@ -67,10 +67,6 @@ namespace MVZ2.GameContent.Enemies
                 return;
             var level = entity.Level;
             int count = level.GetMotherTerrorEggCount();
-            else if (level.Difficulty == VanillaDifficulties.hell)
-            {
-                count = 4;
-            }
             for (int i = 0; i < count; i++)
             {
                 entity.SpawnWithParams(VanillaEnemyID.parasiteTerror, entity.GetCenter());

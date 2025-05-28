@@ -137,7 +137,6 @@ namespace MVZ2.GameContent.Buffs
         }
         public static class Level
         {
-            public const string levelHell = "level_hell";
             public const string taintedSun = "tainted_sun";
             public const string tutorialPickaxeDisable = "tutorial_pickaxe_disable";
             public const string tutorialTriggerDisable = "tutorial_trigger_disable";
@@ -147,6 +146,7 @@ namespace MVZ2.GameContent.Buffs
             public const string nightmareDecrepify = "nightmare_decrepify";
             public const string nightmareaperDarkness = "nightmareaper_darkness";
             public const string reverseSatellite = "reverse_satellite";
+            public const string reverseSatelliteRage = "reverse_satelliterage";
             public const string littleZombieLevel = "little_zombie_level";
             public const string delayedSpawnerTrigger = "delayed_spawner_trigger";
             public const string superRecharge = "super_recharge";
@@ -170,6 +170,9 @@ namespace MVZ2.GameContent.Buffs
             public const string slendermanTransition = "slenderman_transition";
             public const string nightmareaperTransition = "nightmareaper_transition";
             public const string nightmareCleared = "nightmare_cleared";
+            public const string rebornslendermanTransition = "rebornslenderman_transition";
+            public const string rebornnightmareCleared = "rebornnightmare_cleared";
+            public const string rebornmareaperTransition = "rebornmareaper_transition";
             public const string seijaAutoCollect = "seija_auto_collect";
             public const string witherTransition = "wither_transition";
             public const string witherCleared = "wither_cleared";
@@ -220,6 +223,7 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID miracleMalletReplicaDamage = Get(VanillaBuffNames.miracleMalletReplicaDamage);
         public static readonly NamespaceID brokenLantern = Get(VanillaBuffNames.brokenLantern);
         public static readonly NamespaceID eyeOfTheGiant = Get(VanillaBuffNames.eyeOfTheGiant);
+        public static readonly NamespaceID reverseSatelliteRage = Get(VanillaBuffNames.reverseSatelliteRage);
         public static readonly NamespaceID bottledBlackholeDamage = Get(VanillaBuffNames.bottledBlackholeDamage);
 
         public static readonly NamespaceID passengerEnterHouse = Get(VanillaBuffNames.passengerEnterHouse);
