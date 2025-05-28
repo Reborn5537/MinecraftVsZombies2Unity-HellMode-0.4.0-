@@ -1744,6 +1744,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4409e18829035d440a53d60726284aa9
+    m_Address: mvz2:boss/rebornslenderman
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 44bd337d7a161b2498137668fbec6e35
     m_Address: mvz2:entity/contraptions/spike_block
     m_ReadOnly: 0
@@ -2269,7 +2275,8 @@ MonoBehaviour:
   - m_GUID: 584cf97bc29adfe4b8e935a6e7ebfb36
     m_Address: mvz2:rebornmare_boss2
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Music
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58b00e65f2d3cf54e95b866108f55a09
     m_Address: mvz2:artifacts/nether_star
@@ -5221,6 +5228,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4465d69623e88744aede73ff313c425
+    m_Address: mvz2:entity/boss/rebornslenderman
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c4b8257cfe3564b43890a309b80d59ac
     m_Address: mvz2:effect/nightmare_portal

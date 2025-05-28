@@ -103,6 +103,12 @@ namespace MVZ2.GameContent.Bosses
             var boss = damage.Entity;
             if (boss.IsDead)
                 return;
+            if (boss.Health <= boss.GetMaxHealth() * 0.5f &&
+        !boss.Level.HasBuff<ReverseSatelliteBuffRage>())
+            {
+                boss.Level.AddBuff<ReverseSatelliteBuffRage>();
+            }
+
             var maxFateTimes = GetMaxFateTimes(boss.Level);
             float stageHP = boss.GetMaxHealth() / (float)(maxFateTimes + 2);
             int newStage = Mathf.FloorToInt(maxFateTimes + 2 - boss.Health / stageHP);
@@ -186,10 +192,16 @@ namespace MVZ2.GameContent.Bosses
         {
             var portalTimer = GetPortalTimer(entity);
             portalTimer.Run();
-            if (portalTimer.Expired)
+            var level = entity.Level;
+            if (portalTimer.Expired && !level.HasBuff<ReverseSatelliteBuffRage>())
             {
                 portalTimer.Reset();
                 CreatePortals(entity);
+            }
+            if (portalTimer.Expired && level.HasBuff<ReverseSatelliteBuffRage>())
+            {
+                portalTimer.Reset();
+                CreateRagePortals(entity);
             }
         }
 
@@ -223,6 +235,36 @@ namespace MVZ2.GameContent.Bosses
             }
             entity.PlaySound(VanillaSoundID.nightmarePortal);
         }
+        private void CreateRagePortals(Entity entity)
+        {
+            var level = entity.Level;
+            List<Vector2Int> placePool = new List<Vector2Int>();
+
+            int maxColumnCount = level.GetMaxColumnCount();
+            int maxRowCount = level.GetMaxLaneCount();
+            for (int c = maxColumnCount - 3; c < maxColumnCount; c++)
+            {
+                for (int r = 0; r < maxRowCount; r++)
+                {
+                    placePool.Add(new Vector2Int(c, r));
+                }
+            }
+            var portalRNG = GetPortalRNG(entity);
+            for (int i = 0; i < 6; i++)
+            {
+                var index = portalRNG.Next(0, placePool.Count);
+                Vector2Int place = placePool[index];
+                placePool.Remove(place);
+
+                var x = level.GetEntityColumnX(place.x);
+                var z = level.GetEntityLaneZ(place.y);
+                var y = level.GetGroundY(x, z);
+                Vector3 pos = new Vector3(x, y, z);
+                var enemyID = GetRandomRagePortalEnemyID(portalRNG);
+                SpawnPortal(entity, pos, enemyID);
+            }
+            entity.PlaySound(VanillaSoundID.nightmarePortal);
+        }
         private Entity SpawnPortal(Entity boss, Vector3 position, NamespaceID enemyID)
         {
             var level = boss.Level;
@@ -235,6 +277,11 @@ namespace MVZ2.GameContent.Bosses
         {
             var index = rng.WeightedRandom(portalPoolWeights);
             return portalPool[index];
+        }
+        private NamespaceID GetRandomRagePortalEnemyID(RandomGenerator rng)
+        {
+            var index = rng.WeightedRandom(portalPoolRageWeights);
+            return portalPoolRage[index];
         }
         #endregion
 
@@ -501,13 +548,24 @@ namespace MVZ2.GameContent.Bosses
 
             foreach (var target in targets)
             {
-                if (rng.Next(2) == 0) // 50%概率随机选择Buff
+                // 如果目标已有任意一个Buff，则跳过
+                if (target.HasBuff<BigTroubleBuff>() || target.HasBuff<LittleZombieBuff>())
                 {
-                    target.AddBuff<BigTroubleBuff>();
+                    continue;
                 }
-                else
+
+                // 50%概率选中目标
+                if (rng.Next(2) == 0)
                 {
-                    target.AddBuff<LittleZombieBuff>();
+                    // 随机分配Buff（各50%）
+                    if (rng.Next(2) == 0)
+                    {
+                        target.AddBuff<BigTroubleBuff>();
+                    }
+                    else
+                    {
+                        target.AddBuff<LittleZombieBuff>();
+                    }
                 }
             }
         }
@@ -609,7 +667,7 @@ namespace MVZ2.GameContent.Bosses
         [TranslateMsg("梦魇选项")]
         public const string FATE_TEXT_MIRROR_WAR = "<color=black>熵寂齿轮的真相</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_B_S = "<color=black>乱世纷争无穷尽</color>";
+        public const string FATE_TEXT_B_S = "<color=black>面对未知的可能</color>";
 
         public const int MAX_MOVE_TIMEOUT = 30;
 
@@ -660,8 +718,29 @@ namespace MVZ2.GameContent.Bosses
             2,
             6,
             2,
+            1,
+            5,
+        };
+        private static NamespaceID[] portalPoolRage = new NamespaceID[]
+        {
+            VanillaEnemyID.necromancermax,
+            VanillaEnemyID.boneWall,
+            VanillaEnemyID.ghast,
+            VanillaEnemyID.skeletonHorse,
+            VanillaEnemyID.mesmerizermax,
+            VanillaEnemyID.megaMutantZombie,
+            VanillaEnemyID.nightmarefollower,
+        };
+
+        private static int[] portalPoolRageWeights = new int[]
+        {
+            2,
+            5,
             6,
-            3,
+            8,
+            5,
+            1,
+            5,
         };
         private static NamespaceID[] mindSwapPool = new NamespaceID[]
         {
@@ -669,7 +748,6 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaContraptionID.drivenser),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.gravityPad),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.vortexHopper),
-            VanillaBlueprintID.FromEntity(VanillaContraptionID.pistenser),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.totenser),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk)
@@ -697,6 +775,7 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaContraptionID.totenser),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.snipedispenser),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.boneWall),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.necromancer),

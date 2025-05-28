@@ -309,10 +309,17 @@ namespace MVZ2.GameContent.Bosses
         #region 旋转
         public class SpinState : EntityStateMachineState
         {
+            private float currentAngelicSpeed;
+            private float currentTargetRadius;
+
             public SpinState() : base(STATE_SPIN) { }
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
+                var rng = GetStateRNG(entity);
+                currentAngelicSpeed = rng.Next(10, 26);
+                currentTargetRadius = rng.Next(180, 361);
+
                 var subStateTimer = stateMachine.GetSubStateTimer(entity);
                 subStateTimer.ResetTime(30);
                 entity.SetAnimationBool("FlapWing", false);
@@ -361,8 +368,8 @@ namespace MVZ2.GameContent.Bosses
             }
             private void SetSpinVelocity(Entity entity)
             {
-                const float angelicSpeed = 20;
-                const float targetRadius = 200;
+                float angelicSpeed = currentAngelicSpeed;
+                float targetRadius = currentTargetRadius;
 
 
                 var center2D = new Vector2(CENTER_POSITION.x, CENTER_POSITION.z);

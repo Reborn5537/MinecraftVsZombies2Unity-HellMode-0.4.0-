@@ -819,6 +819,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: a180eae2eba19a044b102a6d990690a3, type: 3}
   - name: achievements/dreamend
     sprite: {fileID: 21300000, guid: 6e9290926198114458859c09e0fa49f7, type: 3}
+  - name: entity/boss/rebornslenderman
+    sprite: {fileID: 21300000, guid: c4465d69623e88744aede73ff313c425, type: 3}
   spritesheetEntries:
   - name: map_button
     spritesheet:
