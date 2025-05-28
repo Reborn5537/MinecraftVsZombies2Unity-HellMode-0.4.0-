@@ -399,6 +399,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: dream_key_shield
       objectReference: {fileID: 0}
+    - target: {fileID: 3332216054191891256, guid: 3ec30034191dadc48bab455467ba55ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6702236362217210405, guid: 3ec30034191dadc48bab455467ba55ce, type: 3}
       propertyPath: particles.Array.size
       value: 1

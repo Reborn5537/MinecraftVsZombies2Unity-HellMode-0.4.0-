@@ -73,6 +73,10 @@ namespace MVZ2.GameContent.Effects
                     {
                         var speed = entity.Level.GetCrushingWallsSpeed();
                         var difficulty = entity.Level.Difficulty;
+                        else if (difficulty == VanillaDifficulties.hell)
+                        {
+                            speed = 6;
+                        }
 
                         progress += speed * 0.01f / 30f;
                         progress = Mathf.Clamp01(progress);

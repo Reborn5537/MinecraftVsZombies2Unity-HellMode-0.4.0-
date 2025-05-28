@@ -23,7 +23,7 @@ namespace MVZ2.GameContent.Projectiles
                 return;
             if (enemy.GetShellID() != VanillaShellID.flesh)
                 return;
-            enemy.InflictWeakness(150);
+            enemy.InflictWeakness(200);
         }
     }
 }

@@ -234,6 +234,7 @@ namespace MVZ2.Vanilla
                         break;
                 }
             }
+            //AddDefinition(new Dream13Stage(spaceName, VanillaStageNames.dream13));
         }
         #endregion
 

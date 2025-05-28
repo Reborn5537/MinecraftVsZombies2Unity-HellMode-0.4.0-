@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Effects
         }
         #endregion
 
-        public const float SHOCK_RADIUS = 40;
+        public const float SHOCK_RADIUS = 50;
         public const int THUNDER_TIMEOUT = DISAPPEAR_TIMEOUT + 90;
         public const int DISAPPEAR_TIMEOUT = 30;
     }

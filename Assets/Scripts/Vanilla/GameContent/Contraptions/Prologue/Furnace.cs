@@ -131,7 +131,7 @@ namespace MVZ2.GameContent.Contraptions
                 }
                 else
                 {
-                    entity.Level.AddEnergy(-25);
+                    entity.Level.AddEnergy(-50);
                 }
                 productionTimer.ResetTime(720);
             }
@@ -173,7 +173,7 @@ namespace MVZ2.GameContent.Contraptions
             evocationTimer.Run();
             if (evocationTimer.PassedInterval(EVOCATION_INTERVAL))
             {
-                entity.Produce(VanillaPickupID.redstone);
+                entity.Produce(VanillaPickupID.redstone);//可能会有小红石?
                 entity.PlaySound(VanillaSoundID.potion);
             }
             if (evocationTimer.Expired)
@@ -182,7 +182,7 @@ namespace MVZ2.GameContent.Contraptions
             }
         }
         public const int EVOCATION_INTERVAL = 5;
-        public const int EVOCATION_REDSTONES = 6;
+        public const int EVOCATION_REDSTONES = 4;//还原GMS2版
         public const int EVOCATION_DURATION = EVOCATION_INTERVAL * EVOCATION_REDSTONES;
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_PRODUCTION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("ProductionTimer");

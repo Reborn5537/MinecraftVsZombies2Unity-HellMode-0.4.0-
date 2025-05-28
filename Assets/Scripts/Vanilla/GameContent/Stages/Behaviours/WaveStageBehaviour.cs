@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Stages
         public override void PrepareForBattle(LevelEngine level)
         {
             level.AreaDefinition.PrepareForBattle(level);
-            if (!level.HasNoCarts() && level.CurrentFlag <= 0)
+            if (!level.HasNoCarts() && level.CurrentFlag <= 0 && level.Difficulty != VanillaDifficulties.hell)
             {
                 var cartRef = level.GetCartReference();
                 level.SpawnCarts(cartRef, VanillaLevelExt.CART_START_X, 20);

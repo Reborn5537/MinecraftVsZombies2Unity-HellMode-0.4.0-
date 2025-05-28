@@ -67,11 +67,14 @@ namespace MVZ2.Vanilla.Saves
         {
             VanillaUnlockNames.artifactSlot1,
             VanillaUnlockNames.artifactSlot2,
+            VanillaUnlockNames.artifactSlot3,
         };
         private static string[] starshardSlotUnlocks = new string[]
         {
             VanillaUnlockNames.starshardSlot1,
             VanillaUnlockNames.starshardSlot2,
+            VanillaUnlockNames.starshardSlot3,
+            VanillaUnlockNames.starshardSlot4,
         };
         private int money;
     }

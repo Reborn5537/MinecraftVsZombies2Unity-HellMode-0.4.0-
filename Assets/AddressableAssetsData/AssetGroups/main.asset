@@ -444,6 +444,12 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f370d6fac963cb408318f98eaf10f5a
+    m_Address: mvz2:entity/enemies/mesmerizermax_head
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f85791f4565cdd48b780ea2b27b64f5
     m_Address: mvz2:random/crystal/crystal_place1
     m_ReadOnly: 0
@@ -1536,6 +1542,12 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c3111a8581b6d44f9b77919fea10540
+    m_Address: mvz2:mobile_blueprint/necromancermax
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2c42c8de90a7c30499eae9212c363c7d
     m_Address: mvz2:mainmenu/back_to_mainmenu
     m_ReadOnly: 0
@@ -2206,6 +2218,12 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c56107dab0f2b94586e24be9d87abdb
+    m_Address: mvz2:enemy/dream/nightmarefollower
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3c7cacc742c9f154e80d19b1b5b133c2
     m_Address: mvz2:mobile_blueprint/silvenser
     m_ReadOnly: 0
@@ -2549,7 +2567,12 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 440294be06b4bd14785efb5767c9116a
+  - m_GUID: 4409e18829035d440a53d60726284aa9
+    m_Address: mvz2:boss/rebornslenderman
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: 440294be06b4bd14785efb5767c9116a
     m_Address: mvz2:enemy/mausoleum/skeleton_warrior
     m_ReadOnly: 0
     m_SerializedLabels:
@@ -3242,7 +3265,12 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 582cedb9b6522194f81088aa7777208e
+  - m_GUID: 584cf97bc29adfe4b8e935a6e7ebfb36
+    m_Address: mvz2:rebornmare_boss2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: 582cedb9b6522194f81088aa7777208e
     m_Address: mvz2:entity/effects/blackhole_core
     m_ReadOnly: 0
     m_SerializedLabels:
@@ -3718,6 +3746,12 @@ MonoBehaviour:
     - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63dc47329b8366748a84925b11b60cec
+    m_Address: mvz2:enemy/castle/berserkermax
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 640498c4a0c1e9e478d0ce0218f62222
     m_Address: mvz2:enemy/shrine/mutant_zombie
     m_ReadOnly: 0
@@ -3773,6 +3807,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 65c948fd90a862949bb19fa3f575aa1b
+    m_Address: mvz2:entity/enemy/necromancermax
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 65f5a79b8f9519a4280b272150a69514
     m_Address: mvz2:fizz
@@ -4019,7 +4059,12 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6f0c46a4061bb484c8387f99fe8dc33f
+  - m_GUID: 6e9290926198114458859c09e0fa49f7
+    m_Address: mvz2:achievements/dream_end
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: 6f0c46a4061bb484c8387f99fe8dc33f
     m_Address: mvz2:contraption/mausoleum/black_hole_bomb
     m_ReadOnly: 0
     m_SerializedLabels:
@@ -4317,6 +4362,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 780cac5345bbda74d98cfd963db70ef1
+    m_Address: mvz2:mobile_blueprint/nightmarefollower
+    m_ReadOnly: 0
+    m_SerializedLabels:
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7865af6122289884aa1160a9bb226b43
@@ -4963,6 +5014,12 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a12a08e7cdda1840a1544e7407d10fd
+    m_Address: mvz2:rebornmare_final
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8a2e7dea253a9e84c910acffe8c3e79e
     m_Address: mvz2:mainmenu/view/nightmare_censored
     m_ReadOnly: 0
@@ -5558,6 +5615,12 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 981522153e47e0f4a8d369e330887664
+    m_Address: mvz2:mobile_blueprint/mesmerizermax
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9821f965cb5dfe34686c58dae6b8a6d9
     m_Address: mvz2:effect/seija_camera_frame
     m_ReadOnly: 0
@@ -5740,7 +5803,12 @@ MonoBehaviour:
     - Main
     - Meta
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9cdfa6621b3d6e24983d5ed7d08fc489
+  - m_GUID: 9d006c01f6cbc564493299596b4ef2a6
+    m_Address: mvz2:mobile_blueprint/berserkermax
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: 9cdfa6621b3d6e24983d5ed7d08fc489
     m_Address: mvz2:held/starshards/mausoleum
     m_ReadOnly: 0
     m_SerializedLabels:
@@ -6762,6 +6830,12 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b68649c8a88407847b858d6c9db515e4
+    m_Address: mvz2:entity/enemies/mesmerizermax_rod
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b71a3502ba3935b49a514559f8734478
     m_Address: mvz2:starshard_rings/halloween
     m_ReadOnly: 0
@@ -6916,6 +6990,12 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: badaece8cc8a7cd4db208a4d52a128da
+    m_Address: mvz2:enemy/halloween/necromancermax
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: babb5d02ad003f04386275ffa8ddfc64
     m_Address: mvz2:entity/enemy/skeleton_mage_headwear
     m_ReadOnly: 0
@@ -6964,6 +7044,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb97982c39e06594c8744048caf5ba5b
+    m_Address: mvz2:entity/enemy/nightmarefollower
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bb9cb8c96cd65034d97163c167129eb9
     m_Address: mvz2:entity/enemy/anubisand
@@ -7035,7 +7121,12 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: beaefb38f5a5fce469c095db69c2fbdc
+  - m_GUID: be6249953ff24044a89b78b82fb0ba7b
+    m_Address: mvz2:enemy/castle/mesmerizermax
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: beaefb38f5a5fce469c095db69c2fbdc
     m_Address: mvz2:effect/binary_particles
     m_ReadOnly: 0
     m_SerializedLabels:
@@ -7245,6 +7336,12 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4465d69623e88744aede73ff313c425
+    m_Address: mvz2:entity/boss/rebornslenderman
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c45e65a66018ee54cb5c8165984aaa2d
     m_Address: mvz2:enemy/mausoleum/wicked_hermit_zombie
     m_ReadOnly: 0
@@ -7391,6 +7488,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8a3d0785f8452f4c9f61605cf6d231e
+    m_Address: mvz2:mobile_blueprint/anvil
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8b2b4261dd98254d919be8f10acd519
     m_Address: mvz2:contraption/castle/wooden_dropper
@@ -7587,6 +7690,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd9f454842eeb504fa5d0360087888b2
+    m_Address: mvz2:contraption/dream/snipe_dispenser
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cd9fb24b2c51dc9499b06218585ad8b9
     m_Address: mvz2:boon
@@ -9343,7 +9452,12 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: faa2211777e02a84b8a7e50170afab89
+  - m_GUID: fb8f4c7fd9b8c624f9a40be6022fe0a2
+    m_Address: mvz2:rebornmare_boss
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: faa2211777e02a84b8a7e50170afab89
     m_Address: mvz2:map/mausoleum/map
     m_ReadOnly: 0
     m_SerializedLabels:

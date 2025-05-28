@@ -29,7 +29,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             InitShootTimer(entity);
-            SetEvocationTimer(entity, new FrameTimer(30));
+            SetEvocationTimer(entity, new FrameTimer(27));
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -185,7 +185,7 @@ namespace MVZ2.GameContent.Contraptions
                 shotParams.soundID = null;
                 shotParams.projectileID = projectileID;
                 shotParams.velocity = VanillaProjectileExt.GetLobVelocityByTime(spikeBallPos, targetPos, 24, projectileGravity);
-                shotParams.damage = entity.GetDamage() * 9;
+                shotParams.damage = entity.GetDamage() * 10;
                 entity.ShootProjectile(shotParams);
             }
         }
@@ -227,8 +227,8 @@ namespace MVZ2.GameContent.Contraptions
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
         public static readonly VanillaEntityPropertyMeta<EntityID> PROP_EXTEND_TARGET = new VanillaEntityPropertyMeta<EntityID>("ExtendTarget");
         public const float BASE_SHOT_HEIGHT = 30;
-        public const float EXTEND_SPEED = 10;
+        public const float EXTEND_SPEED = 11;
         public const int DETECT_INTERVAL = 8;
-        public const int MAX_EVOCATION_TARGET = 10;
+        public const int MAX_EVOCATION_TARGET = 12;
     }
 }

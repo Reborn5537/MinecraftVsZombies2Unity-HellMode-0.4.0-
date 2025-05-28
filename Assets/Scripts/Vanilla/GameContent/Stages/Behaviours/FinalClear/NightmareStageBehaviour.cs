@@ -1,6 +1,7 @@
 ﻿using MVZ2.GameContent.Bosses;
 using MVZ2.GameContent.Buffs.Level;
 using MVZ2.GameContent.Pickups;
+using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2Logic.Level;
@@ -8,6 +9,20 @@ using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+using PVZEngine.Armors;
+using PVZEngine.Auras;
+using PVZEngine.Buffs;
+using PVZEngine.Callbacks;
+using PVZEngine.Damages;
+using PVZEngine.Grids;
+using PVZEngine.Models;
+using PVZEngine.Modifiers;
+using PVZEngine.Triggers;
+using Tools;
 
 namespace MVZ2.GameContent.Stages
 {
@@ -78,6 +93,7 @@ namespace MVZ2.GameContent.Stages
             if (level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
             {
                 // 梦魇收割者出现
+                //level.StartRain();
                 level.SetUIAndInputDisabled(false);
                 SetBossState(level, BOSS_STATE_NIGHTMAREAPER);
                 return;
@@ -129,6 +145,7 @@ namespace MVZ2.GameContent.Stages
         {
             base.AfterBossWaveUpdate(level);
             ClearEnemies(level);
+            //优化帧数考虑
             if (!level.IsRerun)
             {
                 if (!level.IsCleared)

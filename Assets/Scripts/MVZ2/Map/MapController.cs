@@ -57,6 +57,7 @@ namespace MVZ2.Map
                 model.OnEndlessButtonClick -= OnEndlessButtonClickCallback;
                 model.OnMapKeyClick -= OnMapKeyClickCallback;
                 model.OnMapNightmareBoxClick -= OnMapNightmareBoxClickCallback;
+                model.OnMapDreamWaterClick -= OnMapDreamWaterClickCallback;
                 model.OnMapPinClick -= OnMapPinClickCallback;
                 Destroy(model.gameObject);
                 model = null;
@@ -123,6 +124,7 @@ namespace MVZ2.Map
                 model.OnEndlessButtonClick -= OnEndlessButtonClickCallback;
                 model.OnMapKeyClick -= OnMapKeyClickCallback;
                 model.OnMapNightmareBoxClick -= OnMapNightmareBoxClickCallback;
+                model.OnMapDreamWaterClick -= OnMapDreamWaterClickCallback;
                 model.OnMapPinClick -= OnMapPinClickCallback;
                 Destroy(model.gameObject);
             }
@@ -132,6 +134,7 @@ namespace MVZ2.Map
             model.OnEndlessButtonClick += OnEndlessButtonClickCallback;
             model.OnMapKeyClick += OnMapKeyClickCallback;
             model.OnMapNightmareBoxClick += OnMapNightmareBoxClickCallback;
+            model.OnMapDreamWaterClick -= OnMapDreamWaterClickCallback;
             model.OnMapPinClick += OnMapPinClickCallback;
 
             UpdateModelButtons();
@@ -258,7 +261,20 @@ namespace MVZ2.Map
             }
             Main.Scene.DisplayMap(MapID);
         }
-        private void OnMapPinClickCallback(NamespaceID id)
+        private void OnMapDreamWaterClickCallback()
+        {
+            ui.SetRaycastBlockerActive(true);
+            Hide();
+            if (MapID == VanillaMapID.dream)
+            {
+                Main.Scene.DisplayMap(VanillaMapID.dreamwater);
+            }
+            else if(MapID == VanillaMapID.dreamwater)
+            {
+                Main.Scene.DisplayMap(VanillaMapID.dream);
+            }
+        }
+            private void OnMapPinClickCallback(NamespaceID id)
         {
             if (id == MapPinID.halloween)
             {

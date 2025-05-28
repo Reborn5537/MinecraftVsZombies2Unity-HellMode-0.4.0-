@@ -6,6 +6,7 @@ using MVZ2Logic.Level;
 using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
+using MVZ2.GameContent.Armors;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -19,6 +20,7 @@ namespace MVZ2.GameContent.Enemies
         public override void Init(Entity entity)
         {
             base.Init(entity);
+            entity.EquipArmor<IronHelmet>();
             entity.SetAnimationBool("HasFlag", true);
             var speedBuff = entity.GetFirstBuff<RandomEnemySpeedBuff>();
             if (speedBuff != null)

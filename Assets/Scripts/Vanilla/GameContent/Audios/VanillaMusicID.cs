@@ -15,6 +15,9 @@ namespace MVZ2.Vanilla.Audios
         public readonly static NamespaceID nightmareBoss2 = Get("nightmare_boss2");
         public readonly static NamespaceID seija = Get("seija");
         public readonly static NamespaceID witherBoss = Get("wither_boss");
+        public readonly static NamespaceID rebornmarefinal = Get("rebornmare_final");
+        public readonly static NamespaceID rebornmareBoss = Get("rebornmare_boss");
+        public readonly static NamespaceID rebornmareBoss2 = Get("rebornmare_boss2");
         public readonly static NamespaceID mausoleumBoss = Get("mausoleum_boss");
         public readonly static NamespaceID mausoleumBoss2 = Get("mausoleum_boss_2");
         private static NamespaceID Get(string name)

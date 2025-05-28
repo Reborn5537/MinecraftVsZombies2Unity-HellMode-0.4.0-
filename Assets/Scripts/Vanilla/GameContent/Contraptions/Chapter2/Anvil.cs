@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MVZ2.GameContent.Buffs.Contraptions;
 using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Detections;
 using MVZ2.Vanilla.Audios;
@@ -10,6 +11,18 @@ using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
+using System.Collections.Generic;
+using MVZ2.GameContent.Areas;
+using MVZ2.GameContent.Artifacts;
+using MVZ2.GameContent.Buffs;
+using MVZ2.GameContent.Detections;
+using MVZ2.GameContent.Pickups;
+using MVZ2.Vanilla;
+using MVZ2.Vanilla.Detections;
+using MVZ2Logic;
+using MVZ2Logic.Models;
+using PVZEngine.Auras;
+using PVZEngine.Buffs;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -25,6 +38,19 @@ namespace MVZ2.GameContent.Contraptions
             base.Init(entity);
             entity.CollisionMaskFriendly |= EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_OBSTACLE | EntityCollisionHelper.MASK_BOSS;
             entity.CollisionMaskHostile |= EntityCollisionHelper.MASK_PLANT | EntityCollisionHelper.MASK_ENEMY | EntityCollisionHelper.MASK_OBSTACLE | EntityCollisionHelper.MASK_BOSS;
+
+            var pos = entity.Position + Vector3.up * 600;
+            var level = entity.Level;
+            if (level.AreaID == VanillaAreaID.castle && !Global.Game.IsUnlocked(VanillaUnlockID.brokenLantern))
+            {
+                if (!level.EntityExists(e => e.IsEntityOf(VanillaPickupID.artifactPickup) && ArtifactPickup.GetArtifactID(e) == VanillaArtifactID.brokenLantern))
+                {
+                    var lantern = level.Spawn(VanillaPickupID.artifactPickup, pos + Vector3.up * 100, entity);
+                    ArtifactPickup.SetArtifactID(lantern, VanillaArtifactID.brokenLantern);
+                }
+            }
+            entity.Position = pos;
+            entity.SetFactionAndDirection(entity.GetFaction());
         }
         protected override void UpdateLogic(Entity contraption)
         {
@@ -46,10 +72,6 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             float damageModifier = Mathf.Clamp(anvil.Velocity.magnitude, 0, 1);
             collision.OtherCollider.TakeDamage(1800 * damageModifier, new DamageEffectList(VanillaDamageEffects.PUNCH, VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY), anvil);
-        }
-        public override bool CanEvoke(Entity entity)
-        {
-            return false;
         }
         public override void PostContactGround(Entity anvil, Vector3 velocity)
         {
@@ -86,6 +108,36 @@ namespace MVZ2.GameContent.Contraptions
                 }
             }
         }
+        protected override void OnEvoke(Entity contraption)
+        {
+            base.OnEvoke(contraption);
+            contraption.Health = contraption.GetMaxHealth();
+            contraption.PlaySound(VanillaSoundID.sparkle);
+
+            // 获取场上所有存活的植物
+            var plants = contraption.Level.GetEntities()
+                .Where(e => e.Type == EntityTypes.PLANT && !e.IsDead)
+                .ToList();
+
+            foreach (var plant in plants)
+            {
+                /*
+                var crystalBuff = plant.AddBuff<DreamCrystalEvocationBuff>();
+                if (crystalBuff != null)
+                {
+                    crystalBuff.SetProperty(DreamCrystalEvocationBuff.PROP_TIMEOUT,
+                                          DreamCrystalEvocationBuff.MAX_TIMEOUT);
+                }*/
+
+                // DreamButterflyShieldBuff
+                var shieldBuff = plant.AddBuff<DreamButterflyShieldBuff>();
+                if (shieldBuff != null)
+                {
+                    shieldBuff.SetProperty(DreamButterflyShieldBuff.PROP_TIMEOUT,
+                                          DreamButterflyShieldBuff.MAX_TIMEOUT);
+                }
+            }
+        }
         public static bool CanSmash(Entity anvil, Entity other)
         {
             if (anvil == null || other == null)
@@ -105,4 +157,5 @@ namespace MVZ2.GameContent.Contraptions
         private List<IEntityCollider> smashBuffer = new List<IEntityCollider>();
         private Detector smashDetector;
     }
+}
 }

@@ -122,7 +122,7 @@ namespace MVZ2.GameContent.Contraptions
             }
         }
         public const int PRODUCTION_INTERVAL = 30;
-        public const int UPGRADE_TIME = 3600;
+        public const int UPGRADE_TIME = 4000;
         private static readonly Color productionColor = new Color(0.5f, 0.5f, 0.5f, 0);
         private static readonly NamespaceID ID = VanillaContraptionID.moonlightSensor;
         public static readonly VanillaEntityPropertyMeta<bool> PROP_UPGRADED = new VanillaEntityPropertyMeta<bool>("Upgraded");

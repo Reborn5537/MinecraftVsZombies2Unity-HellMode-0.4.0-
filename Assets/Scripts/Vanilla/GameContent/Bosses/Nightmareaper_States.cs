@@ -475,7 +475,7 @@ namespace MVZ2.GameContent.Bosses
                 entity.PlaySound(VanillaSoundID.reverseVampire);
                 entity.PlaySound(VanillaSoundID.confuse);
 
-                SetDarknessTimeout(entity.Level, 480);
+                SetDarknessTimeout(entity.Level, 500);
 
                 var stateTimer = stateMachine.GetStateTimer(entity);
                 stateTimer.ResetTime(30);

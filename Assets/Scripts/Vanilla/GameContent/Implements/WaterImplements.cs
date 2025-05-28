@@ -6,6 +6,7 @@ using MVZ2Logic.Level;
 using MVZ2Logic.Modding;
 using PVZEngine.Callbacks;
 using PVZEngine.Entities;
+using MVZ2.GameContent.Buffs.Enemies;
 
 namespace MVZ2.GameContent.Implements
 {
@@ -25,6 +26,14 @@ namespace MVZ2.GameContent.Implements
 
             // 器械：如果重力大于0，不是水生的，并且没有睡莲，沉没。否则漂在水面上。
             // 障碍物、小推车：如果重力大于0，沉没。否则漂在水面上。
+            if (entity.HasBuff<FlyBuff>() ||
+                 entity.Type == EntityTypes.BOSS ||
+                 entity.Type == EntityTypes.PICKUP ||
+                 entity.Type == EntityTypes.EFFECT)
+            {
+                entity.SetAnimationBool("InWater", false);
+                return;
+            }
             int interaction = entity.GetWaterInteraction();
             if (interaction == WaterInteraction.NONE)
             {

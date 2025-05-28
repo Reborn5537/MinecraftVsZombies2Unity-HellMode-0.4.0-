@@ -67,6 +67,10 @@ namespace MVZ2.GameContent.Enemies
                 return;
             var level = entity.Level;
             int count = level.GetMotherTerrorEggCount();
+            else if (level.Difficulty == VanillaDifficulties.hell)
+            {
+                count = 4;
+            }
             for (int i = 0; i < count; i++)
             {
                 entity.SpawnWithParams(VanillaEnemyID.parasiteTerror, entity.GetCenter());
@@ -79,7 +83,7 @@ namespace MVZ2.GameContent.Enemies
             base.UpdateLogic(entity);
             // 设置血量状态。
             entity.SetAnimationInt("EggState", GetEggState(entity));
-            entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
+            entity.SetAnimationInt("HealthState", entity.GetHealthState(3));
         }
         public static bool HasEggs(Entity spider)
         {

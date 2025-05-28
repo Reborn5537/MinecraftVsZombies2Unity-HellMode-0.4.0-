@@ -46,6 +46,10 @@ namespace MVZ2.GameContent.Enemies
         public const string soulsand = "soulsand";
         public const string seijaCursedDoll = "seija_cursed_doll";
         public const string bedserker = "bedserker";
+        public const string necromancermax = "necromancermax";
+        public const string mesmerizermax = "mesmerizermax";
+        public const string berserkermax = "berserkermax";
+        public const string nightmarefollower = "nightmarefollower";
         public const string skeletonWarrior = "skeleton_warrior";
         public const string skeletonMage = "skeleton_mage";
         public const string shikaisenStaff = "shikaisen_staff";
@@ -69,6 +73,7 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID ghast = Get(VanillaEnemyNames.ghast);
         public static readonly NamespaceID motherTerror = Get(VanillaEnemyNames.motherTerror);
         public static readonly NamespaceID parasiteTerror = Get(VanillaEnemyNames.parasiteTerror);
+        public static readonly NamespaceID nightmarefollower = Get(VanillaEnemyNames.nightmarefollower);
 
         public static readonly NamespaceID mesmerizer = Get(VanillaEnemyNames.mesmerizer);
         public static readonly NamespaceID berserker = Get(VanillaEnemyNames.berserker);
@@ -94,6 +99,9 @@ namespace MVZ2.GameContent.Enemies
         public static readonly NamespaceID soulsand = Get(VanillaEnemyNames.soulsand);
         public static readonly NamespaceID seijaCursedDoll = Get(VanillaEnemyNames.seijaCursedDoll);
         public static readonly NamespaceID bedserker = Get(VanillaEnemyNames.bedserker);
+        public static readonly NamespaceID necromancermax = Get(VanillaEnemyNames.necromancermax);
+        public static readonly NamespaceID mesmerizermax = Get(VanillaEnemyNames.mesmerizermax);
+        public static readonly NamespaceID berserkermax = Get(VanillaEnemyNames.berserkermax);
         public static readonly NamespaceID skeletonWarrior = Get(VanillaEnemyNames.skeletonWarrior);
         public static readonly NamespaceID skeletonMage = Get(VanillaEnemyNames.skeletonMage);
         public static readonly NamespaceID shikaisenStaff = Get(VanillaEnemyNames.shikaisenStaff);

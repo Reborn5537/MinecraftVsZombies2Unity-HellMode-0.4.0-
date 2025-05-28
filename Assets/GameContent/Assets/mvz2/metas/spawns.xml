@@ -21,10 +21,15 @@
         <terrain water="true"/>
         <weight base="0" />
     </entry>
+	<entry id="imp" entity="mvz2:imp" >
+		<spawn level="3"/>
+		<weight base="2000" />
+	</entry>
 
     <!-- Halloween -->
     <entry id="skeleton" entity="mvz2:skeleton" >
         <spawn level="2" />
+		<terrain water="true"/>
         <weight base="3500" />
     </entry>
     <entry id="ghost" entity="mvz2:ghost" >
@@ -38,8 +43,13 @@
     </entry>
     <entry id="necromancer" entity="mvz2:necromancer" >
         <spawn level="3" minWave="5" />
+		<terrain water="true"/>
         <weight base="1500" />
     </entry>
+	<entry id="skeleton_horse" entity="mvz2:skeleton_horse" >
+		<spawn level="3" />
+		<weight base="1500" />
+	</entry>
 
     <!-- Dream -->
     <entry id="spider" entity="mvz2:spider" >
@@ -60,6 +70,21 @@
         <spawn level="3" minWave="5"/>
         <weight base="2000" />
     </entry>
+	<entry id="necromancermax" entity="mvz2:necromancermax" >
+		<spawn level="8" />
+		<terrain water="true"/>
+		<weight base="1500" />
+	</entry>
+	<entry id="nightmarefollower" entity="mvz2:nightmarefollower" >
+		<spawn level="8" />
+		<terrain water="true"/>
+		<weight base="1500" />
+	</entry>
+	<entry id="dullahan_head" entity="mvz2:dullahan_head" >
+		<spawn level="3" />
+		<terrain water="true"/>
+		<weight base="2000" />
+	</entry>
 
     <!-- Castle -->
     <entry id="mesmerizer" entity="mvz2:mesmerizer" >

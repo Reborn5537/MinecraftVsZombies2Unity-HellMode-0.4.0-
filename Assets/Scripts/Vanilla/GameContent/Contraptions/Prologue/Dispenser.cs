@@ -4,6 +4,7 @@ using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
+using MVZ2.GameContent.Buffs.Armors;
 
 namespace MVZ2.GameContent.Contraptions
 {
@@ -18,7 +19,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             base.Init(entity);
             InitShootTimer(entity);
-            var evocationTimer = new FrameTimer(120);
+            var evocationTimer = new FrameTimer(115);
             SetEvocationTimer(entity, evocationTimer);
         }
         protected override void UpdateAI(Entity entity)
@@ -46,7 +47,7 @@ namespace MVZ2.GameContent.Contraptions
         {
             var evocationTimer = GetEvocationTimer(entity);
             evocationTimer.Run();
-            if (evocationTimer.PassedInterval(2))
+            if (evocationTimer.PassedInterval(2))//等第四章出了再改
             {
                 var projectile = Shoot(entity);
                 projectile.Velocity *= 2;

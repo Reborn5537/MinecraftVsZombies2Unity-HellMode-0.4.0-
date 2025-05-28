@@ -208,7 +208,7 @@ namespace MVZ2.GameContent.Contraptions
             }
         }
         public const int RESTORE_TIME = 600;
-        public const float EVOKED_DAMAGE_MULTIPLIER = 5;
+        public const float EVOKED_DAMAGE_MULTIPLIER = 6;
         private static readonly NamespaceID ID = VanillaContraptionID.punchton;
         public static readonly VanillaEntityPropertyMeta<float> PROP_ARM_EXTENSION = new VanillaEntityPropertyMeta<float>("ArmExtension");
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_STATE_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("StateTimer");

@@ -14,6 +14,6 @@ namespace MVZ2.GameContent.Buffs.Contraptions
             AddModifier(new MaxHealthModifier(NumberOperator.Multiply, HEALTH_MULTIPLIER));
             AddModifier(new NamespaceIDModifier(VanillaContraptionProps.FRAGMENT_ID, VanillaFragmentID.obsidianArmor));
         }
-        public const float HEALTH_MULTIPLIER = 2.5f;
+        public const float HEALTH_MULTIPLIER = 2f;
     }
 }

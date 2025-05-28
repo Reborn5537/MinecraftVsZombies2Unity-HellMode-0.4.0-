@@ -10,6 +10,17 @@ using MVZ2Logic.Level;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using UnityEngine;
+using System.Linq;
+using PVZEngine.Buffs;
+using PVZEngine.Level;
+using Tools;
+using MVZ2.GameContent.Armors;
+using MVZ2.GameContent.Detections;
+using MVZ2.Vanilla.Contraptions;
+using MVZ2.Vanilla.Detections;
+using MVZ2.Vanilla.Enemies;
+using MVZ2.Vanilla.Properties;
+using PVZEngine;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -30,6 +41,7 @@ namespace MVZ2.GameContent.Bosses
                 AddState(new CameraState());
                 AddState(new FabricState());
                 AddState(new FaintState());
+                AddState(new ReverseDanceState());
             }
         }
         #endregion
@@ -139,6 +151,11 @@ namespace MVZ2.GameContent.Bosses
                         return lastState;
                     }
                 }
+                if ((lastState == STATE_FRONTFLIP || lastState == STATE_BACKFLIP) &&
+        ShouldReverseDance(entity))
+                {
+                    return STATE_REVERSE_DANCE;
+                }
 
                 return STATE_DANMAKU;
             }
@@ -182,7 +199,7 @@ namespace MVZ2.GameContent.Bosses
                         var param = entity.GetShootParams();
                         param.projectileID = VanillaProjectileID.seijaBullet;
                         param.position = entity.GetCenter();
-                        param.damage = entity.GetDamage() * 0.5f;
+                        param.damage = entity.GetDamage() * 0.6f;
                         param.velocity = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * SeijaBullet.LIGHT_SPEED;
                         var bullet = entity.ShootProjectile(param);
                         bullet.SetHSVToColor(color);
@@ -356,7 +373,7 @@ namespace MVZ2.GameContent.Bosses
                         {
                             var level = entity.Level;
                             stateMachine.SetSubState(entity, SUBSTATE_RETURN);
-                            substateTimer.ResetTime(23);
+                            substateTimer.ResetTime(21);
                             var pos = entity.Position;
                             pos.x = level.GetEntityColumnX(entity.IsFacingLeft() ? level.GetMaxColumnCount() - 1 : 0);
                             var lane = entity.RNG.Next(level.GetMaxLaneCount());
@@ -371,7 +388,7 @@ namespace MVZ2.GameContent.Bosses
                         if (entity.IsOnGround)
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_LANDED);
-                            substateTimer.ResetTime(17);
+                            substateTimer.ResetTime(15);
                         }
                         break;
 
@@ -449,24 +466,69 @@ namespace MVZ2.GameContent.Bosses
         private class BackflipState : EntityStateMachineState
         {
             public BackflipState() : base(STATE_BACKFLIP) { }
+
+            private static readonly int ORB_COUNT = 5;
+            private static readonly float ORB_SPREAD_ANGLE = 30f;
+
             public override void OnEnter(EntityStateMachine machine, Entity entity)
             {
                 base.OnEnter(machine, entity);
                 entity.Velocity = new Vector3(-10 * entity.GetFacingX(), 10, GetChangeAdjacentLaneZSpeed(entity));
+
+                FireControlOrbs(entity);
             }
+
+            private void FireControlOrbs(Entity entity)
+            {
+                var level = entity.Level;
+                var centerPos = entity.GetCenter();
+
+                var candidates = level.FindEntities(e =>
+                    e.Type == EntityTypes.PLANT &&
+                    !e.IsFloor() &&
+                    CompellingOrb.CanControl(e));
+
+                if (candidates.Length == 0) return;
+
+                var sortedTargets = candidates
+                    .OrderBy(e => Vector3.Distance(centerPos, e.Position))
+                    .Take(ORB_COUNT)
+                    .ToArray();
+
+                for (int i = 0; i < Mathf.Min(ORB_COUNT, sortedTargets.Length); i++)
+                {
+                    var target = sortedTargets[i];
+                    var param = entity.GetShootParams();
+                    param.damage = 0;
+                    param.projectileID = VanillaProjectileID.compellingOrb;
+
+                    float angle = (i - 1) * ORB_SPREAD_ANGLE;
+                    Vector3 direction = (target.Position - centerPos).normalized;
+                    direction = Quaternion.Euler(0, angle, 0) * direction;
+
+                    param.position = centerPos;
+                    param.velocity = direction * 5f;
+
+                    var orb = entity.ShootProjectile(param);
+                    orb.Target = target;
+                    orb.SetParent(entity);
+                }
+            }
+
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateAI(stateMachine, entity);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
                 substateTimer.Run(stateMachine.GetSpeed(entity));
                 var substate = stateMachine.GetSubState(entity);
+
                 switch (substate)
                 {
                     case SUBSTATE_JUMP:
                         if (entity.IsOnGround)
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_LANDED);
-                            substateTimer.ResetTime(17);
+                            substateTimer.ResetTime(15);
                         }
                         break;
 
@@ -478,9 +540,9 @@ namespace MVZ2.GameContent.Bosses
                         break;
                 }
             }
+
             public const int SUBSTATE_JUMP = 0;
             public const int SUBSTATE_LANDED = 1;
-
         }
         private class FrontflipState : EntityStateMachineState
         {
@@ -502,7 +564,7 @@ namespace MVZ2.GameContent.Bosses
                         if (entity.IsOnGround)
                         {
                             stateMachine.SetSubState(entity, SUBSTATE_LANDED);
-                            substateTimer.ResetTime(17);
+                            substateTimer.ResetTime(15);
                         }
                         break;
 
@@ -583,6 +645,99 @@ namespace MVZ2.GameContent.Bosses
             public override void OnUpdateLogic(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnUpdateLogic(stateMachine, entity);
+            }
+        }
+        private class ReverseDanceState : EntityStateMachineState
+        {
+            private int jumpsRemaining;
+            private FrameTimer jumpTimer;
+            private List<Entity> allPlants = new List<Entity>();
+            private List<Vector3> originalPositions = new List<Vector3>();
+            private int swapCount = 0;
+            private const int TOTAL_SWAPS = 5;
+
+            public ReverseDanceState() : base(STATE_REVERSE_DANCE)
+            {
+                jumpTimer = new FrameTimer(30);
+            }
+
+            public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnEnter(stateMachine, entity);
+                jumpsRemaining = 5;
+                swapCount = 0;
+                jumpTimer.Reset();
+                allPlants.Clear();
+                originalPositions.Clear();
+
+                allPlants = entity.Level.FindEntities(e =>
+                    e.Type == EntityTypes.PLANT && !e.IsFloor())
+                    .ToList();
+
+                originalPositions = allPlants.Select(p => p.Position).ToList();
+                entity.PlaySound(VanillaSoundID.gapWarp);
+            }
+
+            public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
+            {
+                base.OnUpdateAI(stateMachine, entity);
+
+                jumpTimer.Run();
+                if (jumpTimer.Expired && jumpsRemaining > 0)
+                {
+                    PerformDanceJump(entity);
+                    jumpTimer.Reset();
+                    jumpsRemaining--;
+                }
+
+                if (jumpsRemaining <= 0 && entity.IsOnGround)
+                {
+                    stateMachine.StartState(entity, STATE_IDLE);
+                }
+            }
+
+            private void PerformDanceJump(Entity entity)
+            {
+                float xDir = jumpsRemaining % 2 == 0 ? 1 : -1;
+                int currentLane = entity.GetLane();
+                int maxLane = entity.Level.GetMaxLaneCount() - 1;
+                int laneChange = entity.RNG.Next(-1, 2);
+                int targetLane = Mathf.Clamp(currentLane + laneChange, 0, maxLane);
+
+                float jumpHeight = entity.RNG.Next(8, 13);
+                float xSpeed = entity.RNG.Next(8, 13) * xDir * entity.GetFacingX();
+
+                entity.Velocity = new Vector3(
+                    xSpeed,
+                    jumpHeight,
+                    GetChangeLaneZSpeed(entity, targetLane)
+                );
+
+                if (swapCount < TOTAL_SWAPS)
+                {
+                    SwapAllTowers(entity);
+                    swapCount++;
+                }
+            }
+
+            private void SwapAllTowers(Entity entity)
+            {
+                if (allPlants.Count <= 1) return;
+
+                for (int i = 0; i < allPlants.Count; i++)
+                {
+                    int swapIndex = (i + 1) % allPlants.Count;
+                    allPlants[i].Position = originalPositions[swapIndex];
+
+                    if (i % 3 == 0) 
+                    {
+                        entity.Spawn(VanillaEffectID.magicBombExplosion, originalPositions[swapIndex]);
+                    }
+                }
+
+                originalPositions = allPlants.Select(p => p.Position).ToList();
+
+                entity.PlaySound(VanillaSoundID.fling, volume: 0.8f);
             }
         }
         #endregion

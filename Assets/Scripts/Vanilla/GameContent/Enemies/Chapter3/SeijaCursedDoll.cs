@@ -5,6 +5,7 @@ using MVZ2.GameContent.Effects;
 using MVZ2.Vanilla.Detections;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Properties;
+using MVZ2.GameContent.Projectiles;
 using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -47,6 +48,9 @@ namespace MVZ2.GameContent.Enemies
             absorbDetector.DetectEntities(entity, detectBuffer);
             foreach (var target in detectBuffer)
             {
+                if (target.IsEntityOf(VanillaProjectileID.largeSnowball))
+                    continue;
+
                 var vel = target.Velocity;
                 var speed = Mathf.Min(vel.magnitude + ABSORB_SPEED, ABSORB_MAX_SPEED);
                 vel += (entity.Position - target.Position).normalized * ABSORB_SPEED;

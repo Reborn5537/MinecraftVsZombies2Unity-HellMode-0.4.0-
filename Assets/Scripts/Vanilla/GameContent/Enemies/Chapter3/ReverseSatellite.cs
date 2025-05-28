@@ -71,6 +71,10 @@ namespace MVZ2.GameContent.Enemies
             {
                 float damageMutliplier = entity.Level.GetReverseSatelliteDamageMultiplier();
                 float radius = entity.GetRange();
+                else if (difficulty == VanillaDifficulties.hell)
+                {
+                    damageMutliplier = 3;
+                }
                 var damage = entity.GetDamage() * damageMutliplier;
                 if (damage >= 0)
                 {

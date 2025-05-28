@@ -12,6 +12,10 @@ using PVZEngine.Entities;
 using PVZEngine.Grids;
 using Tools;
 using UnityEngine;
+using MVZ2.Vanilla.Properties;
+using PVZEngine;
+using PVZEngine.Level;
+using PVZEngine.Triggers;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -324,7 +328,7 @@ namespace MVZ2.GameContent.Bosses
                     projectileID = VanillaProjectileID.bullet,
                     position = gunPosition,
                     velocity = gunDirection * boss.GetShotVelocity().magnitude,
-                    damage = boss.GetDamage() * 0.1f,
+                    damage = boss.GetDamage() * 0.3f,
                     faction = boss.GetFaction(),
                     soundID = VanillaSoundID.gunShot,
                 });
@@ -405,7 +409,7 @@ namespace MVZ2.GameContent.Bosses
 
                 Vector3 armRootPosition = boss.Position + outerArmRootOffset;
                 var missileDirection = GetMissileDirection(boss);
-                Vector3 missilePosition = armRootPosition + missileDirection * 80f;
+                Vector3 missilePosition = armRootPosition + missileDirection * 120f;
                 float missileSpeed = boss.GetShotVelocity().magnitude * 0.8f;
 
                 var missile = boss.ShootProjectile(new ShootParams()
@@ -413,7 +417,7 @@ namespace MVZ2.GameContent.Bosses
                     projectileID = VanillaProjectileID.missile,
                     position = missilePosition,
                     velocity = missileDirection * missileSpeed,
-                    damage = boss.GetDamage() * 2,
+                    damage = boss.GetDamage() * 3,
                     faction = boss.GetFaction(),
                     soundID = VanillaSoundID.missile
                 });
@@ -426,7 +430,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
-                substateTimer.ResetTime(24);
+                substateTimer.ResetTime(20);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
             {
@@ -520,7 +524,7 @@ namespace MVZ2.GameContent.Bosses
                 {
                     if (boss.IsFacingLeft())
                     {
-                        column = boss.RNG.Next(maxColumn - 3, maxColumn);
+                        column = boss.RNG.Next(maxColumn - 6, maxColumn);
                     }
                     else
                     {
@@ -535,7 +539,7 @@ namespace MVZ2.GameContent.Bosses
                 if (boss.IsFacingLeft())
                 {
                     var target = targetLaneGroup.OrderByDescending(e => e.GetColumn()).FirstOrDefault();
-                    column = Mathf.Clamp(target.GetColumn() + 1, maxColumn - 3, maxColumn - 1);
+                    column = Mathf.Clamp(target.GetColumn() + 1, maxColumn - 6, maxColumn - 1);
                     lane = target.GetLane();
                 }
                 else
@@ -608,7 +612,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 base.OnEnter(stateMachine, entity);
                 var substateTimer = stateMachine.GetSubStateTimer(entity);
-                substateTimer.ResetTime(30);
+                substateTimer.ResetTime(32);
                 entity.PlaySound(VanillaSoundID.teslaPower);
             }
             public override void OnUpdateAI(EntityStateMachine stateMachine, Entity entity)
@@ -628,7 +632,7 @@ namespace MVZ2.GameContent.Bosses
                         {
                             Shock(entity);
                         }
-                        substateTimer.ResetTime(15);
+                        substateTimer.ResetTime(12);
                         break;
 
                     case SUBSTATE_SHOCK_FINISHED:
@@ -658,9 +662,23 @@ namespace MVZ2.GameContent.Bosses
                         ElectricArc.Connect(arc, contraption.Position);
                         ElectricArc.UpdateArc(arc);
                     }
+                    /*
+                    if (contraption.IsEntityOf(VanillaContraptionID.soulFurnace))
+                    {
+                        contraption.ShortCircuit(50);
+                        if (!soundPlayed)
+                        {
+                            contraption.PlaySound(VanillaSoundID.powerOff);
+                            soundPlayed = true;
+                        }
+                        var arc = level.Spawn(VanillaEffectID.electricArc, boss.Position + outerArmRootOffset + Vector3.left * 100, boss);
+                        ElectricArc.Connect(arc, contraption.Position);
+                        ElectricArc.UpdateArc(arc);
+                    }
+                    */
                     else if (contraption.IsEntityOf(contrapId))
                     {
-                        contraption.ShortCircuit(150);
+                        contraption.ShortCircuit(180);
                         if (!soundPlayed)
                         {
                             contraption.PlaySound(VanillaSoundID.powerOff);

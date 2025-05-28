@@ -41,9 +41,8 @@ namespace MVZ2.GameContent.Buffs.Enemies
             buff.SetProperty(PROP_TIMEOUT, timeout);
 
 
-            var rotation = Mathf.Min(time, timeout) / (float)MAX_TIMEOUT;
-            rotation = MathTool.EaseInAndOut(rotation);
-            buff.SetProperty(PROP_CAMERA_ROTATION, rotation * MAX_ROTATION);
+            var rotation = (time / (float)MAX_TIMEOUT) * MAX_ROTATION;
+            buff.SetProperty(PROP_CAMERA_ROTATION, rotation);
             if (timeout <= 0)
             {
                 buff.Remove();
@@ -52,7 +51,7 @@ namespace MVZ2.GameContent.Buffs.Enemies
         public static readonly VanillaBuffPropertyMeta<float> PROP_CAMERA_ROTATION = new VanillaBuffPropertyMeta<float>("CameraRotation");
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIME = new VanillaBuffPropertyMeta<int>("Time");
         public static readonly VanillaBuffPropertyMeta<int> PROP_TIMEOUT = new VanillaBuffPropertyMeta<int>("Timeout");
-        public const int MAX_TIMEOUT = 30;
-        public const int MAX_ROTATION = 180;
+        public const int MAX_TIMEOUT = 150;
+        public const int MAX_ROTATION = 540;
     }
 }

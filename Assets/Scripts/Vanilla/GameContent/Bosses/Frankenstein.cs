@@ -41,7 +41,7 @@ namespace MVZ2.GameContent.Bosses
             stateMachine.Init(boss);
             stateMachine.StartState(boss, STATE_WAKING);
 
-            if (boss.Level.FrankensteinInstantSteelPhase())
+            if (boss.Level.FrankensteinInstantSteelPhase()|| boss.Level.Difficulty == VanillaDifficulties.hell)
             {
                 EnterSteelPhase(boss);
             }

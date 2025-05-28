@@ -259,4 +259,11 @@
             <key alpha="0.5" time="1"/>
         </alphaKeys>
     </fragment>
+    <fragment name="snipe_dispenser">
+		<colorKeys>
+			<key hex="#4F4F4F" time="0.35"/>
+            <key hex="#ABABAB" time="0.7"/>
+            <key hex="#C3A26D" time="0.3"/>
+		</colorKeys>
+	</fragment>
 </fragments>

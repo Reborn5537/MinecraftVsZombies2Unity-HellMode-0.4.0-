@@ -47,6 +47,7 @@ namespace MVZ2.GameContent.Buffs
         public const string miracleMalletReplicaDamage = "miracle_mallet_replica_damage";
         public const string witherSkeletonSkullReduceHealth = "wither_skeleton_skull_reduce_health";
         public const string brokenLantern = "broken_lantern";
+        public const string basictracking = "basic_tracking";
         public const string eyeOfTheGiant = "eye_of_the_giant";
         public const string bottledBlackholeDamage = "bottled_blackhole_damage";
         public const string noteBlockLoud = "note_block_loud";
@@ -110,6 +111,7 @@ namespace MVZ2.GameContent.Buffs
         // Difficulty
         public const string easyContraption = "easy_contraption";
         public const string hardEnemy = "hard_enemy";
+        public const string hellEnemy = "hell_enemy";
 
         // Armor
         public const string easyArmor = "easy_armor";
@@ -135,6 +137,7 @@ namespace MVZ2.GameContent.Buffs
         }
         public static class Level
         {
+            public const string levelHell = "level_hell";
             public const string taintedSun = "tainted_sun";
             public const string tutorialPickaxeDisable = "tutorial_pickaxe_disable";
             public const string tutorialTriggerDisable = "tutorial_trigger_disable";
@@ -152,8 +155,10 @@ namespace MVZ2.GameContent.Buffs
             // 难度
             public const string levelEasy = "level_easy";
             public const string levelHard = "level_hard";
+            public const string levelHell = "level_hell";
             public const string iZombieEasy = "i_zombie_easy";
             public const string iZombieHard = "i_zombie_hard";
+            public const string iZombieHell = "i_zombie_hell";
 
             // 制品
             public const string pagodaBranchLevel = "pagoda_branch_level";
@@ -203,6 +208,7 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID easyContraption = Get(VanillaBuffNames.easyContraption);
         public static readonly NamespaceID easyArmor = Get(VanillaBuffNames.easyArmor);
         public static readonly NamespaceID hardEnemy = Get(VanillaBuffNames.hardEnemy);
+        public static readonly NamespaceID hellEnemy = Get(VanillaBuffNames.hellEnemy);
         public static readonly NamespaceID dreamKeyShield = Get(VanillaBuffNames.dreamKeyShield);
         public static readonly NamespaceID carriedByLilyPad = Get(VanillaBuffNames.carriedByLilyPad);
         public static readonly NamespaceID carryingOther = Get(VanillaBuffNames.carryingOther);
@@ -231,6 +237,7 @@ namespace MVZ2.GameContent.Buffs
         }
         public static class Level
         {
+            public static readonly NamespaceID levelHell = Get(VanillaBuffNames.Level.levelHell);
             public static readonly NamespaceID levelEasy = Get(VanillaBuffNames.Level.levelEasy);
             public static readonly NamespaceID levelHard = Get(VanillaBuffNames.Level.levelHard);
             public static readonly NamespaceID tutorialPickaxeDisable = Get(VanillaBuffNames.Level.tutorialPickaxeDisable);

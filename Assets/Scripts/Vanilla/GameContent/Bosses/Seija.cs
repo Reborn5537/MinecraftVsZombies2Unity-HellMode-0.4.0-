@@ -14,6 +14,13 @@ using UnityEngine;
 
 namespace MVZ2.GameContent.Bosses
 {
+    public static class SeijaExtensions
+    {
+        public static float GetHealthPercent(this Entity entity)
+        {
+            return Mathf.Clamp01(entity.Health / entity.GetMaxHealth());
+        }
+    }
     [EntityBehaviourDefinition(VanillaBossNames.seija)]
     public partial class Seija : BossBehaviour
     {
@@ -210,6 +217,14 @@ namespace MVZ2.GameContent.Bosses
         {
             return hammerCheckDetector.DetectEntityWithTheLeast(boss, e => Mathf.Abs(e.Position.x - boss.Position.x));
         }
+        public static bool ShouldReverseDance(Entity boss)
+        {
+            if (stateMachine.GetPreviousState(boss) == STATE_REVERSE_DANCE)
+                return false;
+
+            float healthFactor = 1 - boss.GetHealthPercent();
+            return boss.RNG.Next(100) < 40 + (30 * healthFactor);
+        }
 
         #region 常量
         private static readonly VanillaEntityPropertyMeta<int> PROP_FABRIC_COUNT = new VanillaEntityPropertyMeta<int>("FabricCount");
@@ -218,13 +233,13 @@ namespace MVZ2.GameContent.Bosses
         private static readonly VanillaEntityPropertyMeta<float> PROP_RECENT_TAKEN_DAMAGE = new VanillaEntityPropertyMeta<float>("RecentTakenDamage");
         private static readonly VanillaEntityPropertyMeta<float> PROP_BULLET_ANGLE = new VanillaEntityPropertyMeta<float>("BulletAngle");
 
-        private const int MAX_FABRIC_COUNT = 3;
+        private const int MAX_FABRIC_COUNT = 5;
         private const float FABRIC_DAMAGE_THRESOLD = 300;
         private const float TAKEN_DAMAGE_FADE = FABRIC_DAMAGE_THRESOLD / 75f;
 
-        private const int CAMERA_ENEMY_COUNT = 3;
-        private const int GAP_BOMB_ENEMY_COUNT = 5;
-        private const int BACKFLIP_ENEMY_COUNT = 3;
+        private const int CAMERA_ENEMY_COUNT = 4;
+        private const int GAP_BOMB_ENEMY_COUNT = 6;
+        private const int BACKFLIP_ENEMY_COUNT = 4;
         private const float ADJUST_Z_THRESOLD = 5;
 
         private const int STATE_IDLE = VanillaEntityStates.SEIJA_IDLE;
@@ -237,6 +252,7 @@ namespace MVZ2.GameContent.Bosses
         private const int STATE_CAMERA = VanillaEntityStates.SEIJA_CAMERA;
         private const int STATE_FABRIC = VanillaEntityStates.SEIJA_FABRIC;
         private const int STATE_FAINT = VanillaEntityStates.SEIJA_FAINT;
+        public const int STATE_REVERSE_DANCE = VanillaEntityStates.SEIJA_REVERSE_DANCE;
         #endregion 常量
 
         private static Detector hammerCheckDetector = new SeijaDetector(SeijaDetector.MODE_DETECT);

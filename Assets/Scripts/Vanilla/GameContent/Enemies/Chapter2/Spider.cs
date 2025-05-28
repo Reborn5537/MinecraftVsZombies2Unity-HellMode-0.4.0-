@@ -8,6 +8,17 @@ using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
+using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Projectiles;
+using MVZ2.Vanilla.Audios;
+using PVZEngine.Triggers;
+using Tools;
+using MVZ2.GameContent.Contraptions;
+using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Detections;
+using MVZ2.GameContent.Difficulties;
+using MVZ2.Vanilla.Level;
+using MVZ2Logic.Level;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -138,14 +149,22 @@ namespace MVZ2.GameContent.Enemies
                 return false;
             if (!enemy.IsHostile(target))
                 return false;
+            //if (!enemy.IsHostile(target))
+                //return false;
             if (!Detection.IsInSameRow(enemy, target))
                 return false;
             if (!Detection.CanDetect(target))
                 return false;
             if (target.Type != EntityTypes.PLANT)
                 return false;
+            //if (!Detection.CanDetect(target))
+            //return false;
+            //if (target.Type != EntityTypes.PLANT)//让我们试试爬正邪()
+            //return true;
             if (target.IsFloor() || !target.IsDefensive() || target.NoClimb())
                 return false;
+            if (target.IsEntityOf(VanillaContraptionID.goldenApple))
+                return true;
             return true;
         }
         protected virtual bool ValidateClimbTarget(Entity enemy, Entity target)

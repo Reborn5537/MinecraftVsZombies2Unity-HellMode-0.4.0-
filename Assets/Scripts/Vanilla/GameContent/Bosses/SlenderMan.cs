@@ -200,7 +200,7 @@ namespace MVZ2.GameContent.Bosses
 
             int maxColumnCount = level.GetMaxColumnCount();
             int maxRowCount = level.GetMaxLaneCount();
-            for (int c = maxColumnCount - 2; c < maxColumnCount; c++)
+            for (int c = maxColumnCount - 3; c < maxColumnCount; c++)
             {
                 for (int r = 0; r < maxRowCount; r++)
                 {
@@ -208,7 +208,7 @@ namespace MVZ2.GameContent.Bosses
                 }
             }
             var portalRNG = GetPortalRNG(entity);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 var index = portalRNG.Next(0, placePool.Count);
                 Vector2Int place = placePool[index];
@@ -249,7 +249,19 @@ namespace MVZ2.GameContent.Bosses
                 return;
 
             var rng = GetMindSwapRNG(entity);
-            NamespaceID[] pool = level.SlendermanMindSwapZombies() ? hardMindSwapPool : mindSwapPool;
+            NamespaceID[] pool;
+            if (level.Difficulty == VanillaDifficulties.hard)
+            {
+                pool = hardMindSwapPool;
+            }
+            else if (level.Difficulty == VanillaDifficulties.hell)
+            {
+                pool = hellMindSwapPool;
+            }
+            else
+            {
+                pool = mindSwapPool;
+            }
             for (int i = 0; i < level.GetConveyorSeedPackCount(); i++)
             {
                 var blueprint = level.GetConveyorSeedPackAt(i);
@@ -280,6 +292,10 @@ namespace MVZ2.GameContent.Bosses
             var desc = Global.Game.GetText(CHOOSE_FATE_DESCRIPTION);
 
             int count = level.GetSlendermanFateChoiceCount();
+            else if (level.Difficulty == VanillaDifficulties.hell)
+            {
+                count = 2;
+            }
             var rng = GetFateOptionRNG(entity);
             var selected = fateOptions.RandomTake(count, rng).ToArray();
             var options = selected.Select(i => GetFateOptionText(i)).ToArray();
@@ -287,7 +303,7 @@ namespace MVZ2.GameContent.Bosses
             {
                 var option = selected[i];
                 DoFate(entity, option);
-                level.ResumeGame(100);
+                level.ResumeGame(120);
             });
         }
         private void DoFate(Entity boss, int option)
@@ -423,7 +439,7 @@ namespace MVZ2.GameContent.Bosses
             var targets = level.FindEntities(e => e.Type == EntityTypes.PLANT && e.CanDeactive());
             foreach (var contraption in targets)
             {
-                contraption.ShortCircuit(300);
+                contraption.ShortCircuit(350);
             }
         }
         private static string GetFateOptionText(int option)
@@ -436,6 +452,10 @@ namespace MVZ2.GameContent.Bosses
 
         private int GetMaxFateTimes(LevelEngine level)
         {
+            else if (level.Difficulty == VanillaDifficulties.hell)
+            {
+                return 6;
+            }
             return level.GetSlendermanMaxFateTimes();
         }
 
@@ -481,25 +501,26 @@ namespace MVZ2.GameContent.Bosses
 
         #region 常量
         public static readonly NamespaceID ID = VanillaBossID.slenderman;
+        //private static readonly string[] colors = { "<color=purple>???</color>", "<color=red>???</color>", "<color=yellow>???</color>", "<color=blue>???</color>", "<color=black>???</color>", "<color=yellow>???</color>"};
 
         [TranslateMsg("梦魇对话框标题")]
-        public const string CHOOSE_FATE_TITLE = "选择你的命运";
+        public const string CHOOSE_FATE_TITLE = "在无尽轮回中选择你的<color=red>命运</color>";
         [TranslateMsg("梦魇对话框文本")]
-        public const string CHOOSE_FATE_DESCRIPTION = "选吧。";
+        public const string CHOOSE_FATE_DESCRIPTION = "命运的低语在你耳边回响，选吧<color=red>=)</color>你的每一步都将改变命运的轨迹";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_PANDORAS_BOX = "潘多拉的魔盒";
+        public const string FATE_TEXT_PANDORAS_BOX = "<color=purple>打开那扇尘封的门</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_BIOHAZARD = "尸潮";
+        public const string FATE_TEXT_BIOHAZARD = "<color=red>唤醒沉睡的亡者</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_DECREPIFY = "衰老";
+        public const string FATE_TEXT_DECREPIFY = "<color=purple>接受时间的重量</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_INSANITY = "疯狂";
+        public const string FATE_TEXT_INSANITY = "<color=red>窥视理智的彼端</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_COME_TRUE = "成真";
+        public const string FATE_TEXT_COME_TRUE = "<color=yellow>让噩梦照进现实</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_THE_LURKER = "深潜者";
+        public const string FATE_TEXT_THE_LURKER = "<color=blue>潜入无光的深渊</color>";
         [TranslateMsg("梦魇选项")]
-        public const string FATE_TEXT_BLACK_SUN = "黑太阳";
+        public const string FATE_TEXT_BLACK_SUN = "<color=black>凝视那永不落下的黑暗</color>";
 
         public const int MAX_MOVE_TIMEOUT = 30;
 
@@ -533,12 +554,18 @@ namespace MVZ2.GameContent.Bosses
             VanillaEnemyID.zombie,
             VanillaEnemyID.leatherCappedZombie,
             VanillaEnemyID.ironHelmettedZombie,
+            VanillaEnemyID.necromancer,
+            VanillaEnemyID.boneWall,
+            VanillaEnemyID.ghast,
         };
 
         private static int[] portalPoolWeights = new int[]
         {
             10,
             5,
+            3,
+            2,
+            6,
             2
         };
         private static NamespaceID[] mindSwapPool = new NamespaceID[]
@@ -563,6 +590,21 @@ namespace MVZ2.GameContent.Bosses
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
             VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
             VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie)
+        };
+        private static NamespaceID[] hellMindSwapPool = new NamespaceID[]
+        {
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.lilyPad),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.drivenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.gravityPad),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.vortexHopper),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.ghast),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.pistenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.totenser),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamCrystal),
+            VanillaBlueprintID.FromEntity(VanillaContraptionID.dreamSilk),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.zombie),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.boneWall),
+            VanillaBlueprintID.FromEntity(VanillaEnemyID.necromancer)
         };
         private static int[] fateOptions = new int[]
         {

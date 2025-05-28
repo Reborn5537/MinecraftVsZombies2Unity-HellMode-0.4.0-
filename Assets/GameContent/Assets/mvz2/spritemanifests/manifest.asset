@@ -977,6 +977,20 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8e5761afd86512d468f5326f1b03e7dd, type: 3}
   - name: ui/level/progress_bar/wither_foreground
     sprite: {fileID: 21300000, guid: 529c022f5f623db4db8f49685b84b1a8, type: 3}
+  - name: mobile_blueprint/anvil
+    sprite: {fileID: 21300000, guid: c8a3d0785f8452f4c9f61605cf6d231e, type: 3}
+  - name: mobile_blueprint/nightmarefollower
+    sprite: {fileID: 21300000, guid: 780cac5345bbda74d98cfd963db70ef1, type: 3}
+  - name: mainmenu/minecraft_title (1)
+    sprite: {fileID: 21300000, guid: a46419b71641ed2478bafee774ec75bb, type: 3}
+  - name: mainmenu/minecraft_title (2)
+    sprite: {fileID: 21300000, guid: 648ba03d4c25a86458e93bb6f42aaa17, type: 3}
+  - name: mobile_blueprint/snipe_dispenser
+    sprite: {fileID: 21300000, guid: a180eae2eba19a044b102a6d990690a3, type: 3}
+  - name: achievements/dreamend
+    sprite: {fileID: 21300000, guid: 6e9290926198114458859c09e0fa49f7, type: 3}
+  - name: entity/boss/rebornslenderman
+    sprite: {fileID: 21300000, guid: c4465d69623e88744aede73ff313c425, type: 3}
   spritesheetEntries:
   - name: map_button
     spritesheet:
@@ -2110,7 +2124,11 @@ MonoBehaviour:
     spritesheet:
     - {fileID: -2046790410, guid: c2b1b19c4c98a0e4390a8b7320626240, type: 3}
     - {fileID: -731683442, guid: c2b1b19c4c98a0e4390a8b7320626240, type: 3}
-  - name: ui/musicroom/track_button
+
+  - name: entity/contraption/snipe_dispenser
+    spritesheet:
+    - {fileID: 207085780836861793, guid: 1ec349c80790765468b3a07a2e7e32a4, type: 3}
+    - {fileID: 3811260836624084633, guid: 1ec349c80790765468b3a07a2e7e32a4, type: 3}  - name: ui/musicroom/track_button
     spritesheet:
     - {fileID: 1982832705, guid: 439af6a040ba009429682529df6aaa94, type: 3}
     - {fileID: -904862214, guid: 439af6a040ba009429682529df6aaa94, type: 3}

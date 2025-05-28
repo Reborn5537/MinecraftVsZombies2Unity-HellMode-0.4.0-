@@ -33,7 +33,7 @@
                 <p>黑曜石的强力装甲能够抵御敌人的攻击。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>4000</color>]]></p>
+                <p>耐久：<![CDATA[<color=red>4050</color>]]></p>
                 <p>技能：<![CDATA[<color=red>获得下界合金装甲，耐久提高至10000</color>]]></p>
             </properties>
             <flavor>
@@ -168,7 +168,7 @@
                 <p>银质发射器能发射穿透血肉之躯的飞刀。</p>
             </header>
             <properties>
-                <p>伤害：<![CDATA[<color=red>15，30（对肉体）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>25，40（对肉体）</color>]]></p>
                 <p>特点：<![CDATA[<color=red>穿透多个敌人，但无法穿透硬物</color>]]></p>
                 <p>技能：<![CDATA[<color=red>以至多10个敌人为中心创造飞刀圈，数秒后飞刀开始飞行</color>]]></p>
             </properties>
@@ -257,7 +257,7 @@
             </header>
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>15（飞镖），20/秒（火焰）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>20（飞镖），20/秒（火焰）</color>]]></p>
                 <p>特点：<![CDATA[<color=red>飞镖上的箭毒会让僵尸肌肉松弛而无法造成伤害</color>]]></p>
                 <p>技能：<![CDATA[<color=red>投出穿透敌人的长矛，并留下使敌人虚弱的毒雾轨迹</color>]]></p>
             </properties>
@@ -270,7 +270,7 @@
                 <p>梦境结晶会慢慢地恢复自己的生命。</p>
             </header>
             <properties>
-                <p>耐久：<![CDATA[<color=red>2000</color>]]></p>
+                <p>耐久：<![CDATA[<color=red>2250</color>]]></p>
                 <p>恢复速度：<![CDATA[<color=red>40/秒</color>]]></p>
                 <p>技能：<![CDATA[<color=red>进入无敌状态，并为周围的器械恢复耐久</color>]]></p>
             </properties>
@@ -291,6 +291,32 @@
                 <p>美梦丝是个睡货，它每天睁开眼睛做的第一件事就是睡觉。瞧瞧它睡的，把自己的冷却时间也给睡长了。</p>
             </flavor>
         </entry>
+		<entry id="mvz2:anvil">
+			<header>
+				<p>铁砧从高空坠落时能对敌人造成巨大伤害。</p>
+			</header>
+			<properties>
+				<p>特点：<![CDATA[<color=red>既能攻击敌人也能阻挡敌人前进</color>]]></p>
+				<p>技能：<![CDATA[<color=red>给予全体器械无敌5秒</color>]]></p>
+			</properties>
+			<flavor>
+				<p>"为什么天上会掉铁砧？"——某个被砸扁的僵尸临终前问道。"因为牛顿的棺材板压不住了。"重力板在旁边幽幽地回答。</p>
+			</flavor>
+		</entry>
+		<entry id="mvz2:snipe_dispenser">
+			<header>
+				<p>发射追踪箭矢攻击敌人</p>
+			</header>
+			<properties>
+				<p>特点：<![CDATA[<color=blue>箭协同追踪(由于一些缘故,追踪功能可能会有故障)</color>]]></p>
+				<p>技能：<![CDATA[<color=red>[残缺]莫洛托夫半圆射击阵</color>]]></p>
+			</properties>
+			<flavor>
+				<p>狙击发射器不成器的学徒，永远达不到师父"千米之外取敌首级"的境界。其箭矢只能形成残缺的莫洛托夫半圆射击阵，被戏称为"半吊子发射器"。</p>
+				<p>虽然继承了死亡印记的追踪能力，但必须采用双箭互补射击模式：先导箭负责索敌，追踪箭进行末端修正。这种低效的战斗方式常让它的师父摇头叹息。</p>
+				<p>最著名战绩是在靶场练习时误伤了3个友方熔炉——这反而证明了它确实学到了师父"百发百中"的技术特点，只是还没学会分辨敌我。</p>
+			</flavor>
+		</entry>
 
         <!-- Chapter 3 -->
         <entry id="mvz2:wooden_dropper">
@@ -313,7 +339,7 @@
             </header>
             <properties>
                 <p>攻击频率：<![CDATA[<color=red>1秒</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>20</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>25</color>]]></p>
                 <p>技能：<![CDATA[<color=red>对一整行地面上的敌人快速造成伤害，并将它们拉向自身</color>]]></p>
             </properties>
             <flavor>
@@ -328,7 +354,7 @@
             <properties>
                 <p>发射速度：<![CDATA[<color=red>1.5秒</color>]]></p>
                 <p>巨石概率：<![CDATA[<color=red>25%</color>]]></p>
-                <p>伤害：<![CDATA[<color=red>10（卵石），40（巨石）</color>]]></p>
+                <p>伤害：<![CDATA[<color=red>15（卵石），45（巨石）</color>]]></p>
                 <p>技能：<![CDATA[<color=red>立即喷射30发巨石</color>]]></p>
             </properties>
             <flavor>
@@ -708,7 +734,7 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>速度：<![CDATA[<color=red>1.5</color>]]></p>
             </properties>
             <flavor>
                 <p>在上一次尸界大战失败后，僵尸在墙角里做了三天三夜的反省。后来他开始锻炼自己，想让自己变得更强以吃到更多的脑子。现在的他看起来……好吧还是没变。</p>
@@ -740,10 +766,10 @@
         </entry>
         <entry id="mvz2:flag_zombie">
             <header>
-                <p>旗帜僵尸的出现标志着一大波怪物的到来。</p>
+                <p>铁桶旗帜僵尸的出现标志着一大波怪物的到来。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>200</color>]]></p>
+                <p>生命：<![CDATA[<color=red>200+1100</color>]]></p>
                 <p>速度：<![CDATA[<color=red>2</color>]]></p>
             </properties>
             <flavor>
@@ -809,7 +835,7 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200</color>]]></p>
-                <p>骨墙生命：<![CDATA[<color=red>350</color>]]></p>
+                <p>骨墙生命：<![CDATA[<color=red>400</color>]]></p>
             </properties>
             <flavor>
                 <p>死灵法师想不通，为什么就因为复活了死者，他们就莫名其妙的被人们称为“邪恶巫师”，然后就被多收了税。他们其实只是想砌堵墙罢了。</p>
@@ -887,6 +913,22 @@
                 <p>它还没想好自己的网络冷笑话该怎么写。</p>
             </flavor>
         </entry>
+        <entry id="mvz2:nightmarefollower">
+		<header>
+			<p>梦魇残留的扭曲造物，仍在执行主人未完成的腐蚀指令</p>
+		</header>
+		<properties>
+			<p>生命：<![CDATA[<color=red>1000</color>]]></p>
+			<p>速度：<![CDATA[<color=red>0.5</color>]]></p>
+			<p>特点：<![CDATA[<color=red>梦魇死亡后仅存的追随者</color>]]></p>
+		</properties>
+		<flavor>
+			<p>当骑士终于找到那匹梦魇化作的黑马时，他发现马背上竟骑着个披着破旧黑袍的人形。</p>
+			<p>"你不是马...你是骑手？"骑士举起长枪质问。</p>
+			<p>黑袍下传出空洞的笑声："我们都是...也都不是..."</p>
+			<p>随着黑袍滑落，骑士看到无数苍白的手臂从那人体内伸出，像缰绳般缠绕着梦魇的脖颈。</p>
+		</flavor>
+	</entry>
 
         <entry id="mvz2:mesmerizer">
             <header>
@@ -894,7 +936,7 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200+100</color>]]></p>
-                <p>速度：<![CDATA[<color=red>1</color>]]></p>
+                <p>速度：<![CDATA[<color=red>0.5</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>荧石周围的器械无法被控制</color>]]></p>
             </properties>
             <flavor>
@@ -908,7 +950,7 @@
             </header>
             <properties>
                 <p>生命：<![CDATA[<color=red>200+100</color>]]></p>
-                <p>速度：<![CDATA[<color=red>2</color>]]></p>
+                <p>速度：<![CDATA[<color=red>2.5</color>]]></p>
                 <p>爆炸伤害：<![CDATA[<color=red>300</color>]]></p>
             </properties>
             <flavor>
@@ -937,7 +979,7 @@
                 <p>地狱战车会碾压行进路上的所有器械，并在被摧毁后放出棺材中的灵魂沙王。</p>
             </header>
             <properties>
-                <p>生命：<![CDATA[<color=red>1350，低于200时每秒失去60生命</color>]]></p>
+                <p>生命：<![CDATA[<color=red>1500，低于200时每秒失去60生命</color>]]></p>
                 <p>速度：<![CDATA[<color=red>1</color>]]></p>
                 <p>碾压伤害：<![CDATA[<color=red>10000000</color>]]></p>
                 <p>弱点：<![CDATA[<color=red>尖刺方块</color>]]></p>
@@ -963,6 +1005,58 @@
                 <p>不过他自己不知道，也没有多少人知道——知道的也没人敢告诉他就是了。</p>
             </flavor>
         </entry>
+       <entry id="mvz2:bedserker">
+			<header>
+				<p>凋灵之眠，梦境腐朽</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>10000</color>]]></p>
+				<p>速度：<![CDATA[<color=red>2</color>]]></p>
+				<p>特点：<![CDATA[<color=red>四骑士之首(不死)</color>]]></p>
+			</properties>
+			<flavor>
+				<p>为凋灵大人献上永恒的忠诚！</p>
+			</flavor>
+		</entry>
+				<entry id="mvz2:necromancermax">
+			<header>
+				<p>凋灵之息，亡魂归附。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>1200</color>]]></p>
+				<p>速度：<![CDATA[<color=red>2</color>]]></p>
+				<p>特点：<![CDATA[<color=red>四骑士之一</color>]]></p>
+			</properties>
+			<flavor>
+				<p>为凋灵大人献上永恒的忠诚！</p>
+			</flavor>
+		</entry>
+			<entry id="mvz2:mesmerizermax">
+			<header>
+				<p>凋灵之瞳，意志溃散。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>1200</color>]]></p>
+				<p>速度：<![CDATA[<color=red>2</color>]]></p>
+				<p>特点：<![CDATA[<color=red>四骑士之一</color>]]></p>
+			</properties>
+			<flavor>
+				<p>为凋灵大人献上永恒的忠诚！</p>
+			</flavor>
+		</entry>
+			<entry id="mvz2:berserkermax">
+			<header>
+				<p>凋灵之怒，万物崩毁。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>1200</color>]]></p>
+				<p>速度：<![CDATA[<color=red>2</color>]]></p>
+				<p>特点：<![CDATA[<color=red>四骑士之一</color>]]></p>
+			</properties>
+			<flavor>
+				<p>为凋灵大人献上永恒的忠诚！</p>
+			</flavor>
+		</entry>
 
         
         <entry id="mvz2:reflective_barrier_zombie">
@@ -1040,6 +1134,48 @@
                 <p><![CDATA[<color=red>【图鉴 已被禁言，有效期是永久】</color>]]></p>
             </flavor>
         </entry>
+		<entry id="mvz2:mutant_zombie">
+			<header>
+				<p>突变僵尸拥有巨大的体格和惊人的力量。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>3000</color>]]></p>
+				<p>速度：<![CDATA[<color=red>1</color>]]></p>
+				<p>特点：<![CDATA[<color=red>扛打能力强,当血量到达一定时会丢出小鬼僵尸</color>]]></p>
+			</properties>
+			<flavor>
+				<p>在上一次尸界大战中突变僵尸对器械造成了巨大的损失</p>
+				<p>而现在还会那样吗。</p>
+			</flavor>
+		</entry>
+		<entry id="mvz2:mega_mutant_zombie">
+			<header>
+				<p>超级突变僵尸拥有比突变僵尸更巨大的体格和惊人的力量。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>6000</color>]]></p>
+				<p>速度：<![CDATA[<color=red>1</color>]]></p>
+				<p>特点：<![CDATA[<color=red>扛打能力强,当血量到达一定时会丢出小鬼僵尸</color>]]></p>
+			</properties>
+			<flavor>
+				<p>在上一次尸界大战中突变僵尸对器械造成了巨大的损失</p>
+				<p>而现在还会那样吗。</p>
+			</flavor>
+		</entry>
+	<entry id="mvz2:imp">
+			<header>
+				<p>小鬼僵尸速度很快，没了。</p>
+			</header>
+			<properties>
+				<p>生命：<![CDATA[<color=red>200</color>]]></p>
+				<p>速度：<![CDATA[<color=red>1</color>]]></p>
+				<p>特点：<![CDATA[<color=red>肉盾</color>]]></p>
+			</properties>
+			<flavor>
+				<p>在上一次尸界大战中小僵尸对器械的后方造成了巨大的损失。</p>
+				<p>而现在还会那样吗。</p>
+			</flavor>
+		</entry>
     </enemies>
     <artifacts>
         <entry id="mvz2:almanac">
@@ -1111,7 +1247,7 @@
                 <p>槐树上的树枝。</p>
             </header>
             <properties>
-                <p>效果：<![CDATA[<color=red>开始战斗时获得2个星之碎片，但怪物出现数量+200%</color>]]></p>
+                <p>效果：<![CDATA[<color=red>开始战斗时获得4个星之碎片，但怪物出现数量+400%</color>]]></p>
             </properties>
             <flavor>
                 <p>据说能让你一生荣华富贵，最终却也会因战火流离失所。</p>
@@ -1333,15 +1469,31 @@
                     <p>骑士离开王宫，骑上自己的马，便准备出发了。</p>
                 </flavor>
             </entry>
+            <entry id="mvz2:nightmare_boss" name="重生梦魇" sprite="mvz2:misc/nightmare_art" unlock="mvz2:level.dream_15">
+				<header>
+					<p>复苏的星空灾厄，在吸收骑士的绝望后获得了更强大的腐化能力。</p>
+				</header>
+				<properties>
+					<p>生命：<![CDATA[<color=red>6000+4000</color>]]></p>
+					<p>阶段1：<![CDATA[<color=red>移动速度加快，召唤更多传送门，随机扭曲蓝图，每损失25%血量强制叠加负面效果</color>]]></p>
+					<p>阶段2：<![CDATA[<color=red>碾压墙移动速度提升50% 限时击杀，并且需要阻止碾压墙</color>]]></p>
+				</properties>
+				<flavor>
+					<p>骑士策马来到边境，发现大地已布满星空般幽紫的腐蚀结晶。当他与那匹噩梦化作的妖马对视时，坐骑突然发出痛苦的嘶鸣——</p>
+					<p>妖马的身躯迸裂，无数触须从伤口中涌出！骑士这才惊觉赐予的马铠早已被腐蚀，那些星空物质正沿着坐骑的血管快速蔓延...</p>
+					<p>当王国卫兵找到战场时，只看到一具插着断剑的结晶马铠，以及地上延伸向王都方向的、散发着紫光的巨大马蹄印...</p>
+					<p>如今，那匹噩梦之马再次出现在王城郊外。它的身躯由骑士的铠甲碎片重组而成，眼中跃动着比星空更深邃的紫焰。</p>
+				</flavor>
+			</entry>
             <entry id="mvz2:wither" name="凋灵" unlock="mvz2:level.castle_11">
                 <icon sprite="mvz2:misc/wither"/>
                 <header>
                     <p>凋灵代表着死亡和枯萎，它会抹除一切生命的迹象。</p>
                 </header>
                 <properties>
-                    <p>生命：<![CDATA[<color=red>12000，每秒恢复30</color>]]></p>
+                    <p>生命：<![CDATA[<color=red>15000+1200*4(骑士每50秒复活一次)，每秒恢复30</color>]]></p>
                     <p>阶段1：<![CDATA[<color=red>飞行，发射凋灵头颅，冲刺，啃咬</color>]]></p>
-                    <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，召唤“床战士”</color>]]></p>
+                    <p>阶段2：<![CDATA[<color=red>落地，免疫子弹，发射凋灵头颅，冲刺，啃咬，转换伤害， 召唤“凋灵四骑士”</color>]]></p>
                 </properties>
                 <flavor>
                     <p>单枪匹马对付众多的怪物并不是个好主意，骑士打算去招募一些帮手。</p>
@@ -1701,6 +1853,14 @@
                     <p>哆来咪曾经在几个月前在梦境世界目击到一只黑马，那就是伪装起来的梦魇。然后，梦魇开始了它的腐化，欺骗梦境所有人的眼睛，直到它诅咒哆来咪。</p>
                 </flavor>
             </entry>
+            <entry id="mvz2:nightmare_waterworld" name="诅咒世界" sprite="mvz2:misc/nightmare" unlock="mvz2:level.dream_11">
+				<header>
+					<p>诅咒世界是由梦魇死后残留的诅咒形成的扭曲世界，梦魇能量让梦境陷入了混乱,一切事物都化为了他们在地狱边缘最真实的样子。</p>
+				</header>
+				<flavor>
+					<p>当众人以为击败梦魇就能终结灾难时，它的怨念却在梦境裂隙中爆发。那些如沥青般粘稠的诅咒侵蚀着每一片记忆残片，这头魔兽正试图通过诅咒重生，而诅咒能量便存储于此。</p>
+				</flavor>
+			</entry>
             <entry id="mvz2:shining_needle_castle" name="辉针城" unlock="mvz2:level.castle_1">
                 <icon sprite="mvz2:misc/castle"/>
                 <header>
@@ -1876,6 +2036,14 @@
                     <p>似乎，这个谜就要从这场冒险中解开了。</p>
                 </flavor>
             </entry>
+            <entry id="mvz2:blurred_note14" name="刻有神秘符号的字条" sprite="mvz2:note/dream" unlock="mvz2:level.dream_14">
+				<header>
+					<p>Hello, Mr. Steve, this is your last chance. You successfully defeated me last time. Is your XXX really XXX If you believe me, I will tell you all the secrets you want to know, as long as you give me the whole dream.（村民翻译的内容）</p>
+				</header>
+				<flavor>
+					<p>(貌似有一些内容被修改了)</p>
+				</flavor>
+			</entry>
             <entry id="mvz2:explosion_before_3_years" name="三年前的爆炸" unlock="mvz2:level.castle_4">
                 <icon sprite="mvz2:misc/explosion_before_3_years"/>
                 <header>

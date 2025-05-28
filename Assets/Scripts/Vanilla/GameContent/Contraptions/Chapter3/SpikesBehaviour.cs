@@ -117,7 +117,7 @@ namespace MVZ2.GameContent.Contraptions
         public static void SetAttackTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_ATTACK_TIMER, timer);
         public static FrameTimer GetEvocationTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_EVOCATION_TIMER);
         public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_EVOCATION_TIMER, timer);
-        public const float PULL_SPEED = 10;
+        public const float PULL_SPEED = 12;
         private const string PROP_REGION = "spikes_behaviour";
         [EntityPropertyRegistry(PROP_REGION)]
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_ATTACK_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("AttackTimer");

@@ -30,6 +30,10 @@ namespace MVZ2.GameContent.Enemies
             base.Init(entity);
             SetLandTimer(entity, new FrameTimer(15));
             int jumpTimes = entity.Level.GetSkeletonHorseJumpTimes();
+            else if (entity.Level.Difficulty == VanillaDifficulties.hell)
+            {
+                jumpTimes = 4;
+            }
             SetGallopTime(entity, jumpTimes);
         }
         public override void PostContactGround(Entity entity, Vector3 velocity)

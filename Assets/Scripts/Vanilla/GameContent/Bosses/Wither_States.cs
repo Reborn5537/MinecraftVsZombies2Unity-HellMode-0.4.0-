@@ -563,6 +563,7 @@ namespace MVZ2.GameContent.Bosses
                             var z = entity.Level.GetEntityLaneZ(i);
                             var y = entity.Level.GetGroundY(x, z);
                             entity.SpawnWithParams(VanillaEnemyID.dullahan, new Vector3(x, y, z));
+                            entity.Spawn(VanillaEnemyID.reverseSatellite, new Vector3(x, y, z), param);
                         }
                     }
                 }
@@ -663,14 +664,42 @@ namespace MVZ2.GameContent.Bosses
                             {
                                 entity.SetAnimationBool("Shaking", false);
                                 stateMachine.SetSubState(entity, SUBSTATE_SUMMONED);
-                                substateTimer.ResetTime(30);
+                                substateTimer.ResetTime(50);
 
                                 entity.PlaySound(VanillaSoundID.witherSpawn);
                                 var bedserker = entity.SpawnWithParams(VanillaEnemyID.bedserker, entity.Position + entity.GetFacingDirection() * 80);
 
                                 var param = entity.GetSpawnParams();
-                                param.SetProperty(EngineEntityProps.SIZE, Vector3.one * 120);
-                                entity.Spawn(VanillaEffectID.explosion, bedserker.GetCenter(), param);
+                                var bedserker = entity.Spawn(VanillaEnemyID.bedserker, entity.Position + entity.GetFacingDirection() * 80, param);
+
+                                var exp = entity.Spawn(VanillaEffectID.explosion, bedserker.GetCenter());
+                                exp.SetSize(Vector3.one * 120);
+
+                                var bedserker = entity.Spawn(VanillaEnemyID.bedserker, entity.Position + entity.GetFacingDirection() * 80, param);
+
+                                int middleLane = level.GetMaxLaneCount() / 2;
+                                float necromancerZ = level.GetEntityLaneZ(middleLane);
+                                Vector3 necromancerPos = new Vector3(entity.Position.x - entity.GetFacingX() * 60, entity.Position.y,necromancerZ);
+                                var necromancer = entity.Spawn(VanillaEnemyID.necromancermax, necromancerPos, param);
+
+                                int topLane = 0;
+                                float mesmerizerZ = level.GetEntityLaneZ(topLane);
+                                Vector3 mesmerizerPos = new Vector3(entity.Position.x, entity.Position.y, mesmerizerZ) + entity.GetFacingDirection() * 80;
+                                var mesmerizer = entity.Spawn(VanillaEnemyID.mesmerizermax, mesmerizerPos, param);
+
+                                int bottomLane = level.GetMaxLaneCount() - 1;
+                                float berserkerZ = level.GetEntityLaneZ(bottomLane);
+                                Vector3 berserkerPos = new Vector3(entity.Position.x, entity.Position.y, berserkerZ) + entity.GetFacingDirection() * 80;
+                                var berserker = entity.Spawn(VanillaEnemyID.berserkermax, berserkerPos, param);
+
+                                var exp = entity.Spawn(VanillaEffectID.explosion, bedserker.GetCenter());
+                                exp.SetSize(Vector3.one * 120);
+                                var exp2 = entity.Spawn(VanillaEffectID.explosion, necromancer.GetCenter());
+                                exp2.SetSize(Vector3.one * 120);
+                                var exp3 = entity.Spawn(VanillaEffectID.explosion, mesmerizer.GetCenter());
+                                exp3.SetSize(Vector3.one * 120);
+                                var exp4 = entity.Spawn(VanillaEffectID.explosion, berserker.GetCenter());
+                                exp4.SetSize(Vector3.one * 120);
                                 entity.PlaySound(VanillaSoundID.explosion);
                             }
                         }

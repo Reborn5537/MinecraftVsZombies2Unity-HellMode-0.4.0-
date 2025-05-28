@@ -20,6 +20,10 @@ namespace MVZ2.Vanilla.Entities
         {
             return enemy.GetProperty<float>(SPEED, ignoreBuffs: ignoreBuffs);
         }
+        public static void SetSpeed(this Entity enemy, float speed)
+        {
+            enemy.SetProperty(SPEED, speed);
+        }
         public static float GetMaxAttackHeight(this Entity enemy)
         {
             return enemy.GetProperty<float>(MAX_ATTACK_HEIGHT);

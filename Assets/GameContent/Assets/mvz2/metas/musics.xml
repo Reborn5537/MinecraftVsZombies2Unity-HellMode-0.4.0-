@@ -175,6 +175,31 @@
             <p>可是真的有人能这么做吗？</p>
         </description>
     </music>
+	<music id="rebornmare_final" path="mvz2:rebornmare_final" name="My Innermost Apocalypse" unlock="mvz2:level.dream_15">
+		<source>以撒的结合</source>
+		<description>
+			<p>噩梦世界拓展支线一最终关的音乐。</p>
+			<p>改编自《以撒的结合》天使房旋律的变奏版本，刻意放缓的节奏配合不断下行的音阶，宛如淌过子宫般潮湿的甬道。墙面上增殖的肉瘤随着心跳频率鼓动，在贝斯低音部加入时突然爆裂成追踪弹幕。</p>
+			<p>我曾在此段旋律循环到第七遍时产生幻觉：飘散的音符具象化为童年卧室的壁纸花纹，而走廊尽头等待的究竟是梦魇，还是那个缩在衣柜里玩窒息游戏的自己？</p>
+			<p>建议佩戴降噪耳机游玩此关卡，某些频段的合成器音效会激发潜意识的恐惧反射。</p>
+		</description>
+	</music>
+	<music id="rebornmare_boss" path="mvz2:rebornmare_boss" name="Infanticide" unlock="mvz2:level.dream_15">
+		<source>以撒的结合-重生</source>
+		<description>
+			<p>重生梦魇第一阶段的音乐。</p>
+			<p>当扭曲的血肉逐渐聚合成人形轮廓，这首来自《以撒的结合》的Boss战曲以管风琴轰鸣拉开终局之战的帷幕。</p>
+			<p>我们在破碎的摇篮曲旋律中厮杀，箭矢与血肉在焦油般浓稠的空气中交织。副歌部分突然拔高的电子音效，恰似以撒挥动菜刀斩向母体时，那些飞溅的不仅是血，更是困在亲子相弑轮回中的悲鸣。</p>
+		</description>
+	</music>
+	<music id="rebornmare_boss2" path="mvz2:rebornmare_boss2" name="ピュアヒューリーズ　～ 心の在処 (Pure Furies　～ 心之所在)" unlock="mvz2:level.dream_15">
+		<source>东方绀珠传</source>
+		<description>
+			<p>重生梦魇第二阶段的音乐。</p>
+			<p>原曲为《东方绀珠传》Extra关Boss纯孤的主题曲《ピュアヒューリーズ　～ 心の在処》，在此版本中通过管风琴与电子音效的重构，呈现出与《以撒的结合：忏悔》中"教条"相似的压迫感。</p>
+			<p>当梦魇形态进入最终阶段，音乐从东方风格的旋律突然转向以撒标志性的混沌音效——破碎的摇篮曲象征着亲子相弑的轮回，而高频电子音则模拟了菜刀斩击时血肉飞溅的声效。</p>
+		</description>
+	</music>
 
     <music id="castle_map" name="沉默空洞的辉针城">
         <track main="mvz2:castle_map"/>

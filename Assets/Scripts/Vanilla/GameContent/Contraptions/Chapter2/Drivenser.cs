@@ -123,7 +123,7 @@ namespace MVZ2.GameContent.Contraptions
             drivenser.PlaySound(VanillaSoundID.mechanism);
             drivenser.Level.Spawn(VanillaEffectID.gearParticles, drivenser.Position, drivenser);
         }
-        public const int MAX_UPGRADE_LEVEL = 4;
+        public const int MAX_UPGRADE_LEVEL = 5;
         public const int I_ZOMBIE_LEVEL = 2;
         private static readonly NamespaceID ID = VanillaContraptionID.drivenser;
         public static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_REPEAT_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("RepeatTimer");

@@ -119,6 +119,7 @@ namespace MVZ2.GameContent.Enemies
             var speed = velocity.magnitude;
             var direciton = (target.GetCenter() - shootPoint).normalized;
             param.velocity = speed * direciton;
+            if (self.Level.Difficulty == VanillaDifficulties.hard|| self.Level.Difficulty == VanillaDifficulties.hell)
             var damageMultiplier = self.Level.GetGhastDamageMultiplier();
             param.damage = self.GetDamage() * damageMultiplier;
 

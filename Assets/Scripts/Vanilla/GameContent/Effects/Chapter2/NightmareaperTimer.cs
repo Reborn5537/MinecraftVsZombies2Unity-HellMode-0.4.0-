@@ -21,6 +21,10 @@ namespace MVZ2.GameContent.Effects
         {
             base.Init(entity);
             var timeout = entity.Level.GetNightmareaperTimeout();
+            else if (entity.Level.Difficulty == VanillaDifficulties.hell)
+            {
+                timeout = 1200;
+            }
             SetTimeout(entity, timeout);
         }
         public override void Update(Entity entity)

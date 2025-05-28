@@ -171,6 +171,9 @@ namespace MVZ2.Vanilla
         [TranslateMsg("音乐名-无", CONTEXT_MUSIC_NAME)]
         public const string MUSIC_NAME_NONE = "无";
 
+        [TranslateMsg("关卡难度", CONTEXT_DIFFICULTY)]
+        public const string DIFFICULTY_HELL = "地狱";
+
         public static string GetAlmanacNameContext(string category)
         {
             return $"{category}.name";

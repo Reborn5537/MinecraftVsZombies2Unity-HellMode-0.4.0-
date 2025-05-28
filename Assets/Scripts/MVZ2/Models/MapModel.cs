@@ -125,6 +125,10 @@ namespace MVZ2.Map
             {
                 nightmareBox.OnClick += (id) => OnMapNightmareBoxClick?.Invoke();
             }
+            if (dreamWater)
+            {
+                dreamWater.OnClick += (id) => OnMapDreamWaterClick?.Invoke();
+            }
             if (mapPins != null)
             {
                 foreach (var pin in mapPins)
@@ -137,6 +141,7 @@ namespace MVZ2.Map
         public event Action OnEndlessButtonClick;
         public event Action OnMapKeyClick;
         public event Action OnMapNightmareBoxClick;
+        public event Action OnMapDreamWaterClick;
         public event Action<NamespaceID> OnMapPinClick;
         [SerializeField]
         private TextMeshPro endlessFlagsText;
@@ -146,6 +151,8 @@ namespace MVZ2.Map
         private MapElementButton mapKey;
         [SerializeField]
         private MapElementButton nightmareBox;
+        [SerializeField]
+        private MapElementButton dreamWater;
         [SerializeField]
         private MapButton[] mapButtons;
         [SerializeField]

@@ -16,6 +16,19 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Effects;
+using MVZ2.Vanilla.Level;
+using MVZ2Logic.Level;
+using PVZEngine.Definitions;
+using MVZ2.GameContent.Stages;
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using MVZ2.Vanilla;
+using MVZ2Logic;
+using PVZEngine;
+using UnityEngine.SceneManagement;
 
 namespace MVZ2.GameContent.Bosses
 {
@@ -119,9 +132,88 @@ namespace MVZ2.GameContent.Bosses
         public override void PreTakeDamage(DamageInput damageInfo, CallbackResult result)
         {
             base.PreTakeDamage(damageInfo, result);
-            if (damageInfo.Amount > 600)
+
+            // 获取当前关卡名称
+            string levelName = damageInfo.Entity.Level.GetLevelName();
+
+            // 定义关卡名称常量
+            const string Castle15 = "castle15";
+            const string Castle11 = "castle11";
+
+            // castle15关卡的专属逻辑
+            if (levelName == Castle15)
             {
-                damageInfo.SetAmount(600);
+                if (damageInfo.Amount > 600)
+                {
+                    damageInfo.SetAmount(600);
+                }
+
+                // 凋零:寻找我的四骑士啊
+                var level = damageInfo.Entity.Level;
+                var bedserkers = level.FindEntities(VanillaEnemyID.bedserker);
+                var necromancers = level.FindEntities(VanillaEnemyID.necromancermax);
+                var mesmerizers = level.FindEntities(VanillaEnemyID.mesmerizermax);
+                var berserkers = level.FindEntities(VanillaEnemyID.berserkermax);
+
+                // 凋零:我的四骑士还有哪些活着啊
+                var validEntities = bedserkers.Concat(necromancers)
+                                      .Concat(mesmerizers)
+                                      .Concat(berserkers)
+                                      .Where(e => e.ExistsAndAlive())
+                                      .ToList();
+
+                if (validEntities.Count > 0)
+                {
+                    float healthRatio = damageInfo.Entity.Health / damageInfo.Entity.GetMaxHealth();
+                    float witherDamageRatio = Mathf.Lerp(0.1f, 0.5f, healthRatio);
+                    float witherDamage = damageInfo.Amount * witherDamageRatio;
+                    damageInfo.SetAmount(witherDamage);
+
+                    float damagePerEntity = (damageInfo.Amount * (1 - witherDamageRatio)) / validEntities.Count;
+
+                    foreach (var entity in validEntities)
+                    {
+                        entity.TakeDamage(damagePerEntity, damageInfo.Effects, damageInfo.Source);
+                    }
+                }
+                return;
+            }
+
+            // castle11关卡的专属逻辑
+            if (levelName == Castle11)
+            {
+                if (damageInfo.Amount > 600)
+                {
+                    damageInfo.SetAmount(600);
+                }
+
+                // 凋零:寻找我的四骑士啊
+                var level = damageInfo.Entity.Level;
+                var bedserkers = level.FindEntities(VanillaEnemyID.bedserker);
+                var necromancers = level.FindEntities(VanillaEnemyID.necromancermax);
+                var mesmerizers = level.FindEntities(VanillaEnemyID.mesmerizermax);
+                var berserkers = level.FindEntities(VanillaEnemyID.berserkermax);
+
+                // 凋零:我的四骑士还有哪些活着啊
+                var validEntities = bedserkers.Concat(necromancers)
+                                      .Concat(mesmerizers)
+                                      .Concat(berserkers)
+                                      .Where(e => e.ExistsAndAlive())
+                                      .ToList();
+
+                if (validEntities.Count > 0)
+                {
+                    float witherDamage = damageInfo.Amount * 0.2f;
+                    damageInfo.SetAmount(witherDamage);
+
+                    float damagePerEntity = (damageInfo.Amount * 0.8f) / validEntities.Count;
+
+                    foreach (var entity in validEntities)
+                    {
+                        entity.TakeDamage(damagePerEntity, damageInfo.Effects, damageInfo.Source);
+                    }
+                }
+                return;
             }
         }
         public override void PostTakeDamage(DamageOutput result)
@@ -144,7 +236,7 @@ namespace MVZ2.GameContent.Bosses
                 var source = result.BodyResult.Source;
                 var effects = result.BodyResult.Effects;
                 var sourceEnt = source.GetEntity(entity.Level);
-                if (sourceEnt != null && sourceEnt.IsEntityOf(VanillaEnemyID.bedserker) && effects.HasEffect(VanillaDamageEffects.EXPLOSION))
+                if (sourceEnt != null && sourceEnt.IsEntityOf(VanillaEnemyID.bedserker) && sourceEnt.IsEntityOf(VanillaEnemyID.necromancermax) && sourceEnt.IsEntityOf(VanillaEnemyID.mesmerizermax) && sourceEnt.IsEntityOf(VanillaEnemyID.berserkermax) && effects.HasEffect(VanillaDamageEffects.EXPLOSION))
                 {
                     Stun(entity);
                     return;
@@ -334,7 +426,76 @@ namespace MVZ2.GameContent.Bosses
             entity.PlaySound(VanillaSoundID.witherSpawn);
             entity.PlaySound(VanillaSoundID.witherDeath);
         }
+        /*protected override void PreTakeDamage(DamageInput damageInfo)
+        {
+            base.PreTakeDamage(damageInfo);
 
+            if (damageInfo.Amount > 600)
+            {
+                damageInfo.SetAmount(600);
+            }
+
+            //凋零:寻找我的四骑士啊
+            var level = damageInfo.Entity.Level;
+            var entities = level.FindEntities(VanillaEnemyID.bedserker, VanillaEnemyID.necromancermax, VanillaEnemyID.mesmerizermax, VanillaEnemyID.berserkermax);
+
+            //凋零:我的四骑士还有哪些活着啊
+            var validEntities = entities.Where(e => e.ExistsAndAlive()).ToList();
+
+            if (validEntities.Count > 0)
+            {
+                float witherDamage = damageInfo.Amount * 0.2f;
+                damageInfo.SetAmount(witherDamage);
+
+                float damagePerEntity = (damageInfo.Amount * 0.8f) / validEntities.Count;
+
+                foreach (var entity in validEntities)
+                {
+                    entity.TakeDamage(damagePerEntity, damageInfo.Effects, damageInfo.Source);
+                }
+            }
+        }*/
+        /*protected override void PreTakeDamage315(DamageInput damageInfo)
+        {
+            base.PreTakeDamage(damageInfo);
+            if (damageInfo.Entity.Level.Stage.Name != VanillaStageNames.castle15)
+                return;
+
+            if (damageInfo.Amount > 600)
+            {
+                damageInfo.SetAmount(600);
+            }
+
+            //凋零:寻找我的四骑士啊
+            var level = damageInfo.Entity.Level;
+            var bedserkers = level.FindEntities(VanillaEnemyID.bedserker);
+            var necromancers = level.FindEntities(VanillaEnemyID.necromancermax);
+            var mesmerizers = level.FindEntities(VanillaEnemyID.mesmerizermax);
+            var berserkers = level.FindEntities(VanillaEnemyID.berserkermax);
+
+            //凋零:我的四骑士还有哪些活着啊
+            var validEntities = bedserkers.Concat(necromancers)
+                                  .Concat(mesmerizers)
+                                  .Concat(berserkers)
+                                  .Where(e => e.ExistsAndAlive())
+                                  .ToList();
+
+            if (validEntities.Count > 0)
+            {
+                // 根据血量比例动态调整伤害分配
+                float healthRatio = damageInfo.Entity.Health / damageInfo.Entity.GetMaxHealth();
+                float witherDamageRatio = Mathf.Lerp(0.1f, 0.5f, healthRatio);
+                float witherDamage = damageInfo.Amount * witherDamageRatio;
+                damageInfo.SetAmount(witherDamage);
+
+                float damagePerEntity = (damageInfo.Amount * (1 - witherDamageRatio)) / validEntities.Count;
+
+                foreach (var entity in validEntities)
+                {
+                    entity.TakeDamage(damagePerEntity, damageInfo.Effects, damageInfo.Source);
+                }
+            }
+        }*/
         #region 常量
         private static readonly VanillaEntityPropertyMeta<float[]> PROP_HEAD_ANGLES = new VanillaEntityPropertyMeta<float[]>("HeadAngles");
         private static readonly VanillaEntityPropertyMeta<float> PROP_HEAD_OPEN = new VanillaEntityPropertyMeta<float>("HeadOpen");
@@ -370,7 +531,7 @@ namespace MVZ2.GameContent.Bosses
         public const int HEAD_COUNT = 3;
         public const float HEAD_ROTATE_SPEED = 10;
         public const float FLY_HEIGHT = 80;
-        public const float EAT_HEALING = 300;
+        public const float EAT_HEALING = 800;
         public const float GOLDEN_APPLE_DAMAGE = 600;
         #endregion 常量
 

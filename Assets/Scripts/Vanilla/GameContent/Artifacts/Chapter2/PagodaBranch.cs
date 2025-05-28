@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.Artifacts
                 var starshardCount = level.GetStarshardCount();
                 if (starshardCount < slotCount)
                 {
-                    starshardCount = Mathf.Clamp(starshardCount + 2, 0, slotCount);
+                    starshardCount = Mathf.Clamp(starshardCount + 4, 0, slotCount);
                     artifact.Highlight();
                     level.PlaySound(VanillaSoundID.starshardUse);
                 }

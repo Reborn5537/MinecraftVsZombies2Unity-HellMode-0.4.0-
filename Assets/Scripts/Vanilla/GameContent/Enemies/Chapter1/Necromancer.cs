@@ -8,6 +8,13 @@ using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
 using UnityEngine;
+using MVZ2.GameContent.Buffs.Enemies;
+using MVZ2.GameContent.Damages;
+using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Models;
+using MVZ2.Vanilla;
+using MVZ2.Vanilla.Level;
+using MVZ2Logic;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -22,6 +29,12 @@ namespace MVZ2.GameContent.Enemies
         {
             base.Init(entity);
             SetStateTimer(entity, new FrameTimer(CAST_COOLDOWN));
+            var level = entity.Level;
+            if (level.IsWaterLane(entity.GetLane()))
+            {
+                entity.AddBuff<BoatBuff>();
+                entity.SetAnimationBool("HasBoat", true);
+            }
         }
         protected override int GetActionState(Entity enemy)
         {
@@ -36,6 +49,7 @@ namespace MVZ2.GameContent.Enemies
         {
             base.UpdateLogic(entity);
             entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
+            entity.SetAnimationBool("HasBoat", entity.HasBuff<BoatBuff>());
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -74,6 +88,15 @@ namespace MVZ2.GameContent.Enemies
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             base.PostDeath(entity, info);
+            if (entity.HasBuff<BoatBuff>())
+            {
+                entity.RemoveBuffs<BoatBuff>();
+                // 掉落碎船掉落物
+                var effect = entity.Level.Spawn(VanillaEffectID.brokenArmor, entity.GetCenter(), entity);
+                effect.Velocity = new Vector3(effect.RNG.NextFloat() * 20 - 10, 5, 0);
+                effect.ChangeModel(VanillaModelID.boatItem);
+                effect.SetDisplayScale(entity.GetDisplayScale());
+            }
             if (entity.State == VanillaEntityStates.NECROMANCER_CAST)
             {
                 EndCasting(entity);
@@ -142,7 +165,7 @@ namespace MVZ2.GameContent.Enemies
         }
         #region 常量
         private const int CAST_COOLDOWN = 300;
-        private const int CAST_TIME = 30;
+        private const int CAST_TIME = 35;
         private const int BUILD_DETECT_TIME = 30;
         private const int MAX_BONE_WALL_COUNT = 15;
         public static readonly NamespaceID ID = VanillaEnemyID.necromancer;

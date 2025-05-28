@@ -83,6 +83,10 @@ namespace MVZ2.GameContent.Pickups
                 {
                     money = difficultyMeta.RerunClearMoney;
                 }
+                else if (level.Difficulty == VanillaDifficulties.hell)
+                {
+                    money = 3000;
+                }
             }
             else
             {
