@@ -62,6 +62,12 @@ namespace MVZ2.GameContent.Contraptions
                 if (target != null)
                 {
                     Vector3 direction = (target.GetCenter() - arrow.Position).normalized;
+
+                    float xDiff = arrow.Position.x - dispenser.Position.x;
+                    float facingSign = Mathf.Sign(xDiff);
+
+                    direction.x *= facingSign;
+
                     direction = ApplyTrackingError(direction, 10f);
                     arrow.Velocity = direction * arrow.Velocity.magnitude;
                 }

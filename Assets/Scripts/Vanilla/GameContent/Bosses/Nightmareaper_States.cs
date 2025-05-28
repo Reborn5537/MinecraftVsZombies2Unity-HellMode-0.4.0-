@@ -313,6 +313,7 @@ namespace MVZ2.GameContent.Bosses
             public override void OnEnter(EntityStateMachine stateMachine, Entity entity)
             {
                 base.OnEnter(stateMachine, entity);
+
                 var subStateTimer = stateMachine.GetSubStateTimer(entity);
                 subStateTimer.ResetTime(30);
                 entity.SetAnimationBool("FlapWing", false);

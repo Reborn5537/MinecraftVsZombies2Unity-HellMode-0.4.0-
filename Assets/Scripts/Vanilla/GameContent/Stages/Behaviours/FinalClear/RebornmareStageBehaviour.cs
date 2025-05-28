@@ -1,4 +1,6 @@
 ﻿using MVZ2.GameContent.Bosses;
+using MVZ2.GameContent.Enemies;
+using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Buffs.Level;
 using MVZ2.GameContent.Pickups;
 using MVZ2.GameContent.Effects;
@@ -23,6 +25,8 @@ using PVZEngine.Models;
 using PVZEngine.Modifiers;
 using PVZEngine.Triggers;
 using Tools;
+using MVZ2.GameContent.Buffs.Contraptions;
+using MVZ2.Vanilla.Audios;
 
 namespace MVZ2.GameContent.Stages
 {
@@ -31,6 +35,7 @@ namespace MVZ2.GameContent.Stages
         public RebornmareStageBehaviour(StageDefinition stageDef) : base(stageDef)
         {
         }
+
         protected override void AfterFinalWaveUpdate(LevelEngine level)
         {
             base.AfterFinalWaveUpdate(level);
@@ -44,6 +49,9 @@ namespace MVZ2.GameContent.Stages
             {
                 case BOSS_STATE_SLENDERMAN:
                     RebornSlendermanUpdate(level);
+                    break;
+                case BOSS_STATE_SLENDERMAN_RAGE:
+                    RebornSlendermanRageUpdate(level);
                     break;
                 case BOSS_STATE_NIGHTMAREAPER_TRANSITION:
                     RebornNightmareaperTransitionUpdate(level);
@@ -87,8 +95,22 @@ namespace MVZ2.GameContent.Stages
                 RunBossWave(level);
             }
         }
+        private void RebornSlendermanRageUpdate(LevelEngine level)
+        {
+            // 如果瘦长鬼影的血量到达最大血量的一半时
+            if (level.HasBuff<ReverseSatelliteBuffRage>())
+            {
+                SetBossState(level, BOSS_STATE_SLENDERMAN_RAGE);
+            }
+            level.ShakeScreen(10, 0.2f, 30);
+        }
         private void RebornNightmareaperTransitionUpdate(LevelEngine level)
         {
+            if (level.HasBuff<ReverseSatelliteBuffRage>())
+            {
+                level.RemoveBuffs<ReverseSatelliteBuffRage>();
+            }
+            ClearEnemies(level);
             if (level.EntityExists(e => e.Type == EntityTypes.BOSS && e.IsHostileEntity() && !e.IsDead))
             {
                 // 梦魇收割者出现
@@ -161,7 +183,8 @@ namespace MVZ2.GameContent.Stages
         }
 
         public const int BOSS_STATE_SLENDERMAN = 0;
-        public const int BOSS_STATE_NIGHTMAREAPER_TRANSITION = 1;
-        public const int BOSS_STATE_NIGHTMAREAPER = 2;
+        public const int BOSS_STATE_SLENDERMAN_RAGE = 1;
+        public const int BOSS_STATE_NIGHTMAREAPER_TRANSITION = 2;
+        public const int BOSS_STATE_NIGHTMAREAPER = 3;
     }
 }
