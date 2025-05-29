@@ -58,15 +58,6 @@ namespace MVZ2.GameContent.Implements
                 var buff = level.AddBuff(buffDef);
                 SetDifficultyBuff(level, level.GetBuffReference(buff));
             }
-            bool hell = difficulty == VanillaDifficulties.hell;
-            var hellDef = level.Content.GetBuffDefinition(VanillaBuffID.Level.levelHell);
-            if (hell != level.HasBuff(hellDef))
-            {
-                if (hell)
-                    level.AddBuff(hellDef);
-                else
-                    level.RemoveBuffs(hellDef);
-            }
         }
         public static BuffReference GetDifficultyBuff(LevelEngine level)
         {

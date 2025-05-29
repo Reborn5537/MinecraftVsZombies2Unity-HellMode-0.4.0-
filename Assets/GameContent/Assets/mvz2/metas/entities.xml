@@ -987,8 +987,7 @@
                 <int name="mvz2:waterInteraction" value="2" />
             </properties>
         </enemy>
-        <enemy id="cave_spider" name="洞穴蜘蛛" deathMessage="你有蜂蜜瓶还是牛奶桶呢？都没有。"
-            unlock="mvz2:level.dream_3">
+        <enemy id="cave_spider" name="洞穴蜘蛛" deathMessage="你有蜂蜜瓶还是牛奶桶呢？都没有。" unlock="mvz2:level.dream_3">
             <properties>
                 <float name="mvz2:mass" value="-1" />
                 <float name="mvz2:maxHealth" value="120" />
@@ -1051,8 +1050,7 @@
                 <int name="mvz2:waterInteraction" value="2" />
             </properties>
         </enemy>
-        <enemy id="parasite_terror" name="恐怖寄生虫" deathMessage="恐怖寄生虫 已消灭世界上的所有……"
-            unlock="mvz2:level.dream_9">
+        <enemy id="parasite_terror" name="恐怖寄生虫" deathMessage="恐怖寄生虫 已消灭世界上的所有……" unlock="mvz2:level.dream_9">
             <properties>
                 <float name="mvz2:mass" value="-1" />
                 <float name="mvz2:maxHealth" value="50" />
@@ -1127,8 +1125,7 @@
                 <int name="mvz2:waterInteraction" value="2" />
             </properties>
         </enemy>
-        <enemy id="hell_chariot" name="地狱战车" deathMessage="我们所做的一切，就是为了跟着那该死的火车，史蒂夫！"
-            unlock="mvz2:level.castle_8">
+        <enemy id="hell_chariot" name="地狱战车" deathMessage="我们所做的一切，就是为了跟着那该死的火车，史蒂夫！" unlock="mvz2:level.castle_8">
             <behaviours>
                 <behaviour operator="add" id="mvz2:fragmented"/>
             </behaviours>
@@ -1162,8 +1159,7 @@
         </enemy>
 
 
-        <enemy id="reflective_barrier_zombie" name="反射壁僵尸" deathMessage="我反弹你的反弹"
-            unlock="mvz2:level.mausoleum_1">
+        <enemy id="reflective_barrier_zombie" name="反射壁僵尸" deathMessage="我反弹你的反弹" unlock="mvz2:level.mausoleum_1">
             <properties>
                 <int name="mvz2:cost" value="100" />
                 <int name="mvz2:waterInteraction" value="2" />
@@ -1217,8 +1213,6 @@
             </properties>
         </enemy>
         <enemy id="mega_mutant_zombie" name="超级突变僵尸" deathMessage="你怎么进门的？" unlock="mvz2:level.dream_12">
-        <enemy id="mega_mutant_zombie" name="超级突变僵尸" deathMessage="你怎么进门的？"
-            unlock="mvz2:level.shrine_8">
             <properties>
                 <float name="mvz2:mass" value="2" />
                 <float name="mvz2:maxHealth" value="6000" />

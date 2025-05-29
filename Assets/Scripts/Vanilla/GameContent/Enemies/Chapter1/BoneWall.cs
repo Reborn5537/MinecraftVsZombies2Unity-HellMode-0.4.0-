@@ -29,7 +29,7 @@ namespace MVZ2.GameContent.Enemies
             base.Init(entity);
             entity.AddBuff<GhostBuff>();
             var buff = entity.AddBuff<FlyBuff>();
-            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 0);
+            buff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 0f);
             entity.Timeout = entity.GetMaxTimeout();
             entity.PlaySound(VanillaSoundID.boneWallBuild);
 

@@ -50,7 +50,6 @@ namespace MVZ2.GameContent.Contraptions
                 }
             }
             entity.Position = pos;
-            entity.SetFactionAndDirection(entity.GetFaction());
         }
         protected override void UpdateLogic(Entity contraption)
         {

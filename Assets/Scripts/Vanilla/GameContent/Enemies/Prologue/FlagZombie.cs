@@ -20,7 +20,7 @@ namespace MVZ2.GameContent.Enemies
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            entity.EquipArmor<IronHelmet>();
+            entity.EquipMainArmor(VanillaArmorID.ironHelmet);
             entity.SetAnimationBool("HasFlag", true);
             var speedBuff = entity.GetFirstBuff<RandomEnemySpeedBuff>();
             if (speedBuff != null)

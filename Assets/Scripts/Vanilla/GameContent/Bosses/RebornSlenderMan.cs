@@ -21,8 +21,8 @@ using MVZ2Logic.Level;
 using MVZ2Logic.SeedPacks;
 using PVZEngine;
 using PVZEngine.Buffs;
-using PVZEngine.Damages;
 using PVZEngine.Callbacks;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using Tools;
@@ -55,7 +55,7 @@ namespace MVZ2.GameContent.Bosses
             var flyBuff = entity.AddBuff<FlyBuff>();
             flyBuff.SetProperty(FlyBuff.PROP_FLY_SPEED, 0.2f);
             flyBuff.SetProperty(FlyBuff.PROP_FLY_SPEED_FACTOR, 0.5f);
-            flyBuff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 80);
+            flyBuff.SetProperty(FlyBuff.PROP_TARGET_HEIGHT, 80f);
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -267,9 +267,7 @@ namespace MVZ2.GameContent.Bosses
         }
         private Entity SpawnPortal(Entity boss, Vector3 position, NamespaceID enemyID)
         {
-            var level = boss.Level;
-            var portal = level.Spawn(VanillaEffectID.nightmarePortal, position, boss);
-            portal.SetFactionAndDirection(boss.GetFaction());
+            var portal = boss.SpawnWithParams(VanillaEffectID.nightmarePortal, position);
             NightmarePortal.SetEnemyID(portal, enemyID);
             return portal;
         }
@@ -470,8 +468,7 @@ namespace MVZ2.GameContent.Bosses
             var targets = level.FindEntities(e => e.Type == EntityTypes.ENEMY && e.IsFriendly(boss) && !e.IsEntityOf(VanillaEnemyID.ghast));
             foreach (var enemy in targets)
             {
-                var ghast = level.Spawn(VanillaEnemyID.ghast, enemy.Position, boss);
-                ghast.SetFactionAndDirection(boss.GetFaction());
+                var ghast = boss.SpawnWithParams(VanillaEnemyID.ghast, enemy.Position);
                 ghast.AddBuff<NightmareComeTrueBuff>();
                 enemy.Remove();
             }
@@ -527,11 +524,10 @@ namespace MVZ2.GameContent.Bosses
 
                 float y = level.GetGroundY(x, z);
                 var mirrorPlant = level.Spawn(plant.GetDefinitionID(), new Vector3(x, y, z), boss);
-                mirrorPlant.SetFactionAndDirection(boss.GetFaction());
                 mirrorPlant.CharmWithSource(boss);
 
                 Vector3 pos = new Vector3(x, y, z);
-                var portal = SpawnPortal(boss, pos, VanillaEnemyID.reverseSatellite);
+                var portal = SpawnPortal(boss, pos, VanillaEnemyID.boneWall);
             }
 
             level.ShakeScreen(20, 0.5f, 15);

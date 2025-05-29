@@ -39,7 +39,7 @@ namespace MVZ2.GameContent.Stages
             level.SetStarshardSlotCount(3);
             level.SetStarshardCount(1);
             level.SetSeedSlotCount(8);
-            level.ReplaceSeedPacks(new NamespaceID[]
+            level.FillSeedPacks(new NamespaceID[]
             {
                 VanillaContraptionID.furnace,
                 VanillaContraptionID.lilyPad,

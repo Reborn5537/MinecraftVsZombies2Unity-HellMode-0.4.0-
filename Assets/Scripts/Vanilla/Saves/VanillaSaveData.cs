@@ -74,7 +74,6 @@ namespace MVZ2.Vanilla.Saves
             VanillaUnlockNames.starshardSlot1,
             VanillaUnlockNames.starshardSlot2,
             VanillaUnlockNames.starshardSlot3,
-            VanillaUnlockNames.starshardSlot4,
         };
         private int money;
     }

@@ -166,7 +166,7 @@ namespace MVZ2.GameContent.Contraptions
             target.Type == EntityTypes.ENEMY || target.Type == EntityTypes.OBSTACLE;
 
         private static readonly VanillaEntityPropertyMeta<bool> PROP_TRACKING_MARKER =
-            new VanillaEntityPropertyMeta("IsTrackingArrow");
+            new VanillaEntityPropertyMeta<bool>("IsTrackingArrow");
 
         public static FrameTimer GetEvocationTimer(Entity entity) =>
             entity.GetBehaviourField<FrameTimer>(ID, PROP_EVOCATION_TIMER);

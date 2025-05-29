@@ -2567,16 +2567,15 @@ MonoBehaviour:
     - Main
     - Sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 440294be06b4bd14785efb5767c9116a
+    m_Address: mvz2:enemy/mausoleum/skeleton_warrior
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4409e18829035d440a53d60726284aa9
     m_Address: mvz2:boss/rebornslenderman
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: 440294be06b4bd14785efb5767c9116a
-    m_Address: mvz2:enemy/mausoleum/skeleton_warrior
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 44bd337d7a161b2498137668fbec6e35
@@ -3270,12 +3269,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Music
-    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: 582cedb9b6522194f81088aa7777208e
-    m_Address: mvz2:entity/effects/blackhole_core
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58755531f1cc59b4ab7563c5bedf58b2
     m_Address: mvz2:entity/armor/emperor_crown
@@ -4064,12 +4057,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Music
-    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: 6f0c46a4061bb484c8387f99fe8dc33f
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f0c46a4061bb484c8387f99fe8dc33f
     m_Address: mvz2:contraption/mausoleum/black_hole_bomb
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6f22bfed212241144ada2b8c00f2bea2
     m_Address: mvz2:blueprints
@@ -5803,17 +5795,16 @@ MonoBehaviour:
     - Main
     - Meta
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9cdfa6621b3d6e24983d5ed7d08fc489
+    m_Address: mvz2:held/starshards/mausoleum
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d006c01f6cbc564493299596b4ef2a6
     m_Address: mvz2:mobile_blueprint/berserkermax
     m_ReadOnly: 0
     m_SerializedLabels:
     - Sprite
-    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: 9cdfa6621b3d6e24983d5ed7d08fc489
-    m_Address: mvz2:held/starshards/mausoleum
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d154f9c691d05c42917f982f9de86ca
     m_Address: mvz2:entity/mutant_zombie/mutant_cry2
@@ -6990,18 +6981,18 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: badaece8cc8a7cd4db208a4d52a128da
-    m_Address: mvz2:enemy/halloween/necromancermax
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: babb5d02ad003f04386275ffa8ddfc64
     m_Address: mvz2:entity/enemy/skeleton_mage_headwear
     m_ReadOnly: 0
     m_SerializedLabels:
     - Main
     - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: badaece8cc8a7cd4db208a4d52a128da
+    m_Address: mvz2:enemy/halloween/necromancermax
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bafd8d60319920d40a5881b8a2776d56
     m_Address: mvz2:entity/contraption/force_pad_evoking
@@ -7125,12 +7116,6 @@ MonoBehaviour:
     m_Address: mvz2:enemy/castle/mesmerizermax
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Model
-    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: beaefb38f5a5fce469c095db69c2fbdc
-    m_Address: mvz2:effect/binary_particles
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: beb139d5d07db39408272c27eaea0034
@@ -7488,12 +7473,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sound
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c8a3d0785f8452f4c9f61605cf6d231e
-    m_Address: mvz2:mobile_blueprint/anvil
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8b2b4261dd98254d919be8f10acd519
     m_Address: mvz2:contraption/castle/wooden_dropper
@@ -9452,18 +9431,6 @@ MonoBehaviour:
     - Main
     - Sound
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fb8f4c7fd9b8c624f9a40be6022fe0a2
-    m_Address: mvz2:rebornmare_boss
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Music
-    FlaggedDuringContentUpdateRestriction: 0  - m_GUID: faa2211777e02a84b8a7e50170afab89
-    m_Address: mvz2:map/mausoleum/map
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Main
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fafac1d45c5bdb24b9dfb56a50fc4fe2
     m_Address: mvz2:pacman_kill
     m_ReadOnly: 0
@@ -9477,6 +9444,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb8f4c7fd9b8c624f9a40be6022fe0a2
+    m_Address: mvz2:rebornmare_boss
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Music
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fbd4f223bde2b0548986faf783bc0f17
     m_Address: mvz2:effect/magnetic_line

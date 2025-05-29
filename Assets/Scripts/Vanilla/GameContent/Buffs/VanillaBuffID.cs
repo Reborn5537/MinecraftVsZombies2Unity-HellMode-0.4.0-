@@ -223,7 +223,6 @@ namespace MVZ2.GameContent.Buffs
         public static readonly NamespaceID miracleMalletReplicaDamage = Get(VanillaBuffNames.miracleMalletReplicaDamage);
         public static readonly NamespaceID brokenLantern = Get(VanillaBuffNames.brokenLantern);
         public static readonly NamespaceID eyeOfTheGiant = Get(VanillaBuffNames.eyeOfTheGiant);
-        public static readonly NamespaceID reverseSatelliteRage = Get(VanillaBuffNames.reverseSatelliteRage);
         public static readonly NamespaceID bottledBlackholeDamage = Get(VanillaBuffNames.bottledBlackholeDamage);
 
         public static readonly NamespaceID passengerEnterHouse = Get(VanillaBuffNames.passengerEnterHouse);

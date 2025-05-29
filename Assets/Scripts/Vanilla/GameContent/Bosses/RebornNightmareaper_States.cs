@@ -405,25 +405,20 @@ namespace MVZ2.GameContent.Bosses
             {
                 SetSpinVelocity(entity);
 
-                var spinDamageTimer = GetSpinDamageTimer(entity);
-                if (spinDamageTimer == null)
-                {
-                    spinDamageTimer = new FrameTimer(SPIN_DAMAGE_INTERVAL);
-                    SetSpinDamageTimer(entity, spinDamageTimer);
-                }
                 var level = entity.Level;
-                spinDamageTimer.Run();
-                if (spinDamageTimer.Expired)
+                if (entity.IsTimeInterval(SPIN_DAMAGE_INTERVAL))
                 {
-                    spinDamageTimer.Reset();
                     var rng = GetStateRNG(entity);
-                    foreach (EntityCollider collider in level.OverlapCylinder(entity.GetCenter(), SPIN_RADIUS, SPIN_HEIGHT, entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0))
+                    detectBuffer.Clear();
+
+                    var point0 = entity.GetCenter() + Vector3.up * SPIN_HEIGHT * 0.5f;
+                    var point1 = entity.GetCenter() + Vector3.down * SPIN_HEIGHT * 0.5f;
+                    level.OverlapCapsuleNonAlloc(point0, point1, SPIN_RADIUS, entity.GetFaction(), EntityCollisionHelper.MASK_VULNERABLE, 0, detectBuffer);
+                    foreach (IEntityCollider collider in detectBuffer)
                     {
                         var target = collider.Entity;
                         var colliderReference = collider.ToReference();
-                        var damage = level.Difficulty == VanillaDifficulties.hell ? SPIN_DAMAGE_HELL :
-                        level.Difficulty == VanillaDifficulties.hard ? SPIN_DAMAGE_HARD :
-                        SPIN_DAMAGE;
+                        var damage = level.GetNightmareaperSpinDamage();
                         var damageOutput = collider.TakeDamage(damage, new DamageEffectList(VanillaDamageEffects.SLICE), entity);
                         PostSpinDamage(entity, damageOutput);
                     }
@@ -470,6 +465,7 @@ namespace MVZ2.GameContent.Bosses
             public const int SUBSTATE_START = 0;
             public const int SUBSTATE_LOOP = 1;
             public const int SUBSTATE_END = 2;
+            private List<IEntityCollider> detectBuffer = new List<IEntityCollider>();
         }
         #endregion
 
@@ -535,8 +531,7 @@ namespace MVZ2.GameContent.Bosses
                     {
                         var pos = position;
                         pos.y = entity.Level.GetGroundY(pos.x, pos.z);
-                        var skeleton = entity.Spawn(VanillaEnemyID.skeleton, pos);
-                        skeleton.SetFactionAndDirection(entity.GetFaction());
+                        var skeleton = entity.SpawnWithParams(VanillaEnemyID.skeleton, pos);
                         var boneParticle = entity.Spawn(VanillaEffectID.boneParticles, skeleton.GetCenter());
 
                         entity.PlaySound(VanillaSoundID.boneWallBuild);

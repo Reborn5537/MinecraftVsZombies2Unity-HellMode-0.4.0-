@@ -74,7 +74,7 @@ namespace MVZ2.GameContent.Bosses
         }
         public override void PreTakeDamage(DamageInput input, CallbackResult result)
         {
-            base.PreTakeDamage(input);
+            base.PreTakeDamage(input, result);
             if (input.Amount > 600)
             {
                 input.SetAmount(600);
@@ -82,9 +82,11 @@ namespace MVZ2.GameContent.Bosses
         }
         #endregion
 
-        private void PostEnemyDeathCallback(Entity entity, DeathInfo deathInfo)
+        private void PostEnemyDeathCallback(LevelCallbacks.PostEntityDeathParams param, CallbackResult result)
         {
-            if (deathInfo.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
+            var entity = param.entity;
+            var info = param.deathInfo;
+            if (info.Effects.HasEffect(VanillaDamageEffects.REMOVE_ON_DEATH))
                 return;
             if (entity.IsOnWater())
                 return;
@@ -186,9 +188,6 @@ namespace MVZ2.GameContent.Bosses
 
         public static List<Vector3> GetCorpsePositions(Entity entity) => GetBehaviourProperty<List<Vector3>>(entity, PROP_CORPSE_POSITIONS);
         public static void SetCorpsePositions(Entity entity, List<Vector3> value) => SetBehaviourProperty(entity, PROP_CORPSE_POSITIONS, value);
-
-        public static FrameTimer GetSpinDamageTimer(Entity entity) => GetBehaviourProperty<FrameTimer>(entity, PROP_SPIN_DAMAGE_TIMER);
-        public static void SetSpinDamageTimer(Entity entity, FrameTimer value) => SetBehaviourProperty(entity, PROP_SPIN_DAMAGE_TIMER, value);
         #endregion
 
         private static readonly VanillaEntityPropertyMeta<Vector3> PROP_MOVE_DIRECTION = new VanillaEntityPropertyMeta<Vector3>("MoveDirection");

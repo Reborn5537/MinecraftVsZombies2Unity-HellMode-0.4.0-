@@ -670,12 +670,6 @@ namespace MVZ2.GameContent.Bosses
                                 var bedserker = entity.SpawnWithParams(VanillaEnemyID.bedserker, entity.Position + entity.GetFacingDirection() * 80);
 
                                 var param = entity.GetSpawnParams();
-                                var bedserker = entity.Spawn(VanillaEnemyID.bedserker, entity.Position + entity.GetFacingDirection() * 80, param);
-
-                                var exp = entity.Spawn(VanillaEffectID.explosion, bedserker.GetCenter());
-                                exp.SetSize(Vector3.one * 120);
-
-                                var bedserker = entity.Spawn(VanillaEnemyID.bedserker, entity.Position + entity.GetFacingDirection() * 80, param);
 
                                 int middleLane = level.GetMaxLaneCount() / 2;
                                 float necromancerZ = level.GetEntityLaneZ(middleLane);

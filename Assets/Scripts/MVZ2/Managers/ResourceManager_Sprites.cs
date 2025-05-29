@@ -11,6 +11,8 @@ namespace MVZ2.Managers
 {
     public partial class ResourceManager : MonoBehaviour
     {
+        private Dictionary<SpriteReference, Sprite> _spriteCache = 
+        new Dictionary<SpriteReference, Sprite>();
         public Sprite GetSprite(string nsp, string path)
         {
             return GetSprite(new NamespaceID(nsp, path));
@@ -158,10 +160,41 @@ namespace MVZ2.Managers
                 AddSpriteReferenceCache(sprRef, res);
             }
         }
-        private void AddSpriteReferenceCache(SpriteReference sprRef, Sprite sprite)
-        {
-            spriteReferenceCacheDict.Add(sprite, sprRef);
-        }
+        public void AddSpriteReferenceCache(SpriteReference sprRef, Sprite sprite)
+{
+    // 记录所有调用信息（仅日志）
+    string logMessage = $"尝试添加精灵引用: " +
+                       $"{(sprRef == null ? "NULL" : sprRef.ToString())}, " +
+                       $"精灵: {(sprite == null ? "NULL" : sprite.name)}";
+    
+    // 记录空键情况
+    if (sprRef == null)
+    {
+        Debug.LogError($"[空键错误] {logMessage}");
+        return;
+    }
+    
+    // 记录重复键情况
+    if (_spriteCache.ContainsKey(sprRef))
+    {
+        // 获取现有精灵名称
+        string existingSpriteName = "未知精灵";
+        try {
+            existingSpriteName = _spriteCache[sprRef]?.name ?? "未命名精灵";
+        } catch {}
+        
+        Debug.LogError($"[重复键错误] 键: {sprRef}, " +
+                      $"新精灵: {sprite?.name ?? "NULL"}, " +
+                      $"现有精灵: {existingSpriteName}");
+        return;
+    }
+    
+    // 记录成功添加（如果需要）
+    // Debug.Log($"[添加成功] {logMessage}");
+    
+    // 原始添加代码保持不变
+    _spriteCache.Add(sprRef, sprite);
+}
         private Texture2D GenerateSpriteBackgroundTexture(int width, int height)
         {
             var tex = new Texture2D(width, height);
