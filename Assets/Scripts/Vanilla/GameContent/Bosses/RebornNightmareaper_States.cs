@@ -531,7 +531,7 @@ namespace MVZ2.GameContent.Bosses
                     {
                         var pos = position;
                         pos.y = entity.Level.GetGroundY(pos.x, pos.z);
-                        var skeleton = entity.SpawnWithParams(VanillaEnemyID.skeleton, pos);
+                        var skeleton = entity.Spawn(VanillaEnemyID.skeleton, pos);
                         var boneParticle = entity.Spawn(VanillaEffectID.boneParticles, skeleton.GetCenter());
 
                         entity.PlaySound(VanillaSoundID.boneWallBuild);

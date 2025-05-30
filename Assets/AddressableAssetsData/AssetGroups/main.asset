@@ -2222,6 +2222,7 @@ MonoBehaviour:
     m_Address: mvz2:enemy/dream/nightmarefollower
     m_ReadOnly: 0
     m_SerializedLabels:
+    - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3c7cacc742c9f154e80d19b1b5b133c2
@@ -2570,7 +2571,9 @@ MonoBehaviour:
   - m_GUID: 440294be06b4bd14785efb5767c9116a
     m_Address: mvz2:enemy/mausoleum/skeleton_warrior
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4409e18829035d440a53d60726284aa9
     m_Address: mvz2:boss/rebornslenderman
@@ -3743,6 +3746,7 @@ MonoBehaviour:
     m_Address: mvz2:enemy/castle/berserkermax
     m_ReadOnly: 0
     m_SerializedLabels:
+    - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 640498c4a0c1e9e478d0ce0218f62222
@@ -4061,7 +4065,9 @@ MonoBehaviour:
   - m_GUID: 6f0c46a4061bb484c8387f99fe8dc33f
     m_Address: mvz2:contraption/mausoleum/black_hole_bomb
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6f22bfed212241144ada2b8c00f2bea2
     m_Address: mvz2:blueprints
@@ -5798,7 +5804,9 @@ MonoBehaviour:
   - m_GUID: 9cdfa6621b3d6e24983d5ed7d08fc489
     m_Address: mvz2:held/starshards/mausoleum
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Main
+    - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d006c01f6cbc564493299596b4ef2a6
     m_Address: mvz2:mobile_blueprint/berserkermax
@@ -7116,6 +7124,14 @@ MonoBehaviour:
     m_Address: mvz2:enemy/castle/mesmerizermax
     m_ReadOnly: 0
     m_SerializedLabels:
+    - Main
+    - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: beaefb38f5a5fce469c095db69c2fbdc
+    m_Address: mvz2:effect/binary_particles
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
     - Model
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: beb139d5d07db39408272c27eaea0034

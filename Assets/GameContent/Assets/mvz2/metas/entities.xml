@@ -1374,12 +1374,6 @@
             <int name="cost" value="1000" />
             <int name="waterInteraction" value="2"/>
         </enemy>
-
-
-
-
-
-
 		<enemy id="necromancermax" name="亡灵骑士" deathMessage="为凋零大人献上永恒的忠诚！" unlock="mvz2:level.castle_11">
 			<float name="range" value="100"/>
 			<bool name="loyal" value="true"/>
@@ -1389,21 +1383,6 @@
 			<id name="crySound" value="mvz2:wither_skeleton_cry"/>
 			<id name="hitSound" value="mvz2:bone_hit"/>
 			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			<int name="cost" value="-9990" />
 			<int name="waterInteraction" value="2"/>
 		</enemy>
@@ -1419,7 +1398,6 @@
 			<id name="crySound" value="mvz2:wither_skeleton_cry"/>
 			<id name="hitSound" value="mvz2:bone_hit"/>
 			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
-
 			<int name="cost" value="-9990" />
 			<int name="waterInteraction" value="2"/>
 		</enemy>
@@ -1432,7 +1410,6 @@
 			<id name="crySound" value="mvz2:wither_skeleton_cry"/>
 			<id name="hitSound" value="mvz2:bone_hit"/>
 			<id name="deathSound" value="mvz2:wither_skeleton_death"/>
-
 			<int name="cost" value="-9990" />
 			<int name="waterInteraction" value="2"/>
 		</enemy>
@@ -1442,7 +1419,6 @@
                 <id name="mvz2:crySound" value="mvz2:skeleton_cry" />
                 <id name="mvz2:deathSound" value="mvz2:skeleton_death" />
                 <bool name="mvz2:noReward" value="true" />
-
                 <int name="mvz2:cost" value="175" />
                 <int name="mvz2:waterInteraction" value="2" />
             </properties>
@@ -1457,7 +1433,6 @@
                 <id name="mvz2:crySound" value="mvz2:skeleton_cry" />
                 <id name="mvz2:deathSound" value="mvz2:skeleton_death" />
                 <bool name="mvz2:noReward" value="true" />
-
                 <int name="mvz2:cost" value="75" />
                 <int name="mvz2:waterInteraction" value="2" />
             </properties>
@@ -1483,7 +1458,6 @@
                 <int name="mvz2:maxTimeout" value="1800" />
                 <vector3 name="mvz2:size" x="10" y="56" z="10" />
                 <vector3 name="mvz2:velocityDampen" x="1" y="1" z="1" />
-
                 <int name="mvz2:cost" value="125" />
             </properties>
         </enemy>

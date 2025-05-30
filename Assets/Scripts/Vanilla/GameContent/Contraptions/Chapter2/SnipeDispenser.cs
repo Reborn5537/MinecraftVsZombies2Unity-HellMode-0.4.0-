@@ -85,12 +85,12 @@ namespace MVZ2.GameContent.Contraptions
                 e.IsHostile(dispenser.GetFaction())
             ).OrderBy(e => Vector3.Distance(arrow.Position, e.Position))
              .FirstOrDefault();
-            if (!dispenser.IsFriendlyEntity())
+            /*if (!dispenser.IsFriendlyEntity())
                 return level.FindEntities(e =>
                 (e.Type == EntityTypes.PLANT &&
                 !e.IsDead )
             ).OrderBy(e => Vector3.Distance(arrow.Position, e.Position))
-             .FirstOrDefault();
+             .FirstOrDefault();*/
         }
 
         private Vector3 ApplyTrackingError(Vector3 direction, float maxAngle)

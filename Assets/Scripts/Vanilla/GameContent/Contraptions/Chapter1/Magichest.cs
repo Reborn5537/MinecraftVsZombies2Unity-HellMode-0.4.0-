@@ -189,7 +189,7 @@ namespace MVZ2.GameContent.Contraptions
                         {
                             var ghast = entity.SpawnWithParams(VanillaEnemyID.ghast, entity.GetCenter());
                             entity.PlaySound(VanillaSoundID.fireCharge);
-                            var flagZombie = entity.Level.Spawn(VanillaEnemyID.flagZombie, entity.GetCenter(), entity);
+                            var flagZombie = entity.SpawnWithParams(VanillaEnemyID.flagZombie, entity.GetCenter());
                             entity.PlaySound(VanillaSoundID.zombieCry);
                         }
                         if (stateTimer.Expired)
