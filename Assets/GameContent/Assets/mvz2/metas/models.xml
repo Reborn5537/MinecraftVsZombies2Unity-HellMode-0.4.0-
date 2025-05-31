@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <models>
+    <!-- Others -->
+     
+
     <!-- Contraptions -->
     <model name="dispenser" type="entity" path="mvz2:contraption/prologue/dispenser" width="64" height="64" xOffset="0" yOffset="-28"/>
     <model name="furnace" type="entity" path="mvz2:contraption/prologue/furnace" width="64" height="64" xOffset="0" yOffset="-28"/>

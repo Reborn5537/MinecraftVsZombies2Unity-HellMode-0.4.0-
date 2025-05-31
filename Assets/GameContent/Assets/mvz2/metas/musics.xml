@@ -175,7 +175,8 @@
             <p>可是真的有人能这么做吗？</p>
         </description>
     </music>
-	<music id="rebornmare_final" path="mvz2:rebornmare_final" name="My Innermost Apocalypse" unlock="mvz2:level.dream_15">
+	<music id="rebornmare_final" name="My Innermost Apocalypse" unlock="mvz2:level.dream_15">
+        <track main="mvz2:rebornmare_final"/>
 		<source>以撒的结合</source>
 		<description>
 			<p>噩梦世界拓展支线一最终关的音乐。</p>
@@ -184,7 +185,8 @@
 			<p>建议佩戴降噪耳机游玩此关卡，某些频段的合成器音效会激发潜意识的恐惧反射。</p>
 		</description>
 	</music>
-	<music id="rebornmare_boss" path="mvz2:rebornmare_boss" name="Infanticide" unlock="mvz2:level.dream_15">
+	<music id="rebornmare_boss" name="Infanticide" unlock="mvz2:level.dream_15">
+        <track main="mvz2:rebornmare_boss"/>
 		<source>以撒的结合-重生</source>
 		<description>
 			<p>重生梦魇第一阶段的音乐。</p>
@@ -192,7 +194,8 @@
 			<p>我们在破碎的摇篮曲旋律中厮杀，箭矢与血肉在焦油般浓稠的空气中交织。副歌部分突然拔高的电子音效，恰似以撒挥动菜刀斩向母体时，那些飞溅的不仅是血，更是困在亲子相弑轮回中的悲鸣。</p>
 		</description>
 	</music>
-	<music id="rebornmare_boss2" path="mvz2:rebornmare_boss2" name="ピュアヒューリーズ　～ 心の在処 (Pure Furies　～ 心之所在)" unlock="mvz2:level.dream_15">
+	<music id="rebornmare_boss2" name="ピュアヒューリーズ　～ 心の在処 (Pure Furies　～ 心之所在)" unlock="mvz2:level.dream_15">
+        <track main="mvz2:rebornmare_boss2"/>
 		<source>东方绀珠传</source>
 		<description>
 			<p>重生梦魇第二阶段的音乐。</p>

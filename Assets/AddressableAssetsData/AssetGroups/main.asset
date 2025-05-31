@@ -3271,6 +3271,7 @@ MonoBehaviour:
     m_Address: mvz2:rebornmare_boss2
     m_ReadOnly: 0
     m_SerializedLabels:
+    - Main
     - Music
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58755531f1cc59b4ab7563c5bedf58b2
@@ -5016,6 +5017,7 @@ MonoBehaviour:
     m_Address: mvz2:rebornmare_final
     m_ReadOnly: 0
     m_SerializedLabels:
+    - Main
     - Music
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8a2e7dea253a9e84c910acffe8c3e79e
@@ -6052,6 +6054,13 @@ MonoBehaviour:
     - Main
     - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4082782ef13eff4fbf7b4d3366f2a18
+    m_Address: mvz2:map_button_exup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a4fb4d341a16ba64cbad7dd992c94206
     m_Address: mvz2:products/blueprint_slot
     m_ReadOnly: 0
@@ -6576,6 +6585,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Main
     - Model
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1f47d7f7ec8b4d498524f8b34b06ff2
+    m_Address: mvz2:map_button_exdown
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Main
+    - Spritesheet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b2385c35695e45846a215788533e520a
     m_Address: mvz2:entity/boss/seija
@@ -9465,6 +9481,7 @@ MonoBehaviour:
     m_Address: mvz2:rebornmare_boss
     m_ReadOnly: 0
     m_SerializedLabels:
+    - Main
     - Music
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fbd4f223bde2b0548986faf783bc0f17

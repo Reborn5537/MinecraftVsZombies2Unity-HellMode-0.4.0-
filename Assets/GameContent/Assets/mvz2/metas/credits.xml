@@ -1,11 +1,14 @@
 <credits>
-    <category name="内容设计">
+    <category name="原版内容设计">
         <entry>Cuerzor58</entry>
     </category>
-    <category name="程序">
+    <category name="原版程序">
         <entry>Cuerzor58</entry>
     </category>
-    <category name="编剧">
+    <category name="地狱版程序">
+        <entry>Reborn5537</entry>
+    </category>
+    <category name="原版编剧">
         <entry>Cuerzor58</entry>
     </category>
     <category name="关卡背景">
@@ -15,6 +18,10 @@
         <entry>Cuerzor58</entry>
         <entry>三花花</entry>
         <entry>小幽喜欢口乙烯</entry>
+    </category>
+    <category name="地狱版角色立绘">
+        <entry>幻梦</entry>
+        <entry>Rebornsense团队</entry>
     </category>
     <category name="背景插图">
         <entry>Cuerzor58</entry>
@@ -35,5 +42,6 @@
         <entry>A Random Chinese</entry>
         <entry>新概念论士</entry>
         <entry>正邪の老鼠</entry>
+        <entry>以及所有支持我们的玩家!</entry>
     </category>
 </credits>

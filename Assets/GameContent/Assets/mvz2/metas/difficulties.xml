@@ -17,7 +17,7 @@
         <buff id="level_hard" iZombie="mvz2:i_zombie_hard" />
     </difficulty>
     <difficulty id="hell" name="地狱" value="200">
-        <button back="mvz2:map_buttonexup" bottom="mvz2:map_button[6]" overlay="mvz2:map_buttonexdown"/>
+        <button back="mvz2:map_button_exup[0]" bottom="mvz2:map_button[6]" overlay="mvz2:map_button_exdown[0]"/>
         <icon arcade="mvz2:ui/arcade/clear_trophy[2]"/>
         <clear cartMoney="50" clearMoney="250" rerunMoney="1000" puzzleMoney="5000"/>
         <buff id="level_hell" iZombie="mvz2:i_zombie_hell" />
