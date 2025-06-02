@@ -645,7 +645,7 @@ namespace MVZ2.GameContent.Bosses
         [TranslateMsg("梦魇对话框标题")]
         public const string CHOOSE_FATE_TITLE = "欢迎回来<color=red>将死之人</color>";
         [TranslateMsg("梦魇对话框文本")]
-        public const string CHOOSE_FATE_DESCRIPTION = "这一次你次没有机会了<color=red>=)</color>";
+        public const string CHOOSE_FATE_DESCRIPTION = "这一次你没有机会了<color=red>=)</color>";
         [TranslateMsg("梦魇选项")]
         public const string FATE_TEXT_PANDORAS_BOX = "<color=purple>打开那扇尘封的门</color>";
         [TranslateMsg("梦魇选项")]
