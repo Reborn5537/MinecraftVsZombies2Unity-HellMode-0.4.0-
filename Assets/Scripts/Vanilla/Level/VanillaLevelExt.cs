@@ -8,6 +8,7 @@ using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Enemies;
 using MVZ2.GameContent.HeldItems;
 using MVZ2.GameContent.Pickups;
+using MVZ2.HeldItems;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Grids;
@@ -16,6 +17,7 @@ using MVZ2.Vanilla.Saves;
 using MVZ2.Vanilla.SeedPacks;
 using MVZ2Logic;
 using MVZ2Logic.Games;
+using MVZ2Logic.HeldItems;
 using MVZ2Logic.Level;
 using MVZ2Logic.SeedPacks;
 using PVZEngine;
@@ -97,15 +99,22 @@ namespace MVZ2.Vanilla.Level
         {
             var heldType = level.GetHeldItemType();
             var heldDefinition = level.Content.GetHeldItemDefinition(heldType);
-            if (heldDefinition is not IBlueprintHeldItemDefinition blueprintheldDef)
+            if (heldDefinition == null)
                 return null;
-            var seed = blueprintheldDef.GetSeedPack(level, level.GetHeldItemData());
-            var seedDef = seed?.Definition;
-            if (seedDef == null)
-                return null;
-            if (seedDef.GetSeedType() != SeedTypes.ENTITY)
-                return null;
-            return seedDef.GetSeedEntityID();
+            if (heldType == VanillaHeldTypes.blueprintPickup)
+            {
+                var entity = GetHoldingEntity(level);
+                return BlueprintPickup.GetSeedEntityID(entity);
+            }
+            else
+            {
+                var seed = heldDefinition.GetSeedPack(level, level.GetHeldItemData());
+                return seed?.GetSeedEntityID();
+            }
+        }
+        public static bool IsHoldingExclusiveItem(this LevelEngine level)
+        {
+            return level.IsHoldingItem() && !level.IsHoldingSword();
         }
         public static bool IsHoldingItem(this LevelEngine level)
         {
@@ -158,7 +167,20 @@ namespace MVZ2.Vanilla.Level
         }
         public static bool IsHoldingEntity(this LevelEngine level, Entity entity)
         {
-            return level.GetHeldItemType() == VanillaHeldTypes.entity && level.GetHeldItemID() == entity.ID;
+            return level.GetHoldingEntity() == entity;
+        }
+        public static Entity GetHoldingEntity(this LevelEngine level)
+        {
+            var data = level.GetHeldItemData();
+            return level.GetHoldingEntity(data);
+        }
+        public static Entity GetHoldingEntity(this LevelEngine level, IHeldItemData data)
+        {
+            var heldDefinition = level.GetHeldItemDefinition();
+            var entityBehaviour = heldDefinition.GetBehaviour<IEntityHeldItemBehaviour>();
+            if (entityBehaviour == null)
+                return null;
+            return entityBehaviour.GetEntity(level, data);
         }
         public static void CreatePreviewEnemies(this LevelEngine level, IEnumerable<NamespaceID> spawnsID, Rect region)
         {

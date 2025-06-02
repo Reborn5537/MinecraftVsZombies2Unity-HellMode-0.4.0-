@@ -1,4 +1,5 @@
 ﻿using MVZ2.GameContent.Effects;
+using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Properties;
 using PVZEngine;
 using PVZEngine.Entities;
@@ -24,8 +25,7 @@ namespace MVZ2.Vanilla.Entities
         public static Entity CreateFragmentAndPlay(this Entity entity, Vector3 position, NamespaceID id = null, float emitSpeed = 500)
         {
             var fragment = entity.Level.Spawn(VanillaEffectID.fragment, position, entity);
-            fragment.SetParent(entity);
-            Fragment.SetFragmentID(fragment, id ?? entity?.GetDefinitionID());
+            Fragment.SetFragmentID(fragment, id ?? entity?.GetFragmentID() ?? entity?.GetDefinitionID());
             Fragment.AddEmitSpeed(fragment, emitSpeed);
             return fragment;
         }

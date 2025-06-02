@@ -11,6 +11,7 @@
 - Added the zoom feature to the Misc Almanac.
 - Added import and export features for user save data.
 - Added 7 new Random China events.
+- Added export feature for game log files.
 
 ## Modified
 
@@ -68,6 +69,7 @@
 - Fixed an edge case where defeating Seija might trigger her Nimble Fabric effect.
 - Fixed an issue where the javelin throw animation of Totenser still plays while it's sleeping due to Dream Silk.
 - Fixed the issue where players can close the menu dialog and continue the game using hotkeys, bypassing restart/exit confirmation pop-ups.
+- Nyan Cat and Nyaightmare now will correctly switch between 2 phases of the Dream World.
 
 ---
 

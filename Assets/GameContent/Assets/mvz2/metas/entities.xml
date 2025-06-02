@@ -528,6 +528,7 @@
                 <bool name="mvz2:shadowHidden" value="true" />
                 <bool name="mvz2:isFloor" value="true" />
                 <id name="mvz2:shell" value="mvz2:metal" />
+                <id name="mvz2:placement" value="mvz2:pad" />
                 <vector3 name="mvz2:size" x="64" y="16" z="64" />
                 <idArray name="mvz2:gridLayers" value="mvz2:carrier mvz2:main" />
                 <idArray name="mvz2:attackerFor" value="mvz2:low_enemy" />
@@ -1597,13 +1598,6 @@
                 <int name="mvz2:waterInteraction" value="0" />
             </properties>
         </cart>
-        <cart id="nyaightmare" name="噩梦猫">
-            <properties>
-                <id name="mvz2:cartTriggerSound" value="mvz2:nyaightmare_scream" />
-                <float name="mvz2:gravity" value="0" />
-                <int name="mvz2:waterInteraction" value="0" />
-            </properties>
-        </cart>
         <cart id="bowl_chariot" name="碗车" >
             <properties>
                 <id name="mvz2:fragmentId" value="mvz2:giant_bowl" />
@@ -1684,8 +1678,7 @@
         </pickup>
         <pickup id="blueprint_pickup" name="蓝图掉落物">
             <properties>
-                <bool name="mvz2:noAutoCollect" value="true" />
-                <bool name="mvz2:strictCollect" value="true" />
+                <bool name="mvz2:noCollect" value="true" />
                 <int name="mvz2:maxTimeout" value="450" />
                 <id name="mvz2:collectSound" value="mvz2:pick" />
             </properties>

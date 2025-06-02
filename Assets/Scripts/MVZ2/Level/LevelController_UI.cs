@@ -4,11 +4,12 @@ using System.Linq;
 using MukioI18n;
 using MVZ2.Cursors;
 using MVZ2.GameContent.HeldItems;
+using MVZ2.GameContent.Pickups;
 using MVZ2.HeldItems;
 using MVZ2.Level.UI;
+using MVZ2.Managers;
 using MVZ2.Models;
 using MVZ2.Options;
-using MVZ2.UI;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Contraptions;
@@ -70,19 +71,28 @@ namespace MVZ2.Level
             var model = GetHeldItemModel();
             if (model != null)
             {
+                model.SetShaderInt("_LightDisabled", 1);
                 definition?.PostSetModel(level, data, heldItemModelInterface);
             }
 
             // 显示触发器图标。
             bool triggerVisible = false;
-            SeedPack blueprint = null;
-            if (definition is IBlueprintHeldItemDefinition blueprintHeld)
+            if (data.Type == VanillaHeldTypes.blueprintPickup)
             {
-                blueprint = blueprintHeld.GetSeedPack(level, data);
+                var blueprintPickup = level.GetHoldingEntity(data);
+                var seedDef = BlueprintPickup.GetSeedDefinition(blueprintPickup);
+                if (seedDef.IsTriggerActive() && seedDef.CanInstantTrigger())
+                {
+                    triggerVisible = true;
+                }
             }
-            if (blueprint != null && blueprint.IsTriggerActive() && blueprint.CanInstantTrigger())
+            else
             {
-                triggerVisible = true;
+                SeedPack blueprint = definition?.GetSeedPack(level, data);
+                if (blueprint != null && blueprint.IsTriggerActive() && blueprint.CanInstantTrigger())
+                {
+                    triggerVisible = true;
+                }
             }
             ui.SetHeldItemTrigger(triggerVisible, instantTrigger);
             ui.SetHeldItemImbued(data.InstantEvoke);
@@ -289,7 +299,22 @@ namespace MVZ2.Level
 
             return lawnPosition;
         }
-
+        public float GetTwinkleAlpha()
+        {
+            var clamped = (Mathf.Cos(twinkleTime * Mathf.PI * 2) + 1) * 0.5f;
+            return clamped * 0.75f;
+        }
+        public Color GetTwinkleColor()
+        {
+            var c = 1 - GetTwinkleAlpha();
+            return new Color(c, c, c, 1);
+        }
+        private void UpdateTwinkle(float deltaTime)
+        {
+            var speed = 2;
+            twinkleTime += deltaTime * speed;
+            twinkleTime %= 1;
+        }
         #endregion
 
         #region 私有方法
@@ -325,7 +350,9 @@ namespace MVZ2.Level
             uiPreset.OnTriggerPointerExit += UI_OnTriggerPointerExitCallback;
             uiPreset.OnTriggerPointerDown += UI_OnTriggerPointerDownCallback;
 
-            uiPreset.OnRaycastReceiverPointerDown += UI_OnRaycastReceiverPointerDownCallback;
+            uiPreset.OnBlueprintPointerInteraction += UI_OnBlueprintPointerInteractionCallback;
+
+            uiPreset.OnRaycastReceiverPointerInteraction += UI_OnRaycastReceiverPointerInteractionCallback;
             uiPreset.OnMenuButtonClick += UI_OnMenuButtonClickCallback;
             uiPreset.OnSpeedUpButtonClick += UI_OnSpeedUpButtonClickCallback;
 
@@ -342,14 +369,13 @@ namespace MVZ2.Level
         #region 事件回调
 
         #region UI方
-        private void UI_OnRaycastReceiverPointerDownCallback(LevelUIPreset.Receiver receiver, PointerEventData eventData)
+        private void UI_OnRaycastReceiverPointerInteractionCallback(LawnArea area, PointerEventData eventData, PointerInteraction interaction)
         {
-            if (eventData.button != PointerEventData.InputButton.Left)
+            if (!IsGameRunning())
                 return;
-            if (!IsGameStarted())
-                return;
-
-            ClickOnReceiver(receiver, PointerInteraction.Press);
+            var target = new HeldItemTargetLawn(level, area);
+            var pointerParams = InputManager.GetPointerInteractionParamsFromEventData(eventData, interaction);
+            level.DoHeldItemPointerEvent(target, pointerParams);
         }
         private void UI_OnPickaxePointerEnterCallback(PointerEventData eventData)
         {
@@ -430,6 +456,14 @@ namespace MVZ2.Level
             if (!IsGameStarted())
                 return;
             ClickTrigger();
+        }
+        private void UI_OnBlueprintPointerInteractionCallback(int index, PointerEventData eventData, PointerInteraction interaction, bool conveyor)
+        {
+            if (!IsGameRunning())
+                return;
+            var target = new HeldItemTargetBlueprint(level, index, conveyor);
+            var pointerParams = InputManager.GetPointerInteractionParamsFromEventData(eventData, interaction);
+            level.DoHeldItemPointerEvent(target, pointerParams);
         }
         private void UI_OnPauseDialogResumeClickedCallback()
         {
@@ -558,7 +592,7 @@ namespace MVZ2.Level
         {
             bool isPressing = Input.touchCount > 0 || Input.GetMouseButton(0);
             Vector2 heldItemPosition;
-            if (Main.IsMobile() && !isPressing && !level.KeepHeldItemInScreen())
+            if (Main.InputManager.GetActivePointerType() == PointerTypes.TOUCH && !isPressing && !level.KeepHeldItemInScreen())
             {
                 heldItemPosition = new Vector2(-1000, -1000);
             }
@@ -656,7 +690,7 @@ namespace MVZ2.Level
         {
             if (!PickaxeActive)
                 return;
-            if (level.IsHoldingItem())
+            if (level.IsHoldingExclusiveItem())
             {
                 if (level.CancelHeldItem())
                 {
@@ -673,7 +707,7 @@ namespace MVZ2.Level
         {
             if (!StarshardActive)
                 return;
-            if (level.IsHoldingItem() && !level.IsHoldingSword())
+            if (level.IsHoldingExclusiveItem())
             {
                 if (level.CancelHeldItem())
                 {
@@ -692,7 +726,7 @@ namespace MVZ2.Level
         {
             if (!TriggerActive)
                 return;
-            if (level.IsHoldingItem())
+            if (level.IsHoldingExclusiveItem())
             {
                 if (level.CancelHeldItem())
                 {
@@ -721,32 +755,6 @@ namespace MVZ2.Level
             var levelUI = GetUIPreset();
             StarshardActive = Saves.IsStarshardUnlocked();
             TriggerActive = Saves.IsTriggerUnlocked();
-        }
-        #endregion
-
-        #region 战场射线接收器
-        private void ClickOnReceiver(RaycastReceiver receiver, PointerInteraction interaction)
-        {
-            var levelUI = GetUIPreset();
-            var type = levelUI.GetReceiverType(receiver);
-            ClickOnReceiver(type, interaction);
-        }
-        private void ClickOnReceiver(LevelUIPreset.Receiver receiver, PointerInteraction interaction)
-        {
-            if (!IsGameRunning())
-                return;
-            LawnArea area = LawnArea.Main;
-            switch (receiver)
-            {
-                case LevelUIPreset.Receiver.Side:
-                    area = LawnArea.Side;
-                    break;
-                case LevelUIPreset.Receiver.Bottom:
-                    area = LawnArea.Bottom;
-                    break;
-            }
-            var target = new HeldItemTargetLawn(level, area);
-            level.UseHeldItem(target, interaction);
         }
         #endregion
 
@@ -909,6 +917,7 @@ namespace MVZ2.Level
         private ITooltipSource tooltipSource;
         private ITooltipSource pickaxeTooltipSource;
         private ITooltipSource triggerTooltipSource;
+        private float twinkleTime;
 
         [Header("UI")]
         [SerializeField]

@@ -295,9 +295,10 @@ MonoBehaviour:
   triggerSlot: {fileID: 0}
   triggerSlotConveyor: {fileID: 0}
   pickaxeSlot: {fileID: 0}
-  sideReceiver: {fileID: 5846065568353853490}
-  lawnReceiver: {fileID: 2878620013278649614}
-  bottomReceiver: {fileID: 4439991780578345944}
+  receivers:
+  - {fileID: 5846065568353853490}
+  - {fileID: 2878620013278649614}
+  - {fileID: 4439991780578345944}
   limitRegionLayoutElement: {fileID: 7450390636950723967}
   cameraLimitWidth: 220
   artifactList: {fileID: 6782718998564816977}
@@ -407,6 +408,7 @@ MonoBehaviour:
   artifactChoosingDialog: {fileID: 7148903014044279346}
   movingBlueprints: {fileID: 8414944601167507796}
   blueprintChoosePanel: {fileID: 0}
+  commandBlockChoosePanel: {fileID: 0}
   choosingViewAlmanacButton: {fileID: 0}
   choosingViewStoreButton: {fileID: 0}
   sideUIDisplaying: 1
@@ -1018,7 +1020,7 @@ RectTransform:
   - {fileID: 8419401924612237373}
   - {fileID: 754033137360837410}
   - {fileID: 2697551020992563134}
-  m_Father: {fileID: 563631685626767535}
+  m_Father: {fileID: 6755054022229485679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1106,7 +1108,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7018957652349214308}
   - {fileID: 6831692466832722335}
   - {fileID: 3401632763567778852}
   m_Father: {fileID: 8077589382542559062}
@@ -1562,6 +1563,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7018957652349214308}
   - {fileID: 8077589382542559062}
   - {fileID: 8702633898016095137}
   - {fileID: 8288880815082721846}
@@ -1801,6 +1803,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6739660147613025992, guid: ff44e922c0b7fc14495a9f2164d4b6e8, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 8383986499081487136}
     - target: {fileID: 7636116833788136396, guid: ff44e922c0b7fc14495a9f2164d4b6e8, type: 3}
       propertyPath: m_Name
       value: SideReceiver
@@ -2955,6 +2961,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6739660147613025992, guid: ff44e922c0b7fc14495a9f2164d4b6e8, type: 3}
+      propertyPath: area
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739660147613025992, guid: ff44e922c0b7fc14495a9f2164d4b6e8, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 8383986499081487136}
     - target: {fileID: 7636116833788136396, guid: ff44e922c0b7fc14495a9f2164d4b6e8, type: 3}
       propertyPath: m_Name
       value: BottomReceiver
@@ -3571,6 +3585,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6739660147613025992, guid: ff44e922c0b7fc14495a9f2164d4b6e8, type: 3}
+      propertyPath: area
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739660147613025992, guid: ff44e922c0b7fc14495a9f2164d4b6e8, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 8383986499081487136}
     - target: {fileID: 7636116833788136396, guid: ff44e922c0b7fc14495a9f2164d4b6e8, type: 3}
       propertyPath: m_Name
       value: LawnReceiver

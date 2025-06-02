@@ -3,6 +3,7 @@ using MVZ2Logic.Games;
 using MVZ2Logic.HeldItems;
 using MVZ2Logic.Level.Components;
 using PVZEngine;
+using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.Models;
 
@@ -37,41 +38,50 @@ namespace MVZ2Logic.Level
         }
         public static NamespaceID GetHeldItemType(this LevelEngine level)
         {
-            var component = level.GetHeldItemComponent();
-            return component.Data.Type;
+            return level.GetHeldItemData().Type;
         }
         public static long GetHeldItemID(this LevelEngine level)
         {
-            var component = level.GetHeldItemComponent();
-            return component.Data.ID;
+            return level.GetHeldItemData().ID;
         }
         public static IHeldItemData GetHeldItemData(this LevelEngine level)
         {
             var component = level.GetHeldItemComponent();
             return component.Data;
         }
-        public static HeldHighlight GetHeldHighlight(this LevelEngine level, HeldItemTarget target, NamespaceID heldType, IHeldItemData data)
+        public static HeldItemDefinition GetHeldItemDefinition(this LevelEngine level)
         {
-            var heldItemDef = level.Content.GetHeldItemDefinition(heldType);
-            return heldItemDef.GetHighlight(target, data);
+            var heldType = level.GetHeldItemType();
+            return level.Content.GetHeldItemDefinition(heldType);
         }
-        public static void UseHeldItem(this LevelEngine level, HeldItemTarget target, NamespaceID heldType, IHeldItemData data, PointerInteraction interaction)
+        public static HeldHighlight GetHeldHighlight(this LevelEngine level, IHeldItemTarget target, PointerData pointer)
         {
-            var heldItemDef = level.Content.GetHeldItemDefinition(heldType);
-            heldItemDef.Use(target, data, interaction);
+            var data = level.GetHeldItemData();
+            var heldItemDef = level.GetHeldItemDefinition();
+            return heldItemDef.GetHighlight(target, data, pointer);
         }
-        public static HeldHighlight GetHeldHighlight(this LevelEngine level, HeldItemTarget target)
+        public static void DoHeldItemPointerEvent(this LevelEngine level, IHeldItemTarget target, PointerInteractionData pointerParams)
         {
-            return level.GetHeldHighlight(target, level.GetHeldItemType(), level.GetHeldItemData());
-        }
-        public static void UseHeldItem(this LevelEngine level, HeldItemTarget target, PointerInteraction interaction)
-        {
-            level.UseHeldItem(target, level.GetHeldItemType(), level.GetHeldItemData(), interaction);
+            var data = level.GetHeldItemData();
+            var heldItemDef = level.GetHeldItemDefinition();
+            heldItemDef.DoPointerEvent(target, data, pointerParams);
         }
         public static IModelInterface GetHeldItemModelInterface(this LevelEngine level)
         {
             var component = level.GetHeldItemComponent();
             return component.GetHeldItemModelInterface();
+        }
+        public static bool ShouldHeldItemMakeEntityTwinkle(this LevelEngine level, Entity entity)
+        {
+            var heldDef = level.GetHeldItemDefinition();
+            var heldItemData = level.GetHeldItemData();
+            var behaviours = heldDef.GetBehaviours();
+            foreach (var behaviour in behaviours)
+            {
+                if (behaviour is IHeldTwinkleEntityBehaviour twinkle && twinkle.ShouldMakeEntityTwinkle(entity, heldItemData))
+                    return true;
+            }
+            return false;
         }
         #endregion
     }

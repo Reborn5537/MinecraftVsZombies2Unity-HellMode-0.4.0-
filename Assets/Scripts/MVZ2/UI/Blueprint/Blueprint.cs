@@ -1,6 +1,12 @@
 ﻿using System;
+using MVZ2.HeldItems;
+using MVZ2.Level;
 using MVZ2.Level.UI;
+using MVZ2.Managers;
 using MVZ2.Models;
+using MVZ2Logic;
+using MVZ2Logic.HeldItems;
+using PVZEngine.Level;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,7 +14,7 @@ using UnityEngine.UI;
 
 namespace MVZ2.UI
 {
-    public class Blueprint : MonoBehaviour, IPointerDownHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, ITooltipTarget
+    public class Blueprint : MonoBehaviour, ILevelRaycastReceiver, ITooltipTarget
     {
         public void UpdateView(BlueprintViewData viewData)
         {
@@ -58,45 +64,54 @@ namespace MVZ2.UI
         {
             selectedObject.SetActive(selected);
         }
-        public void SetTwinkling(bool twinkling)
+        public void SetTwinkleAlpha(float alpha)
         {
-            if (!animator.gameObject.activeInHierarchy)
-                return;
-            animator.SetBool("Twinkling", twinkling);
-        }
-        public void PointerRelease()
-        {
-            OnPointerRelease?.Invoke(this);
+            var color = twinkleImage.color;
+            color.a = alpha;
+            twinkleImage.color = color;
         }
         private void Awake()
         {
-            animator.logWarnings = false;
+            holdStreakHandler.OnPointerInteraction += (_, d, i) => CallPointerInteraction(d, i);
         }
-        void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
+        bool ILevelRaycastReceiver.IsValidReceiver(LevelEngine level, HeldItemDefinition definition, IHeldItemData data, PointerEventData eventData)
         {
-            OnPointerDown?.Invoke(this, eventData);
+            if (definition == null)
+                return false;
+            if (Index < 0)
+                return false;
+            var target = new HeldItemTargetBlueprint(level, Index, IsInConveyor);
+            var pointer = InputManager.GetPointerDataFromEventData(eventData);
+            return definition.IsValidFor(target, data, pointer);
         }
-        void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+        int ILevelRaycastReceiver.GetSortingLayer()
         {
-            OnPointerClick?.Invoke(this, eventData);
+            var canvas = (transform as RectTransform).GetRootCanvas();
+            return canvas.sortingLayerID;
         }
-        void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
+        int ILevelRaycastReceiver.GetSortingOrder()
         {
-            OnPointerEnter?.Invoke(this, eventData);
+            var canvas = (transform as RectTransform).GetRootCanvas();
+            return canvas.sortingOrder;
         }
-        void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+        private void CallPointerInteraction(PointerEventData eventData, PointerInteraction interaction)
         {
-            OnPointerExit?.Invoke(this, eventData);
+            OnPointerInteraction?.Invoke(this, eventData, interaction);
+            if (interaction == selectInteraction)
+            {
+                OnSelect?.Invoke(this);
+            }
         }
-        public event Action<Blueprint, PointerEventData> OnPointerDown;
-        public event Action<Blueprint, PointerEventData> OnPointerClick;
-        public event Action<Blueprint, PointerEventData> OnPointerEnter;
-        public event Action<Blueprint, PointerEventData> OnPointerExit;
-        public event Action<Blueprint> OnPointerRelease;
+        public event Action<Blueprint, PointerEventData, PointerInteraction> OnPointerInteraction;
+        public event Action<Blueprint> OnSelect;
         TooltipAnchor ITooltipTarget.Anchor => tooltipAnchor;
         public UIModel Model => model;
+        public int Index { get; set; } = -1;
+        public bool IsInConveyor { get; set; }
         [SerializeField]
-        private Animator animator;
+        private PointerInteraction selectInteraction = PointerInteraction.Down;
+        [SerializeField]
+        private LevelPointerInteractionHandler holdStreakHandler;
         [SerializeField]
         private GameObject emptyObj;
         [SerializeField]
@@ -111,6 +126,8 @@ namespace MVZ2.UI
         private Image iconImage;
         [SerializeField]
         private Image iconImageCommandBlock;
+        [SerializeField]
+        private Image twinkleImage;
         [SerializeField]
         private TextMeshProUGUI costText;
         [SerializeField]

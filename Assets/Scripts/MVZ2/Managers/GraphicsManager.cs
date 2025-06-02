@@ -14,6 +14,17 @@ namespace MVZ2.Models
             LogGraphics();
             CheckSupportedColorFormat();
             CheckSupportedDepthFormat();
+            Shader.SetGlobalInt("_LightStarted", 1);
+            ResetLighting();
+        }
+        public void SetLighting(Color background, Color global)
+        {
+            Shader.SetGlobalColor("_LightBackground", background);
+            Shader.SetGlobalColor("_LightGlobal", global);
+        }
+        public void ResetLighting()
+        {
+            SetLighting(Color.white, Color.white);
         }
         public GraphicsFormat GetSupportedColorFormat()
         {

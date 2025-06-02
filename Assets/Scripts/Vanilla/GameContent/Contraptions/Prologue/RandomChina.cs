@@ -69,6 +69,7 @@ namespace MVZ2.GameContent.Contraptions
 
             var allEvents = contraption.Level.Content.GetDefinitions<RandomChinaEventDefinition>(VanillaDefinitionTypes.RANDOM_CHINA_EVENT);
             var def = allEvents.Random(rng);
+            //var def = contraption.Level.Content.GetDefinition<RandomChinaEventDefinition>(VanillaDefinitionTypes.RANDOM_CHINA_EVENT, VanillaRandomChinaEventID.ancientEgypt);
             def.Run(contraption, rng);
             var nameKey = def.Text;
             contraption.Level.ShowAdvice(VanillaStrings.CONTEXT_RANDOM_CHINA_EVENT_NAME, nameKey, 0, 90);

@@ -2,28 +2,37 @@
 using MVZ2.Vanilla.Callbacks;
 using MVZ2Logic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace MVZ2.Managers
 {
-    public partial class InputManager : MonoBehaviour
+    public partial class InputManager : MonoBehaviour, IInputManager
     {
-        public bool IsPointerDown(int pointerId)
+        #region 检测指针状态
+        public static bool IsPointerDown(int type, int button) => IsPointerDown(GetPointerIdByButtonAndType(button, type));
+        public static bool IsPointerHolding(int type, int button) => IsPointerHolding(GetPointerIdByButtonAndType(button, type));
+        public static bool IsPointerUp(int type, int button) => IsPointerUp(GetPointerIdByButtonAndType(button, type));
+        public int GetActivePointerType()
+        {
+            return currentPointerType;
+        }
+        public static bool IsPointerDown(int pointerId)
         {
             return IsPointerOfPhase(pointerId, PointerPhase.Press);
         }
-        public bool IsPointerHolding(int pointerId)
+        public static bool IsPointerHolding(int pointerId)
         {
             return IsPointerOfPhase(pointerId, PointerPhase.Hold);
         }
-        public bool IsPointerUp(int pointerId)
+        public static bool IsPointerUp(int pointerId)
         {
             return IsPointerOfPhase(pointerId, PointerPhase.Release);
         }
-        public bool IsPointerOfPhase(int pointerId, PointerPhase phase)
+        public static bool IsPointerOfPhase(int pointerId, PointerPhase phase)
         {
-            if (pointerId < 0)
+            if (IsPointerMouse(pointerId))
             {
-                var mouseButton = -pointerId - 1;
+                var mouseButton = GetPointerButton(pointerId);
                 switch (phase)
                 {
                     case PointerPhase.Press:
@@ -53,9 +62,66 @@ namespace MVZ2.Managers
             }
             return false;
         }
+        #endregion
+
+        #region 指针ID转换
+        public static int GetPointerIdByButtonAndType(int button, int type)
+        {
+            return type == PointerTypes.MOUSE ? -button - 1 : button;
+        }
+        public static int GetPointerButton(int pointerId)
+        {
+            return IsPointerMouse(pointerId) ? -pointerId - 1 : pointerId;
+        }
+        public static int GetPointerType(int pointerId)
+        {
+            return IsPointerMouse(pointerId) ? PointerTypes.MOUSE : PointerTypes.TOUCH;
+        }
+        public static bool IsPointerMouse(int pointerId)
+        {
+            return pointerId < 0;
+        }
+        #endregion
+
+        #region 指针数据
+        public static PointerData GetPointerDataFromEventData(PointerEventData eventData)
+        {
+            return new PointerData()
+            {
+                button = (int)eventData.button,
+                type = GetPointerType(eventData.pointerId)
+            };
+        }
+        public static PointerData GetPointerDataFromPointerId(int pointerId)
+        {
+            return new PointerData()
+            {
+                button = GetPointerButton(pointerId),
+                type = GetPointerType(pointerId)
+            };
+        }
+        public static PointerInteractionData GetPointerInteractionParamsFromEventData(PointerEventData eventData, PointerInteraction interaction)
+        {
+            return new PointerInteractionData()
+            {
+                pointer = GetPointerDataFromEventData(eventData),
+                interaction = interaction
+            };
+        }
+        public static PointerInteractionData GetPointerInteractionParamsFromPointerId(int pointerId, PointerInteraction interaction)
+        {
+            return new PointerInteractionData()
+            {
+                pointer = GetPointerDataFromPointerId(pointerId),
+                interaction = PointerInteraction.Hold
+            };
+        }
+        #endregion
+
+        #region 获取指针位置
         public Vector2 GetPointerPosition(int pointerId)
         {
-            if (pointerId < 0)
+            if (IsPointerMouse(pointerId))
             {
                 return Input.mousePosition;
             }
@@ -78,7 +144,10 @@ namespace MVZ2.Managers
             }
             return Input.mousePosition;
         }
-        public IEnumerable<Vector2> GetLeftPointerUps()
+        #endregion
+
+        #region 获取所有指针
+        public IEnumerable<PointerPositionParams> GetTouchUps()
         {
             var touches = Input.touches;
             if (touches.Length > 0)
@@ -88,18 +157,30 @@ namespace MVZ2.Managers
                     var touch = touches[i];
                     if (touch.phase == TouchPhase.Canceled || touch.phase == TouchPhase.Ended)
                     {
-                        yield return touch.position;
+                        yield return new PointerPositionParams()
+                        {
+                            button = i,
+                            type = PointerTypes.TOUCH,
+                            position = touch.position
+                        };
                     }
                 }
             }
-            else
+        }
+        public IEnumerable<PointerPositionParams> GetMouseUps(int button)
+        {
+            if (Input.GetMouseButtonUp(button))
             {
-                if (Input.GetMouseButtonUp(MouseButton.LEFT))
+                yield return new PointerPositionParams()
                 {
-                    yield return Input.mousePosition;
-                }
+                    button = button,
+                    type = PointerTypes.MOUSE,
+                    position = Input.mousePosition
+                };
             }
         }
+        #endregion
+
         private void Update()
         {
             if (currentPointerType == PointerTypes.MOUSE)
@@ -132,33 +213,37 @@ namespace MVZ2.Managers
             {
                 case PointerTypes.MOUSE:
                     {
+                        var position = (Vector2)Input.mousePosition;
+                        var delta = position - lastMousePosition;
+                        lastMousePosition = position;
                         for (int mouse = 0; mouse <= 2; mouse++)
                         {
                             bool hasState = false;
                             if (Input.GetMouseButtonDown(mouse))
                             {
                                 hasState = true;
-                                RunPointerCallback(PointerTypes.MOUSE, mouse, Input.mousePosition, PointerPhase.Press);
+                                PollPointerEvent(currentPointerType, mouse, position, delta, PointerPhase.Press);
                             }
                             if (Input.GetMouseButton(mouse))
                             {
                                 hasState = true;
-                                RunPointerCallback(PointerTypes.MOUSE, mouse, Input.mousePosition, PointerPhase.Hold);
+                                PollPointerEvent(currentPointerType, mouse, position, delta, PointerPhase.Hold);
                             }
                             if (Input.GetMouseButtonUp(mouse))
                             {
                                 hasState = true;
-                                RunPointerCallback(PointerTypes.MOUSE, mouse, Input.mousePosition, PointerPhase.Release);
+                                PollPointerEvent(currentPointerType, mouse, position, delta, PointerPhase.Release);
                             }
                             if (!hasState)
                             {
-                                RunPointerCallback(PointerTypes.MOUSE, mouse, Input.mousePosition, PointerPhase.None);
+                                PollPointerEvent(currentPointerType, mouse, position, delta, PointerPhase.None);
                             }
                         }
                     }
                     break;
                 case PointerTypes.TOUCH:
-                    for (int i = 0; i < Input.touchCount; i++)
+                    int touchCount = Input.touchCount;
+                    for (int i = 0; i < touchCount; i++)
                     {
                         var touch = Input.GetTouch(i);
                         PointerPhase phase = PointerPhase.Hold;
@@ -172,22 +257,86 @@ namespace MVZ2.Managers
                                 phase = PointerPhase.Release;
                                 break;
                         }
-                        RunPointerCallback(PointerTypes.TOUCH, touch.fingerId, touch.position, phase);
+                        var delta = Vector2.zero;
+                        if (lastTouchPositions.Count > i)
+                        {
+                            delta = touch.position - lastTouchPositions[i];
+                            lastTouchPositions[i] = touch.position;
+                        }
+                        else
+                        {
+                            lastTouchPositions.Add(touch.position);
+                        }
+                        PollPointerEvent(currentPointerType, touch.fingerId, touch.position, delta, phase);
                     }
+                    lastTouchPositions.RemoveRange(touchCount, lastTouchPositions.Count - touchCount);
                     break;
             }
+            FlushPointerCaches();
         }
-        private void RunPointerCallback(int type, int index, Vector2 screenPosition, PointerPhase phase)
+        private void FlushPointerCaches()
         {
-            Main.Game.RunCallbackFiltered(VanillaCallbacks.POST_POINTER_ACTION, new VanillaCallbacks.PostPointerActionParams(type, index, screenPosition, phase), phase);
+            foreach (var poll in pointerEventCacheList)
+            {
+                var param = new VanillaCallbacks.PostPointerActionParams()
+                {
+                    type = poll.type,
+                    button = poll.button,
+                    screenPos = poll.position,
+                    phase = poll.phase,
+                    delta = poll.delta,
+                };
+                Main.Game.RunCallbackFiltered(VanillaCallbacks.POST_POINTER_ACTION, param, param.phase);
+            }
+            pointerEventCacheList.Clear();
+        }
+        private void PollPointerEvent(int type, int button, Vector2 screenPosition, Vector2 delta, PointerPhase phase)
+        {
+            var cache = new PointerEventCacheData()
+            {
+                type = type,
+                button = button,
+                position = screenPosition,
+                phase = phase,
+                delta = delta,
+            };
+            pointerEventCacheList.Add(cache);
+        }
+        bool IInputManager.IsPointerDown(int type, int button)
+        {
+            return IsPointerDown(type, button);
+        }
+        bool IInputManager.IsPointerHolding(int type, int button)
+        {
+            return IsPointerHolding(type, button);
+        }
+        bool IInputManager.IsPointerUp(int type, int button)
+        {
+            return IsPointerUp(type, button);
         }
         public MainManager Main => MainManager.Instance;
         private int currentPointerType = PointerTypes.MOUSE;
+        private Vector2 lastMousePosition;
+        private List<Vector2> lastTouchPositions = new List<Vector2>();
+        private List<PointerEventCacheData> pointerEventCacheList = new List<PointerEventCacheData>();
     }
-    public static class MouseButton
+    public struct PointerPositionParams
     {
-        public const int LEFT = 0;
-        public const int RIGHT = 1;
-        public const int MIDDLE = 2;
+        public int type;
+        public int button;
+        public Vector2 position;
+    }
+    public struct PointerEventCacheData
+    {
+        public int type;
+        public int button;
+        public Vector2 position;
+        public Vector2 delta;
+        public PointerPhase phase;
+
+        public override string ToString()
+        {
+            return $"type: {type}, button: {button}, position: {position}, delta: {delta}, phase: {phase}";
+        }
     }
 }

@@ -88,7 +88,7 @@ namespace MVZ2.GameContent.Pickups
             {
                 if (level.DropsTrophy())
                 {
-                    money = 1000;
+                    money = difficultyMeta.PuzzleMoney;
                 }
                 else if (difficultyMeta != null)
                 {
@@ -99,7 +99,7 @@ namespace MVZ2.GameContent.Pickups
 
             foreach (var p in level.GetEntities(EntityTypes.PICKUP))
             {
-                if (p == pickup || p.IsCollected() || p.NoAutoCollect())
+                if (p == pickup || p.IsCollected() || p.NoCollect() || p.NoAutoCollect())
                     continue;
                 p.Collect();
             }

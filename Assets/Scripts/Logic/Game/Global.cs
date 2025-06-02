@@ -26,25 +26,17 @@ namespace MVZ2Logic
             }
             return Input.mousePosition;
         }
-        public static int GetTouchCount()
+        public static bool IsPointerDown(int type, int button)
         {
-            return Input.touchCount;
+            return Main.Input.IsPointerDown(type, button);
         }
-        public static Vector2 GetTouchDelta(int index)
+        public static bool IsPointerHolding(int type, int button)
         {
-            return Input.GetTouch(index).deltaPosition;
+            return Main.Input.IsPointerHolding(type, button);
         }
-        public static Vector2 GetTouchPosition(int index)
+        public static bool IsPointerUp(int type, int button)
         {
-            return Input.GetTouch(index).position;
-        }
-        public static bool IsMousePresent()
-        {
-            return Input.mousePresent;
-        }
-        public static Vector2 GetMousePosition()
-        {
-            return Input.mousePosition;
+            return Main.Input.IsPointerUp(type, button);
         }
 
         public static Coroutine StartCoroutine(IEnumerator enumerator)
@@ -111,6 +103,10 @@ namespace MVZ2Logic
         {
             return Options.HasBloodAndGore();
         }
+        public static bool IsTriggerSwapped()
+        {
+            return Options.IsTriggerSwapped();
+        }
         #endregion
 
         #region 统计
@@ -146,6 +142,7 @@ namespace MVZ2Logic
         ILevelManager Level { get; }
         IOptionsManager Options { get; }
         IGlobalSave Saves { get; }
+        IInputManager Input { get; }
     }
     public interface ISceneController
     {
@@ -173,10 +170,17 @@ namespace MVZ2Logic
     public interface IOptionsManager
     {
         bool HasBloodAndGore();
+        bool IsTriggerSwapped();
     }
     public interface IGlobalSave
     {
         long GetSaveStat(NamespaceID category, NamespaceID entry);
         void SetSaveStat(NamespaceID category, NamespaceID entry, long value);
+    }
+    public interface IInputManager
+    {
+        bool IsPointerDown(int type, int button);
+        bool IsPointerHolding(int type, int button);
+        bool IsPointerUp(int type, int button);
     }
 }

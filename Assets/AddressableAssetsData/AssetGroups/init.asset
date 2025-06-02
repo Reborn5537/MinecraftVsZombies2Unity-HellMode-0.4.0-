@@ -117,12 +117,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Init
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cd706561546c5454c978c77fd4f32daa
-    m_Address: Assets/Textures/GeneratedSprites.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Init
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ecdea1f2d39df2049be852b3107d40a4
     m_Address: mvz2:init/form
     m_ReadOnly: 0
@@ -134,5 +128,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: a46faf0c3a4988d45b208f5a8e98bb12, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: f0d55979784ac69448b90cc9459e11b5, type: 2}
-    - {fileID: 11400000, guid: 412ddeb79be12b7479b1cafd57afcf64, type: 2}
+    - {fileID: 11400000, guid: cadd4287a7c82f74593d8b1fe7da2e4c, type: 2}
+    - {fileID: 11400000, guid: a46acf1f0ff19384cb41bae210cfe607, type: 2}

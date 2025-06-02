@@ -6,12 +6,13 @@ using PVZEngine.Entities;
 
 namespace MVZ2.GameContent.HeldItems
 {
-    public class TriggerCartHeldItemBehaviour : HeldItemBehaviour
+    [HeldItemBehaviourDefinition(VanillaHeldItemBehaviourNames.triggerCart)]
+    public class TriggerCartHeldItemBehaviour : HeldItemBehaviourDefinition
     {
-        public TriggerCartHeldItemBehaviour(HeldItemDefinition definition) : base(definition)
+        public TriggerCartHeldItemBehaviour(string nsp, string name) : base(nsp, name)
         {
         }
-        public override bool IsValidFor(HeldItemTarget target, IHeldItemData data)
+        public override bool IsValidFor(IHeldItemTarget target, IHeldItemData data, PointerInteractionData pointer)
         {
             if (target is not HeldItemTargetEntity entityTarget)
                 return false;
@@ -24,7 +25,7 @@ namespace MVZ2.GameContent.HeldItems
             }
             return false;
         }
-        public override HeldHighlight GetHighlight(HeldItemTarget target, IHeldItemData data)
+        public override HeldHighlight GetHighlight(IHeldItemTarget target, IHeldItemData data, PointerInteractionData pointer)
         {
             if (target is not HeldItemTargetEntity entityTarget)
                 return HeldHighlight.None;
@@ -37,11 +38,13 @@ namespace MVZ2.GameContent.HeldItems
             }
             return HeldHighlight.None;
         }
-        public override void Use(HeldItemTarget target, IHeldItemData data, PointerInteraction interaction)
+        public override void OnPointerEvent(IHeldItemTarget target, IHeldItemData data, PointerInteractionData pointerParams)
         {
             if (target is not HeldItemTargetEntity entityTarget)
                 return;
-
+            if (pointerParams.IsInvalidClickButton())
+                return;
+            var interaction = pointerParams.interaction;
             var entity = entityTarget.Target;
             switch (entity.Type)
             {
