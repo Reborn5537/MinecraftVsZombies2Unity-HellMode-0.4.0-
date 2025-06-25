@@ -48,7 +48,7 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
+            entity.SetModelHealthStateByCount(2);
             entity.SetAnimationBool("HasBoat", entity.HasBuff<BoatBuff>());
         }
         protected override void UpdateAI(Entity entity)

@@ -221,7 +221,7 @@ namespace PVZEngine.SeedPacks
             seri.currentBuffID = currentBuffID;
             seri.auras = auras.GetAll().Select(a => a.ToSerializable()).ToArray();
         }
-        protected void ApplyDeserializedProperties(LevelEngine level, SerializableSeedPack seri)
+        public void ApplyDeserializedProperties(LevelEngine level, SerializableSeedPack seri)
         {
             properties = PropertyBlock.FromSerializable(seri.properties, this);
             currentBuffID = seri.currentBuffID;
@@ -245,6 +245,7 @@ namespace PVZEngine.SeedPacks
         Armor IBuffTarget.GetArmor() => null;
         Entity IAuraSource.GetEntity() => null;
         LevelEngine IAuraSource.GetLevel() => Level;
+        bool IAuraSource.IsValid() => true;
         bool IBuffTarget.Exists() => true;
         public event Action<SeedDefinition> OnDefinitionChanged;
 

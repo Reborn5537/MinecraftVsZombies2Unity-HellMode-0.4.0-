@@ -13,6 +13,7 @@ namespace MVZ2.Collisions
     {
         void ICollisionSystem.Update()
         {
+            ClearEntityTrash();
             Physics.Simulate(1);
             simulateBuffer.Clear();
             simulateBuffer.CopyFrom(entities.Values);
@@ -20,20 +21,29 @@ namespace MVZ2.Collisions
             {
                 var entity = simulateBuffer[i];
                 entity.Simulate();
+                entity.RecycleColliders();
             }
         }
         public void InitEntity(Entity entity)
         {
             var col = CreateCollisionEntity(entity);
             col.CreateMainCollider(EntityCollisionHelper.NAME_MAIN);
+            entities.Add(entity.ID, col);
         }
-        public void UpdateEntity(Entity entity)
+        public void UpdateEntityDetection(Entity entity)
         {
             var ent = GetCollisionEntity(entity);
-            if (ent != null)
-            {
-                ent.UpdateEntity();
-            }
+            ent?.UpdateEntityDetection();
+        }
+        public void UpdateEntityPosition(Entity entity)
+        {
+            var ent = GetCollisionEntity(entity);
+            ent?.UpdateEntityPosition();
+        }
+        public void UpdateEntitySize(Entity entity)
+        {
+            var ent = GetCollisionEntity(entity);
+            ent?.UpdateEntitySize();
         }
         public void DestroyEntity(Entity entity)
         {
@@ -46,34 +56,57 @@ namespace MVZ2.Collisions
                 return;
             collisionEnt.GetCollisions(collisions);
         }
-
         private UnityCollisionEntity CreateCollisionEntity(Entity entity)
         {
-            var ent = Instantiate(collisionEntityTemplate, entityRoot).GetComponent<UnityCollisionEntity>();
+            UnityCollisionEntity ent;
+            if (disabledEntities.Count > 0)
+            {
+                ent = disabledEntities.Dequeue();
+            }
+            else
+            {
+                ent = Instantiate(collisionEntityTemplate, entityRoot).GetComponent<UnityCollisionEntity>();
+            }
             ent.gameObject.SetActive(true);
             ent.Init(entity);
-            entities.Add(entity.ID, ent);
             return ent;
         }
         private void DestroyCollisionEntity(Entity entity)
         {
             var collisionEnt = GetCollisionEntity(entity);
-            if (collisionEnt)
+            if (collisionEnt && entities.Remove(entity.ID))
             {
                 collisionEnt.gameObject.SetActive(false);
-                Destroy(collisionEnt.gameObject);
+                entityTrash.Add(entity.ID, collisionEnt);
             }
-            entities.Remove(entity.ID);
         }
         private UnityCollisionEntity GetCollisionEntity(Entity entity)
         {
             if (entities.TryGetValue(entity.ID, out var ent))
                 return ent;
+            return GetCollisionEntityInTrash(entity.ID);
+        }
+        private UnityCollisionEntity GetCollisionEntityInTrash(long id)
+        {
+            if (entityTrash.TryGetValue(id, out var entity))
+                return entity;
             return null;
+        }
+        private void ClearEntityTrash()
+        {
+            foreach (var pair in entityTrash)
+            {
+                var ent = pair.Value;
+                if (!ent)
+                    continue;
+                disabledEntities.Enqueue(ent);
+                ent.ResetEntity();
+            }
+            entityTrash.Clear();
         }
 
         #region 碰撞体
-        public IEntityCollider AddCollider(Entity entity, ColliderConstructor cons)
+        public IEntityCollider CreateCustomCollider(Entity entity, ColliderConstructor cons)
         {
             var collisionEnt = GetCollisionEntity(entity);
             if (!collisionEnt)
@@ -106,30 +139,25 @@ namespace MVZ2.Collisions
         }
         public void OverlapBoxNonAlloc(Vector3 center, Vector3 size, int faction, int hostileMask, int friendlyMask, List<IEntityCollider> results)
         {
-            var hostileLayerMask = UnityCollisionHelper.ToObjectLayerMask(hostileMask);
-            var hostileColliderCount = Physics.OverlapBoxNonAlloc(center, size * 0.5f, overlapBuffer, Quaternion.identity, hostileLayerMask, QueryTriggerInteraction.Collide);
-            for (int i = 0; i < hostileColliderCount; i++)
-            {
-                var col = overlapBuffer[i];
-                var collider = col.GetComponent<UnityEntityCollider>();
-                if (results.Contains(collider))
-                    continue;
-                if (!collider.Entity.IsHostile(faction))
-                    continue;
-                results.Add(collider);
-            }
+            var combinedMask = hostileMask | friendlyMask;
+            var layerMask = UnityCollisionHelper.ToObjectLayerMask(combinedMask);
 
-            var friendlyLayerMask = UnityCollisionHelper.ToObjectLayerMask(friendlyMask);
-            var friendlyColliderCount = Physics.OverlapBoxNonAlloc(center, size * 0.5f, overlapBuffer, Quaternion.identity, friendlyLayerMask, QueryTriggerInteraction.Collide);
-            for (int i = 0; i < friendlyColliderCount; i++)
+            var colliderCount = Physics.OverlapBoxNonAlloc(center, size * 0.5f, overlapBuffer, Quaternion.identity, layerMask, QueryTriggerInteraction.Collide);
+            for (int i = 0; i < colliderCount; i++)
             {
                 var col = overlapBuffer[i];
                 var collider = col.GetComponent<UnityEntityCollider>();
                 if (results.Contains(collider))
                     continue;
-                if (!collider.Entity.IsFriendly(faction))
-                    continue;
-                results.Add(collider);
+                var ent = collider.Entity;
+                if (EntityCollisionHelper.CanCollide(hostileMask, ent) && ent.IsHostile(faction))
+                {
+                    results.Add(collider);
+                }
+                else if (EntityCollisionHelper.CanCollide(friendlyMask, ent) && ent.IsFriendly(faction))
+                {
+                    results.Add(collider);
+                }
             }
         }
         public IEntityCollider[] OverlapSphere(Vector3 center, float radius, int faction, int hostileMask, int friendlyMask)
@@ -140,30 +168,25 @@ namespace MVZ2.Collisions
         }
         public void OverlapSphereNonAlloc(Vector3 center, float radius, int faction, int hostileMask, int friendlyMask, List<IEntityCollider> results)
         {
-            var hostileLayerMask = UnityCollisionHelper.ToObjectLayerMask(hostileMask);
-            var hostileColliderCount = Physics.OverlapSphereNonAlloc(center, radius, overlapBuffer, hostileLayerMask, QueryTriggerInteraction.Collide);
-            for (int i = 0; i < hostileColliderCount; i++)
-            {
-                var col = overlapBuffer[i];
-                var collider = col.GetComponent<UnityEntityCollider>();
-                if (results.Contains(collider))
-                    continue;
-                if (!collider.Entity.IsHostile(faction))
-                    continue;
-                results.Add(collider);
-            }
+            var combinedMask = hostileMask | friendlyMask;
+            var layerMask = UnityCollisionHelper.ToObjectLayerMask(combinedMask);
 
-            var friendlyLayerMask = UnityCollisionHelper.ToObjectLayerMask(friendlyMask);
-            var friendlyColliderCount = Physics.OverlapSphereNonAlloc(center, radius, overlapBuffer, friendlyLayerMask, QueryTriggerInteraction.Collide);
-            for (int i = 0; i < friendlyColliderCount; i++)
+            var colliderCount = Physics.OverlapSphereNonAlloc(center, radius, overlapBuffer, layerMask, QueryTriggerInteraction.Collide);
+            for (int i = 0; i < colliderCount; i++)
             {
                 var col = overlapBuffer[i];
                 var collider = col.GetComponent<UnityEntityCollider>();
                 if (results.Contains(collider))
                     continue;
-                if (!collider.Entity.IsFriendly(faction))
-                    continue;
-                results.Add(collider);
+                var ent = collider.Entity;
+                if (EntityCollisionHelper.CanCollide(hostileMask, ent) && ent.IsHostile(faction))
+                {
+                    results.Add(collider);
+                }
+                else if (EntityCollisionHelper.CanCollide(friendlyMask, ent) && ent.IsFriendly(faction))
+                {
+                    results.Add(collider);
+                }
             }
         }
         public IEntityCollider[] OverlapCapsule(Vector3 point0, Vector3 point1, float radius, int faction, int hostileMask, int friendlyMask)
@@ -174,26 +197,25 @@ namespace MVZ2.Collisions
         }
         public void OverlapCapsuleNonAlloc(Vector3 point0, Vector3 point1, float radius, int faction, int hostileMask, int friendlyMask, List<IEntityCollider> results)
         {
-            var hostileLayerMask = UnityCollisionHelper.ToObjectLayerMask(hostileMask);
-            var hostileColliderCount = Physics.OverlapCapsuleNonAlloc(point0, point1, radius, overlapBuffer, hostileLayerMask, QueryTriggerInteraction.Collide);
-            for (int i = 0; i < hostileColliderCount; i++)
-            {
-                var col = overlapBuffer[i];
-                var collider = col.GetComponent<UnityEntityCollider>();
-                if (!collider.Entity.IsHostile(faction))
-                    continue;
-                results.Add(collider);
-            }
+            var combinedMask = hostileMask | friendlyMask;
+            var layerMask = UnityCollisionHelper.ToObjectLayerMask(combinedMask);
 
-            var friendlyLayerMask = UnityCollisionHelper.ToObjectLayerMask(friendlyMask);
-            var friendlyColliderCount = Physics.OverlapCapsuleNonAlloc(point0, point1, radius, overlapBuffer, friendlyLayerMask, QueryTriggerInteraction.Collide);
-            for (int i = 0; i < friendlyColliderCount; i++)
+            var colliderCount = Physics.OverlapCapsuleNonAlloc(point0, point1, radius, overlapBuffer, layerMask, QueryTriggerInteraction.Collide);
+            for (int i = 0; i < colliderCount; i++)
             {
                 var col = overlapBuffer[i];
                 var collider = col.GetComponent<UnityEntityCollider>();
-                if (!collider.Entity.IsFriendly(faction))
+                if (results.Contains(collider))
                     continue;
-                results.Add(collider);
+                var ent = collider.Entity;
+                if (EntityCollisionHelper.CanCollide(hostileMask, ent) && ent.IsHostile(faction))
+                {
+                    results.Add(collider);
+                }
+                else if (EntityCollisionHelper.CanCollide(friendlyMask, ent) && ent.IsFriendly(faction))
+                {
+                    results.Add(collider);
+                }
             }
         }
         #endregion
@@ -201,34 +223,58 @@ namespace MVZ2.Collisions
         public SerializableUnityCollisionSystem ToSerializable()
         {
             var seri = new SerializableUnityCollisionSystem();
-            var seriEntities = new List<SerializableUnityCollisionEntity>();
-            foreach (var pair in entities)
-            {
-                var ent = pair.Value;
-                if (!ent || ent.Entity == null)
-                    continue;
-                var entity = ent.ToSerializable();
-                seriEntities.Add(entity);
-            }
-            seri.entities = seriEntities.ToArray();
+            seri.entities = entities.Values.Where(e => e && e.Entity != null).Select(e => e.ToSerializable()).ToArray();
+            seri.entityTrash = entityTrash.Values.Where(e => e && e.Entity != null).Select(e => e.ToSerializable()).ToArray();
             return seri;
         }
-        public void LoadFromSerializable(LevelEngine level, SerializableUnityCollisionSystem seri)
+        public void LoadFromSerializable(LevelEngine level, ISerializableCollisionSystem seri)
         {
-            foreach (var seriEnt in seri.entities)
+            // Load Entities.
+            if (seri.Entities != null)
             {
-                var ent = level.FindEntityByID(seriEnt.id);
-                if (ent == null)
-                    continue;
-                var colEntity = CreateCollisionEntity(ent);
-                colEntity.LoadFromSerializable(seriEnt, ent);
+                foreach (var seriEnt in seri.Entities)
+                {
+                    var ent = level.FindEntityByID(seriEnt.ID);
+                    var colEntity = CreateCollisionEntity(ent);
+                    colEntity.LoadFromSerializable(seriEnt, ent);
+                    entities.Add(ent.ID, colEntity);
+                }
             }
-            foreach (var pair in entities)
+
+            if (seri.EntityTrash != null)
             {
-                var seriEnt = seri.entities.FirstOrDefault(e => e.id == pair.Key);
-                if (seriEnt == null)
-                    continue;
-                pair.Value.LoadCollisions(level, seriEnt);
+                foreach (var seriEnt in seri.EntityTrash)
+                {
+                    var ent = level.FindEntityByID(seriEnt.ID);
+                    var colEntity = CreateCollisionEntity(ent);
+                    colEntity.LoadFromSerializable(seriEnt, ent);
+                    colEntity.gameObject.SetActive(false);
+                    entityTrash.Add(ent.ID, colEntity);
+                }
+            }
+
+            // Load Collisions.
+            if (seri.Entities != null)
+            {
+                for (int i = 0; i < seri.Entities.Length; i++)
+                {
+                    var ent = entities[i];
+                    ISerializableCollisionEntity seriEnt = seri.Entities[i];
+                    if (seriEnt == null)
+                        continue;
+                    ent.LoadCollisions(level, seriEnt);
+                }
+            }
+            if (seri.EntityTrash != null)
+            {
+                for (int i = 0; i < seri.EntityTrash.Length; i++)
+                {
+                    var ent = entityTrash[i];
+                    ISerializableCollisionEntity seriEnt = seri.EntityTrash[i];
+                    if (seriEnt == null)
+                        continue;
+                    ent.LoadCollisions(level, seriEnt);
+                }
             }
         }
         ISerializableCollisionSystem ICollisionSystem.ToSerializable()
@@ -248,9 +294,16 @@ namespace MVZ2.Collisions
         private Collider[] overlapBuffer = new Collider[2048];
         private ArrayBuffer<UnityCollisionEntity> simulateBuffer = new ArrayBuffer<UnityCollisionEntity>(2048);
         private Dictionary<long, UnityCollisionEntity> entities = new Dictionary<long, UnityCollisionEntity>();
+        private Dictionary<long, UnityCollisionEntity> entityTrash = new Dictionary<long, UnityCollisionEntity>();
+        private Queue<UnityCollisionEntity> disabledEntities = new Queue<UnityCollisionEntity>();
     }
     public class SerializableUnityCollisionSystem : ISerializableCollisionSystem
     {
         public SerializableUnityCollisionEntity[] entities;
+        public SerializableUnityCollisionEntity[] entityTrash;
+
+        ISerializableCollisionEntity[] ISerializableCollisionSystem.Entities => entities;
+
+        ISerializableCollisionEntity[] ISerializableCollisionSystem.EntityTrash => entityTrash;
     }
 }

@@ -92,6 +92,14 @@ namespace MVZ2.Talk
         }
         public async Task SkipTalkAsync(NamespaceID groupId, int sectionIndex)
         {
+            var meta = Main.ResourceManager.GetTalkGroup(groupId);
+            if (meta != null && meta.archive != null)
+            {
+                var dialogName = Main.LanguageManager._p(VanillaStrings.CONTEXT_ARCHIVE, meta.archive.name);
+                var popup = Main.LanguageManager._(DIALOG_SKIPPED, dialogName);
+                Main.Scene.ShowPopup(popup);
+            }
+
             var section = Main.ResourceManager.GetTalkSection(groupId, sectionIndex);
             await ExecuteScriptsAsync(section.startScripts);
             await ExecuteScriptsAsync(section.skipScripts);
@@ -545,6 +553,7 @@ namespace MVZ2.Talk
                         if (args.Length <= 0)
                             break;
                         Main.SaveManager.Unlock(ParseArgumentNamespaceID(args[0]));
+                        Main.SaveManager.SaveToFile(); // 在对话中解锁时保存游戏
                     }
                     break;
 
@@ -555,6 +564,7 @@ namespace MVZ2.Talk
                         if (args.Length <= 0)
                             break;
                         Main.SaveManager.Relock(ParseArgumentNamespaceID(args[0]));
+                        Main.SaveManager.SaveToFile(); // 在对话中取消解锁时保存游戏
                     }
                     break;
 
@@ -843,6 +853,8 @@ namespace MVZ2.Talk
         #region 属性字段
         [TranslateMsg("前景图生效时的对话模板，{0}为讨论者，{1}为文本")]
         public const string FORGROUND_TALK_TEMPLATE = "<color=blue>[{0}]</color>\n{1}";
+        [TranslateMsg("跳过对话时的提示，{0}为对话名称")]
+        public const string DIALOG_SKIPPED = "已跳过对话\"{0}\"";
         public bool IsRunningScripts { get; private set; }
         public bool IsTalking { get; private set; }
         public readonly static NamespaceID DEFAULT_VARIANT_ID = new NamespaceID("mvz2", "normal");

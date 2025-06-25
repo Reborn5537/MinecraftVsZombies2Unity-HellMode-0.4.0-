@@ -1,5 +1,4 @@
-﻿using MVZ2.GameContent.Armors;
-using MVZ2.GameContent.Damages;
+﻿using MVZ2.GameContent.Damages;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
@@ -25,7 +24,6 @@ namespace MVZ2.GameContent.Enemies
         {
             base.Init(entity);
             SetExplosionTimer(entity, new FrameTimer(EXPLOSION_TIMEOUT));
-            entity.EquipMainArmor(VanillaArmorID.bedserkerHelmet);
         }
         protected override void UpdateLogic(Entity entity)
         {
@@ -59,7 +57,7 @@ namespace MVZ2.GameContent.Enemies
                 }
                 entity.SetProperty(PROP_COLOR_OFFSET, color);
             }
-            entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
+            entity.SetModelHealthStateByCount(2);
         }
         public override void PostDeath(Entity entity, DeathInfo info)
         {

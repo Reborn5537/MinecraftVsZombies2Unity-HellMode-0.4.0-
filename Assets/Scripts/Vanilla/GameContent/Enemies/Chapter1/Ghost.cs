@@ -32,6 +32,7 @@ namespace MVZ2.GameContent.Enemies
         {
             base.UpdateLogic(entity);
             entity.SetAnimationInt("HealthState", entity.GetHealthState(3));
+            entity.SetModelHealthStateByCount(2);
             if (!entity.HasBuff<GhostBuff>())
             {
                 entity.AddBuff<GhostBuff>();
@@ -43,6 +44,7 @@ namespace MVZ2.GameContent.Enemies
             if (!GhostBuff.IsEverIlluminated(entity) && !info.Effects.HasEffect(VanillaDamageEffects.WHACK) && !entity.Level.IsIZombie())
             {
                 Global.Game.Unlock(VanillaUnlockID.ghostBuster);
+                Global.Game.SaveToFile(); // 完成成就后保存游戏。
             }
         }
         public static readonly NamespaceID ID = VanillaEnemyID.ghost;

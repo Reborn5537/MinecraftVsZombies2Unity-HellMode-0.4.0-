@@ -62,7 +62,7 @@ namespace MVZ2.GameContent.Enemies
             entity.SetAnimationBool("HasBoat", entity.HasBuff<BoatBuff>());
             entity.SetAnimationBool("ArrowVisible", !GetBowFired(entity));
 
-            entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
+            entity.SetModelHealthStateByCount(2);
         }
         public static int GetBowPower(Entity enemy) => enemy.GetBehaviourField<int>(ID, PROP_BOW_POWER);
         public static bool GetBowFired(Entity enemy) => enemy.GetBehaviourField<bool>(ID, PROP_BOW_FIRED);

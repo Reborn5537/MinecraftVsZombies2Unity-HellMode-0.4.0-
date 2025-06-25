@@ -80,6 +80,7 @@ namespace MVZ2.GameContent.Enemies
             // 设置血量状态。
             entity.SetAnimationInt("EggState", GetEggState(entity));
             entity.SetAnimationInt("HealthState", entity.GetHealthState(3));
+            entity.SetModelHealthStateByCount(2);
         }
         public static bool HasEggs(Entity spider)
         {

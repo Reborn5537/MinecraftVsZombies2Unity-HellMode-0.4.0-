@@ -79,7 +79,11 @@ namespace MVZ2.Managers
         public void InitLoad()
         {
             loadPipeline = new TaskPipeline();
-            loadPipeline.AddTask(new PipelineTask(TASK_LOAD_RESOURCES, (p) => ResourceManager.LoadAllModResourcesMain(p)));
+            loadPipeline.AddTask(new PipelineTask(TASK_LOAD_RESOURCES, async (p) =>
+            {
+                await ResourceManager.LoadAllModResourcesMain(p);
+                FontManager.InitFontSprites();
+            }));
             loadPipeline.AddTask(new PipelineTask(TASK_LOAD_SPONSORS, (p) => SponsorManager.PullSponsors(p)));
 
             var task = loadPipeline.Run();
@@ -170,10 +174,6 @@ namespace MVZ2.Managers
                 throw new DuplicateInstanceException(name);
             }
         }
-        private void OnApplicationQuit()
-        {
-            SaveManager.SaveModDatas();
-        }
         private void InitGameSettings()
         {
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -235,6 +235,7 @@ namespace MVZ2.Managers
         private async Task LoadManagersInit()
         {
             GraphicsManager.Init();
+            FontManager.Init();
             InputManager.InitKeys();
             OptionsManager.InitOptions();
             OptionsManager.LoadOptions();
@@ -299,6 +300,7 @@ namespace MVZ2.Managers
         public CursorManager CursorManager => cursor;
         public ShakeManager ShakeManager => shake;
         public FileManager FileManager => file;
+        public FontManager FontManager => fontManager;
         public OptionsManager OptionsManager => options;
         public ResolutionManager ResolutionManager => resolution;
         public SceneLoadingManager SceneManager => sceneLoadingManager;
@@ -309,6 +311,7 @@ namespace MVZ2.Managers
         public GraphicsManager GraphicsManager => graphicsManager;
         public DebugManager DebugManager => debugManager;
         public MainSceneController Scene => scene;
+        public PerformanceManager PerformanceManager => performanceManager;
         ISceneController IMainManager.Scene => scene;
         IMusicManager IMainManager.Music => music;
         ILevelManager IMainManager.Level => level;
@@ -349,6 +352,8 @@ namespace MVZ2.Managers
         [SerializeField]
         private FileManager file;
         [SerializeField]
+        private FontManager fontManager;
+        [SerializeField]
         private OptionsManager options;
         [SerializeField]
         private ResolutionManager resolution;
@@ -366,6 +371,8 @@ namespace MVZ2.Managers
         private GraphicsManager graphicsManager;
         [SerializeField]
         private DebugManager debugManager;
+        [SerializeField]
+        private PerformanceManager performanceManager;
         [SerializeField]
         private MainSceneController scene;
         public enum PlatformMode

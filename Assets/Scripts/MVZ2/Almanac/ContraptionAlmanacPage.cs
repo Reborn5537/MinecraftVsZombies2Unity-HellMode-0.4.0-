@@ -3,11 +3,11 @@ using MVZ2.Models;
 using MVZ2.UI;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace MVZ2.Almanacs
 {
-    public class ContraptionAlmanacPage : AlmanacPage
+    public class ContraptionAlmanacPage : BookAlmanacPage
     {
         public void SetEntries(ChoosingBlueprintViewData[] entries, bool commandBlockVisible, ChoosingBlueprintViewData commandBlockViewData)
         {
@@ -18,9 +18,7 @@ namespace MVZ2.Almanacs
         public void SetActiveEntry(Model prefab, Camera camera, string name, string description, string cost, string recharge)
         {
             entryModel.ChangeModel(prefab, camera);
-            nameText.text = name;
-            descriptionText.text = description;
-            descriptionScrollRect.verticalNormalizedPosition = 1;
+            SetDescription(name, description);
             costText.text = cost;
             rechargeText.text = recharge;
         }
@@ -30,28 +28,22 @@ namespace MVZ2.Almanacs
             blueprintDisplayer.OnBlueprintSelect += OnEntryClickCallback;
             commandBlockSlot.OnSelect += OnCommandBlockClickCallback;
         }
-        private void OnEntryClickCallback(int index)
+        private void OnEntryClickCallback(int index, PointerEventData eventData)
         {
-            OnEntryClick?.Invoke(index);
+            OnEntryClick?.Invoke(index, eventData);
         }
-        private void OnCommandBlockClickCallback()
+        private void OnCommandBlockClickCallback(PointerEventData eventData)
         {
-            OnCommandBlockClick?.Invoke();
+            OnCommandBlockClick?.Invoke(eventData);
         }
-        public Action<int> OnEntryClick;
-        public Action OnCommandBlockClick;
+        public event Action<int, PointerEventData> OnEntryClick;
+        public event Action<PointerEventData> OnCommandBlockClick;
         [SerializeField]
         private BlueprintDisplayer blueprintDisplayer;
         [SerializeField]
         CommandBlockSlot commandBlockSlot;
         [SerializeField]
         private AlmanacModel entryModel;
-        [SerializeField]
-        private ScrollRect descriptionScrollRect;
-        [SerializeField]
-        private TextMeshProUGUI nameText;
-        [SerializeField]
-        private TextMeshProUGUI descriptionText;
         [SerializeField]
         private TextMeshProUGUI costText;
         [SerializeField]

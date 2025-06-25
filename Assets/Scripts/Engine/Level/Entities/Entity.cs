@@ -113,8 +113,8 @@ namespace PVZEngine.Entities
                     Level.PutSeedToConveyorPool(pair.Key, pair.Value);
                 }
                 takenConveyorSeeds.Clear();
-                Definition.PostRemove(this);
                 auras.PostRemove();
+                Definition.PostRemove(this);
                 var param = new EntityCallbackParams()
                 {
                     entity = this
@@ -328,14 +328,15 @@ namespace PVZEngine.Entities
         public Vector3 GetCenter()
         {
             var center = Position;
-            center.y += GetScaledSize().y * 0.5f;
+            var pivot = Vector3.one * 0.5f - Cache.BoundsPivot;
+            center += Vector3.Scale(GetScaledSize(), pivot);
             return center;
         }
         public Vector3 GetScaledSize()
         {
             var size = Cache.Size;
             size.Scale(Cache.GetFinalScale());
-            return size;
+            return size.Abs();
         }
         public void SetCenter(Vector3 center)
         {
@@ -526,7 +527,21 @@ namespace PVZEngine.Entities
         #region 碰撞
         public void UpdateCollision()
         {
-            Level.UpdateEntityCollision(this);
+            UpdateCollisionDetection();
+            UpdateCollisionPosition();
+            UpdateCollisionSize();
+        }
+        public void UpdateCollisionDetection()
+        {
+            Level.UpdateEntityCollisionDetection(this);
+        }
+        public void UpdateCollisionPosition()
+        {
+            Level.UpdateEntityCollisionPosition(this);
+        }
+        public void UpdateCollisionSize()
+        {
+            Level.UpdateEntityCollisionSize(this);
         }
         public IEntityCollider CreateCollider(ColliderConstructor info)
         {
@@ -904,8 +919,7 @@ namespace PVZEngine.Entities
                     takenGrids.Add(grid, takenGrid.layers.ToHashSet());
                 }
             }
-            CreateAuraEffects();
-            auras.LoadFromSerializable(Level, seri.auras);
+            LoadAuras(seri);
 
             UpdateModifierCaches();
             UpdateAllBuffedProperties();
@@ -922,6 +936,22 @@ namespace PVZEngine.Entities
             entity.buffs.OnModelInsertionAdded += entity.OnBuffModelAddCallback;
             entity.buffs.OnModelInsertionRemoved += entity.OnBuffModelRemoveCallback;
             return entity;
+        }
+        public void LoadAuras(SerializableEntity seri)
+        {
+            CreateAuraEffects();
+            auras.LoadFromSerializable(Level, seri.auras);
+
+            foreach (var pair in armorDict)
+            {
+                var armor = pair.Value;
+                if (armor == null)
+                    continue;
+                var seriArmor = seri.armors.Values.FirstOrDefault(a => a.slot == pair.Key);
+                if (seriArmor == null)
+                    continue;
+                armor.LoadAuras(seriArmor);
+            }
         }
         #endregion
 
@@ -1001,6 +1031,7 @@ namespace PVZEngine.Entities
         Buff IBuffTarget.GetBuff(long id) => buffs.GetBuff(id);
         Entity IAuraSource.GetEntity() => this;
         LevelEngine IAuraSource.GetLevel() => Level;
+        bool IAuraSource.IsValid() => Exists();
         T IModifierContainer.GetProperty<T>(PropertyKey<T> name) => GetProperty<T>(name);
         #endregion
 
@@ -1029,8 +1060,12 @@ namespace PVZEngine.Entities
             get => _position;
             set
             {
+                bool updates = _position != value;
                 _position = value;
-                UpdateCollision();
+                if (updates)
+                {
+                    UpdateCollisionPosition();
+                }
             }
         }
         public Vector3 Velocity { get; set; }
@@ -1065,7 +1100,7 @@ namespace PVZEngine.Entities
         private Dictionary<LawnGrid, HashSet<NamespaceID>> takenGrids = new Dictionary<LawnGrid, HashSet<NamespaceID>>();
         private List<Entity> children = new List<Entity>();
         private Dictionary<NamespaceID, int> takenConveyorSeeds = new Dictionary<NamespaceID, int>();
-        private Dictionary<IPropertyKey, List<ModifierContainerItem>> modifierCaches = new Dictionary<IPropertyKey, List<ModifierContainerItem>>();
+        private Dictionary<IPropertyKey, List<ModifierContainerItem>> modifierCaches = new Dictionary<IPropertyKey, List<ModifierContainerItem>>(new PropertyKeyComparer());
         #endregion
     }
 }

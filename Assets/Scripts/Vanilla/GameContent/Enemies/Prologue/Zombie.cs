@@ -34,6 +34,7 @@ namespace MVZ2.GameContent.Enemies
         {
             base.UpdateLogic(entity);
             entity.SetAnimationInt("HealthState", entity.GetHealthState(3));
+            entity.SetModelHealthStateByCount(2);
             entity.SetAnimationBool("HasBoat", entity.HasBuff<BoatBuff>());
         }
         public override void PostDeath(Entity entity, DeathInfo info)
@@ -53,6 +54,7 @@ namespace MVZ2.GameContent.Enemies
                 if (info.Effects.HasEffect(VanillaDamageEffects.DROWN) && !entity.Level.IsIZombie())
                 {
                     Global.Game.Unlock(VanillaUnlockID.rickrollDrown);
+                    Global.Game.SaveToFile(); // 完成成就后保存游戏。
                 }
             }
         }

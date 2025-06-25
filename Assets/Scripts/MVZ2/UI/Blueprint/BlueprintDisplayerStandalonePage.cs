@@ -14,8 +14,9 @@ namespace MVZ2.Level.UI
             {
                 var blueprint = rect.GetComponent<Blueprint>();
                 blueprint.UpdateView(viewDatas[i].blueprint);
-                blueprint.SetDisabled(viewDatas[i].disabled || viewDatas[i].selected);
-                blueprint.SetRecharge(viewDatas[i].selected ? 1 : 0);
+                blueprint.SetDisabled(viewDatas[i].disabled);
+                blueprint.SetSelected(viewDatas[i].selected);
+                blueprint.SetRecharge(viewDatas[i].recharge);
             },
             rect =>
             {
@@ -38,12 +39,12 @@ namespace MVZ2.Level.UI
         {
             OnBlueprintPointerInteraction?.Invoke(this, blueprintList.indexOf(blueprint), eventData, interaction);
         }
-        private void OnBlueprintSelectCallback(Blueprint blueprint)
+        private void OnBlueprintSelectCallback(Blueprint blueprint, PointerEventData eventData)
         {
-            OnBlueprintSelect?.Invoke(this, blueprintList.indexOf(blueprint));
+            OnBlueprintSelect?.Invoke(this, blueprintList.indexOf(blueprint), eventData);
         }
         public event Action<BlueprintDisplayerStandalonePage, int, PointerEventData, PointerInteraction> OnBlueprintPointerInteraction;
-        public event Action<BlueprintDisplayerStandalonePage, int> OnBlueprintSelect;
+        public event Action<BlueprintDisplayerStandalonePage, int, PointerEventData> OnBlueprintSelect;
         [SerializeField]
         ElementListUI blueprintList;
     }

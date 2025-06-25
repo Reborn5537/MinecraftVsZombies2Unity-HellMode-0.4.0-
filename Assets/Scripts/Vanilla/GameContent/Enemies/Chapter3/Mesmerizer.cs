@@ -1,5 +1,4 @@
-﻿using MVZ2.GameContent.Armors;
-using MVZ2.GameContent.Detections;
+﻿using MVZ2.GameContent.Detections;
 using MVZ2.GameContent.Projectiles;
 using MVZ2.Vanilla.Contraptions;
 using MVZ2.Vanilla.Detections;
@@ -32,7 +31,6 @@ namespace MVZ2.GameContent.Enemies
         public override void Init(Entity entity)
         {
             base.Init(entity);
-            entity.EquipMainArmor(VanillaArmorID.mesmerizerCrown);
             SetStateTimer(entity, new FrameTimer(CAST_COOLDOWN));
         }
         protected override int GetActionState(Entity enemy)
@@ -47,7 +45,7 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetAnimationInt("HealthState", entity.GetHealthState(2));
+            entity.SetModelHealthStateByCount(2);
         }
         protected override void UpdateAI(Entity entity)
         {

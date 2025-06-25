@@ -11,8 +11,9 @@ namespace MVZ2.UI
         {
             var blueprint = commandBlockBlueprint;
             blueprint.UpdateView(viewData.blueprint);
-            blueprint.SetDisabled(viewData.disabled || viewData.selected);
-            blueprint.SetRecharge(viewData.selected ? 1 : 0);
+            blueprint.SetDisabled(viewData.disabled);
+            blueprint.SetSelected(viewData.selected);
+            blueprint.SetRecharge(viewData.recharge);
         }
         public void SetCommandBlockActive(bool value)
         {
@@ -25,10 +26,10 @@ namespace MVZ2.UI
         private void Awake()
         {
             commandBlockBlueprint.OnPointerInteraction += (blueprint, eventData, i) => OnPointerInteraction?.Invoke(eventData, i);
-            commandBlockBlueprint.OnSelect += (blueprint) => OnSelect?.Invoke();
+            commandBlockBlueprint.OnSelect += (blueprint, data) => OnSelect?.Invoke(data);
         }
         public event Action<PointerEventData, PointerInteraction> OnPointerInteraction;
-        public event Action OnSelect;
+        public event Action<PointerEventData> OnSelect;
         [SerializeField]
         GameObject commandBlockRoot;
         [SerializeField]

@@ -23,7 +23,6 @@ namespace MVZ2.GameContent.Enemies
         public BoneWall(string nsp, string name) : base(nsp, name)
         {
         }
-
         public override void Init(Entity entity)
         {
             base.Init(entity);
@@ -46,6 +45,7 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
+            entity.SetModelHealthStateByCount(2);
 
             entity.SetAnimationBool("InWater", false);
             bool currentBoatState = entity.HasBuff<BoatBuff>();
@@ -59,7 +59,6 @@ namespace MVZ2.GameContent.Enemies
             {
                 entity.AddBuff<GhostBuff>();
             }
-
             if (entity.Timeout >= 0)
             {
                 entity.Timeout--;

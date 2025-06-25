@@ -52,17 +52,21 @@ namespace MVZ2.GameContent.Contraptions
             if (state == EntityCollisionHelper.STATE_EXIT)
                 return;
             var other = collision.Other;
-            if (!other.IsEntityOf(VanillaProjectileID.arrow))
+            var canIgnite = other.Definition?.HasBehaviour<HellfireIgnitedProjectileBehaviour>() ?? false;
+            if (!canIgnite)
                 return;
             var self = collision.Entity;
             if (!self.IsFriendly(other))
                 return;
-            if (other.HasBuff<HellfireIgnitedBuff>())
-                return;
-            var buff = other.AddBuff<HellfireIgnitedBuff>();
-            if (IsCursed(self))
+
+            var igniteBuff = other.GetFirstBuff<HellfireIgnitedBuff>();
+            if (igniteBuff == null)
             {
-                HellfireIgnitedBuff.Curse(buff);
+                igniteBuff = other.AddBuff<HellfireIgnitedBuff>();
+            }
+            if (!HellfireIgnitedBuff.GetCursed(igniteBuff) && IsCursed(self))
+            {
+                HellfireIgnitedBuff.Curse(igniteBuff);
             }
         }
         public static void Curse(Entity entity)
