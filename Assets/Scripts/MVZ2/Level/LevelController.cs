@@ -98,9 +98,8 @@ namespace MVZ2.Level
 
             var uiPreset = GetUIPreset();
             uiPreset.UpdateFrame(0);
-            SetStarshardIcon();
+            InitLevelUI();
             SetUnlockedUIActive();
-            UpdateLighting();
         }
         public void StartLevelIntro(float delay)
         {
@@ -420,7 +419,7 @@ namespace MVZ2.Level
             {
                 perf.UpdatePerformanceMonitor();
             }
-            var maxBatchPercentage = Main.PerformanceManager.GetAnimatorBatchSize() / 100f;
+            var maxBatchPercentage = Main.OptionsManager.GetAnimationFrequency();
 
             // 更新实体动画。
             entityAnimatorBuffer.Clear();
@@ -670,7 +669,7 @@ namespace MVZ2.Level
                 if (quadTree == null)
                     continue;
                 var node = quadTree.GetRootNode();
-                Gizmos.color = Color.HSVToRGB(flag / 7f, 1, 1);
+                Gizmos.color = Color.HSVToRGB(i / 8f, 1, 1);
                 DrawQuadTreeNode(node);
                 buffer.Clear();
                 quadTree.GetAllTargets(buffer);
@@ -980,9 +979,12 @@ namespace MVZ2.Level
                         }
                     }
                 }
-                if (Input.GetKeyDown(Options.GetKeyBinding(HotKeys.fastForward)))
+                if (optionsLogic == null)
                 {
-                    SwitchSpeedUp();
+                    if (Input.GetKeyDown(Options.GetKeyBinding(HotKeys.fastForward)))
+                    {
+                        SwitchSpeedUp();
+                    }
                 }
             }
 

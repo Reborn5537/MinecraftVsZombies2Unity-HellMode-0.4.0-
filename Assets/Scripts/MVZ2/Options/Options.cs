@@ -18,6 +18,8 @@ namespace MVZ2.Options
                 showSponsorNames = showSponsorNames,
                 blueprintWarningsDisabled = blueprintWarningsDisabled,
                 commandBlockMode = commandBlockMode,
+                fpsMode = fpsMode,
+                showHotkeyIndicators = showHotkeyIndicators,
             };
         }
         public void LoadFromSerializable(SerializableOptions options)
@@ -29,6 +31,8 @@ namespace MVZ2.Options
             showSponsorNames = options.showSponsorNames;
             blueprintWarningsDisabled = options.blueprintWarningsDisabled;
             commandBlockMode = options.commandBlockMode;
+            fpsMode = options.fpsMode;
+            showHotkeyIndicators = options.showHotkeyIndicators;
         }
         public bool swapTrigger;
         public bool vibration;
@@ -49,6 +53,9 @@ namespace MVZ2.Options
         public bool showSponsorNames;
         public bool blueprintWarningsDisabled;
         public int commandBlockMode;
+        public int fpsMode;
+        public bool showHotkeyIndicators;
+        public float minAnimationFrequency;
     }
     [Serializable]
     public class SerializableOptions
@@ -58,5 +65,7 @@ namespace MVZ2.Options
         public bool showSponsorNames;
         public bool blueprintWarningsDisabled;
         public int commandBlockMode;
+        public int fpsMode;
+        public bool showHotkeyIndicators;
     }
 }

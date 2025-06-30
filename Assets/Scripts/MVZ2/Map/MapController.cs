@@ -57,7 +57,6 @@ namespace MVZ2.Map
                 model.OnEndlessButtonClick -= OnEndlessButtonClickCallback;
                 model.OnMapKeyClick -= OnMapKeyClickCallback;
                 model.OnMapNightmareBoxClick -= OnMapNightmareBoxClickCallback;
-                model.OnMapDreamWaterClick -= OnMapDreamWaterClickCallback;
                 model.OnMapPinClick -= OnMapPinClickCallback;
                 Destroy(model.gameObject);
                 model = null;
@@ -126,7 +125,6 @@ namespace MVZ2.Map
                 model.OnEndlessButtonClick -= OnEndlessButtonClickCallback;
                 model.OnMapKeyClick -= OnMapKeyClickCallback;
                 model.OnMapNightmareBoxClick -= OnMapNightmareBoxClickCallback;
-                model.OnMapDreamWaterClick -= OnMapDreamWaterClickCallback;
                 model.OnMapPinClick -= OnMapPinClickCallback;
                 Destroy(model.gameObject);
             }
@@ -136,7 +134,6 @@ namespace MVZ2.Map
             model.OnEndlessButtonClick += OnEndlessButtonClickCallback;
             model.OnMapKeyClick += OnMapKeyClickCallback;
             model.OnMapNightmareBoxClick += OnMapNightmareBoxClickCallback;
-            model.OnMapDreamWaterClick -= OnMapDreamWaterClickCallback;
             model.OnMapPinClick += OnMapPinClickCallback;
 
             UpdateModelButtons();
@@ -215,10 +212,15 @@ namespace MVZ2.Map
         }
         private void OnOptionsDialogCloseCallback()
         {
+            bool needsReload = optionsLogic.NeedsReload;
             optionsLogic.OnClose -= OnOptionsDialogCloseCallback;
             optionsLogic.Dispose();
             optionsLogic = null;
             ui.SetOptionsDialogActive(false);
+            if (needsReload)
+            {
+                ReloadMap();
+            }
         }
         private void OnMapButtonClickCallback(int index)
         {
@@ -261,8 +263,7 @@ namespace MVZ2.Map
             {
                 Main.SaveManager.Unlock(VanillaUnlockID.dreamIsNightmare);
             }
-            Main.SaveManager.SaveToFile(); // 切换梦境与梦魇时保存游戏
-            Main.Scene.DisplayMap(MapID);
+            ReloadMap();
         }
         private void OnMapDreamWaterClickCallback()
         {
@@ -619,7 +620,7 @@ namespace MVZ2.Map
                 endlessColor = buttonColorLocked;
             model.SetEndlessButtonInteractable(endlessUnlocked);
             model.SetEndlessButtonColor(endlessColor);
-            model.SetEndlessButtonText("E");
+            model.SetEndlessButtonText("\u221E");
 
             model.SetMapKeyActive(Main.SaveManager.IsUnlocked(VanillaUnlockID.halloween11));
 
@@ -677,6 +678,10 @@ namespace MVZ2.Map
             if (!NamespaceID.IsValid(stageID))
                 return 0;
             return (int)Main.SaveManager.GetSaveStat(VanillaStats.CATEGORY_MAX_ENDLESS_FLAGS, stageID);
+        }
+        private void ReloadMap()
+        {
+            Main.Scene.DisplayMap(MapID);
         }
 
         #endregion

@@ -266,6 +266,28 @@ namespace MVZ2.Scenes
             chapterTransition.Hide();
         }
         #endregion
+
+        public void ShowKeybinding()
+        {
+            keybinding.Display();
+        }
+        public void ShowCredits()
+        {
+            credits.Display();
+        }
+
+        public void SetFPSEnabled(bool enabled)
+        {
+            fpsDisplayer.SetActive(enabled);
+        }
+        public void SetFPSCorner(Vector2 corner)
+        {
+            fpsDisplayer.SetCorner(corner);
+        }
+        public void SetFPS(string fps)
+        {
+            fpsDisplayer.SetFPS(fps);
+        }
         public void GotoMapOrMainmenu()
         {
             if (main.SaveManager.IsLevelCleared(VanillaStageID.prologue))
@@ -304,6 +326,7 @@ namespace MVZ2.Scenes
         #region 属性字段
         private MainManager main => MainManager.Instance;
         private Dictionary<MainScenePageType, ScenePage> pages = new Dictionary<MainScenePageType, ScenePage>();
+
         [SerializeField]
         private MainSceneUI ui;
         [SerializeField]
@@ -333,9 +356,15 @@ namespace MVZ2.Scenes
         [SerializeField]
         private ArcadeController arcade;
         [SerializeField]
+        private KeybindingController keybinding;
+        [SerializeField]
+        private CreditsController credits;
+        [SerializeField]
         private AchievementHintController achievementHint;
         [SerializeField]
         private PopupController popup;
+        [SerializeField]
+        private FPSDisplayer fpsDisplayer;
         [SerializeField]
         private InputNameDialogController inputNameDialog;
         [SerializeField]

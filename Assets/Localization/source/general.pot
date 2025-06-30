@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-06-11 10:33+0800\n"
+"POT-Creation-Date: 2025-06-14 09:32+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,7 +13,7 @@ msgstr ""
 
 #. 初始界面的作者标识
 #: /MainGame/MainScene/Init/Splash/Canvas/Creator
-msgid "Cuerzor制作<br><color=red>地狱版</color>来自Reborn_offical修改"
+msgid "Cuerzor制作"
 msgstr ""
 
 #. 菜单对话框的标题
@@ -99,52 +99,52 @@ msgstr ""
 msgid "菜单"
 msgstr ""
 
+#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MainElements/Buttons/Middle/ButtonArea1/MoreOptions/Text
+msgid "更多选项"
+msgstr ""
+
 #. 关卡内菜单选项
 #: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MainElements/Buttons/Middle/ButtonArea2/RestartButton/Text
 msgid "重新开始"
 msgstr ""
 
-#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MainElements/Buttons/Bottom/ButtonArea/MoreOptions/Text
-msgid "更多选项"
+#. 选项分类
+#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/General/Title/Text
+msgid "常规"
 msgstr ""
 
-#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Dropdowns/Dropdown2/ResolutionDropdown/Label
+#. 选项分类
+#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Display/Title/Text
+msgid "显示"
+msgstr ""
+
+#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Display/Options/ResolutionDropdown/Label
 msgid "分辨率"
 msgstr ""
 
+#. 选项分类
+#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Controls/Title/Text
+msgid "控制"
+msgstr ""
+
 #. 按钮文本
-#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Buttons/Line1/Credits/Text
+#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Controls/Options/Buttons/Keybindings/Text
+msgid "快捷键设置"
+msgstr ""
+
+#. 选项分类
+#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Misc/Title/Text
+msgid "杂项"
+msgstr ""
+
+#. 按钮文本
+#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Misc/Options/Buttons/Credits/Text
 msgid "制作人员名单"
 msgstr ""
 
 #. 按钮文本
-#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Buttons/Line2/Keybindings/Text
-msgid "快捷键设置"
-msgstr ""
-
-#. 按钮文本
-#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Buttons/Line2/ExportLogFiles/Text
+#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Misc/Options/Buttons/ExportLogFiles/Text
 msgid "导出游戏日志"
-msgstr ""
-
-#. 选项分类
-#: /MainGame/MainScene/Mainmenu/Canvas/OptionsDialog/Dialog/MoreElements/Scroll View/Viewport/Content/Buttons/CategoryPreferences/Text
-msgid "偏好"
-msgstr ""
-
-#. 标题
-#: /MainGame/MainScene/Mainmenu/Canvas/KeyBinding/Layout/Title
-msgid "按键绑定"
-msgstr ""
-
-#. 按键绑定界面的确认按钮文本
-#: /MainGame/MainScene/Mainmenu/Canvas/KeyBinding/Layout/Buttons/ConfirmButton/Text
-msgid "确认"
-msgstr ""
-
-#. 按键绑定界面的重置按钮文本
-#: /MainGame/MainScene/Mainmenu/Canvas/KeyBinding/Layout/Buttons/ResetButton/Text
-msgid "重置"
 msgstr ""
 
 #. 对话跳过按钮
@@ -299,6 +299,21 @@ msgstr ""
 
 #: /MainGame/MainScene/Addons/Canvas/Loading/Text
 msgid "加载中……"
+msgstr ""
+
+#. 标题
+#: /MainGame/MainScene/GlobalUICanvas/KeyBinding/Layout/Title
+msgid "按键绑定"
+msgstr ""
+
+#. 按键绑定界面的确认按钮文本
+#: /MainGame/MainScene/GlobalUICanvas/KeyBinding/Layout/Buttons/ConfirmButton/Text
+msgid "确认"
+msgstr ""
+
+#. 按键绑定界面的重置按钮文本
+#: /MainGame/MainScene/GlobalUICanvas/KeyBinding/Layout/Buttons/ResetButton/Text
+msgid "重置"
 msgstr ""
 
 #. 成就完成提示
@@ -789,17 +804,23 @@ msgstr ""
 # 无尽模式的提示
 #: Scripts\Vanilla\VanillaStrings.cs:24
 msgctxt "advice"
+msgid "你能存活多少轮？"
+msgstr ""
+
+# 无尽模式的提示
+#: Scripts\Vanilla\VanillaStrings.cs:26
+msgctxt "advice"
 msgid "更多的敌人要来了！"
 msgstr ""
 
 # 预览战场的提示
-#: Scripts\Vanilla\VanillaStrings.cs:26
+#: Scripts\Vanilla\VanillaStrings.cs:28
 msgctxt "advice"
 msgid "点击以继续"
 msgstr ""
 
 # 欲望壶技能的提示，{0}为受到的总伤害
-#: Scripts\Vanilla\VanillaStrings.cs:28
+#: Scripts\Vanilla\VanillaStrings.cs:30
 msgctxt "advice"
 msgid "没有抽到牌！受到{0}点疲劳伤害！"
 msgid_plural "没有抽到牌！受到{0}点疲劳伤害！"
@@ -807,13 +828,13 @@ msgstr[0] ""
 msgstr[1] ""
 
 # 欲望壶技能的提示
-#: Scripts\Vanilla\VanillaStrings.cs:30
+#: Scripts\Vanilla\VanillaStrings.cs:32
 msgctxt "advice"
 msgid "没有抽到牌！但那又怎样呢？"
 msgstr ""
 
 # 我是僵尸模式的提示，{0}为剩余轮数
-#: Scripts\Vanilla\VanillaStrings.cs:32
+#: Scripts\Vanilla\VanillaStrings.cs:34
 msgctxt "advice"
 msgid "干得好！还剩{0}轮！"
 msgid_plural "干得好！还剩{0}轮！"
@@ -821,7 +842,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 # 我是僵尸模式的提示，{0}为目前连胜
-#: Scripts\Vanilla\VanillaStrings.cs:34
+#: Scripts\Vanilla\VanillaStrings.cs:36
 msgctxt "advice"
 msgid "干得好！目前连胜：{0}！"
 msgid_plural "干得好！目前连胜：{0}！"
@@ -829,218 +850,208 @@ msgstr[0] ""
 msgstr[1] ""
 
 # 固有蓝图的提示
-#: Scripts\Vanilla\VanillaStrings.cs:37
+#: Scripts\Vanilla\VanillaStrings.cs:39
 msgid "固有"
 msgstr ""
 
 # 不推荐使用的提示
-#: Scripts\Vanilla\VanillaStrings.cs:39
+#: Scripts\Vanilla\VanillaStrings.cs:41
 msgid "不推荐在这关使用"
 msgstr ""
 
-#: Scripts\Vanilla\VanillaStrings.cs:42
+#: Scripts\Vanilla\VanillaStrings.cs:44
 msgid "购买"
 msgstr ""
 
-#: Scripts\Vanilla\VanillaStrings.cs:44
+#: Scripts\Vanilla\VanillaStrings.cs:46
 msgid "购买第七个器械槽位？"
 msgstr ""
 
-#: Scripts\Vanilla\VanillaStrings.cs:46
+#: Scripts\Vanilla\VanillaStrings.cs:48
 msgid "是否进行新手教程？"
 msgstr ""
 
-#: Scripts\Vanilla\VanillaStrings.cs:48
+#: Scripts\Vanilla\VanillaStrings.cs:50
 msgid "新手教程"
 msgstr ""
 
-#: Scripts\Vanilla\VanillaStrings.cs:50
+#: Scripts\Vanilla\VanillaStrings.cs:52
 msgid "通关"
 msgstr ""
 
-#: Scripts\Vanilla\VanillaStrings.cs:52
+#: Scripts\Vanilla\VanillaStrings.cs:54
 msgid ""
 "恭喜通关！\n"
 "接下来的内容还在开发中，敬请期待！"
 msgstr ""
 
 # 输入名称对话框的错误信息
-#: Scripts\Vanilla\VanillaStrings.cs:55
+#: Scripts\Vanilla\VanillaStrings.cs:57
 msgid "用户名不能为空"
 msgstr ""
 
 # 输入名称对话框的错误信息
-#: Scripts\Vanilla\VanillaStrings.cs:57
+#: Scripts\Vanilla\VanillaStrings.cs:59
 msgid "已经存在该用户名"
 msgstr ""
 
 # 输入名称对话框的错误信息
-#: Scripts\Vanilla\VanillaStrings.cs:59
+#: Scripts\Vanilla\VanillaStrings.cs:61
 msgid "无法重命名为该用户名"
 msgstr ""
 
 # 输入名称对话框的错误信息
-#: Scripts\Vanilla\VanillaStrings.cs:61
+#: Scripts\Vanilla\VanillaStrings.cs:63
 msgid "第一次游戏必须输入用户名"
 msgstr ""
 
 # 删除用户时的警告，{0}为名称
-#: Scripts\Vanilla\VanillaStrings.cs:63
+#: Scripts\Vanilla\VanillaStrings.cs:65
 msgid ""
 "确认删除用户{0}吗？\n"
 "该用户所有的数据都将被删除！"
 msgstr ""
 
 # 重命名特殊用户时的警告
-#: Scripts\Vanilla\VanillaStrings.cs:65
+#: Scripts\Vanilla\VanillaStrings.cs:67
 msgid "你无法重命名该用户"
-msgstr ""
-
-# 冷却时间
-#: Scripts\Vanilla\VanillaStrings.cs:69
-msgctxt "recharge_time"
-msgid "无"
 msgstr ""
 
 # 冷却时间
 #: Scripts\Vanilla\VanillaStrings.cs:71
 msgctxt "recharge_time"
-msgid "短"
+msgid "无"
 msgstr ""
 
 # 冷却时间
 #: Scripts\Vanilla\VanillaStrings.cs:73
 msgctxt "recharge_time"
-msgid "长"
+msgid "短"
 msgstr ""
 
 # 冷却时间
 #: Scripts\Vanilla\VanillaStrings.cs:75
 msgctxt "recharge_time"
+msgid "长"
+msgstr ""
+
+# 冷却时间
+#: Scripts\Vanilla\VanillaStrings.cs:77
+msgctxt "recharge_time"
 msgid "很长"
 msgstr ""
 
 # 对话档案对话框标题
-#: Scripts\Vanilla\VanillaStrings.cs:79
+#: Scripts\Vanilla\VanillaStrings.cs:81
 msgctxt "archive"
 msgid "剧情分支"
 msgstr ""
 
 # 对话档案对话框内容
-#: Scripts\Vanilla\VanillaStrings.cs:81
+#: Scripts\Vanilla\VanillaStrings.cs:83
 msgctxt "archive"
 msgid "是否拥有足够的金钱？"
 msgstr ""
 
 # 对话档案对话框标题
-#: Scripts\Vanilla\VanillaStrings.cs:83
+#: Scripts\Vanilla\VanillaStrings.cs:85
 msgctxt "archive"
 msgid "对话结束"
 msgstr ""
 
 # 对话档案对话框内容
-#: Scripts\Vanilla\VanillaStrings.cs:85
+#: Scripts\Vanilla\VanillaStrings.cs:87
 msgctxt "archive"
 msgid "是否重新播放？"
 msgstr ""
 
 # 通用的是
-#: Scripts\Vanilla\VanillaStrings.cs:89
+#: Scripts\Vanilla\VanillaStrings.cs:91
 msgid "是"
 msgstr ""
 
 # 通用的否
-#: Scripts\Vanilla\VanillaStrings.cs:91
+#: Scripts\Vanilla\VanillaStrings.cs:93
 msgid "否"
 msgstr ""
 
 # 通用的开
-#: Scripts\Vanilla\VanillaStrings.cs:93
+#: Scripts\Vanilla\VanillaStrings.cs:95
 msgid "开"
 msgstr ""
 
 # 通用的关
-#: Scripts\Vanilla\VanillaStrings.cs:95
+#: Scripts\Vanilla\VanillaStrings.cs:97
 msgid "关"
 msgstr ""
 
 # 通用文本
-#: Scripts\Vanilla\VanillaStrings.cs:101
+#: Scripts\Vanilla\VanillaStrings.cs:103
 msgid "返回地图"
 msgstr ""
 
 # 通用文本
-#: Scripts\Vanilla\VanillaStrings.cs:103
+#: Scripts\Vanilla\VanillaStrings.cs:105
 msgid "返回主菜单"
 msgstr ""
 
 # 通用文本
-#: Scripts\Vanilla\VanillaStrings.cs:107
+#: Scripts\Vanilla\VanillaStrings.cs:109
 msgid "警告"
 msgstr ""
 
 # 通用文本
-#: Scripts\Vanilla\VanillaStrings.cs:109
+#: Scripts\Vanilla\VanillaStrings.cs:111
 msgid "提示"
 msgstr ""
 
 # 通用文本
-#: Scripts\Vanilla\VanillaStrings.cs:111
+#: Scripts\Vanilla\VanillaStrings.cs:113
 msgid "退出"
 msgstr ""
 
 # 游戏内文本提示
-#: Scripts\Vanilla\VanillaStrings.cs:118
-msgid "能量不足"
-msgstr ""
-
-# 游戏内文本提示
 #: Scripts\Vanilla\VanillaStrings.cs:120
-msgid "重新充能中…"
-msgstr ""
-
-# 游戏内文本提示
-#: Scripts\Vanilla\VanillaStrings.cs:122
 msgid "挖掉器械"
 msgstr ""
 
 # 游戏内文本提示
-#: Scripts\Vanilla\VanillaStrings.cs:124
+#: Scripts\Vanilla\VanillaStrings.cs:122
 msgid "触发器械"
 msgstr ""
 
 # 关卡难度
-#: Scripts\Vanilla\VanillaStrings.cs:128
+#: Scripts\Vanilla\VanillaStrings.cs:126
 msgctxt "difficulty"
 msgid "简单"
 msgstr ""
 
 # 关卡难度
-#: Scripts\Vanilla\VanillaStrings.cs:130
+#: Scripts\Vanilla\VanillaStrings.cs:128
 msgctxt "difficulty"
 msgid "普通"
 msgstr ""
 
 # 关卡难度
-#: Scripts\Vanilla\VanillaStrings.cs:132
+#: Scripts\Vanilla\VanillaStrings.cs:130
 msgctxt "difficulty"
 msgid "困难"
 msgstr ""
 
 # 关卡难度
-#: Scripts\Vanilla\VanillaStrings.cs:134
+#: Scripts\Vanilla\VanillaStrings.cs:132
 msgctxt "difficulty"
 msgid "未知难度"
 msgstr ""
 
 # 关卡名称
-#: Scripts\Vanilla\VanillaStrings.cs:138
+#: Scripts\Vanilla\VanillaStrings.cs:136
 msgctxt "levelname"
 msgid "未知关卡"
 msgstr ""
 
 # 关卡名称，{0}为关卡名，{1}为冒险模式天数
-#: Scripts\Vanilla\VanillaStrings.cs:140
+#: Scripts\Vanilla\VanillaStrings.cs:138
 msgctxt "levelname"
 msgid "{0} - 第{1}天"
 msgid_plural "{0} - 第{1}天"
@@ -1048,7 +1059,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 # 关卡名称，{0}为关卡名，{1}为无尽模式轮数
-#: Scripts\Vanilla\VanillaStrings.cs:142
+#: Scripts\Vanilla\VanillaStrings.cs:140
 msgctxt "levelname"
 msgid "{0} - 第{1}轮"
 msgid_plural "{0} - 第{1}轮"
@@ -1056,67 +1067,67 @@ msgstr[0] ""
 msgstr[1] ""
 
 # 死亡信息-未知
-#: Scripts\Vanilla\VanillaStrings.cs:146
+#: Scripts\Vanilla\VanillaStrings.cs:144
 msgctxt "death_message"
 msgid "你死了！"
 msgstr ""
 
 # 死亡信息-梦魇碾压墙
-#: Scripts\Vanilla\VanillaStrings.cs:148
+#: Scripts\Vanilla\VanillaStrings.cs:146
 msgctxt "death_message"
 msgid "<color=red>来到我们之中吧</color>"
 msgstr ""
 
 # 死亡信息-我是僵尸
-#: Scripts\Vanilla\VanillaStrings.cs:150
+#: Scripts\Vanilla\VanillaStrings.cs:148
 msgctxt "death_message"
 msgid "你失去了所有能量！"
 msgstr ""
 
 # 实体名称-未知
-#: Scripts\Vanilla\VanillaStrings.cs:153
+#: Scripts\Vanilla\VanillaStrings.cs:151
 msgctxt "entity.name"
 msgid "？？？"
 msgstr ""
 
 # 实体对策名称-未知
-#: Scripts\Vanilla\VanillaStrings.cs:156
+#: Scripts\Vanilla\VanillaStrings.cs:154
 msgctxt "entity_counter.name"
 msgid "？？？"
 msgstr ""
 
 # 蓝图选项名称-未知
-#: Scripts\Vanilla\VanillaStrings.cs:159
+#: Scripts\Vanilla\VanillaStrings.cs:157
 msgctxt "option.name"
 msgid "？？？"
 msgstr ""
 
 # 实体说明-未知
-#: Scripts\Vanilla\VanillaStrings.cs:162
+#: Scripts\Vanilla\VanillaStrings.cs:160
 msgctxt "entity.tooltip"
 msgid "？？？"
 msgstr ""
 
 # 制品名称-未知
-#: Scripts\Vanilla\VanillaStrings.cs:165
+#: Scripts\Vanilla\VanillaStrings.cs:163
 msgctxt "artifact.name"
 msgid "？？？"
 msgstr ""
 
 # 制品说明-未知
-#: Scripts\Vanilla\VanillaStrings.cs:168
+#: Scripts\Vanilla\VanillaStrings.cs:166
 msgctxt "artifact.tooltip"
 msgid "？？？"
 msgstr ""
 
 # 怪物说明-还没有遇到
-#: Scripts\Vanilla\VanillaStrings.cs:171
+#: Scripts\Vanilla\VanillaStrings.cs:169
 msgctxt "almanac"
 msgid "（还没有遇到）"
 msgstr ""
 
 # 音乐名-无
-#: Scripts\Vanilla\VanillaStrings.cs:175
+#: Scripts\Vanilla\VanillaStrings.cs:173
 msgctxt "music.name"
 msgid "无"
 msgstr ""
@@ -1224,95 +1235,150 @@ msgid ""
 "必须删除一个存档，并新建存档以继续游戏。"
 msgstr ""
 
+# 设置按键提醒
+#: Scripts\MVZ2\Scene\KeybindingController.cs:157
+msgid "请按键"
+msgstr ""
+
+# 重置所有按键绑定的警告
+#: Scripts\MVZ2\Scene\KeybindingController.cs:159
+msgid "确认要重置所有按键绑定吗？"
+msgstr ""
+
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:245
+#: Scripts\MVZ2\Options\OptionsLogic.cs:532
 msgid "交换触发：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:247
+#: Scripts\MVZ2\Options\OptionsLogic.cs:534
 msgid "全屏：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:249
+#: Scripts\MVZ2\Options\OptionsLogic.cs:536
 msgid "设备震动：{0}"
 msgstr ""
 
 # 选项，{0}为难度
-#: Scripts\MVZ2\Options\OptionsLogic.cs:251
+#: Scripts\MVZ2\Options\OptionsLogic.cs:538
 msgid "难度：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:253
+#: Scripts\MVZ2\Options\OptionsLogic.cs:540
 msgid "后台暂停：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: Scripts\MVZ2\Options\OptionsLogic.cs:257
+#: Scripts\MVZ2\Options\OptionsLogic.cs:544
 msgid "音乐音量：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: Scripts\MVZ2\Options\OptionsLogic.cs:259
+#: Scripts\MVZ2\Options\OptionsLogic.cs:546
 msgid "音效音量：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: Scripts\MVZ2\Options\OptionsLogic.cs:261
+#: Scripts\MVZ2\Options\OptionsLogic.cs:548
 msgid "加速倍率：{0}"
 msgstr ""
 
+# 选项，{0}为量
+#: Scripts\MVZ2\Options\OptionsLogic.cs:550
+msgid "动画频率：{0}"
+msgstr ""
+
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:264
+#: Scripts\MVZ2\Options\OptionsLogic.cs:553
 msgid "血与碎块：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:267
+#: Scripts\MVZ2\Options\OptionsLogic.cs:556
 msgid "跳过对话：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:269
+#: Scripts\MVZ2\Options\OptionsLogic.cs:558
 msgid "赞助者名称：{0}"
 msgstr ""
 
 # 选项，{0}为是否开启
-#: Scripts\MVZ2\Options\OptionsLogic.cs:271
+#: Scripts\MVZ2\Options\OptionsLogic.cs:560
 msgid "选卡警告：{0}"
 msgstr ""
 
 # 选项，{0}为模式
-#: Scripts\MVZ2\Options\OptionsLogic.cs:273
+#: Scripts\MVZ2\Options\OptionsLogic.cs:562
 msgid "命令方块：{0}"
 msgstr ""
 
+# 选项，{0}为是否开启
+#: Scripts\MVZ2\Options\OptionsLogic.cs:564
+msgid "显示帧率：{0}"
+msgstr ""
+
+# 选项，{0}为是否开启
+#: Scripts\MVZ2\Options\OptionsLogic.cs:566
+msgid "显示快捷键：{0}"
+msgstr ""
+
 # 命令方块模式
-#: Scripts\MVZ2\Options\OptionsLogic.cs:276
+#: Scripts\MVZ2\Options\OptionsLogic.cs:569
 msgctxt "option.command_block_mode"
 msgid "手选"
 msgstr ""
 
 # 命令方块模式
-#: Scripts\MVZ2\Options\OptionsLogic.cs:278
+#: Scripts\MVZ2\Options\OptionsLogic.cs:571
 msgctxt "option.command_block_mode"
 msgid "前位"
 msgstr ""
 
+# FPS模式
+#: Scripts\MVZ2\Options\OptionsLogic.cs:574
+msgctxt "option.fps_mode"
+msgid "关闭"
+msgstr ""
+
+# FPS模式
+#: Scripts\MVZ2\Options\OptionsLogic.cs:576
+msgctxt "option.fps_mode"
+msgid "左上"
+msgstr ""
+
+# FPS模式
+#: Scripts\MVZ2\Options\OptionsLogic.cs:578
+msgctxt "option.fps_mode"
+msgid "右上"
+msgstr ""
+
+# FPS模式
+#: Scripts\MVZ2\Options\OptionsLogic.cs:580
+msgctxt "option.fps_mode"
+msgid "左下"
+msgstr ""
+
+# FPS模式
+#: Scripts\MVZ2\Options\OptionsLogic.cs:582
+msgctxt "option.fps_mode"
+msgid "右下"
+msgstr ""
+
 # 选项，{0}为量
-#: Scripts\MVZ2\Options\OptionsLogic.cs:282
+#: Scripts\MVZ2\Options\OptionsLogic.cs:585
 msgid "粒子数量：{0}"
 msgstr ""
 
 # 选项，{0}为量
-#: Scripts\MVZ2\Options\OptionsLogic.cs:284
+#: Scripts\MVZ2\Options\OptionsLogic.cs:587
 msgid "屏幕震动：{0}"
 msgstr ""
 
 # 对话框内容
-#: Scripts\MVZ2\Options\OptionsLogicLevel.cs:73
+#: Scripts\MVZ2\Options\OptionsLogicLevel.cs:87
 msgid ""
 "确认要返回吗？\n"
 "你的进度会被保存。"
@@ -1424,26 +1490,26 @@ msgid "作者：{0}"
 msgstr ""
 
 # 地图的提示文本
-#: Scripts\MVZ2\Map\MapController.cs:668
+#: Scripts\MVZ2\Map\MapController.cs:676
 msgid ""
 "按住右键拖动以移动视图\n"
 "滚轮以缩放视图"
 msgstr ""
 
 # 地图的提示文本
-#: Scripts\MVZ2\Map\MapController.cs:670
+#: Scripts\MVZ2\Map\MapController.cs:678
 msgid ""
 "单指拖动以移动视图\n"
 "双指触摸以缩放视图"
 msgstr ""
 
 # 地图的提示文本
-#: Scripts\MVZ2\Map\MapController.cs:672
+#: Scripts\MVZ2\Map\MapController.cs:680
 msgid "正在进入关卡……"
 msgstr ""
 
 # 地图的无尽模式提示文本，{0}为当前轮数，{1}为历史最高
-#: Scripts\MVZ2\Map\MapController.cs:674
+#: Scripts\MVZ2\Map\MapController.cs:682
 msgid ""
 "轮数\n"
 "{0}/{1}"
@@ -1460,811 +1526,811 @@ msgid "日志已导出至{0}。"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:187
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:192
 msgctxt "key.name"
 msgid "未知"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:188
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:193
 msgctxt "key.name"
 msgid "无"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:189
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:194
 msgctxt "key.name"
 msgid "Backspace"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:190
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:195
 msgctxt "key.name"
 msgid "Delete"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:191
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:196
 msgctxt "key.name"
 msgid "Tab"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:192
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:197
 msgctxt "key.name"
 msgid "Clear"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:193
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:198
 msgctxt "key.name"
 msgid "Enter"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:194
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:199
 msgctxt "key.name"
 msgid "Pause"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:195
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:200
 msgctxt "key.name"
 msgid "Escape"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:196
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:201
 msgctxt "key.name"
 msgid "Space"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:198
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:203
 msgctxt "key.name"
 msgid "小键盘 0"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:199
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:204
 msgctxt "key.name"
 msgid "小键盘 1"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:200
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:205
 msgctxt "key.name"
 msgid "小键盘 2"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:201
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:206
 msgctxt "key.name"
 msgid "小键盘 3"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:202
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:207
 msgctxt "key.name"
 msgid "小键盘 4"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:203
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:208
 msgctxt "key.name"
 msgid "小键盘 5"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:204
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:209
 msgctxt "key.name"
 msgid "小键盘 6"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:205
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:210
 msgctxt "key.name"
 msgid "小键盘 7"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:206
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:211
 msgctxt "key.name"
 msgid "小键盘 8"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:207
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:212
 msgctxt "key.name"
 msgid "小键盘 9"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:208
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:213
 msgctxt "key.name"
 msgid "小键盘 ."
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:209
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:214
 msgctxt "key.name"
 msgid "小键盘 /"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:210
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:215
 msgctxt "key.name"
 msgid "小键盘 *"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:211
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:216
 msgctxt "key.name"
 msgid "小键盘 -"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:212
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:217
 msgctxt "key.name"
 msgid "小键盘 +"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:213
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:218
 msgctxt "key.name"
 msgid "小键盘 Enter"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:214
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:219
 msgctxt "key.name"
 msgid "小键盘 ="
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:216
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:221
 msgctxt "key.name"
 msgid "↑"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:217
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:222
 msgctxt "key.name"
 msgid "↓"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:218
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:223
 msgctxt "key.name"
 msgid "→"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:219
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:224
 msgctxt "key.name"
 msgid "←"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:221
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:226
 msgctxt "key.name"
 msgid "Insert"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:222
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:227
 msgctxt "key.name"
 msgid "Home"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:223
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:228
 msgctxt "key.name"
 msgid "End"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:224
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:229
 msgctxt "key.name"
 msgid "PageUp"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:225
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:230
 msgctxt "key.name"
 msgid "PageDown"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:227
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:232
 msgctxt "key.name"
 msgid "F1"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:228
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:233
 msgctxt "key.name"
 msgid "F2"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:229
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:234
 msgctxt "key.name"
 msgid "F3"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:230
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:235
 msgctxt "key.name"
 msgid "F4"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:231
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:236
 msgctxt "key.name"
 msgid "F5"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:232
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:237
 msgctxt "key.name"
 msgid "F6"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:233
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:238
 msgctxt "key.name"
 msgid "F7"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:234
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:239
 msgctxt "key.name"
 msgid "F8"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:235
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:240
 msgctxt "key.name"
 msgid "F9"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:236
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:241
 msgctxt "key.name"
 msgid "F10"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:237
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:242
 msgctxt "key.name"
 msgid "F11"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:238
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:243
 msgctxt "key.name"
 msgid "F12"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:239
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:244
 msgctxt "key.name"
 msgid "F13"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:240
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:245
 msgctxt "key.name"
 msgid "F14"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:241
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:246
 msgctxt "key.name"
 msgid "F15"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:243
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:248
 msgctxt "key.name"
 msgid "0"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:244
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:249
 msgctxt "key.name"
 msgid "1"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:245
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:250
 msgctxt "key.name"
 msgid "2"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:246
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:251
 msgctxt "key.name"
 msgid "3"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:247
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:252
 msgctxt "key.name"
 msgid "4"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:248
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:253
 msgctxt "key.name"
 msgid "5"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:249
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:254
 msgctxt "key.name"
 msgid "6"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:250
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:255
 msgctxt "key.name"
 msgid "7"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:251
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:256
 msgctxt "key.name"
 msgid "8"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:252
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:257
 msgctxt "key.name"
 msgid "9"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:254
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:259
 msgctxt "key.name"
 msgid "!"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:255
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:260
 msgctxt "key.name"
 msgid "\""
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:256
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:261
 msgctxt "key.name"
 msgid "#"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:257
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:262
 msgctxt "key.name"
 msgid "$"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:258
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:263
 msgctxt "key.name"
 msgid "%"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:259
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:264
 msgctxt "key.name"
 msgid "&"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:260
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:265
 msgctxt "key.name"
 msgid "'"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:261
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:266
 msgctxt "key.name"
 msgid "("
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:262
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:267
 msgctxt "key.name"
 msgid ")"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:263
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:268
 msgctxt "key.name"
 msgid "*"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:264
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:269
 msgctxt "key.name"
 msgid "+"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:265
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:270
 msgctxt "key.name"
 msgid ","
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:266
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:271
 msgctxt "key.name"
 msgid "-"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:267
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:272
 msgctxt "key.name"
 msgid "."
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:268
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:273
 msgctxt "key.name"
 msgid "/"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:269
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:274
 msgctxt "key.name"
 msgid ":"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:270
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:275
 msgctxt "key.name"
 msgid ";"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:271
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:276
 msgctxt "key.name"
 msgid "<"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:272
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:277
 msgctxt "key.name"
 msgid "="
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:273
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:278
 msgctxt "key.name"
 msgid ">"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:274
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:279
 msgctxt "key.name"
 msgid "?"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:275
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:280
 msgctxt "key.name"
 msgid "@"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:277
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:282
 msgctxt "key.name"
 msgid "["
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:278
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:283
 msgctxt "key.name"
 msgid "\\"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:279
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:284
 msgctxt "key.name"
 msgid "]"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:280
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:285
 msgctxt "key.name"
 msgid "^"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:281
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:286
 msgctxt "key.name"
 msgid "_"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:282
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:287
 msgctxt "key.name"
 msgid "`"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:284
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:289
 msgctxt "key.name"
 msgid "A"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:285
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:290
 msgctxt "key.name"
 msgid "B"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:286
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:291
 msgctxt "key.name"
 msgid "C"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:287
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:292
 msgctxt "key.name"
 msgid "D"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:288
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:293
 msgctxt "key.name"
 msgid "E"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:289
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:294
 msgctxt "key.name"
 msgid "F"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:290
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:295
 msgctxt "key.name"
 msgid "G"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:291
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:296
 msgctxt "key.name"
 msgid "H"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:292
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:297
 msgctxt "key.name"
 msgid "I"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:293
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:298
 msgctxt "key.name"
 msgid "J"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:294
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:299
 msgctxt "key.name"
 msgid "K"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:295
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:300
 msgctxt "key.name"
 msgid "L"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:296
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:301
 msgctxt "key.name"
 msgid "M"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:297
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:302
 msgctxt "key.name"
 msgid "N"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:298
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:303
 msgctxt "key.name"
 msgid "O"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:299
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:304
 msgctxt "key.name"
 msgid "P"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:300
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:305
 msgctxt "key.name"
 msgid "Q"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:301
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:306
 msgctxt "key.name"
 msgid "R"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:302
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:307
 msgctxt "key.name"
 msgid "S"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:303
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:308
 msgctxt "key.name"
 msgid "T"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:304
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:309
 msgctxt "key.name"
 msgid "U"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:305
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:310
 msgctxt "key.name"
 msgid "V"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:306
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:311
 msgctxt "key.name"
 msgid "W"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:307
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:312
 msgctxt "key.name"
 msgid "X"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:308
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:313
 msgctxt "key.name"
 msgid "Y"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:309
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:314
 msgctxt "key.name"
 msgid "Z"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:311
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:316
 msgctxt "key.name"
 msgid "{"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:312
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:317
 msgctxt "key.name"
 msgid "|"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:313
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:318
 msgctxt "key.name"
 msgid "}"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:314
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:319
 msgctxt "key.name"
 msgid "~"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:316
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:321
 msgctxt "key.name"
 msgid "Numlock"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:317
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:322
 msgctxt "key.name"
 msgid "CapsLock"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:318
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:323
 msgctxt "key.name"
 msgid "ScrollLock"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:319
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:324
 msgctxt "key.name"
 msgid "右Shift"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:320
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:325
 msgctxt "key.name"
 msgid "左Shift"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:321
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:326
 msgctxt "key.name"
 msgid "右Ctrl"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:322
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:327
 msgctxt "key.name"
 msgid "左Ctrl"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:323
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:328
 msgctxt "key.name"
 msgid "右Alt"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:324
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:329
 msgctxt "key.name"
 msgid "左Alt"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:325
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:330
 msgctxt "key.name"
 msgid "左Command"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:326
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:331
 msgctxt "key.name"
 msgid "左Windows"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:327
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:332
 msgctxt "key.name"
 msgid "右Command"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:328
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:333
 msgctxt "key.name"
 msgid "右Windows"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:329
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:334
 msgctxt "key.name"
 msgid "AltGr"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:330
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:335
 msgctxt "key.name"
 msgid "Print"
 msgstr ""
 
 # 按键名
-#: Scripts\MVZ2\Managers\InputManager_Keys.cs:331
+#: Scripts\MVZ2\Managers\InputManager_Keys.cs:336
 msgctxt "key.name"
 msgid "Menu"
 msgstr ""
@@ -2279,58 +2345,53 @@ msgstr ""
 msgid "{0}%"
 msgstr ""
 
+# 帧率显示
+#: Scripts\MVZ2\Managers\PerformanceManager.cs:46
+msgid "FPS: {0}"
+msgstr ""
+
 # 删除用户时的错误信息，{0}为错误信息
-#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:889
+#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:742
 msgid "无法删除用户：{0}"
 msgstr ""
 
 # 切换用户时的错误信息，{0}为错误信息
-#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:891
+#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:744
 msgid "无法切换至用户：{0}"
 msgstr ""
 
 # 删除用户时的错误信息
-#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:893
+#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:746
 msgid "没有其他有效的用户可供切换。"
 msgstr ""
 
 # 退出对话框的描述
-#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:895
+#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:748
 msgid "确认要退出吗？"
 msgstr ""
 
-# 重置所有按键绑定的警告
-#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:897
-msgid "确认要重置所有按键绑定吗？"
-msgstr ""
-
-# 设置按键提醒
-#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:899
-msgid "请按键"
-msgstr ""
-
 # 存档导出失败的警告
-#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:901
+#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:750
 msgid "导出存档失败。"
 msgstr ""
 
 # 存档导入失败的警告
-#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:903
+#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:752
 msgid "导入存档失败。"
 msgstr ""
 
 # 存档导入失败的警告
-#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:905
+#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:754
 msgid "导入存档失败，文件可能已损坏。"
 msgstr ""
 
 # 存档导入失败的警告
-#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:907
+#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:756
 msgid "导入存档失败，游戏中存在同名用户，但正在导入的存档不可重命名。"
 msgstr ""
 
 # 存档导出成功的提示，{0}为路径
-#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:909
+#: Scripts\MVZ2\Mainmenu\MainmenuController.cs:758
 msgid "存档已导出至{0}。"
 msgstr ""
 
@@ -2346,50 +2407,50 @@ msgid "{0}x{1}"
 msgstr ""
 
 # 对话框内容
-#: Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:1200
+#: Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:1202
 msgid "你没有携带满蓝图，确认要继续吗？"
 msgstr ""
 
 # 重选蓝图的验证错误信息
-#: Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:1204
+#: Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:1206
 msgid "上一次选择的蓝图中包含多个相同的器械。"
 msgstr ""
 
 # 重选蓝图的验证错误信息
-#: Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:1206
+#: Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:1208
 msgid "上一次选择的蓝图中包含未解锁的器械。"
 msgstr ""
 
 # 重选蓝图的验证错误信息
-#: Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:1208
+#: Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:1210
 msgid "上一次选择的制品中包含多个相同的制品。"
 msgstr ""
 
 # 重选蓝图的验证错误信息
-#: Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:1210
+#: Scripts\MVZ2\Level\ControllerPart\LevelBlueprintChooseController.cs:1212
 msgid "上一次选择的制品中包含未解锁的制品。"
 msgstr ""
 
 # 实体提示
-#: Scripts\MVZ2\Level\LevelController_Entities.cs:305
+#: Scripts\MVZ2\Level\LevelController_Entities.cs:306
 msgctxt "entity.tooltip"
 msgid "在图鉴中查看"
 msgstr ""
 
 # 对话框内容
-#: Scripts\MVZ2\Level\LevelController_UI.cs:902
+#: Scripts\MVZ2\Level\LevelController_UI.cs:930
 msgid ""
 "确认要重新开始关卡吗？\n"
 "本关的进度都将丢失。"
 msgstr ""
 
 # 对话框内容，{0}为错误信息
-#: Scripts\MVZ2\Level\LevelController_UI.cs:904
+#: Scripts\MVZ2\Level\LevelController_UI.cs:932
 msgid "加载关卡失败，出现错误：{0}"
 msgstr ""
 
 # 对话框内容
-#: Scripts\MVZ2\Level\LevelController_UI.cs:906
+#: Scripts\MVZ2\Level\LevelController_UI.cs:934
 msgid "加载关卡失败，存档状态和当前游戏状态不匹配。"
 msgstr ""
 

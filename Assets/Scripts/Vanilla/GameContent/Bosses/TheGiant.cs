@@ -62,6 +62,13 @@ namespace MVZ2.GameContent.Bosses
         {
             base.UpdateLogic(entity);
             stateMachine.UpdateLogic(entity);
+
+            if (GetPhase(entity) == PHASE_3)
+            {
+                var malleable = GetMalleable(entity);
+                malleable = Mathf.Max(0, malleable - MALLEABLE_DECAY_PHASE_3);
+                SetMalleable(entity, malleable);
+            }
         }
         public override void PostCollision(EntityCollision collision, int state)
         {
@@ -436,13 +443,13 @@ namespace MVZ2.GameContent.Bosses
                 var collider = smashDetectBuffer[i];
                 collider.TakeDamage(entity.GetDamage() * SMASH_DAMAGE_MULTIPLIER, new DamageEffectList(VanillaDamageEffects.PUNCH, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY), entity);
                 damaged = true;
-                entity.Level.ShakeScreen(10, 0, 15);
-                entity.PlaySound(VanillaSoundID.thump);
             }
             if (damaged)
             {
                 entity.PlaySound(VanillaSoundID.smash);
             }
+            entity.Level.ShakeScreen(10, 0, 15);
+            entity.PlaySound(VanillaSoundID.thump);
         }
         public static bool CanArmsAttack(Entity entity)
         {

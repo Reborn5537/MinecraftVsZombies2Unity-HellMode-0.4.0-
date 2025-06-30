@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MVZ2.GameContent.Buffs.Contraptions;
-using MVZ2.GameContent.Buffs.Enemies;
-using MVZ2.GameContent.Effects;
+using MVZ2.GameContent.Damages;
 using MVZ2.GameContent.Pickups;
 using MVZ2.GameContent.Seeds;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
 using MVZ2.Vanilla.Entities;
-using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
 using MVZ2.Vanilla.SeedPacks;
 using MVZ2Logic;
 using MVZ2Logic.Level;
 using PVZEngine;
+using PVZEngine.Damages;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using PVZEngine.SeedPacks;
@@ -40,43 +39,14 @@ namespace MVZ2.GameContent.Contraptions
             {
                 EvokedUpdate(entity);
             }
-            DuplicateUpdate(entity);
         }
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
             entity.SetModelProperty("Evoked", entity.State == STATE_EVOKED);
+            entity.SetModelProperty("DuplicatedCount", GetDuplicatedCount(entity));
         }
 
-        private void DuplicateUpdate(Entity entity)
-        {
-            if (entity.IsTimeInterval(DETECT_INTERVAL))
-            {
-                Detect(entity);
-            }
-        }
-        private void Detect(Entity entity)
-        {
-            detectBuffer.Clear();
-            entity.Level.FindEntitiesNonAlloc(e => e.IsVulnerableEntity() && e.Position.x < VanillaLevelExt.ATTACK_RIGHT_BORDER && e.HasBuff<StarshardCarrierBuff>() && !HasDrainedEnemies(entity, e.ID), detectBuffer);
-            bool updated = false;
-            foreach (var enemy in detectBuffer)
-            {
-                AddDrainedEnemies(entity, enemy.ID);
-                var lump = entity.Spawn(VanillaEffectID.desireLump, enemy.GetCenter());
-                lump.SetParent(entity);
-                updated = true;
-            }
-            if (updated)
-            {
-                entity.PlaySound(VanillaSoundID.shadowCast);
-                var drainedEnemies = GetDrainedEnemies(entity);
-                if (drainedEnemies != null)
-                {
-                    drainedEnemies.RemoveAll(e => !entity.Level.EntityExists(e));
-                }
-            }
-        }
         protected override void OnEvoke(Entity entity)
         {
             base.OnEvoke(entity);
@@ -189,19 +159,17 @@ namespace MVZ2.GameContent.Contraptions
             {
                 heldBlueprints = level.GetAllSeedPacks().Where(e => e != null && e.IsCharged());
             }
+            var sourceBlueprints = heldBlueprints.TakeLast(EVOCATION_CARD_COUNT);
+
             SeedPack[] pile = new SeedPack[EVOCATION_CARD_COUNT];
-            var count = heldBlueprints.Count();
-            if (count > 0)
+            var count = sourceBlueprints.Count();
+            for (int i = 0; i < pile.Length; i++)
             {
-                for (int i = 0; i < pile.Length; i++)
-                {
-                    if (i >= count)
-                        continue;
-                    var seedPack = heldBlueprints.ElementAt(i);
-                    pile[i] = seedPack;
-                }
+                if (i >= count)
+                    continue;
+                pile[i] = sourceBlueprints.ElementAt(i);
             }
-            return pile.ToArray();
+            return pile;
         }
         private float Fatigue(Entity entity)
         {
@@ -212,39 +180,28 @@ namespace MVZ2.GameContent.Contraptions
             entity.Level.AddEnergy(-damage);
             return damage;
         }
+
+        public static void DuplicateStarshard(Entity pot)
+        {
+            pot.Spawn(VanillaPickupID.starshard, pot.GetCenter());
+            var count = GetDuplicatedCount(pot);
+            count++;
+            SetDuplicatedCount(pot, count);
+            if (count >= MAX_DUPLICATED_COUNT)
+            {
+                var effects = new DamageEffectList(VanillaDamageEffects.SELF_DAMAGE);
+                pot.Die(effects, pot);
+            }
+        }
+
         public static FrameTimer GetEvocationTimer(Entity entity) => entity.GetBehaviourField<FrameTimer>(PROP_EVOCATION_TIMER);
         public static void SetEvocationTimer(Entity entity, FrameTimer timer) => entity.SetBehaviourField(PROP_EVOCATION_TIMER, timer);
 
+        public static int GetDuplicatedCount(Entity entity) => entity.GetBehaviourField<int>(PROP_DUPLICATED_COUNT);
+        public static void SetDuplicatedCount(Entity entity, int value) => entity.SetBehaviourField(PROP_DUPLICATED_COUNT, value);
+
         public static float GetFatigueDamage(LevelEngine level) => level.GetBehaviourField<float>(PROP_FATIGUE_DAMAGE);
         public static void SetFatigueDamage(LevelEngine level, float value) => level.SetBehaviourField(PROP_FATIGUE_DAMAGE, value);
-
-
-        public static List<long> GetDrainedEnemies(Entity entity) => entity.GetBehaviourField<List<long>>(PROP_DRAINED_ENEMIES);
-        public static void SetDrainedEnemies(Entity entity, List<long> value) => entity.SetBehaviourField(PROP_DRAINED_ENEMIES, value);
-        public static void AddDrainedEnemies(Entity entity, long value)
-        {
-            var enemies = GetDrainedEnemies(entity);
-            if (enemies == null)
-            {
-                enemies = new List<long>();
-                SetDrainedEnemies(entity, enemies);
-            }
-            enemies.Add(value);
-        }
-        public static void RemoveDrainedEnemies(Entity entity, long value)
-        {
-            var enemies = GetDrainedEnemies(entity);
-            if (enemies == null)
-                return;
-            enemies.Remove(value);
-        }
-        public static bool HasDrainedEnemies(Entity entity, long value)
-        {
-            var enemies = GetDrainedEnemies(entity);
-            if (enemies == null)
-                return false;
-            return enemies.Contains(value);
-        }
 
 
 
@@ -252,13 +209,13 @@ namespace MVZ2.GameContent.Contraptions
         public const int EVOCATION_CARD_COUNT = 2;
         public const int FATIGUE_INCREAMENT = 25;
         public const int DETECT_INTERVAL = 10;
+        public const int MAX_DUPLICATED_COUNT = 3;
         public const int STATE_IDLE = VanillaEntityStates.IDLE;
         public const int STATE_EVOKED = VanillaEntityStates.CONTRAPTION_SPECIAL;
         public const string PROP_REGION = VanillaContraptionNames.desirePot;
-        private List<Entity> detectBuffer = new List<Entity>();
         [LevelPropertyRegistry(PROP_REGION)]
         private static readonly VanillaLevelPropertyMeta<float> PROP_FATIGUE_DAMAGE = new VanillaLevelPropertyMeta<float>("FatigueDamage");
+        private static readonly VanillaEntityPropertyMeta<int> PROP_DUPLICATED_COUNT = new VanillaEntityPropertyMeta<int>("duplicated_count");
         private static readonly VanillaEntityPropertyMeta<FrameTimer> PROP_EVOCATION_TIMER = new VanillaEntityPropertyMeta<FrameTimer>("EvocationTimer");
-        private static readonly VanillaEntityPropertyMeta<List<long>> PROP_DRAINED_ENEMIES = new VanillaEntityPropertyMeta<List<long>>("DrainedEnemies");
     }
 }

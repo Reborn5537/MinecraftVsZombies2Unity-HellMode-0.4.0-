@@ -8,16 +8,6 @@ using PVZEngine;
 using PVZEngine.Entities;
 using PVZEngine.Level;
 using UnityEngine;
-using MVZ2.GameContent.Effects;
-using MVZ2.GameContent.Projectiles;
-using MVZ2.Vanilla.Audios;
-using Tools;
-using MVZ2.GameContent.Contraptions;
-using MVZ2.GameContent.Damages;
-using MVZ2.GameContent.Detections;
-using MVZ2.GameContent.Difficulties;
-using MVZ2.Vanilla.Level;
-using MVZ2Logic.Level;
 
 namespace MVZ2.GameContent.Enemies
 {
@@ -84,7 +74,7 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
             // 设置血量状态。
-            entity.SetModelHealthStateByCount(2);
+            entity.SetModelDamagePercent();
         }
         public override void PostCollision(EntityCollision collision, int state)
         {

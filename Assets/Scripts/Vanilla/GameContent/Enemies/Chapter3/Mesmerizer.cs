@@ -45,7 +45,7 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetModelHealthStateByCount(2);
+            entity.SetModelDamagePercent();
         }
         protected override void UpdateAI(Entity entity)
         {
@@ -103,7 +103,7 @@ namespace MVZ2.GameContent.Enemies
             if (!collider.IsForMain())
                 return false;
             var target = collider.Entity;
-            if (!CompellingOrb.CanControl(target))
+            if (!CompellingOrb.CanControl(self,target))
                 return false;
             if (target.IsFloor())
                 return false;

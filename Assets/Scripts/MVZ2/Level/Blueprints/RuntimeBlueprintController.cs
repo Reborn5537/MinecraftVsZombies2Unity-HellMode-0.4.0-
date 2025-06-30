@@ -1,9 +1,12 @@
 ﻿using MVZ2.Level.UI;
 using MVZ2.UI;
+using MVZ2.Vanilla;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.SeedPacks;
+using MVZ2Logic;
 using PVZEngine.Definitions;
 using PVZEngine.SeedPacks;
+using UnityEngine;
 
 namespace MVZ2.Level
 {
@@ -20,6 +23,10 @@ namespace MVZ2.Level
         {
             base.Remove();
             SeedPack.SetModelInterface(null);
+        }
+        public void ForceUpdateBlueprintHotkeyText()
+        {
+            UpdateHotkeyText();
         }
         protected override void AddCallbacks()
         {
@@ -47,6 +54,11 @@ namespace MVZ2.Level
             {
                 model.UpdateFrame(deltaTime);
                 model.UpdateAnimators(deltaTime);
+            }
+            if (lastIndex != Index)
+            {
+                lastIndex = Index;
+                UpdateHotkeyText();
             }
         }
         public override BlueprintViewData GetBlueprintViewData()
@@ -102,9 +114,21 @@ namespace MVZ2.Level
         {
             if (!CanPick(out var errorMessage) && !string.IsNullOrEmpty(errorMessage))
             {
-                return errorMessage;
+                return Main.LanguageManager._p(VanillaStrings.CONTEXT_BLUEPRINT_ERROR, errorMessage);
             }
             return string.Empty;
+        }
+        private void UpdateHotkeyText()
+        {
+            var name = GetHotkeyName();
+            ui.SetHotkeyText(name);
+        }
+        private string GetHotkeyName()
+        {
+            if (Global.IsMobile() || !Main.OptionsManager.ShowHotkeyIndicators())
+                return string.Empty;
+            var hotkey = Main.OptionsManager.GetBlueprintKeyBinding(Index);
+            return hotkey != KeyCode.None ? Main.InputManager.GetKeyCodeName(hotkey) : string.Empty;
         }
         #endregion
 
@@ -135,6 +159,7 @@ namespace MVZ2.Level
 
         #region 属性字段
         public SeedPack SeedPack { get; private set; }
+        private int lastIndex = -1;
         #endregion
     }
     public struct BlueprintPickupInfo

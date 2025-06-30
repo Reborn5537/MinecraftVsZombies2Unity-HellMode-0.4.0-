@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Animation/Entities/Bosses/rebornnightmareaper.meta
 guid: f8c119923bf41104db56db32998fef19
+========
+guid: 5604a9b3246d39a488e12ebe72382805
+>>>>>>>> 0.4.6-hell:Assets/Animation/Entities/Projectiles/large_arrow.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Animation/Entities/Contraptions/SinpeDispenser.meta
 guid: 46c12a0aee5edaa40933c7477220a065
+========
+guid: f538f3e61ab30c64eab923213ef8f790
+>>>>>>>> 0.4.6-hell:Assets/GameContent/Assets/mvz2/sounds/random/netherrack.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

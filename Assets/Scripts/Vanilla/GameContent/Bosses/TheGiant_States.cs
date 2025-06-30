@@ -137,6 +137,21 @@ namespace MVZ2.GameContent.Bosses
                             stateMachine.StartState(entity, STATE_CHASE);
                         }
                     }
+                    else
+                    {
+                        if (entity.IsTimeInterval(15))
+                        {
+                            var level = entity.Level;
+                            var bounds = entity.GetBounds();
+                            var minLane = Mathf.Max(0, level.GetLane(bounds.max.z));
+                            var maxLane = Mathf.Min(level.GetMaxLaneCount() - 1, level.GetLane(bounds.min.z));
+                            var targetLane = entity.RNG.Next(minLane, maxLane + 1);
+                            var position = entity.Position;
+                            position.z = level.GetEntityLaneZ(targetLane);
+                            position.y += 20;
+                            entity.SpawnWithParams(VanillaEnemyID.zombie, position);
+                        }
+                    }
                     return;
                 }
                 else
@@ -779,7 +794,7 @@ namespace MVZ2.GameContent.Bosses
                         break;
                     case SUBSTATE_PACMAN:
                         UpdatePacman(entity);
-                        if (!IsPacmanPanic(entity) && (substateTimer.Expired || entity.IsDead))
+                        if ((!IsPacmanPanic(entity) && substateTimer.Expired) || entity.IsDead)
                         {
                             EndPacman(entity);
                         }
@@ -1310,14 +1325,14 @@ namespace MVZ2.GameContent.Bosses
                         }
                         break;
                     case SUBSTATE_HEAL:
-                        if (entity.IsDead)
-                        {
-                            entity.Revive();
-                        }
                         SetPhase(entity, PHASE_3);
                         entity.Health = entity.GetMaxHealth() * substateTimer.GetPassedPercentage();
                         if (substateTimer.Expired)
                         {
+                            if (entity.IsDead)
+                            {
+                                entity.Revive();
+                            }
                             stateMachine.SetSubState(entity, SUBSTATE_ROAR);
                             stateMachine.SetAnimationSubstate(entity, ANIMATION_SUBSTATE_ROAR);
                             substateTimer.ResetTime(90);
@@ -1416,11 +1431,6 @@ namespace MVZ2.GameContent.Bosses
             public override void OnUpdateLogic(EntityStateMachine machine, Entity entity)
             {
                 base.OnUpdateLogic(machine, entity);
-
-                var malleable = GetMalleable(entity);
-                malleable = Mathf.Max(0, malleable - MALLEABLE_DECAY_PHASE_3);
-                SetMalleable(entity, malleable);
-
                 CheckDeath(entity);
             }
             public const int SUBSTATE_CRAWL_START = 0;

@@ -260,6 +260,15 @@ namespace MVZ2.Level
             inputAndUIDisabled = disabled;
             ui.SetUIDisabled(disabled);
         }
+        public void UpdateHotkeyTexts()
+        {
+            var preset = ui.GetUIPreset();
+            preset.SetPickaxeHotkeyText(GetHotkeyName(HotKeys.pickaxe));
+            preset.SetStarshardHotkeyText(GetHotkeyName(HotKeys.starshard));
+            preset.SetTriggerHotkeyText(GetHotkeyName(HotKeys.trigger));
+            preset.SetSpeedUpHotkeyText(GetHotkeyName(HotKeys.fastForward));
+            blueprintController.ForceUpdateBlueprintHotkeyTexts();
+        }
         public Vector3 ScreenToLawnPositionByZ(Vector2 screenPosition, float z)
         {
             var worldPosition = levelCamera.Camera.ScreenToWorldPoint(screenPosition);
@@ -859,6 +868,11 @@ namespace MVZ2.Level
         #endregion
 
         #region 能量
+        public void FlickerEnergy()
+        {
+            var levelUI = GetUIPreset();
+            levelUI.FlickerEnergy();
+        }
         private void UpdateEnergy()
         {
             var ui = GetUIPreset();
@@ -884,6 +898,20 @@ namespace MVZ2.Level
         #endregion
 
 
+        private void InitLevelUI()
+        {
+            SetStarshardIcon();
+            // 光照
+            UpdateLighting();
+            UpdateHotkeyTexts();
+        }
+        private string GetHotkeyName(NamespaceID keyID)
+        {
+            if (Global.IsMobile() || !Main.OptionsManager.ShowHotkeyIndicators())
+                return string.Empty;
+            var keycode = Main.OptionsManager.GetKeyBinding(keyID);
+            return keycode != KeyCode.None ? Main.InputManager.GetKeyCodeName(keycode) : string.Empty;
+        }
         /// <summary>
         /// 更新能量、关卡进度条、手持物品、蓝图状态、星之碎片。
         /// </summary>
@@ -952,10 +980,11 @@ namespace MVZ2.Level
                 string error = null;
                 if (!level.level.CanUsePickaxe())
                 {
-                    var message = level.level.GetPickaxeDisableMessage();
+                    var disableID = controller.level.GetPickaxeDisableID();
+                    var message = Global.Game.GetBlueprintErrorMessage(disableID);
                     if (!string.IsNullOrEmpty(message))
                     {
-                        error = level.Localization._(message);
+                        error = level.Localization._p(VanillaStrings.CONTEXT_BLUEPRINT_ERROR, message);
                     }
                 }
                 return new TooltipViewData()
@@ -980,12 +1009,13 @@ namespace MVZ2.Level
             public TooltipViewData GetViewData(LevelController level)
             {
                 string error = null;
-                if (controller.level.IsTriggerDisabled())
+                if (level.level.CanUseTrigger())
                 {
-                    var message = controller.level.GetTriggerDisableMessage();
+                    var disableID = level.level.GetTriggerDisableID();
+                    var message = Global.Game.GetBlueprintErrorMessage(disableID);
                     if (!string.IsNullOrEmpty(message))
                     {
-                        error = controller.Localization._(message);
+                        error = controller.Localization._p(VanillaStrings.CONTEXT_BLUEPRINT_ERROR, message);
                     }
                 }
                 return new TooltipViewData()

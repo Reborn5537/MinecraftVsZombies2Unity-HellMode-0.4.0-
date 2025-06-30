@@ -22,6 +22,8 @@ namespace MVZ2.Vanilla
         public const string ADVICE_DEVELOPING = "剩余内容正在开发中，敬请期待！";
 
         [TranslateMsg("无尽模式的提示", CONTEXT_ADVICE)]
+        public const string ADVICE_ENDLESS_HINT = "你能存活多少轮？";
+        [TranslateMsg("无尽模式的提示", CONTEXT_ADVICE)]
         public const string ADVICE_MORE_ENEMIES_APPROACHING = "更多的敌人要来了！";
         [TranslateMsg("预览战场的提示", CONTEXT_ADVICE)]
         public const string ADVICE_CLICK_TO_CONTINUE = "点击以继续";
@@ -210,7 +212,9 @@ namespace MVZ2.Vanilla
         public const string CONTEXT_ALMANAC_GROUP_NAME = "almanac.group_name";
         public const string CONTEXT_LANGUAGE_NAME = "language_name";
         public const string CONTEXT_OPTION_NAME = "option.name";
+        public const string CONTEXT_BLUEPRINT_ERROR = "blueprint.error";
         public const string CONTEXT_COMMAND_BLOCK_MODE = "option.command_block_mode";
+        public const string CONTEXT_FPS_MODE = "option.fps_mode";
         public const string CONTEXT_RECHARGE_TIME = "recharge_time";
         public const string CONTEXT_STAT_CATEGORY = "stat_category";
         public const string CONTEXT_STORE_TALK = "store_talk";

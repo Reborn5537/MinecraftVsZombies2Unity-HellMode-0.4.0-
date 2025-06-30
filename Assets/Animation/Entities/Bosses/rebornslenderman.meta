@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Animation/Entities/Bosses/rebornslenderman.meta
 guid: ec2c0fd4a86ca1b4d95ebca91606b4b5
+========
+guid: 79a0b72dee2d46b48b1eff824fb4c8fa
+>>>>>>>> 0.4.6-hell:Assets/Animation/UI/popup.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

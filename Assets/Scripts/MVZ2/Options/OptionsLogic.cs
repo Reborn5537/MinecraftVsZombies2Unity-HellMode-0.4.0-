@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using MukioI18n;
+using MVZ2.Cameras;
 using MVZ2.Managers;
 using MVZ2.UI;
 using MVZ2.Vanilla;
@@ -11,36 +13,80 @@ using UnityEngine;
 namespace MVZ2.Options
 {
     using static MVZ2.UI.OptionsDialog;
+
     public abstract class OptionsLogic : IDisposable
     {
         public OptionsLogic(OptionsDialog dialog)
         {
+            ResolutionManager.OnResolutionChanged += OnResolutionChangedCallback;
+
             this.dialog = dialog;
 
             dialog.OnButtonClick += OnButtonClickCallback;
             dialog.OnSliderValueChanged += OnSliderValueChangedCallback;
             dialog.OnDropdownValueChanged += OnDropdownValueChangedCallback;
+
+            Language = Main.OptionsManager.GetLanguage();
+            BloodAndGore = Main.OptionsManager.HasBloodAndGore();
         }
         public virtual void InitDialog()
         {
+            // Main
             UpdateMusicSlider();
             UpdateSoundSlider();
             UpdateFastforwardSlider();
             UpdateSwapTriggerButton();
-            UpdateFullscreenButton(Main.OptionsManager.IsFullscreen());
-            UpdateVibrationButton();
-            UpdateDifficultyButton();
             UpdatePauseOnFocusLostButton();
+            UpdateDifficultyButton();
+
+            // More
+            // General
+            InitLanguageDropdown();
+            UpdateLanguageDropdown();
+            UpdateVibrationButton();
+            UpdateSkipAllTalksButton();
+            UpdateChooseWarningsButton();
+            UpdateCommandBlockModeButton();
+
+            // Display
+            UpdateFullscreenButton(Main.OptionsManager.IsFullscreen());
+            UpdateAnimationFrequencySlider();
+            InitResolutionDropdown();
+            UpdateResolutionDropdown();
+            UpdateParticlesSlider();
+            UpdateShakeSlider();
+            UpdateBloodAndGoreButton();
+            UpdateShowFPSButton();
+
+            // Controls
+            UpdateShowHotkeysButton();
+
+            // Misc
+            UpdateShowSponsorNamesButton();
+
             dialog.SetButtonActive(ButtonType.SwapTrigger, Main.SaveManager.IsTriggerUnlocked());
-            dialog.SetButtonActive(ButtonType.Fullscreen, !Main.IsMobile());
-            dialog.SetButtonActive(ButtonType.Vibration, Main.IsMobile());
             dialog.SetButtonActive(ButtonType.CommandBlockMode, Main.SaveManager.IsCommandBlockUnlocked());
+
+            dialog.SetButtonActive(ButtonType.Vibration, Main.IsMobile());
+
+            dialog.SetButtonActive(ButtonType.Fullscreen, !Main.IsMobile());
+            dialog.SetButtonActive(ButtonType.Keybinding, !Main.IsMobile());
+            dialog.SetButtonActive(ButtonType.ShowHotkeys, !Main.IsMobile());
+            dialog.SetDropdownActive(DropdownType.Resolution, !Main.IsMobile());
+
+            dialog.SetPage(Page.Main);
         }
         public virtual void Dispose()
         {
+            if (NeedsReload)
+            {
+                Main.OptionsManager.SetLanguage(Language);
+                Main.OptionsManager.SetBloodAndGore(BloodAndGore);
+            }
             dialog.OnButtonClick -= OnButtonClickCallback;
             dialog.OnSliderValueChanged -= OnSliderValueChangedCallback;
             dialog.OnDropdownValueChanged -= OnDropdownValueChangedCallback;
+            ResolutionManager.OnResolutionChanged -= OnResolutionChangedCallback;
         }
         protected virtual void OnButtonClickCallback(ButtonType type)
         {
@@ -55,19 +101,6 @@ namespace MVZ2.Options
                         UpdateSwapTriggerButton();
                     }
                     break;
-                case ButtonType.Fullscreen:
-                    {
-                        bool fullscreen = Main.OptionsManager.IsFullscreen();
-                        Main.OptionsManager.SetFullscreen(!fullscreen);
-                        UpdateFullscreenButton(!fullscreen);
-                    }
-                    break;
-                case ButtonType.Vibration:
-                    {
-                        Main.OptionsManager.SwitchVibration();
-                        UpdateVibrationButton();
-                    }
-                    break;
                 case ButtonType.Difficulty:
                     {
                         Main.OptionsManager.CycleDifficulty();
@@ -80,9 +113,89 @@ namespace MVZ2.Options
                         UpdatePauseOnFocusLostButton();
                     }
                     break;
+                case ButtonType.MoreOptions:
+                    dialog.SetPage(Page.More);
+                    break;
+                case ButtonType.MoreBack:
+                    dialog.SetPage(Page.Main);
+                    break;
+
+                // General.
+                case ButtonType.Vibration:
+                    {
+                        Main.OptionsManager.SwitchVibration();
+                        UpdateVibrationButton();
+                    }
+                    break;
+                case ButtonType.SkipAllTalks:
+                    {
+                        Main.OptionsManager.SwitchSkipAllTalks();
+                        UpdateSkipAllTalksButton();
+                    }
+                    break;
+                case ButtonType.ChooseWarnings:
+                    {
+                        Main.OptionsManager.SwitchBlueprintChooseWarningsDisabled();
+                        UpdateChooseWarningsButton();
+                    }
+                    break;
+                case ButtonType.CommandBlockMode:
+                    {
+                        Main.OptionsManager.CycleCommandBlockMode();
+                        UpdateCommandBlockModeButton();
+                    }
+                    break;
+
+                // Display.
+                case ButtonType.Fullscreen:
+                    {
+                        bool fullscreen = Main.OptionsManager.IsFullscreen();
+                        Main.OptionsManager.SetFullscreen(!fullscreen);
+                        UpdateFullscreenButton(!fullscreen);
+                    }
+                    break;
+                case ButtonType.BloodAndGore:
+                    {
+                        BloodAndGore = !BloodAndGore;
+                        NeedsReload = true;
+                        UpdateBloodAndGoreButton();
+                    }
+                    break;
+                case ButtonType.ShowFPS:
+                    {
+                        Main.OptionsManager.CycleFPSMode();
+                        UpdateShowFPSButton();
+                    }
+                    break;
+
+                // Controls.
+                case ButtonType.ShowHotkeys:
+                    {
+                        Main.OptionsManager.SwitchShowHotkeyIndicators();
+                        UpdateShowHotkeysButton();
+                    }
+                    break;
+                case ButtonType.Keybinding:
+                    {
+                        Main.Scene.ShowKeybinding();
+                    }
+                    break;
+
+                // Misc.
+                case ButtonType.Credits:
+                    {
+                        Main.Scene.ShowCredits();
+                    }
+                    break;
                 case ButtonType.ExportLogFiles:
                     {
                         Main.DebugManager.ExportLogFiles();
+                    }
+                    break;
+                case ButtonType.ShowSponsorNames:
+                    {
+                        Main.OptionsManager.SwitchShowSponsorNames();
+                        UpdateShowSponsorNamesButton();
                     }
                     break;
             }
@@ -110,11 +223,53 @@ namespace MVZ2.Options
                         UpdateFastforwardSlider();
                     }
                     break;
+                case SliderType.AnimationFrequency:
+                    {
+                        var multi = ValueToAnimationFrequency(value);
+                        Main.OptionsManager.SetAnimationFrequency(multi);
+                        UpdateAnimationFrequencySlider();
+                    }
+                    break;
+                case SliderType.Particles:
+                    {
+                        Main.OptionsManager.SetParticleAmount(value);
+                        UpdateParticlesSlider();
+                    }
+                    break;
+                case SliderType.Shake:
+                    {
+                        Main.OptionsManager.SetShakeAmount(value);
+                        UpdateShakeSlider();
+                    }
+                    break;
             }
         }
         protected virtual void OnDropdownValueChangedCallback(DropdownType type, int index)
         {
+            switch (type)
+            {
+                case DropdownType.Language:
+                    {
+                        Language = languageValues[index];
+                        NeedsReload = true;
+                        UpdateLanguageDropdown();
+                    }
+                    break;
+                case DropdownType.Resolution:
+                    {
+                        var resolution = resolutionValues[index];
+                        Main.ResolutionManager.SetResolution(resolution.x, resolution.y);
+                        UpdateResolutionDropdown();
+                    }
+                    break;
+            }
         }
+        private void OnResolutionChangedCallback(int width, int height)
+        {
+            InitResolutionDropdown();
+            UpdateResolutionDropdown();
+        }
+
         #region 更新元素
         protected string GetValueText(bool value)
         {
@@ -133,6 +288,26 @@ namespace MVZ2.Options
             }
             return Main.LanguageManager._p(VanillaStrings.CONTEXT_COMMAND_BLOCK_MODE, COMMAND_BLOCK_MODE_MANUAL);
         }
+        protected string GetValueTextFPSMode(int value)
+        {
+            var key = FPS_MODE_DISABLED;
+            switch (value)
+            {
+                case FPSModes.TOP_LEFT:
+                    key = FPS_MODE_TOP_LEFT;
+                    break;
+                case FPSModes.TOP_RIGHT:
+                    key = FPS_MODE_TOP_RIGHT;
+                    break;
+                case FPSModes.BOTTOM_LEFT:
+                    key = FPS_MODE_BOTTOM_LEFT;
+                    break;
+                case FPSModes.BOTTOM_RIGHT:
+                    key = FPS_MODE_BOTTOM_RIGHT;
+                    break;
+            }
+            return Main.LanguageManager._p(VanillaStrings.CONTEXT_FPS_MODE, key);
+        }
         protected string GetDifficultyText(NamespaceID id)
         {
             return Main.ResourceManager.GetDifficultyName(id);
@@ -150,6 +325,8 @@ namespace MVZ2.Options
             var text = Main.LanguageManager._(optionKey, valueText);
             dialog.SetButtonText(buttonType, text);
         }
+
+        #region 主界面
         protected void UpdateMusicSlider()
         {
             var value = Main.OptionsManager.GetMusicVolume();
@@ -171,19 +348,42 @@ namespace MVZ2.Options
             dialog.SetSliderValue(SliderType.FastForward, value);
             dialog.SetSliderText(SliderType.FastForward, text);
         }
+        protected void UpdateAnimationFrequencySlider()
+        {
+            var multi = Main.OptionsManager.GetAnimationFrequency();
+            var value = AnimationFrequencyToValue(multi);
+
+            var valueText = Main.GetFloatPercentageText(multi);
+            var text = Main.LanguageManager._(OPTION_ANIMATION_FREQUENCY, valueText);
+            dialog.SetSliderRange(SliderType.AnimationFrequency, ANIMATION_FREQUENCY_SLIDER_START, ANIMATION_FREQUENCY_SLIDER_END, false);
+            dialog.SetSliderValue(SliderType.AnimationFrequency, value);
+            dialog.SetSliderText(SliderType.AnimationFrequency, text);
+        }
+        protected float ValueToFastForwardMultiplier(float value)
+        {
+            return FASTFORWARD_MULTIPLIER_START + FASTFORWARD_STEP * value;
+        }
+        protected float FastForwardMultiplierToValue(float multi)
+        {
+            return Mathf.RoundToInt((multi - FASTFORWARD_MULTIPLIER_START) / FASTFORWARD_STEP);
+        }
+        private float ValueToAnimationFrequency(float value)
+        {
+            return value;
+        }
+        protected float AnimationFrequencyToValue(float frequency)
+        {
+            return frequency;
+        }
         protected void UpdateSwapTriggerButton()
         {
             var value = Main.OptionsManager.IsTriggerSwapped();
             UpdateButtonText(value, OPTION_SWAP_TRIGGER, TextButtonType.SwapTrigger);
         }
-        protected void UpdateFullscreenButton(bool value)
+        private void UpdatePauseOnFocusLostButton()
         {
-            UpdateButtonText(value, OPTION_FULLSCREEN, TextButtonType.Fullscreen);
-        }
-        protected void UpdateVibrationButton()
-        {
-            var value = Main.OptionsManager.IsVibration();
-            UpdateButtonText(value, OPTION_VIBRATION, TextButtonType.Vibration);
+            var value = Main.OptionsManager.GetPauseOnFocusLost();
+            UpdateButtonText(value, OPTION_PAUSE_ON_FOCUS_LOST, TextButtonType.PauseOnFocusLost);
         }
         protected void UpdateDifficultyButton()
         {
@@ -192,20 +392,30 @@ namespace MVZ2.Options
             var text = Main.LanguageManager._(OPTION_DIFFICULTY, valueText);
             dialog.SetButtonText(TextButtonType.Difficulty, text);
         }
-        private void UpdatePauseOnFocusLostButton()
+        #endregion
+
+        #region 常规设置
+        private void InitLanguageDropdown()
         {
-            var value = Main.OptionsManager.GetPauseOnFocusLost();
-            UpdateButtonText(value, OPTION_PAUSE_ON_FOCUS_LOST, TextButtonType.PauseOnFocusLost);
+            var values = Main.LanguageManager.GetAllLanguages();
+            languageValues = values;
+            dialog.SetDropdownValues(DropdownType.Language, values.Select(v => Main.LanguageManager.GetLanguageName(v)).ToArray());
+        }
+        private void UpdateLanguageDropdown()
+        {
+            var value = Language;
+            var index = Array.IndexOf(languageValues, value);
+            dialog.SetDropdownValue(DropdownType.Language, index);
+        }
+        protected void UpdateVibrationButton()
+        {
+            var value = Main.OptionsManager.IsVibration();
+            UpdateButtonText(value, OPTION_VIBRATION, TextButtonType.Vibration);
         }
         protected void UpdateSkipAllTalksButton()
         {
             var value = Main.OptionsManager.SkipAllTalks();
             UpdateButtonText(value, OPTION_SKIP_ALL_TALKS, TextButtonType.SkipAllTalks);
-        }
-        protected void UpdateShowSponsorNamesButton()
-        {
-            var value = Main.OptionsManager.ShowSponsorNames();
-            UpdateButtonText(value, OPTION_SHOW_SPONSOR_NAMES, TextButtonType.ShowSponsorNames);
         }
         protected void UpdateChooseWarningsButton()
         {
@@ -221,14 +431,86 @@ namespace MVZ2.Options
             var text = Main.LanguageManager._(OPTION_COMMAND_BLOCK_MODE, valueText);
             dialog.SetButtonText(TextButtonType.CommandBlockMode, text);
         }
-        protected float ValueToFastForwardMultiplier(float value)
+        #endregion
+
+        #region 显示设置
+        private void InitResolutionDropdown()
         {
-            return FASTFORWARD_MULTIPLIER_START + FASTFORWARD_STEP * value;
+            var resolutions = Main.ResolutionManager.GetResolutions().Select(r => new Vector2Int(r.width, r.height)).Distinct().ToArray();
+            var currentResolution = Main.ResolutionManager.GetCurrentResolution();
+            Vector2Int[] values;
+            if (!resolutions.Any(r => r.x == currentResolution.width && r.y == currentResolution.height))
+            {
+                values = new Vector2Int[resolutions.Length + 1];
+                for (int i = 0; i < resolutions.Length; i++)
+                {
+                    values[i] = resolutions[i];
+                }
+                values[values.Length - 1] = new Vector2Int(currentResolution.width, currentResolution.height);
+            }
+            else
+            {
+                values = resolutions;
+            }
+            resolutionValues = values;
+
+            var texts = values.Select(v => Main.ResolutionManager.GetResolutionName(v.x, v.y));
+            dialog.SetDropdownValues(DropdownType.Resolution, texts.ToArray());
         }
-        protected float FastForwardMultiplierToValue(float multi)
+        private void UpdateResolutionDropdown()
         {
-            return Mathf.RoundToInt((multi - FASTFORWARD_MULTIPLIER_START) / FASTFORWARD_STEP);
+            var value = Main.ResolutionManager.GetCurrentResolution();
+            var index = Array.FindIndex(resolutionValues, r => r.x == value.width && r.y == value.height);
+            if (index < 0)
+            {
+                index = resolutionValues.Length - 1;
+            }
+            dialog.SetDropdownValue(DropdownType.Resolution, index);
         }
+        protected void UpdateFullscreenButton(bool value)
+        {
+            UpdateButtonText(value, OPTION_FULLSCREEN, TextButtonType.Fullscreen);
+        }
+        private void UpdateParticlesSlider()
+        {
+            var value = Main.OptionsManager.GetParticleAmount();
+            UpdateSliderValue(value, OPTION_PARTICLE_AMOUNT, SliderType.Particles);
+        }
+        private void UpdateShakeSlider()
+        {
+            var value = Main.OptionsManager.GetShakeAmount();
+            UpdateSliderValue(value, OPTION_SHAKE_AMOUNT, SliderType.Shake);
+        }
+        protected void UpdateShowFPSButton()
+        {
+            var value = Main.OptionsManager.GetFPSMode();
+            var valueText = GetValueTextFPSMode(value);
+            var text = Main.LanguageManager._(OPTION_FPS_MODE, valueText);
+            dialog.SetButtonText(TextButtonType.ShowFPS, text);
+        }
+        private void UpdateBloodAndGoreButton()
+        {
+            var value = BloodAndGore;
+            UpdateButtonText(value, OPTION_BLOOD_AND_GORE, TextButtonType.BloodAndGore);
+        }
+        #endregion
+
+        #region 控制
+        protected void UpdateShowHotkeysButton()
+        {
+            var value = Main.OptionsManager.ShowHotkeyIndicators();
+            UpdateButtonText(value, OPTION_SHOW_HOTKEYS, TextButtonType.ShowHotkeys);
+        }
+        #endregion
+
+        #region 杂项
+        protected void UpdateShowSponsorNamesButton()
+        {
+            var value = Main.OptionsManager.ShowSponsorNames();
+            UpdateButtonText(value, OPTION_SHOW_SPONSOR_NAMES, TextButtonType.ShowSponsorNames);
+        }
+        #endregion
+
         #endregion
 
         public event Action OnClose;
@@ -240,6 +522,11 @@ namespace MVZ2.Options
         public const float FASTFORWARD_MULTIPLIER_END = 3;
         public const float FASTFORWARD_MULTIPLIER_RANGE = FASTFORWARD_MULTIPLIER_END - FASTFORWARD_MULTIPLIER_START;
         public const float FASTFORWARD_STEP = FASTFORWARD_MULTIPLIER_RANGE / FASTFORWARD_STEP_COUNT;
+
+        public const float ANIMATION_FREQUENCY_SLIDER_START = 0.3f;
+        public const float ANIMATION_FREQUENCY_SLIDER_END = 1;
+        public const float ANIMATION_FREQUENCY_START = 0.3f;
+        public const float ANIMATION_FREQUENCY_END = 1;
 
 
         [TranslateMsg("选项，{0}为是否开启")]
@@ -260,6 +547,8 @@ namespace MVZ2.Options
         public const string OPTION_SOUND = "音效音量：{0}";
         [TranslateMsg("选项，{0}为量")]
         public const string OPTION_FASTFORWARD_MULTIPLIER = "加速倍率：{0}";
+        [TranslateMsg("选项，{0}为量")]
+        public const string OPTION_ANIMATION_FREQUENCY = "动画频率：{0}";
 
         [TranslateMsg("选项，{0}为是否开启")]
         public const string OPTION_BLOOD_AND_GORE = "血与碎块：{0}";
@@ -272,18 +561,37 @@ namespace MVZ2.Options
         public const string OPTION_CHOOSE_WARNINGS = "选卡警告：{0}";
         [TranslateMsg("选项，{0}为模式")]
         public const string OPTION_COMMAND_BLOCK_MODE = "命令方块：{0}";
+        [TranslateMsg("选项，{0}为是否开启")]
+        public const string OPTION_FPS_MODE = "显示帧率：{0}";
+        [TranslateMsg("选项，{0}为是否开启")]
+        public const string OPTION_SHOW_HOTKEYS = "显示快捷键：{0}";
 
         [TranslateMsg("命令方块模式", VanillaStrings.CONTEXT_COMMAND_BLOCK_MODE)]
         public const string COMMAND_BLOCK_MODE_MANUAL = "手选";
         [TranslateMsg("命令方块模式", VanillaStrings.CONTEXT_COMMAND_BLOCK_MODE)]
         public const string COMMAND_BLOCK_MODE_PREVIOUS = "前位";
 
+        [TranslateMsg("FPS模式", VanillaStrings.CONTEXT_FPS_MODE)]
+        public const string FPS_MODE_DISABLED = "关闭";
+        [TranslateMsg("FPS模式", VanillaStrings.CONTEXT_FPS_MODE)]
+        public const string FPS_MODE_TOP_LEFT = "左上";
+        [TranslateMsg("FPS模式", VanillaStrings.CONTEXT_FPS_MODE)]
+        public const string FPS_MODE_TOP_RIGHT = "右上";
+        [TranslateMsg("FPS模式", VanillaStrings.CONTEXT_FPS_MODE)]
+        public const string FPS_MODE_BOTTOM_LEFT = "左下";
+        [TranslateMsg("FPS模式", VanillaStrings.CONTEXT_FPS_MODE)]
+        public const string FPS_MODE_BOTTOM_RIGHT = "右下";
 
         [TranslateMsg("选项，{0}为量")]
         public const string OPTION_PARTICLE_AMOUNT = "粒子数量：{0}";
         [TranslateMsg("选项，{0}为量")]
         public const string OPTION_SHAKE_AMOUNT = "屏幕震动：{0}";
         protected MainManager Main => MainManager.Instance;
+        public bool NeedsReload { get; private set; }
+        public bool BloodAndGore { get; private set; }
+        public string Language { get; private set; }
         protected OptionsDialog dialog;
+        private string[] languageValues;
+        private Vector2Int[] resolutionValues;
     }
 }

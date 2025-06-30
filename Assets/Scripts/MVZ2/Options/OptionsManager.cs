@@ -28,6 +28,7 @@ namespace MVZ2.Options
             options.musicVolume = GetPlayerPrefsFloat(PREFS_MUSIC_VOLUME, 1);
             options.soundVolume = GetPlayerPrefsFloat(PREFS_SOUND_VOLUME, 1);
             options.fastForwardMultiplier = GetPlayerPrefsFloat(PREFS_FASTFORWARD_MULTIPLIER, 2);
+            options.minAnimationFrequency = GetPlayerPrefsFloat(PREFS_ANIMATION_FREQUENCY, 1);
             options.particleAmount = GetPlayerPrefsFloat(PREFS_PARTICLE_AMOUNT, 1);
             options.shakeAmount = GetPlayerPrefsFloat(PREFS_SHAKE_AMOUNT, 1);
 
@@ -47,6 +48,7 @@ namespace MVZ2.Options
             LoadOptionsFromFile();
 
             LoadObsoletePrefs();
+            UpdateFPSMode();
         }
 
         public void LoadOptionsFromFile()
@@ -240,7 +242,7 @@ namespace MVZ2.Options
         }
         #endregion
 
-        #region 蓝图选择警告
+        #region 命令方块模式
         public int GetCommandBlockMode()
         {
             return options.commandBlockMode;
@@ -255,6 +257,64 @@ namespace MVZ2.Options
             var mode = GetCommandBlockMode();
             mode = (mode + 1) % CommandBlockModes.COUNT;
             SetCommandBlockMode(mode);
+        }
+        #endregion
+
+        #region FPS显示
+        public int GetFPSMode()
+        {
+            return options.fpsMode;
+        }
+        public void SetFPSMode(int value)
+        {
+            options.fpsMode = value;
+            SaveOptionsToFile();
+            UpdateFPSMode();
+        }
+        public void CycleFPSMode()
+        {
+            var mode = GetFPSMode();
+            mode = (mode + 1) % FPSModes.COUNT;
+            SetFPSMode(mode);
+        }
+        private void UpdateFPSMode()
+        {
+            var fpsMode = GetFPSMode();
+            var fpsActive = fpsMode != FPSModes.DISABLED;
+            Main.Scene.SetFPSEnabled(fpsActive);
+            if (fpsActive)
+            {
+                Vector2 corner = new Vector2(1, 0);
+                switch (fpsMode)
+                {
+                    case FPSModes.TOP_LEFT:
+                        corner = new Vector2(0, 1);
+                        break;
+                    case FPSModes.TOP_RIGHT:
+                        corner = new Vector2(1, 1);
+                        break;
+                    case FPSModes.BOTTOM_LEFT:
+                        corner = new Vector2(0, 0);
+                        break;
+                }
+                Main.Scene.SetFPSCorner(corner);
+            }
+        }
+        #endregion
+
+        #region 热键显示
+        public bool ShowHotkeyIndicators()
+        {
+            return options.showHotkeyIndicators;
+        }
+        public void SetShowHotkeyIndicators(bool value)
+        {
+            options.showHotkeyIndicators = value;
+            SaveOptionsToFile();
+        }
+        public void SwitchShowHotkeyIndicators()
+        {
+            SetShowHotkeyIndicators(!ShowHotkeyIndicators());
         }
         #endregion
 
@@ -325,6 +385,18 @@ namespace MVZ2.Options
         {
             options.shakeAmount = value;
             PlayerPrefs.SetFloat(PREFS_SHAKE_AMOUNT, value);
+        }
+        #endregion
+
+        #region 动画频率
+        public float GetAnimationFrequency()
+        {
+            return options.minAnimationFrequency;
+        }
+        public void SetAnimationFrequency(float value)
+        {
+            options.minAnimationFrequency = value;
+            PlayerPrefs.SetFloat(PREFS_ANIMATION_FREQUENCY, value);
         }
         #endregion
 
@@ -419,6 +491,7 @@ namespace MVZ2.Options
         public const string PREFS_MUSIC_VOLUME = "MusicVolume";
         public const string PREFS_SOUND_VOLUME = "SoundVolume";
         public const string PREFS_FASTFORWARD_MULTIPLIER = "FastForwardMultiplier";
+        public const string PREFS_ANIMATION_FREQUENCY = "AnimationFrequency";
         public const string PREFS_PARTICLE_AMOUNT = "ParticleAmount";
         public const string PREFS_SHAKE_AMOUNT = "ShakeAmount";
 

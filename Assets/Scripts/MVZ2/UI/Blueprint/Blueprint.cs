@@ -52,9 +52,24 @@ namespace MVZ2.UI
         {
             triggerCostObject.SetActive(active);
         }
+        public void SetHotkeyText(string hotkey)
+        {
+            if (hotkeyText)
+                hotkeyText.text = hotkey;
+        }
         public void SetRecharge(float charge)
         {
             rechargeImage.fillAmount = charge;
+        }
+        public void RechargeFlash()
+        {
+            rechargeFlashAlpha = 1;
+            UpdateRechargeFlash();
+        }
+        public void UpdateAnimation(float deltaTime)
+        {
+            rechargeFlashAlpha = Mathf.Clamp01(rechargeFlashAlpha - deltaTime / rechargeFlashTime);
+            UpdateRechargeFlash();
         }
         public void SetDisabled(bool disabled)
         {
@@ -73,6 +88,12 @@ namespace MVZ2.UI
         private void Awake()
         {
             holdStreakHandler.OnPointerInteraction += (_, d, i) => CallPointerInteraction(d, i);
+        }
+        private void UpdateRechargeFlash()
+        {
+            var color = rechargeFlashImage.color;
+            color.a = rechargeFlashAlpha;
+            rechargeFlashImage.color = color;
         }
         bool ILevelRaycastReceiver.IsValidReceiver(LevelEngine level, HeldItemDefinition definition, IHeldItemData data, PointerEventData eventData)
         {
@@ -108,6 +129,7 @@ namespace MVZ2.UI
         public UIModel Model => model;
         public int Index { get; set; } = -1;
         public bool IsInConveyor { get; set; }
+        private float rechargeFlashAlpha = 0;
         [SerializeField]
         private PointerInteraction selectInteraction = PointerInteraction.Down;
         [SerializeField]
@@ -133,11 +155,17 @@ namespace MVZ2.UI
         [SerializeField]
         private Image rechargeImage;
         [SerializeField]
+        private Image rechargeFlashImage;
+        [SerializeField]
+        private float rechargeFlashTime = 0.5f;
+        [SerializeField]
         private GameObject selectedObject;
         [SerializeField]
         private GameObject disabledObject;
         [SerializeField]
         private GameObject triggerCostObject;
+        [SerializeField]
+        private TextMeshProUGUI hotkeyText;
         [SerializeField]
         private UIModel model;
         [SerializeField]

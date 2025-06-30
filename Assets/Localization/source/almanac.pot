@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 
 "Project-Id-Version: MinecraftVSZombies2\n"
-"POT-Creation-Date: 2025-06-09 01:06+0800\n"
+"POT-Creation-Date: 2025-06-18 09:46+0800\n"
 "Language-Team: Cuerzor\n"
 "Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -515,6 +515,18 @@ msgctxt "almanac_tag_enum.name"
 msgid "沙子"
 msgstr ""
 
+#. Name for almanac tag enum value mvz2:netherrack of enum shell
+#: Almanac meta file
+msgctxt "almanac_tag_enum.name"
+msgid "下界岩"
+msgstr ""
+
+#. Description for almanac tag enum value mvz2:netherrack of enum shell
+#: Almanac meta file
+msgctxt "almanac_tag_enum.description"
+msgid "免疫火焰伤害，阻挡锐利物体和火焰溅射，但受到20x冲击伤害"
+msgstr ""
+
 #. Header for contraptions mvz2:dispenser
 #: Almanac meta file
 msgctxt "contraptions.description"
@@ -973,7 +985,7 @@ msgctxt "contraptions.description"
 msgid ""
 "发射速度：<color=red>1.5秒</color>\n"
 "伤害：<color=red>20</color>\n"
-"技能：<color=red>立即喷射30发木球</color>"
+"技能：<color=red>立即喷射30颗大型木球，每颗造成80点伤害</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:wooden_dropper
@@ -1314,13 +1326,13 @@ msgstr ""
 #. Header for contraptions mvz2:desire_pot
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "欲望壶会复制敌人身上拥有的星之碎片。"
+msgid "欲望壶会从敌人身上复制其携带的星之碎片，每个欲望壶最多复制三个。"
 msgstr ""
 
 #. Properties for contraptions mvz2:desire_pot
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "技能：<color=red>将最前方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>"
+msgid "技能：<color=red>将最后方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>"
 msgstr ""
 
 #. Flavor for contraptions mvz2:desire_pot
@@ -4824,6 +4836,30 @@ msgstr ""
 #: Artifact meta file
 msgctxt "artifact.tooltip"
 msgid "器械x250%伤害，但x50%攻击速度"
+msgstr ""
+
+#. Message for blueprint error recharging
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "重新充能中…"
+msgstr ""
+
+#. Message for blueprint error not_enough_energy
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "能量不足"
+msgstr ""
+
+#. Message for blueprint error tutorial
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "无法使用"
+msgstr ""
+
+#. Message for blueprint error decrepify
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "受到衰老诅咒！"
 msgstr ""
 
 #. Name for blueprint option return_pearl

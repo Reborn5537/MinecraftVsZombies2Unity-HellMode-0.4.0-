@@ -45,8 +45,7 @@ namespace MVZ2.GameContent.Enemies
         protected override void UpdateLogic(Entity entity)
         {
             base.UpdateLogic(entity);
-            entity.SetModelHealthStateByCount(2);
-
+            entity.SetModelDamagePercent();
             entity.SetAnimationBool("InWater", false);
             bool currentBoatState = entity.HasBuff<BoatBuff>();
             if (currentBoatState != _hasBoat)
@@ -58,8 +57,7 @@ namespace MVZ2.GameContent.Enemies
             if (!entity.HasBuff<GhostBuff>())
             {
                 entity.AddBuff<GhostBuff>();
-            }
-            if (entity.Timeout >= 0)
+            }            if (entity.Timeout >= 0)
             {
                 entity.Timeout--;
                 if (entity.Timeout <= 0)
@@ -68,7 +66,6 @@ namespace MVZ2.GameContent.Enemies
                 }
             }
         }
-
         public override void PostDeath(Entity entity, DeathInfo info)
         {
             if (entity.HasBuff<BoatBuff>())

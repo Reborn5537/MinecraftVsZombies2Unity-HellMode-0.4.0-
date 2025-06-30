@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minecraftvszombies2\n"
-"POT-Creation-Date: 2025-06-09 01:06+0800\n"
-"PO-Revision-Date: 2025-06-09 13:06+0800\n"
+"POT-Creation-Date: 2025-06-18 09:46+0800\n"
+"PO-Revision-Date: 2025-06-18 21:47+0800\n"
 "Last-Translator: \n"
 "Language-Team: English, United States\n"
 "Language: en_US\n"
@@ -520,6 +520,18 @@ msgstr "Diamond"
 msgctxt "almanac_tag_enum.name"
 msgid "沙子"
 msgstr "Sand"
+
+#. Name for almanac tag enum value mvz2:netherrack of enum shell
+#: Almanac meta file
+msgctxt "almanac_tag_enum.name"
+msgid "下界岩"
+msgstr "Netherrack"
+
+#. Description for almanac tag enum value mvz2:netherrack of enum shell
+#: Almanac meta file
+msgctxt "almanac_tag_enum.description"
+msgid "免疫火焰伤害，阻挡锐利物体和火焰溅射，但受到20x冲击伤害"
+msgstr "Immune to fire damage, stops piercing attacks and fire splashes, but takes 20x impact damage"
 
 #. Header for contraptions mvz2:dispenser
 #: Almanac meta file
@@ -1098,11 +1110,11 @@ msgctxt "contraptions.description"
 msgid ""
 "发射速度：<color=red>1.5秒</color>\n"
 "伤害：<color=red>20</color>\n"
-"技能：<color=red>立即喷射30发木球</color>"
+"技能：<color=red>立即喷射30颗大型木球，每颗造成80点伤害</color>"
 msgstr ""
 "Fire rate: <color=red>1.5 seconds</color>\n"
 "Damage: <color=red>20</color>\n"
-"Evocation: <color=red>Fires 30 wooden balls instantly</color>"
+"Evocation: <color=red>Fires 30 large wooden balls instantly, each deals 80 damage</color>"
 
 #. Flavor for contraptions mvz2:wooden_dropper
 #: Almanac meta file
@@ -1525,15 +1537,15 @@ msgstr ""
 #. Header for contraptions mvz2:desire_pot
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "欲望壶会复制敌人身上拥有的星之碎片。"
-msgstr "Desire Pots duplicate the starshards carried by enemies."
+msgid "欲望壶会从敌人身上复制其携带的星之碎片，每个欲望壶最多复制三个。"
+msgstr "Desire Pots duplicate the starshards carried by enemies. Every pot can duplicate up to 3 starshards."
 
 #. Properties for contraptions mvz2:desire_pot
 #: Almanac meta file
 msgctxt "contraptions.description"
-msgid "技能：<color=red>将最前方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>"
+msgid "技能：<color=red>将最后方的两张充能完毕的的蓝图复制为掉落物，然后重置它们的充能</color>"
 msgstr ""
-"Evocation: <color=red>Spawn copies of the top 2 fully-recharged blueprints as pickups, then reset the recharges of the 2 blueprints.</"
+"Evocation: <color=red>Spawn copies of the last 2 fully-recharged blueprints as pickups, then reset the recharges of the 2 blueprints.</"
 "color>"
 
 #. Flavor for contraptions mvz2:desire_pot
@@ -5511,6 +5523,30 @@ msgctxt "artifact.tooltip"
 msgid "器械x250%伤害，但x50%攻击速度"
 msgstr "x250% damage but x50% attack speed for contraptions"
 
+#. Message for blueprint error recharging
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "重新充能中…"
+msgstr "Recharging…"
+
+#. Message for blueprint error not_enough_energy
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "能量不足"
+msgstr "Not enough energy"
+
+#. Message for blueprint error tutorial
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "无法使用"
+msgstr "Cannot be used"
+
+#. Message for blueprint error decrepify
+#: Blueprints meta file
+msgctxt "blueprint.error"
+msgid "受到衰老诅咒！"
+msgstr "Decrepified!"
+
 #. Name for blueprint option return_pearl
 #: Blueprints meta file
 msgctxt "option.name"
@@ -5528,6 +5564,10 @@ msgstr "Lengthen the board"
 msgctxt "option.name"
 msgid "增加弹珠"
 msgstr "Add a pearl"
+
+#~ msgctxt "contraptions.description"
+#~ msgid "欲望壶会复制敌人身上拥有的星之碎片。"
+#~ msgstr "Desire Pots duplicate the starshards carried by enemies."
 
 #~ msgctxt "almanac_tag.name"
 #~ msgid "漂浮"

@@ -51,7 +51,7 @@ namespace MVZ2.GameContent.Contraptions
         protected override void UpdateLogic(Entity contraption)
         {
             base.UpdateLogic(contraption);
-            contraption.SetModelHealthStateByCount(3);
+            contraption.SetModelDamagePercent();
         }
         public override void PostCollision(EntityCollision collision, int state)
         {
@@ -68,6 +68,10 @@ namespace MVZ2.GameContent.Contraptions
                 return;
             float damageModifier = Mathf.Clamp(anvil.Velocity.magnitude, 0, 1);
             collision.OtherCollider.TakeDamage(1800 * damageModifier, new DamageEffectList(VanillaDamageEffects.PUNCH, VanillaDamageEffects.MUTE, VanillaDamageEffects.DAMAGE_BOTH_ARMOR_AND_BODY), anvil);
+        }
+        public override bool CanEvoke(Entity entity)
+        {
+            return false;
         }
         public override void PostContactGround(Entity anvil, Vector3 velocity)
         {
@@ -153,4 +157,5 @@ namespace MVZ2.GameContent.Contraptions
         private List<IEntityCollider> smashBuffer = new List<IEntityCollider>();
         private Detector smashDetector;
     }
+}
 }
