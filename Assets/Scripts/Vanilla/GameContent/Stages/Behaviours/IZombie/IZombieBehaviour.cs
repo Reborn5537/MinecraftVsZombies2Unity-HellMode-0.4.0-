@@ -1,12 +1,9 @@
 ﻿using System.Linq;
-using MVZ2.GameContent.Buffs;
-using MVZ2.GameContent.Buffs.Enemies;
 using MVZ2.GameContent.Contraptions;
 using MVZ2.GameContent.Effects;
 using MVZ2.GameContent.Pickups;
 using MVZ2.Vanilla;
 using MVZ2.Vanilla.Audios;
-using MVZ2.Vanilla.Enemies;
 using MVZ2.Vanilla.Entities;
 using MVZ2.Vanilla.Level;
 using MVZ2.Vanilla.Properties;
@@ -16,7 +13,6 @@ using MVZ2Logic.Games;
 using MVZ2Logic.IZombie;
 using MVZ2Logic.Level;
 using PVZEngine;
-using PVZEngine.Callbacks;
 using PVZEngine.Definitions;
 using PVZEngine.Entities;
 using PVZEngine.Level;
@@ -29,7 +25,6 @@ namespace MVZ2.GameContent.Stages
     {
         public IZombieBehaviour(StageDefinition stageDef) : base(stageDef)
         {
-            stageDef.AddTrigger(LevelCallbacks.POST_ENTITY_INIT, PostEnemyInitCallback, 0, EntityTypes.ENEMY);
         }
         public override void Setup(LevelEngine level)
         {
@@ -177,21 +172,6 @@ namespace MVZ2.GameContent.Stages
                 level.Spawn(VanillaEffectID.izObserver, observerPos, null);
             }
         }
-        private void PostEnemyInitCallback(EntityCallbackParams param, CallbackResult result)
-        {
-            var entity = param.entity;
-            var level = entity.Level;
-            if (!level.IsIZombie())
-                return;
-            if (entity.Definition.HasBehaviour<MeleeEnemy>())
-            {
-                entity.AddBuff<IZombieAttackBoosterBuff>();
-            }
-            foreach (var buff in entity.GetBuffs<RandomEnemySpeedBuff>())
-            {
-                RandomEnemySpeedBuff.SetSpeed(buff, ZOMBIE_RANDOM_SPEED);
-            }
-        }
         private void CheckGameOver(LevelEngine level)
         {
             bool cannotAfford = false;
@@ -236,7 +216,6 @@ namespace MVZ2.GameContent.Stages
         public const int STATE_NORMAL = VanillaLevelStates.STATE_IZ_NORMAL;
         public const int STATE_NEXT_ROUND = VanillaLevelStates.STATE_IZ_NEXT;
         public const int STATE_FINISHED = VanillaLevelStates.STATE_IZ_FINISHED;
-        public const float ZOMBIE_RANDOM_SPEED = 1.5f;
         public virtual bool AllowPickaxe => false;
         #endregion
     }

@@ -1,18 +1,32 @@
+## Fixed
+- Contraptions can be placed on a command block that transforming into a lily pad.
+- Instant evoke function now no longer can be used on nocturnal contraptions during day.
+
+---
+
+# 0.4.5
+
 ## Added
 - A new pause easter egg image.
 
 ## Modified
+- Hellfires now react with snowballs, large snowballs, wooden balls and ice bolts.
 - Adjusted the color of command block contraptions.
 - Light emitted by Command block contraptions is now white.
 - Changed the material of Hellfire to Netherrack.
 - The Giant will now spawn a zombie for every 0.5 second when it reaches the leftmost in phase 3.
 - Removed the mechanic where Dispensers' attack speed fluctuates randomly in I, Zombie mode.
+- Repainted the texture of Marisa.
 
 ## Fixed
 - The Giant will not decrease its damage reduction when it reaches the leftmost in phase 3 under hard difficulty.
 - The hot key text will block the starshard panel to be clicked.
+- The held contraption would be placed directly at the finger position when clicking the dialog button to cancel the pause in Android.
 - Command block contraptions cannot be instant-triggered.
+- Punchtons cannot damage enemies that are very close to the rightmost.
+- Punchtons are not be affected by Eye of the Giant for 1 frame after they are just built.
 - Entities which have changed toughness like Imp in I, Zombie or evoked Obsidian will scale toughness again after reloading the level.
+- The increament of attack speed of enemies is unexpectedly high in I, Zombie levels when they have not taken damage for a while.
 - Gargoyle Statue and Spawner has not "Carrier Layer" tag in Almanac.
 - Entity texture in Almanac will be green due to pumpkin carriages' green light if the Almanac is opened in Halloween Endless.
 - Zombie and Leather Cap Zombie no longer appear in later rounds of Endless levels.
